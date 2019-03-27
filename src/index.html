@@ -7,8 +7,45 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <!-- Base MasterSlider style sheet -->
+<link rel="stylesheet" href="assets/masterslider/style/masterslider.css" />
+
+<!-- Master Slider Skin -->
+<link href="assets/masterslider/skins/default/style.css" rel='stylesheet' type='text/css'>
+
+<!-- MasterSlider Template Style -->
+<link href='assets/masterslider/style/ms-partialview.css' rel='stylesheet' type='text/css'>
+
+<!-- google font Lato -->
+<link href='http://fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet' type='text/css'>
 </head>
 <body>
   <app-root></app-root>
+
+  <!-- jQuery -->
+<script src="assets/masterslider/jquery.min.js"></script>
+<script src="assets/masterslider/jquery.easing.min.js"></script>
+
+<!-- Master Slider -->
+<script src="assets/masterslider/masterslider.min.js"></script>
+
+<script type="text/javascript">
+
+  var slider = new MasterSlider();
+
+  slider.control('arrows');
+  slider.control('slideinfo',{insertTo:"#partial-view-1" , autohide:false, align:'bottom', size:160});
+  slider.control('circletimer' , {color:"#FFFFFF" , stroke:9});
+
+  slider.setup('masterslider' , {
+      width:760,
+      height:400,
+      space:10,
+      loop:true,
+      view:'fadeWave',
+      layout:'partialview'
+  });
+
+</script>
 </body>
 </html>

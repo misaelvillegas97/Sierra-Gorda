@@ -1,0 +1,114 @@
+.slider {
+  width: 60% !important;
+}
+
+.slider-2 {
+  height: 10% !important;
+}
+
+.link-buttons {
+  // Size
+  width: 230px;
+  height: 65px;
+
+  // Font style
+  line-height: 12pt;
+  font-size: 12pt !important;
+
+  // Margins and paddings
+  margin-left: 0.5em;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  // padding-right: 10em;
+
+  // Borders
+  border: none;
+  border-radius: 3px 50px 50px 3px !important;
+  background-color: white;
+
+  // Shadows
+  -webkit-box-shadow: 1px 0px 7px 0px rgba(176, 176, 176, 1);
+  -moz-box-shadow: 1px 0px 7px 0px rgba(176, 176, 176, 1);
+  box-shadow: 1px 0px 7px 0px rgba(176, 176, 176, 1);
+}
+
+// Setting: Button's color
+.color-buttons {
+  height: 65px;
+  margin-left: 0 !important;
+  padding-left: .8em;
+}
+
+.color-1-1 {
+  @extend .color-buttons;
+  background-color:#F27137 !important;
+}
+
+.color-1-2 {
+  @extend .color-buttons;
+  background-color:#FA8F5B !important;
+}
+
+.text-1 {
+  color: #EF5D27 !important;
+}
+
+.color-2-1 {
+  @extend .color-buttons;
+  background-color: #F9C836 !important;
+}
+
+.color-2-2 {
+  @extend .color-buttons;
+  background-color:#FDDC7A !important;
+}
+
+.text-2 {
+  color: #FACB3A !important;
+}
+
+.color-3-1 {
+  @extend .color-buttons;
+  background-color:#00A9B7 !important;
+}
+
+.color-3-2 {
+  @extend .color-buttons;
+  background-color:#3FBAC5 !important;
+}
+
+.text-3 {
+  color: #3FBAC5 !important;
+}
+
+.color-4-1 {
+  @extend .color-buttons;
+  background-color:#7FBB5A !important;
+}
+
+.color-4-2 {
+  @extend .color-buttons;
+  background-color:#99C87A !important;
+}
+
+.text-4 {
+  color: #7EB959 !important;
+}
+
+// Setting: Slider's legend
+.slider-color-1 {
+  color: #558b2f !important;
+}
+
+.slider-color-2 {
+  color: #f4511e !important;
+}
+
+.slider-color-3 {
+  color: #7b1fa2 !important;
+}
+
+.slider-color-4 {
+  color: #33b5e5 !important;
+}
