@@ -31,6 +31,20 @@
           background-repeat: no-repeat !important;
         }
       }
+      /* Js Calendar */
+      .jsCalendar table {
+        background-color: #ffffff;
+        border-collapse: collapse;
+        border-radius: 4px;
+        box-shadow: none !important;
+        color: #000000;
+        margin: 0px !important;
+        width: 100%;
+      }
+
+      .jsCalendar thead .jsCalendar-week-days th, .jsCalendar tbody td {
+        margin: 0 !important;
+      }
     </style>
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -53,8 +67,16 @@
     />
 
     <!-- jsCalendar style -->
-    <link rel="stylesheet" type="text/css" href="assets/jsCalendar/source/jsCalendar.css" />
-    <link rel="stylesheet" type="text/css" href="assets/jsCalendar/themes/jsCalendar.micro.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="assets/jsCalendar/source/jsCalendar.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="assets/jsCalendar/themes/jsCalendar.micro.css"
+    />
   </head>
   <body>
     <app-root></app-root>
@@ -67,7 +89,10 @@
     <script src="assets/masterslider/masterslider.min.js"></script>
 
     <!-- jsCalendar & ES languaje -->
-    <script type="text/javascript" src="assets/jsCalendar/source/jsCalendar.js"></script>
+    <script
+      type="text/javascript"
+      src="assets/jsCalendar/source/jsCalendar.js"
+    ></script>
     <script
       type="text/javascript"
       src="assets/jsCalendar/source/jsCalendar.lang.es.js"

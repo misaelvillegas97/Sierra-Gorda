@@ -223,10 +223,10 @@
         <div class="div-activity shadow">
           <div class="row">
             <div
-              class="col-lg-6 col-md-6 col-sm-6 p-2 first-half-card-activity pt-4 pb-3"
+              class="col-lg-6 col-md-12 col-sm-12 p-2 first-half-card-activity pt-4 pb-3"
             >
               <div class="container-fluid">
-                <span class="date-activity">Miércoles 21</span>
+                <span class="date-activity">{{ this.daynameselected }} {{ this.dayselected }}</span>
                 <br />
                 <div class="jumbotron rounded shadow-sm p-2 mb-1">
                   <div class="sin-eventos mx-auto text-center" #noevent>
@@ -258,9 +258,9 @@
                 </div>
               </div>
             </div>
-            <div class="col-lg-6 col-md-6 col-sm-6">
+            <div class="col-lg-6 col-md-12 col-sm-12 text-center mx-auto d-flex justify-content-around">
               <!-- Aquí va el calendario :v -->
-              <div class="jsCalendar" id="my-calendar"></div>
+              <div class="jsCalendar h-100" id="my-calendar"></div>
             </div>
           </div>
         </div>
