@@ -1,51 +1,76 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>SierraGorda</title>
-  <base href="/">
+  <head>
+    <meta charset="utf-8" />
+    <title>SierraGorda</title>
+    <base href="/" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <!-- Base MasterSlider style sheet -->
-<link rel="stylesheet" href="assets/masterslider/style/masterslider.css" />
+    <style>
+      .ms-skin-default .ms-nav-next {
+        background: url("/assets/img/f1_der.png") !important;
+        background-repeat: no-repeat !important;
+      }
 
-<!-- Master Slider Skin -->
-<link href="assets/masterslider/skins/default/style.css" rel='stylesheet' type='text/css'>
+      .ms-skin-default .ms-nav-prev {
+        background: url("/assets/img/f1_izq.png") !important;
+        background-repeat: no-repeat !important;
+      }
 
-<!-- MasterSlider Template Style -->
-<link href='assets/masterslider/style/ms-partialview.css' rel='stylesheet' type='text/css'>
+      @media only screen and (min-width: 1024px) {
+        .ms-skin-default .ms-nav-next {
+          right: -90px !important;
+          left: auto;
+          background: url("/assets/img/f1_der.png") !important;
+          background-repeat: no-repeat !important;
+        }
 
-<!-- google font Lato -->
-<link href='http://fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet' type='text/css'>
-</head>
-<body>
-  <app-root></app-root>
+        .ms-skin-default .ms-nav-prev {
+          left: -90px !important;
+          right: auto;
+          background: url("/assets/img/f1_izq.png") !important;
+          background-repeat: no-repeat !important;
+        }
+      }
+    </style>
 
-  <!-- jQuery -->
-<script src="assets/masterslider/jquery.min.js"></script>
-<script src="assets/masterslider/jquery.easing.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <!-- Base MasterSlider style sheet -->
+    <link rel="stylesheet" href="assets/masterslider/style/masterslider.css" />
 
-<!-- Master Slider -->
-<script src="assets/masterslider/masterslider.min.js"></script>
+    <!-- Master Slider Skin -->
+    <link
+      href="assets/masterslider/skins/default/style.css"
+      rel="stylesheet"
+      type="text/css"
+    />
 
-<script type="text/javascript">
+    <!-- MasterSlider Template Style -->
+    <link
+      href="assets/masterslider/style/ms-partialview.css"
+      rel="stylesheet"
+      type="text/css"
+    />
 
-  var slider = new MasterSlider();
+    <!-- jsCalendar style -->
+    <link rel="stylesheet" type="text/css" href="assets/jsCalendar/source/jsCalendar.css" />
+    <link rel="stylesheet" type="text/css" href="assets/jsCalendar/themes/jsCalendar.micro.css" />
+  </head>
+  <body>
+    <app-root></app-root>
 
-  slider.control('arrows');
-  slider.control('slideinfo',{insertTo:"#partial-view-1" , autohide:false, align:'bottom', size:160});
-  slider.control('circletimer' , {color:"#FFFFFF" , stroke:9});
+    <!-- jQuery -->
+    <script src="assets/masterslider/jquery.min.js"></script>
+    <script src="assets/masterslider/jquery.easing.min.js"></script>
 
-  slider.setup('masterslider' , {
-      width:760,
-      height:400,
-      space:10,
-      loop:true,
-      view:'fadeWave',
-      layout:'partialview'
-  });
+    <!-- Master Slider -->
+    <script src="assets/masterslider/masterslider.min.js"></script>
 
-</script>
-</body>
+    <!-- jsCalendar & ES languaje -->
+    <script type="text/javascript" src="assets/jsCalendar/source/jsCalendar.js"></script>
+    <script
+      type="text/javascript"
+      src="assets/jsCalendar/source/jsCalendar.lang.es.js"
+    ></script>
+  </body>
 </html>

@@ -5,10 +5,11 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './views/global/navbar/navbar.component';
+import { NavbarComponent } from './views/index/navbar/navbar.component';
 import { IndexComponent } from './views/index/index.component';
 import { SliderComponent } from './views/index/slider/slider.component';
 import { SlayerComponent } from './views/test/slayer/slayer.component';
+import { SliderPresupuestoComponent } from './views/index/slider-presupuesto/slider-presupuesto.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { SlayerComponent } from './views/test/slayer/slayer.component';
     NavbarComponent,
     IndexComponent,
     SliderComponent,
-    SlayerComponent
+    SlayerComponent,
+    SliderPresupuestoComponent
   ],
   imports: [
     BrowserModule,

@@ -1,1 +1,83 @@
-@import './../../../../assets/masterslider/style/masterslider.css';
+.ms-caption {
+	transition: 0.3s !important;
+}
+
+.ms-caption > p {
+  padding-top: 21px;
+  padding-bottom: 14px;
+  text-align: center;
+  position: absolute;
+  // left: -38px;
+  // margin-top: -13px;
+  height: 42px;
+  width: 80px;
+  background-color: #00a8b7d3;
+  border-radius: 0px 0px 40px 40px;
+}
+
+.ms-caption > p > span > small {
+  font-weight: 600;
+  font-size: 13pt;
+}
+
+.ms-caption > p > span {
+	text-align: center;
+	line-height: 3pt;
+	font-size: 24pt;
+	margin-top: 5px;
+	color: #fff;
+	font-weight: 900 !important;
+}
+
+.ms-caption > div {
+  position: absolute;
+  bottom: -397px;
+  height: 120px;
+  left: -30px;
+	width: 620px;
+	background-color: rgba(255, 255, 255, 0.8);
+	border-radius: 0px 80px 80px 0px;
+}
+
+.ms-caption > div > img {
+	height: 60px;
+	left: -2px;
+}
+
+.ms-caption > div > h4 {
+	position: absolute;
+	top: 0px;
+  left: 30px;
+
+	font-weight: bolder !important;
+	color: #5f6466;
+}
+
+.ms-caption > div > h4 > span {
+
+}
+
+.triangle-down {
+  width: 0;
+  height: 0;
+  // border-left: 50px solid transparent;
+  padding-left: 200px;
+  border-right: 50px solid transparent;
+  border-top: 100px solid #1565c0;
+}
+
+.color-buttons {
+  height: auto;
+  margin-left: 0 !important;
+  padding-left: .8em;
+}
+
+.color-1-1 {
+  @extend .color-buttons;
+  background-color:#FF5900 !important;
+}
+
+.color-1-2 {
+  @extend .color-buttons;
+  background-color:rgb(255, 131, 70) !important;
+}

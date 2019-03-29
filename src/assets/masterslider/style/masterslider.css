@@ -73,12 +73,13 @@
 .ms-view {
 	margin:0px auto;
 	overflow:hidden;
-	background:black;
+	/* background:black; */
 	position:relative;
 	-webkit-perspective: 2000px;
 	-moz-perspective: 2000px;
 	-ms-perspective: 2000px;
-	perspective: 2000px;
+  perspective: 2000px;
+  border-radius: 20px;
 }
 
 .ms-view .ms-slide-container{position:relative;}

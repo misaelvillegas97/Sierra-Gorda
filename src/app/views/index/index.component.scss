@@ -112,3 +112,107 @@
 .slider-color-4 {
   color: #33b5e5 !important;
 }
+
+// Footer
+
+.footer-img {
+  position: absolute;
+}
+
+.footer-padding {
+  padding-top: 8em;
+}
+
+.title-birthday {
+  font-weight: 600;
+  font-size: 26pt;
+  color: white;
+}
+.small-birthday {
+  color: white
+}
+
+// Birthday Card
+.div-birthday {
+  margin: 0;
+  margin-top: 1em;
+  padding: 1em;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.div-activity {
+  margin: 0;
+  margin-top: 1em;
+  // padding: 1em;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.name-card {
+  font-weight: 600;
+  font-size: 11pt;
+  line-height: 8pt;
+  padding-top: 2pt;
+}
+
+.desc-card {
+  font-size: 9pt;
+  line-height: 6pt;
+  // padding-top: 2pt;
+}
+
+.text-date-card-activity {
+  color: #757575;
+  font-weight: 600px;
+}
+
+.bold {
+  font-weight: 600 !important;
+}
+
+.div-activity .first-half-card-activity {
+  background-color: #eeeeee;
+  border-radius: 10px 0px 0px 10px !important;
+}
+
+.date-activity {
+  // Position
+  padding-top: 5em !important;
+  margin-left: .5em;
+  font-size: 12pt;
+  color: #8f8f8f;
+  font-weight: 600;
+}
+
+.no-event {
+  text-align: center;
+  font-style: italic;
+  font-weight: 300;
+  font-size: 12pt;
+  color: #A1A6AC;
+}
+
+.text-actividad {
+  color: rgb(144, 144, 144);
+  font-weight: 500 !important;
+  font-size: 11pt;
+  font-style: italic;
+}
+
+.text-cumpleaños {
+  font-weight: 500 !important;
+  font-size: 11pt;
+  font-style: italic;
+}
+
+// jsCalendar
+.jsCalendar table {
+  background-color: #FFFFFF;
+  border-collapse: collapse;
+  border-radius: 4px;
+  box-shadow: none !important;
+  color: #000000;
+  margin: 0px !important;
+  width: 100%;
+}
