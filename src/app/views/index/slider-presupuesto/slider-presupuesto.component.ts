@@ -24,8 +24,6 @@ export class SliderPresupuestoComponent implements OnInit {
     sliders.control('arrows', {
       autohide: false
     });
-    sliders.control('circletimer', { color: '#0097A8', stroke: 9 });
-
     sliders.setup('masterslider2', {
       width: 1041,
       height: 316,

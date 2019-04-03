@@ -9,11 +9,13 @@
       .ms-skin-default .ms-nav-next {
         background: url("/assets/img/f1_der.png") !important;
         background-repeat: no-repeat !important;
+        z-index: 7;
       }
 
       .ms-skin-default .ms-nav-prev {
         background: url("/assets/img/f1_izq.png") !important;
         background-repeat: no-repeat !important;
+        z-index: 7;
       }
 
       @media only screen and (min-width: 1024px) {
@@ -42,8 +44,37 @@
         width: 100%;
       }
 
-      .jsCalendar thead .jsCalendar-week-days th, .jsCalendar tbody td {
+      .jsCalendar thead .jsCalendar-week-days th,
+      .jsCalendar tbody td {
         margin: 0 !important;
+      }
+
+      .jsCalendar-title-name {
+        color: #ff671b !important;
+        float: none !important;
+        margin-right: 0 !important;
+        text-align: center;
+        font-weight: 600 !important;
+      }
+      .jsCalendar tbody td.jsCalendar-previous,
+      .jsCalendar tbody td.jsCalendar-next {
+        color: #cacaca !important;
+      }
+
+      tr td {
+        font-weight: 600 !important;
+        color: #444444 !important;
+      }
+
+      .jsCalendar-current {
+        background-color: white !important;
+        border: 2px solid #ffb586 !important;
+        border-radius: 18px;
+      }
+
+      .jsCalendar tbody td:hover {
+        background-color: #ff671b !important;
+        color: white !important;
       }
     </style>
 
@@ -77,7 +108,9 @@
       type="text/css"
       href="assets/jsCalendar/themes/jsCalendar.micro.css"
     />
-  </head>
+      <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
   <body>
     <app-root></app-root>
 

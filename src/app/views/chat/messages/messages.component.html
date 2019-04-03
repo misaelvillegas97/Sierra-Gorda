@@ -1,0 +1,9 @@
+<h3 class="chat-title">Chat</h3>
+<br />
+<div class="container-fluid chat-container">
+  <app-card *ngFor="let user of faker" [user]="user" (click)="chatSelect(user.id)"></app-card>
+</div>
+
+<div class="message-icon" (click)="toggle_chat(false)">
+  <img src="assets/img/message.png" class="img-fluid float-right pt-4 pr-4" alt="" width="70px" height="70px">
+</div>

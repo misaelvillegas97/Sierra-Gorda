@@ -2,9 +2,9 @@
   width: 60% !important;
 }
 
-.slider-2 {
-  height: 10% !important;
-}
+// .slider-2 {
+//   height: 10% !important;
+// }
 
 .link-buttons {
   // Size
@@ -37,63 +37,63 @@
 .color-buttons {
   height: 65px;
   margin-left: 0 !important;
-  padding-left: .8em;
+  padding-left: 0.8em;
 }
 
 .color-1-1 {
   @extend .color-buttons;
-  background-color:#F27137 !important;
+  background-color: #ff671b !important;
 }
 
 .color-1-2 {
   @extend .color-buttons;
-  background-color:#FA8F5B !important;
+  background-color: #fa8f5b !important;
 }
 
 .text-1 {
-  color: #EF5D27 !important;
+  color: #ff671b !important;
 }
 
 .color-2-1 {
   @extend .color-buttons;
-  background-color: #F9C836 !important;
+  background-color: #f9c836 !important;
 }
 
 .color-2-2 {
   @extend .color-buttons;
-  background-color:#FDDC7A !important;
+  background-color: #fddc7a !important;
 }
 
 .text-2 {
-  color: #FACB3A !important;
+  color: #facb3a !important;
 }
 
 .color-3-1 {
   @extend .color-buttons;
-  background-color:#00A9B7 !important;
+  background-color: #00a9b7 !important;
 }
 
 .color-3-2 {
   @extend .color-buttons;
-  background-color:#3FBAC5 !important;
+  background-color: #3fbac5 !important;
 }
 
 .text-3 {
-  color: #3FBAC5 !important;
+  color: #3fbac5 !important;
 }
 
 .color-4-1 {
   @extend .color-buttons;
-  background-color:#7FBB5A !important;
+  background-color: #7fbb5a !important;
 }
 
 .color-4-2 {
   @extend .color-buttons;
-  background-color:#99C87A !important;
+  background-color: #99c87a !important;
 }
 
 .text-4 {
-  color: #7EB959 !important;
+  color: #7eb959 !important;
 }
 
 // Setting: Slider's legend
@@ -129,7 +129,7 @@
   color: white;
 }
 .small-birthday {
-  color: white
+  color: white;
 }
 
 // Birthday Card
@@ -171,6 +171,10 @@
   font-weight: 600 !important;
 }
 
+.s-bold {
+  font-weight: 900 !important;
+}
+
 .div-activity .first-half-card-activity {
   background-color: #eeeeee;
   border-radius: 10px 0px 0px 10px !important;
@@ -179,7 +183,7 @@
 .date-activity {
   // Position
   padding-top: 5em !important;
-  margin-left: .5em;
+  margin-left: 0.5em;
   font-size: 12pt;
   color: #8f8f8f;
   font-weight: 600;
@@ -190,7 +194,7 @@
   font-style: italic;
   font-weight: 300;
   font-size: 12pt;
-  color: #A1A6AC;
+  color: #a1a6ac;
 }
 
 .text-actividad {
@@ -204,4 +208,156 @@
   font-weight: 500 !important;
   font-size: 11pt;
   font-style: italic;
+}
+
+.filtro-uv {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 500px;
+  height: 50px;
+  background-color: white;
+  z-index: 120;
+  border-radius: 0px 15px 0px 0px;
+}
+
+button.left-side {
+  position: fixed;
+  top: 40%;
+  left: 0;
+  border-radius: 0px 80px 80px 0px;
+  border: none;
+  z-index: auto;
+}
+
+.green-button {
+  background-color: #8dcf85;
+  width: 60px;
+  height: 50px;
+}
+
+button.right-side {
+  position: fixed;
+  top: 40%;
+  right: 0;
+  border-radius: 80px 0px 0px 80px;
+  border: none;
+  z-index: auto;
+}
+
+button.right-side-2 {
+  position: fixed;
+  top: 49%;
+  right: 0;
+  border-radius: 80px 0px 0px 80px;
+  border: none;
+  z-index: auto;
+}
+
+.gray-button {
+  background-color: #ececee;
+  width: 60px;
+  height: 50px;
+}
+
+.filter-circle {
+  padding-left: 10px !important;
+  padding: 5px;
+  padding-right: 10px !important;
+  color: white;
+  font-weight: 600 !important;
+  border-radius: 100px;
+}
+
+.text-dark {
+  font-weight: 00 !important;
+  color: #5a5a5a !important;
+}
+
+.no-select {
+  -webkit-user-select: none; /* Safari 3.1+ */
+  -moz-user-select: none; /* Firefox 2+ */
+  -ms-user-select: none; /* IE 10+ */
+  user-select: none; /* Standard syntax */
+}
+
+// Ventana de chat
+.chat-window-container {
+  // sides
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  // widths
+  width: 100%;
+  height: 100%;
+  position: fixed;
+
+  z-index: 150;
+
+  // visibility: hidden;
+  display: none;
+}
+.chat-window {
+  position: fixed;
+  bottom: 0;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 25%;
+  background-color: #78ce47;
+  z-index: 151;
+}
+
+@media only screen and (max-width: 768px) {
+  .chat-window {
+    width: 100% !important;
+    border-radius: 20px !important;
+  }
+}
+
+// Ventana de chat individual
+.selected-chat-container {
+  position: fixed;
+  // Dimentions
+  bottom: 5%;
+  right: 25%;
+  width: 400px;
+  height: 450px;
+
+  z-index: 152;
+
+  // Details
+  background-color: white;
+  border-radius: 10px 10px 10px 10px;
+}
+
+.poll-window-container {
+  // sides
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  // widths
+  width: 100%;
+  height: 100%;
+  position: fixed;
+
+  z-index: 150;
+
+  // visibility: hidden;
+  display: none;
+}
+
+.poll-window {
+  position: fixed;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 25%;
+  background-color: #78ce47;
+  z-index: 151;
 }

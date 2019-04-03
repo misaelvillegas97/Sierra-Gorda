@@ -1,0 +1,20 @@
+<div class="card-chat d-flex justify-content-between shadow mb-3" style="cursor: pointer">
+  <!-- Message content -->
+  <div>
+    <div class="user-remitent">
+      {{ user.nombre }}
+    </div>
+    <div class="user-company">
+      {{ user.empresa }}
+    </div>
+  </div>
+  <!-- Actions -->
+  <div class="card-extras my-auto">
+    <mdb-badge pill="true" class="badge-m" color="amber darken-4" *ngIf="user.unread != 0">{{ user.unread > 10? '+10': user.unread }}</mdb-badge>
+    <i
+      class="fas fa-arrow-circle-right ml-2"
+      style="color: #ff671b"
+      aria-hidden="true"
+    ></i>
+  </div>
+</div>

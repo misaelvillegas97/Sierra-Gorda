@@ -1,11 +1,10 @@
+<!-- First Banner -->
 <div class="container-fluid">
-  <!-- <div class="slider mx-auto"> -->
   <app-slider code="banner-principal"></app-slider>
-  <!-- </div> -->
 </div>
+<br />
+<br />
 
-<br />
-<br />
 <!--  Links Buttons -->
 <div class="container">
   <div class="row text-center mx-auto d-flex justify-content-between  pl-4">
@@ -88,6 +87,7 @@
   </div>
 </div>
 
+
 <!-- Buttons: Noticias, Seguridad, Te reconozco por estar, Beneficios, Galería -->
 <div class="container-fluid">
   <div class="row mx-auto d-flex justify-content-between">
@@ -119,6 +119,7 @@
   </div>
 </div>
 
+<!-- Footer -->
 <div
   class="mt-4 pt-4"
   style="background-image: url(/assets/img/Footer_Fondo.png); background-size: cover"
@@ -226,7 +227,9 @@
               class="col-lg-6 col-md-12 col-sm-12 p-2 first-half-card-activity pt-4 pb-3"
             >
               <div class="container-fluid">
-                <span class="date-activity">{{ this.daynameselected }} {{ this.dayselected }}</span>
+                <span class="date-activity"
+                  >{{ this.daynameselected }} {{ this.dayselected }}</span
+                >
                 <br />
                 <div class="jumbotron rounded shadow-sm p-2 mb-1">
                   <div class="sin-eventos mx-auto text-center" #noevent>
@@ -258,7 +261,9 @@
                 </div>
               </div>
             </div>
-            <div class="col-lg-6 col-md-12 col-sm-12 text-center mx-auto d-flex justify-content-around">
+            <div
+              class="col-lg-6 col-md-12 col-sm-12 text-center p-0 mx-auto d-flex justify-content-around"
+            >
               <!-- Aquí va el calendario :v -->
               <div class="jsCalendar h-100" id="my-calendar"></div>
             </div>
@@ -271,4 +276,108 @@
   <div class="d-flex flex-row-reverse">
     <img src="/assets/img/Footer.png" />
   </div>
+
+  <!-- Filtro UV semanal -->
+  <div
+    class="filtro-uv pt-3 shadow-lg m-0 border-top border-right"
+    (mouseover)="toggle_filtro_uv(true)"
+    (mouseleave)="toggle_filtro_uv(false)"
+    id="filter-button"
+  >
+    <p class="text-center" *ngIf="!title_hovered">
+      <span class="text-1 pl-2 s-bold text-center mx-auto"
+        >ÍNDICE UV DE LA SEMANA</span
+      >
+    </p>
+    <p *ngIf="title_hovered" class="w-100">
+      <span class="text-1 pl-2 s-bold">
+        ÍNDICE UV
+      </span>
+      <span class="filter-circle ml-2" [style.background-color]='getUVColor(uvactual)'>{{uvactual}}</span>
+      <span class="text-muted bold ml-2">Moderado </span>
+      <a class="float-right mr-2 text-3"
+          style="text-decoration: underline #00A9B7 !important">
+        Ver más
+        <i class="fas fa-arrow-circle-up ml-2" aria-hidden="true"></i>
+      </a>
+    </p>
+    <div class="filter-content mt-3 m-2" id="filter-content" style="visibility: collapse">
+      <div class="w-100 p-3" [style.background-color]="3%2 != 0? '#F3F3F3': '#fff'">
+        <div class="row">
+          <div class="col-lg-5 col-md-5 col-sm-5">
+            <!-- Día -->
+            <span style="font-style: italic; font-size: 9pt;" class="text-muted">Hoy</span>
+            <br>
+            <span class="bold text-dark mr-2">Índice UV</span>
+            <span class="filter-circle" [style.background-color]='getUVColor(uvactual)'>{{uvactual}}</span>
+          </div>
+          <div class="col-lg-7 col-md-7 col-sm-12">
+              <span style="font-size: 10pt;" class="text-muted">Máxima: </span>
+              <i class="fas fa-circle" [style.color]="getUVColor(uvactual)" style="font-size: 10pt"></i>
+              <span style="font-size: 10pt;" class="text-muted bold pl-2">Moderado</span>
+              <br>
+              <span style="font-size: 10pt;" class="text-muted">Temperatura: </span>
+              <span style="font-size: 10pt;" class="text-muted bold pl-2">15° Min / 28° Máx</span>
+          </div>
+        </div>
+      </div>
+      <div class="w-100 p-3" [style.background-color]="2%2 != 0? '#F3F3F3': '#fff'">
+        <div class="row">
+          <div class="col-lg-5 col-md-5 col-sm-12">
+              <!-- Día -->
+              <span style="font-style: italic; font-size: 9pt;" class="text-muted">Martes, 02 Abril</span>
+              <br>
+              <span class="bold text-dark mr-2">Índice UV</span>
+              <span class="filter-circle" [style.background-color]='getUVColor(uvactual)'>{{uvactual}}</span>
+          </div>
+          <div class="col-lg-7 col-md-7 col-sm-7">
+              <span style="font-size: 10pt;" class="text-muted">Máxima: </span>
+              <i class="fas fa-circle" [style.color]="getUVColor(uvactual)" style="font-size: 10pt"></i>
+              <span style="font-size: 10pt;" class="text-muted bold pl-2">Moderado</span>
+              <br>
+              <span style="font-size: 10pt;" class="text-muted">Temperatura: </span>
+              <span style="font-size: 10pt;" class="text-muted bold pl-2">15° Min / 28° Máx</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Side buttons -->
+  <!-- Left Side -->
+  <button class="green-button left-side"  (click)="toggle_poll(true)">
+    <img src="assets/img/Encuesta.png" alt="" class="img-fluid p-2 pt-0 mt-0 no-select" draggable="false" />
+  </button>
+
+  <!-- Right Side -->
+  <button class="gray-button right-side">
+    <img src="assets/img/contactos.png" alt="" class="img-fluid p-2 pt-0 mt-0 no-select" draggable="false"/>
+  </button>
+  <button class="green-button right-side-2" (click)="toggle_chat(true)">
+    <img
+      src="assets/img/chat.png"
+      alt=""
+      class="img-fluid p-2 pr-0 mr-0 pt-0 mt-0 no-select" draggable="false"/>
+  </button>
+
+<!-- Ventana de chat -->
+<div class="chat-window-container" id="chat-container" *ngIf="logged">
+
+  <div class="selected-chat-container m-0 p-0 shadow" *ngIf="chatSelected">
+    <app-singlechat [data]= "userID"></app-singlechat>
+  </div>
+
+  <div class="chat-window shadow" style="border-radius: 5px 0px 0px 5px">
+    <app-messages (onSelectChat)="loadSelectedChat($event)" (onQuit)="toggle_chat($event)"></app-messages>
+  </div>
+</div>
+
+<!-- Ventana de encuentras -->
+<div class="poll-window-container" id="poll-container" *ngIf="logged" (click)="toggle_poll(false)">
+
+  <div class="poll-window shadow">
+
+  </div>
+
 </div>

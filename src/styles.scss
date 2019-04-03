@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600,900');
+@import "~@ctrl/ngx-emoji-mart/picker";
 
 body {
   font-family: 'Montserrat' !important;
@@ -32,3 +33,6 @@ strong {
   margin-left: 0px !important;
   margin-right: 0px !important;
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
