@@ -79,12 +79,6 @@ export class MessagesComponent implements OnInit {
   }
 
   chatSelect(id: number) {
-    // console.log(id);
     this.onSelectChat.emit(id);
-  }
-
-  toggle_chat(state: boolean) {
-    this.onQuit.emit(false);
-    return false;
   }
 }

@@ -29,3 +29,15 @@
   margin-top: -10px !important;
   right: 50px !important;
 }
+
+.active {
+  background-color: rgb(43, 179, 19);
+}
+
+.active > div > div {
+  color: white;
+}
+
+.active > div > i {
+  color: white !important;
+}

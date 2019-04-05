@@ -1,0 +1,27 @@
+// Stepper Custom Style
+.mat-stepper-horizontal,
+.mat-stepper-vertical {
+  // background-color: #00c0cb;
+  background-color: #00c1cb00;
+}
+
+.mat-horizontal-stepper-header-container {
+  display: none !important;
+}
+
+.mat-stepper-horizontal,
+.mat-stepper-vertical {
+  display: block;
+  border-radius: 15px;
+}
+
+// MatStepper Label Header
+.mat-step-label {
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0px !important;
+  vertical-align: middle;
+}
+

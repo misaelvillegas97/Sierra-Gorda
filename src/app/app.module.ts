@@ -4,6 +4,10 @@ import { NgModule } from '@angular/core';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { PickerModule } from '@ctrl/ngx-emoji-mart';
 
+// Angular Material Imports
+import { CdkStepperModule } from '@angular/cdk/stepper';
+import { MatStepperModule, MatIconModule, MatButtonModule } from '@angular/material';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './views/index/navbar/navbar.component';
@@ -16,7 +20,9 @@ import { CardComponent } from './views/chat/messages/card/card.component';
 import { SinglechatComponent } from './views/chat/messages/singlechat/singlechat.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PollComponent } from './views/index/poll/poll.component';
-import { StepperComponent } from './views/index/poll/stepper/stepper.component';
+import { SinglepollComponent } from './views/index/poll/singlepoll/singlepoll.component';
+import { CardPollComponent } from './views/index/poll/card-poll/card-poll.component';
+import { ContactComponent } from './views/index/contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -30,14 +36,21 @@ import { StepperComponent } from './views/index/poll/stepper/stepper.component';
     CardComponent,
     SinglechatComponent,
     PollComponent,
-    StepperComponent
+    SinglepollComponent,
+    CardPollComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     PickerModule,
     MDBBootstrapModule.forRoot(),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    // Material Module Imports
+    CdkStepperModule,
+    MatStepperModule,
+    MatIconModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

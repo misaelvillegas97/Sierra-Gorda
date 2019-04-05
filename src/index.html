@@ -4,8 +4,13 @@
     <meta charset="utf-8" />
     <title>SierraGorda</title>
     <base href="/" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,900" rel="stylesheet">
 
     <style>
+
+      body {
+        font-family: 'Montserrat', sans-serif;
+      }
       .ms-skin-default .ms-nav-next {
         background: url("/assets/img/f1_der.png") !important;
         background-repeat: no-repeat !important;
@@ -104,13 +109,14 @@
       href="assets/jsCalendar/source/jsCalendar.css"
     />
     <link
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500"
       rel="stylesheet"
-      type="text/css"
-      href="assets/jsCalendar/themes/jsCalendar.micro.css"
     />
-      <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-</head>
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+  </head>
   <body>
     <app-root></app-root>
 
@@ -130,5 +136,9 @@
       type="text/javascript"
       src="assets/jsCalendar/source/jsCalendar.lang.es.js"
     ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+    <script>
+      new WOW().init();
+    </script>
   </body>
 </html>

@@ -1,4 +1,4 @@
-<div class="card-chat d-flex justify-content-between shadow mb-3" style="cursor: pointer">
+<div class="card-chat d-flex justify-content-between shadow mb-3 wow fadeInUp" style="cursor: pointer; user-select: none" id="user-{{user.id}}">
   <!-- Message content -->
   <div>
     <div class="user-remitent">
@@ -10,9 +10,9 @@
   </div>
   <!-- Actions -->
   <div class="card-extras my-auto">
-    <mdb-badge pill="true" class="badge-m" color="amber darken-4" *ngIf="user.unread != 0">{{ user.unread > 10? '+10': user.unread }}</mdb-badge>
+    <mdb-badge pill="true" class="badge-m" color="amber darken-4" style="user-select: none" *ngIf="user.unread != 0">{{ user.unread > 10? '+10': user.unread }}</mdb-badge>
     <i
-      class="fas fa-arrow-circle-right ml-2"
+      class="fas fa-chevron-circle-right ml-2"
       style="color: #ff671b"
       aria-hidden="true"
     ></i>

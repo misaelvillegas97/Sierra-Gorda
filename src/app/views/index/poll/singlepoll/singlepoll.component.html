@@ -1,0 +1,52 @@
+<div class="custom-stepper-container shadow">
+  <div class="stepper-header container-fluid d-flex justify-content-between">
+    <h6 class="stepper-header-title">
+      ENCUESTA SEGURIDAD Y RIESGOS (ID N° {{ data }})
+    </h6>
+    <div class="close m-0">
+      <i class="fas fa-times-circle" (click)="onQuit.emit(false)"></i>
+    </div>
+  </div>
+  <mat-horizontal-stepper linear #stepper>
+    <mat-step [editable]="true">
+      <div class="stepper-question">
+        ¿Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint autem
+        dolor error dolorum et quo repudiandae sunt minima cum eos optio officia
+        enim?
+      </div>
+      <div class="stepper-answer">
+        <textarea name="" id="" class="form-control" rows="10"></textarea>
+      </div>
+      <div class="w-100 text-right mr-0 mt-2">
+        <button class="next-button" matStepperNext>Siguiente</button>
+      </div>
+    </mat-step>
+    <mat-step [editable]="true">
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </mat-step>
+    <mat-step>
+      You are now done.
+      <div class="w-100 text-right mr-0">
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button (click)="stepper.reset()">Reset</button>
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper>
+  <div class="custom-progress-percent-container">
+    <div class="progress custom-progress">
+      <span>50%</span>
+      <div
+        class="progress-bar"
+        role="progressbar"
+        style="width: 25%"
+        aria-valuenow="25"
+        aria-valuemin="0"
+        aria-valuemax="100"
+      ></div>
+    </div>
+  </div>
+  <div class="spacer"></div>
+</div>

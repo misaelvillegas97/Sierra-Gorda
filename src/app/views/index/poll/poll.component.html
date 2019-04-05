@@ -1,3 +1,14 @@
-<p>
-  poll works!
-</p>
+<div class="d-flex justify-content-between">
+  <h3 class="poll-title">Encuestas</h3>
+  <div class="close m-0">
+    <i class="fas fa-times-circle" (click)="onQuit.emit(false)"></i>
+  </div>
+</div>
+<br />
+<div class="container-fluid poll-container">
+  <app-card-poll
+    *ngFor="let poll of polls"
+    [poll]="poll"
+    (click)="pollSelect(poll.id)"
+  ></app-card-poll>
+</div>

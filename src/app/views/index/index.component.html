@@ -1,5 +1,5 @@
 <!-- First Banner -->
-<div class="container-fluid">
+<div class="container-fluid wow fadeIn">
   <app-slider code="banner-principal"></app-slider>
 </div>
 <br />
@@ -8,7 +8,7 @@
 <!--  Links Buttons -->
 <div class="container">
   <div class="row text-center mx-auto d-flex justify-content-between  pl-4">
-    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 wow fadeInLeftBig pb-4">
       <a href="#">
         <button class="link-buttons">
           <div class="row m-0">
@@ -21,7 +21,7 @@
         </button>
       </a>
     </div>
-    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 wow fadeInUpBig pb-4">
       <a href="#">
         <button class="link-buttons">
           <div class="row m-0">
@@ -34,7 +34,7 @@
         </button>
       </a>
     </div>
-    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 wow fadeInUpBig pb-4">
       <a href="#">
         <button class="link-buttons">
           <div class="row m-0">
@@ -47,7 +47,7 @@
         </button>
       </a>
     </div>
-    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 wow fadeInRightBig pb-4">
       <a href="#">
         <button class="link-buttons">
           <div class="row m-0">
@@ -64,7 +64,7 @@
 </div>
 
 <!-- Second Banner -->
-<div class="container pt-4 mt-4 slider-2">
+<div class="container mt-4 slider-2 wow fadeInUp">
   <!-- <app-slider code="banner-presupuesto"></app-slider> -->
   <app-slider-presupuesto></app-slider-presupuesto>
   <div class="container-fluid">
@@ -91,27 +91,27 @@
 <!-- Buttons: Noticias, Seguridad, Te reconozco por estar, Beneficios, Galería -->
 <div class="container-fluid">
   <div class="row mx-auto d-flex justify-content-between">
-    <div class="col-xs-12 col-sm-6 col-md-2 col-lg-2 p-0 text-center">
+    <div class="col-xs-12 col-sm-6 col-md-2 col-lg-2 p-0 text-center wow fadeInUp">
       <a href="" class="m-0 p-0">
         <img class="img-fluid" src="assets/img/Noticias.png" />
       </a>
     </div>
-    <div class="col-xs-12 col-sm-6 col-md-2 col-lg-2 p-0 text-center">
+    <div class="col-xs-12 col-sm-6 col-md-2 col-lg-2 p-0 text-center wow fadeInUp">
       <a href="">
         <img class="img-fluid" src="assets/img/Seguridad_2.png" />
       </a>
     </div>
-    <div class="col-xs-12 col-sm-6 col-md-2 col-lg-2 p-0 text-center">
+    <div class="col-xs-12 col-sm-6 col-md-2 col-lg-2 p-0 text-center wow fadeInUp">
       <a href="">
         <img class="img-fluid" src="assets/img/Te_reconozco.png" />
       </a>
     </div>
-    <div class="col-xs-12 col-sm-6 col-md-2 col-lg-2 p-0 text-center">
+    <div class="col-xs-12 col-sm-6 col-md-2 col-lg-2 p-0 text-center wow fadeInUp">
       <a href="">
         <img class="img-fluid" src="assets/img/Beneficios.png" />
       </a>
     </div>
-    <div class="col-xs-12 col-sm-6 col-md-2 col-lg-2 p-0 text-center">
+    <div class="col-xs-12 col-sm-6 col-md-2 col-lg-2 p-0 text-center wow fadeInUp">
       <a href="">
         <img class="img-fluid" src="assets/img/Galeria.png" />
       </a>
@@ -127,7 +127,7 @@
   <!-- <img src="/assets/img/Footer_Fondo.png" class="footer-img w-100"  draggable="false" style="-moz-user-select: none;"/> -->
   <div class="container-fluid footer-padding">
     <div class="row">
-      <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 pr-4">
+      <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 pr-4 wow fadeInUp">
         <h5 class="title-birthday mb-0 pb-0">
           CUMPLEAÑOS
         </h5>
@@ -213,7 +213,7 @@
           </div>
         </div>
       </div>
-      <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+      <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 wow fadeInUp">
         <h5 class="title-birthday mb-0 pb-0">
           ACTIVIDADES
         </h5>
@@ -279,7 +279,7 @@
 
   <!-- Filtro UV semanal -->
   <div
-    class="filtro-uv pt-3 shadow-lg m-0 border-top border-right"
+    class="filtro-uv pt-3 shadow-lg m-0 border-top border-right wow slideInLeft"
     (mouseover)="toggle_filtro_uv(true)"
     (mouseleave)="toggle_filtro_uv(false)"
     id="filter-button"
@@ -346,15 +346,15 @@
 
 <!-- Side buttons -->
   <!-- Left Side -->
-  <button class="green-button left-side"  (click)="toggle_poll(true)">
+  <button class="green-button left-side wow fadeInDownBig"  (click)="toggle_poll(true)">
     <img src="assets/img/Encuesta.png" alt="" class="img-fluid p-2 pt-0 mt-0 no-select" draggable="false" />
   </button>
 
   <!-- Right Side -->
-  <button class="gray-button right-side">
+  <button class="gray-button right-side wow fadeInDownBig" (click)="toggle_contact(true)">
     <img src="assets/img/contactos.png" alt="" class="img-fluid p-2 pt-0 mt-0 no-select" draggable="false"/>
   </button>
-  <button class="green-button right-side-2" (click)="toggle_chat(true)">
+  <button class="green-button right-side-2 wow fadeInUpBig" (click)="toggle_chat(true)">
     <img
       src="assets/img/chat.png"
       alt=""
@@ -362,7 +362,7 @@
   </button>
 
 <!-- Ventana de chat -->
-<div class="chat-window-container" id="chat-container" *ngIf="logged">
+<div class="chat-window-container animated fadeInRightBig" id="chat-container" *ngIf="logged">
 
   <div class="selected-chat-container m-0 p-0 shadow" *ngIf="chatSelected">
     <app-singlechat [data]= "userID"></app-singlechat>
@@ -374,10 +374,23 @@
 </div>
 
 <!-- Ventana de encuentras -->
-<div class="poll-window-container" id="poll-container" *ngIf="logged" (click)="toggle_poll(false)">
+<div class="poll-window-container animated fadeInLeftBig" id="poll-container" *ngIf="logged">
 
-  <div class="poll-window shadow">
+  <div class="poll-window shadow" *ngIf="!pollSelected">
+    <app-poll (onSelectPoll)="loadSelectedPoll($event)" (onQuit)="toggle_poll(false)"></app-poll>
+  </div>
 
+  <div class="selected-poll-container m-0 p-0" *ngIf="pollSelected">
+    <app-singlepoll [data]= "userID" (onQuit)="toggle_poll(false)"></app-singlepoll>
+  </div>
+
+</div>
+
+<!-- Ventana de contactos -->
+<div class="contact-window-container animated fadeInRightBig" id="contact-container" *ngIf="logged">
+
+  <div class="contact-window shadow">
+    <app-contact (onQuit)="toggle_contact($event)"></app-contact>
   </div>
 
 </div>
