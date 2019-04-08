@@ -36,3 +36,13 @@ strong {
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.orange-tooltip {
+  background-color: #F27137;
+}
+
+html.noscroll {
+  // position: fixed;
+  overflow-y: hidden;
+  width: 100%;
+}

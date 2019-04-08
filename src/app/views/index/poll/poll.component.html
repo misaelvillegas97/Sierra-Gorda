@@ -1,7 +1,7 @@
 <div class="d-flex justify-content-between">
   <h3 class="poll-title">Encuestas</h3>
   <div class="close m-0">
-    <i class="fas fa-times-circle" (click)="onQuit.emit(false)"></i>
+    <!-- <i class="fas fa-times-circle" (click)="onQuit.emit(false)"></i> -->
   </div>
 </div>
 <br />
@@ -11,4 +11,21 @@
     [poll]="poll"
     (click)="pollSelect(poll.id)"
   ></app-card-poll>
+</div>
+
+<div class="message-icon" (click)="onQuit.emit(false)">
+  <img
+    src="assets/img/Encuesta.png"
+    class="img-fluid float-right mt-4 "
+    style=" cursor: pointer;
+            position: absolute;
+            bottom: 30px;
+            left: 8%;"
+    alt=""
+    width="40px"
+    height="40px"
+    matTooltip="Click para cerrar"
+    matTooltipPosition="after"
+    matTooltipClass="orange-tooltip"
+  />
 </div>

@@ -1,7 +1,7 @@
 <div class="d-flex justify-content-between">
   <h3 class="chat-title">Chat</h3>
   <div class="close">
-    <i class="fas fa-times" (click)="onQuit.emit(false)"></i>
+    <!-- <i class="fas fa-times" (click)="onQuit.emit(false)"></i> -->
   </div>
 </div>
 <br />
@@ -15,10 +15,18 @@
 
 <div class="message-icon" (click)="onQuit.emit(false)">
   <img
-    src="assets/img/message.png"
-    class="img-fluid float-right pt-4 pr-4"
+    src="assets/img/chat.png"
+    class="img-fluid float-right mt-4 pr-4"
+    style=" cursor: pointer;
+            position: absolute;
+            bottom: 30px;
+            right: 5px;
+    "
     alt=""
     width="70px"
     height="70px"
+    matTooltip="Click para cerrar"
+    matTooltipPosition="before"
+    matTooltipClass="orange-tooltip"
   />
 </div>

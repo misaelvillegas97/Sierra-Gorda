@@ -5,6 +5,7 @@ import {
   HostListener
 } from '@angular/core';
 import { SinglechatComponent } from '../chat/messages/singlechat/singlechat.component';
+import { $ } from 'protractor';
 
 declare var jsCalendar: any;
 const dayname = [
@@ -113,16 +114,18 @@ export class IndexComponent implements OnInit {
     toggle_chat(state: boolean) {
       if (state) {
         document.getElementById('chat-container').style.display = 'block';
+        document.getElementById('html').classList.add('noscroll');
       } else {
         document.getElementById('chat-container').classList.remove('fadeInRightBig');
         document.getElementById('chat-container').classList.add('fadeOutRightBig');
+        document.getElementById('html').classList.remove('noscroll');
         setTimeout(() => {
           document.getElementById('chat-container').style.display = 'none';
 
           document.getElementById('chat-container').classList.remove('fadeOutRightBig');
           document.getElementById('chat-container').classList.add('fadeInRightBig');
         }, 500);
-        if (this.userID != undefined ) {
+        if (this.userID !== undefined ) {
           document.getElementById(`user-${this.userID}`).classList.remove('active');
         }
         this.chatSelected = false;
@@ -154,25 +157,35 @@ export class IndexComponent implements OnInit {
     toggle_poll(state: boolean) {
       if (state) {
         document.getElementById('poll-container').style.display = 'block';
+        document.getElementById('html').classList.add('noscroll');
       } else {
         document.getElementById('poll-container').classList.remove('fadeInLeftBig');
         document.getElementById('poll-container').classList.add('fadeOutLeftBig');
+        document.getElementById('html').classList.remove('noscroll');
         setTimeout(() => {
           document.getElementById('poll-container').style.display = 'none';
-
+          document.getElementById('poll-sidebar').style.display = 'block';
           document.getElementById('poll-container').classList.remove('fadeOutLeftBig');
           document.getElementById('poll-container').classList.add('fadeInLeftBig');
-        }, 500);
-        this.pollSelected = false;
-        this.pollID = undefined;
-      }
 
+        }, 500);
+      }
+      this.pollSelected = false;
+      this.pollID = undefined;
       return false;
     }
 
     toggle_poll_sidebar(state: boolean) {
       if (!state) {
-        document.getElementById('poll-container').style.display = 'none';
+        document.getElementById('poll-sidebar').classList.add('animated');
+        document.getElementById('poll-sidebar').classList.add('fadeOutLeftBig');
+        setTimeout(() => {
+          document.getElementById('poll-sidebar').style.display = 'none';
+
+          document.getElementById('poll-sidebar').classList.remove('animated');
+          document.getElementById('poll-sidebar').classList.remove('fadeOutLeftBig');
+          document.getElementById('poll-sidebar').classList.add('fadeInLeftBig');
+        }, 500);
       }
     }
 
@@ -180,6 +193,12 @@ export class IndexComponent implements OnInit {
       // select
       this.pollID = id;
       this.pollSelected = true;
+      this.toggle_poll_sidebar(false);
+    }
+
+    closeSelectedPoll() {
+      this.pollSelected = false;
+      this.pollID = undefined;
     }
   //#endregion
 
@@ -187,17 +206,17 @@ export class IndexComponent implements OnInit {
     toggle_contact(state: boolean) {
       if (state) {
         document.getElementById('contact-container').style.display = 'block';
+        document.getElementById('html').classList.add('noscroll');
       } else {
         document.getElementById('contact-container').classList.remove('fadeInRightBig');
         document.getElementById('contact-container').classList.add('fadeOutRightBig');
+        document.getElementById('html').classList.remove('noscroll');
         setTimeout(() => {
           document.getElementById('contact-container').style.display = 'none';
 
           document.getElementById('contact-container').classList.remove('fadeOutRightBig');
           document.getElementById('contact-container').classList.add('fadeInRightBig');
         }, 500);
-        this.pollSelected = false;
-        this.pollID = undefined;
       }
 
       return false;
@@ -205,11 +224,28 @@ export class IndexComponent implements OnInit {
   //#endregion Contactos
 
   @HostListener('window:keyup', ['$event']) keyEvent(event: KeyboardEvent) {
-    // console.log(event);
-
+    // tslint:disable-next-line: deprecation
     if (event.keyCode === 27) {
       this.toggle_chat(false);
       this.toggle_poll(false);
+      this.toggle_contact(false);
     }
+  }
+  @HostListener('document:click', ['$event']) clickedOutside($event) {
+    console.log($event);
+    // here you can hide your menu
+    this.toggle_chat(false);
+    this.toggle_contact(false);
+    this.toggle_poll(false);
+
+    console.log('Ocultar elementos');
+  }
+
+  // Global configuration
+
+  clickedInside($event: Event) {
+    $event.preventDefault();
+    $event.stopPropagation();  // <- esto detendrá la propagación
+    console.log('Se clickeó dentro del container');
   }
 }

@@ -33,27 +33,7 @@ export class PollComponent implements OnInit {
     {
       id: 5,
       nombre: 'Pedro García',
-    },
-    {
-      id: 6,
-      nombre: 'Nicolás Pérez',
-    },
-    {
-      id: 7,
-      nombre: 'Catalina Díaz',
-    },
-    {
-      id: 8,
-      nombre: 'María José Valenzuela',
-    },
-    {
-      id: 9,
-      nombre: 'Luis Alarcón',
-    },
-    {
-      id: 10,
-      nombre: 'Pedro García',
-    },
+    }
   ];
 
 

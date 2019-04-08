@@ -16,12 +16,11 @@ export class SliderComponent implements OnInit {
   }
 
   createSlayer() {
-    var slider = new MasterSlider();
+    const slider = new MasterSlider();
 
     slider.control('arrows', {
       autohide: false
     });
-    slider.control('circletimer', { color: '#0097A8', stroke: 9 });
 
     slider.setup('masterslider', {
       width: 750,
@@ -42,11 +41,11 @@ export class SliderComponent implements OnInit {
         }
       }
     });
-    // slider.control('bullets', {
-    //   autohide: false,
-    //   dir: 'H',
-    //   align: 'bottom',
-    //   margin: 10
-    // });
+    slider.control('bullets', {
+      autohide: false,
+      dir: 'H',
+      align: 'bottom',
+      margin: 10
+    });
   }
 }

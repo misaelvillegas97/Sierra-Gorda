@@ -91,27 +91,27 @@
 <!-- Buttons: Noticias, Seguridad, Te reconozco por estar, Beneficios, Galería -->
 <div class="container-fluid">
   <div class="row mx-auto d-flex justify-content-between">
-    <div class="col-xs-12 col-sm-6 col-md-2 col-lg-2 p-0 text-center wow fadeInUp">
+    <div class="col-xs-12 col-sm-6 col-md-2 col-lg-2 p-0 pt-4 text-center wow fadeInUp">
       <a href="" class="m-0 p-0">
         <img class="img-fluid" src="assets/img/Noticias.png" />
       </a>
     </div>
-    <div class="col-xs-12 col-sm-6 col-md-2 col-lg-2 p-0 text-center wow fadeInUp">
+    <div class="col-xs-12 col-sm-6 col-md-2 col-lg-2 p-0 pt-4 text-center wow fadeInUp">
       <a href="">
-        <img class="img-fluid" src="assets/img/Seguridad_2.png" />
+        <img class="img-fluid" src="assets/img/seguridad.png" />
       </a>
     </div>
-    <div class="col-xs-12 col-sm-6 col-md-2 col-lg-2 p-0 text-center wow fadeInUp">
+    <div class="col-xs-12 col-sm-6 col-md-2 col-lg-2 p-0 pt-4 text-center wow fadeInUp">
       <a href="">
-        <img class="img-fluid" src="assets/img/Te_reconozco.png" />
+        <img class="img-fluid" src="assets/img/Reconocimiento.png" />
       </a>
     </div>
-    <div class="col-xs-12 col-sm-6 col-md-2 col-lg-2 p-0 text-center wow fadeInUp">
+    <div class="col-xs-12 col-sm-6 col-md-2 col-lg-2 p-0 pt-4 text-center wow fadeInUp">
       <a href="">
         <img class="img-fluid" src="assets/img/Beneficios.png" />
       </a>
     </div>
-    <div class="col-xs-12 col-sm-6 col-md-2 col-lg-2 p-0 text-center wow fadeInUp">
+    <div class="col-xs-12 col-sm-6 col-md-2 col-lg-2 p-0 pt-4 text-center wow fadeInUp">
       <a href="">
         <img class="img-fluid" src="assets/img/Galeria.png" />
       </a>
@@ -346,41 +346,50 @@
 
 <!-- Side buttons -->
   <!-- Left Side -->
-  <button class="green-button left-side wow fadeInDownBig"  (click)="toggle_poll(true)">
-    <img src="assets/img/Encuesta.png" alt="" class="img-fluid p-2 pt-0 mt-0 no-select" draggable="false" />
+  <button class="green-button left-side wow fadeInDownBig" (click)="clickedInside($event)" (click)="toggle_poll(true)">
+    <img
+      src="assets/img/Encuesta.png"
+      alt=""
+      class="img-fluid p-1 pr-2 mr-0 pt-0 mt-0 no-select"
+      draggable="false" />
   </button>
 
   <!-- Right Side -->
-  <button class="gray-button right-side wow fadeInDownBig" (click)="toggle_contact(true)">
-    <img src="assets/img/contactos.png" alt="" class="img-fluid p-2 pt-0 mt-0 no-select" draggable="false"/>
+  <button class="gray-button right-side wow fadeInDownBig" (click)="clickedInside($event)" (click)="toggle_contact(true)">
+    <img
+      src="assets/img/contactos.png"
+      alt=""
+      class="img-fluid p-1 mr-0 pt-0 mt-0 no-select"
+      draggable="false"/>
   </button>
-  <button class="green-button right-side-2 wow fadeInUpBig" (click)="toggle_chat(true)">
+  <button class="green-button right-side-2 wow fadeInUpBig" (click)="clickedInside($event)" (click)="toggle_chat(true)">
     <img
       src="assets/img/chat.png"
       alt=""
-      class="img-fluid p-2 pr-0 mr-0 pt-0 mt-0 no-select" draggable="false"/>
+      class="img-fluid p-1 pr-0 mr-0 pt-0 mt-0 no-select"
+      draggable="false"/>
   </button>
 
 <!-- Ventana de chat -->
 <div class="chat-window-container animated fadeInRightBig" id="chat-container" *ngIf="logged">
 
-  <div class="selected-chat-container m-0 p-0 shadow" *ngIf="chatSelected">
-    <app-singlechat [data]= "userID"></app-singlechat>
+  <div class="chat-window shadow" (click)="clickedInside($event)" style="border-radius: 5px 0px 0px 5px">
+    <app-messages (onSelectChat)="loadSelectedChat($event)" (onQuit)="toggle_chat($event)"></app-messages>
   </div>
 
-  <div class="chat-window shadow" style="border-radius: 5px 0px 0px 5px">
-    <app-messages (onSelectChat)="loadSelectedChat($event)" (onQuit)="toggle_chat($event)"></app-messages>
+  <div class="selected-chat-container m-0 p-0 shadow" (click)="clickedInside($event)" *ngIf="chatSelected">
+    <app-singlechat [data]= "userID"></app-singlechat>
   </div>
 </div>
 
-<!-- Ventana de encuentras -->
+<!-- Ventana de encuestas -->
 <div class="poll-window-container animated fadeInLeftBig" id="poll-container" *ngIf="logged">
 
-  <div class="poll-window shadow" *ngIf="!pollSelected">
+  <div class="poll-window shadow" (click)="clickedInside($event)" id="poll-sidebar">
     <app-poll (onSelectPoll)="loadSelectedPoll($event)" (onQuit)="toggle_poll(false)"></app-poll>
   </div>
 
-  <div class="selected-poll-container m-0 p-0" *ngIf="pollSelected">
+  <div class="selected-poll-container m-0 p-0" *ngIf="pollSelected" (click)="clickedInside($event)">
     <app-singlepoll [data]= "userID" (onQuit)="toggle_poll(false)"></app-singlepoll>
   </div>
 
@@ -389,7 +398,7 @@
 <!-- Ventana de contactos -->
 <div class="contact-window-container animated fadeInRightBig" id="contact-container" *ngIf="logged">
 
-  <div class="contact-window shadow">
+  <div class="contact-window shadow" (click)="clickedInside($event)">
     <app-contact (onQuit)="toggle_contact($event)"></app-contact>
   </div>
 

@@ -7,6 +7,7 @@ import { PickerModule } from '@ctrl/ngx-emoji-mart';
 // Angular Material Imports
 import { CdkStepperModule } from '@angular/cdk/stepper';
 import { MatStepperModule, MatIconModule, MatButtonModule } from '@angular/material';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -50,7 +51,8 @@ import { ContactComponent } from './views/index/contact/contact.component';
     CdkStepperModule,
     MatStepperModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    MatTooltipModule
   ],
   providers: [],
   bootstrap: [AppComponent]
