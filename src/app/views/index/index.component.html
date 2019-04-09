@@ -68,7 +68,7 @@
   <!-- <app-slider code="banner-presupuesto"></app-slider> -->
   <app-slider-presupuesto></app-slider-presupuesto>
   <div class="container-fluid text-center">
-    <p class="pt-2">
+    <p class="pt-2 legend">
       <span class="slider-color-1 pr-1"> <i class="fas fa-circle"></i> </span>
       Resultado positivo
       <span class="slider-color-2 pl-4 pr-1 ml-4">
@@ -90,28 +90,28 @@
 
 <!-- Buttons: Noticias, Seguridad, Te reconozco por estar, Beneficios, Galería -->
 <div class="container-fluid">
-  <div class="row mx-auto d-flex justify-content-around">
+  <div class="row mx-auto d-flex justify-content-center">
     <div class="col-xs-12 col-sm-6 col-md-2 col-lg-2 p-0 pt-4 text-center wow fadeInUp">
       <a href="" class="m-0 p-0">
         <img class="img-fluid" src="assets/img/buttons/1.png" class="shadow img-buttons" />
       </a>
     </div>
-    <div class="col-xs-12 col-sm-6 col-md-2 col-lg-2 p-0 pt-4 text-center wow fadeInUp">
+    <div class="col-xs-12 col-sm-6 col-md-2 col-lg-2 p-0 img-button-container pt-4 text-center wow fadeInUp">
       <a href="">
         <img class="img-fluid" src="assets/img/buttons/2.png" class="shadow img-buttons"/>
       </a>
     </div>
-    <div class="col-xs-12 col-sm-6 col-md-2 col-lg-2 p-0 pt-4 text-center wow fadeInUp">
+    <div class="col-xs-12 col-sm-6 col-md-2 col-lg-2 p-0 img-button-container pt-4 text-center wow fadeInUp">
       <a href="">
         <img class="img-fluid" src="assets/img/buttons/3.png" class="shadow img-buttons"/>
       </a>
     </div>
-    <div class="col-xs-12 col-sm-6 col-md-2 col-lg-2 p-0 pt-4 text-center wow fadeInUp">
+    <div class="col-xs-12 col-sm-6 col-md-2 col-lg-2 p-0 img-button-container pt-4 text-center wow fadeInUp">
       <a href="">
         <img class="img-fluid" src="assets/img/buttons/4.png" class="shadow img-buttons"/>
       </a>
     </div>
-    <div class="col-xs-12 col-sm-6 col-md-2 col-lg-2 p-0 pt-4 text-center wow fadeInUp">
+    <div class="col-xs-12 col-sm-6 col-md-2 col-lg-2 p-0 img-button-container pt-4 text-center wow fadeInUp">
       <a href="">
         <img class="img-fluid" src="assets/img/buttons/5.png" class="shadow img-buttons"/>
       </a>
@@ -136,6 +136,13 @@
         </small>
         <br />
         <div class="div-birthday shadow pt-4 pr-0">
+          <div class="day-tag">
+            <img src="assets/img/contenedor_fecha_cumple.png" alt="">
+            <div class="date-superimposed">
+                <span>10</span>
+                <span>Feb</span>
+            </div>
+          </div>
           <mdb-carousel [animation]="'slide'" class="mt-3">
             <mdb-carousel-item>
               <div class="row w-100 m-0 p-0">
@@ -285,12 +292,12 @@
     id="filter-button"
   >
     <p class="text-center" *ngIf="!title_hovered">
-      <span class="text-1 pl-2 s-bold text-center mx-auto"
+      <span class="text-1 s-bold text-center mx-auto"
         >ÍNDICE UV DE LA SEMANA</span
       >
     </p>
-    <p *ngIf="title_hovered" class="w-100">
-      <span class="text-1 pl-2 s-bold">
+    <p *ngIf="title_hovered" class="w-100 pl-2">
+      <span class="text-1 pl-4 ml-4 s-bold">
         ÍNDICE UV
       </span>
       <span class="filter-circle ml-2" [style.background-color]='getUVColor(uvactual)'>{{uvactual}}</span>
