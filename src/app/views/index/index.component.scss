@@ -28,9 +28,8 @@
   background-color: white;
 
   // Shadows
-  -webkit-box-shadow: 1px 0px 7px 0px rgba(176, 176, 176, 1);
-  -moz-box-shadow: 1px 0px 7px 0px rgba(176, 176, 176, 1);
-  box-shadow: 1px 0px 7px 0px rgba(176, 176, 176, 1);
+  -webkit-box-shadow: -1px 1px 15px -9px #000000;
+  box-shadow: -1px 1px 15px -9px #000000;
 }
 
 // Setting: Button's color
@@ -429,4 +428,8 @@ button.right-side-2 {
   z-index: 151;
   height: 65%;
   border-radius: 25px;
+}
+
+.img-buttons {
+  border-radius: 7px !important;
 }

@@ -1,5 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600,900');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800,900');
 @import "~@ctrl/ngx-emoji-mart/picker";
 
 body {
@@ -45,4 +45,8 @@ html.noscroll {
   // position: fixed;
   overflow-y: hidden;
   width: 100%;
+}
+
+#masterslider2 .ms-container .ms-inner-controls-cont .ms-view {
+  border-radius: 12px !important;
 }

@@ -16,15 +16,13 @@ export class SliderPresupuestoComponent implements OnInit {
   }
 
   createSlayer() {
-// tslint:disable-next-line: prefer-const
-    let sliders;
-    sliders = new MasterSlider();
+    const slider = new MasterSlider();
 
 
-    sliders.control('arrows', {
+    slider.control('arrows', {
       autohide: false
     });
-    sliders.setup('masterslider2', {
+    slider.setup('masterslider2', {
       width: 1041,
       height: 316,
       space: 110,

@@ -15,26 +15,30 @@ export class SlayerComponent implements OnInit {
   }
 
   createSlayer() {
-    var slider = new MasterSlider();
+    const slider = new MasterSlider();
 
-    slider.control('arrows');
-    slider.control('slideinfo', {
-      insertTo: '#partial-view-1',
-      autohide: false,
-      align: 'bottom',
-      // size: 160
+
+    slider.control('arrows', {
+      autohide: false
     });
-    slider.control('circletimer', { color: '#FFFFFF', stroke: 9 });
-
-    slider.setup('masterslider', {
-      width: 750,
-      height: 440,
-      space: 10,
+    slider.setup('masterslider2', {
+      width: 1041,
+      height: 316,
+      space: 110,
       mouse: true,
       loop: true,
+      autoplay: true,
+      speed: 50,
       view: 'fadeWave',
       layout: 'boxed',
-
+      controls: {
+        arrows: {
+          autohide: false
+        },
+        bullets: {
+          autohide: false
+        }
+      }
     });
   }
 }
