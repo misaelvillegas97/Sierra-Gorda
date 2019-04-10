@@ -158,8 +158,15 @@
   position: absolute;
   display: flex;
   flex-direction: column;
-  top: 0;
-  left: 0;
+  text-align: center;
+  top: 10%;
+  left: 20%;
+  line-height: 15pt;
+}
+
+.date-superimposed span {
+  color: white;
+  font-weight: 500;
 }
 
 .div-activity {
