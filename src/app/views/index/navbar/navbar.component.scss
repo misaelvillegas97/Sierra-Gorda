@@ -8,6 +8,7 @@
   margin-left: -0.8em;
   position: absolute;
   margin-top: -0.9em;
+  z-index: 112
 }
 
 .theme-banner {
@@ -35,4 +36,30 @@
 .bold {
   font-weight: 900 !important;
   color: rgb(87, 87, 87)
+}
+
+#user-hover-menu {
+  // Posicionamiento
+  position: absolute;
+  right: 8%;
+  top: 43%;
+  width: 27%;
+  height: 285%;
+  border-radius: 10px;
+  background-color: white;
+  z-index: 111;
+
+  // visibility: hidden;
+
+  .header {
+    width: 100%;
+    span {
+      float: left;
+      text-align: left;
+      font-weight: 700;
+      margin-left: 15px;
+      margin-top: 10px;
+      color: #868686
+    }
+  }
 }

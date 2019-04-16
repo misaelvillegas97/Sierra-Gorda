@@ -1,8 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+
 // External Imports
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { PickerModule } from '@ctrl/ngx-emoji-mart';
+import * as $ from 'jquery';
 
 // Angular Material Imports
 import { CdkStepperModule } from '@angular/cdk/stepper';
@@ -24,6 +26,7 @@ import { PollComponent } from './views/index/poll/poll.component';
 import { SinglepollComponent } from './views/index/poll/singlepoll/singlepoll.component';
 import { CardPollComponent } from './views/index/poll/card-poll/card-poll.component';
 import { ContactComponent } from './views/index/contact/contact.component';
+import { SliderCumpleaniosComponent } from './views/index/slider-cumpleanios/slider-cumpleanios.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +42,8 @@ import { ContactComponent } from './views/index/contact/contact.component';
     PollComponent,
     SinglepollComponent,
     CardPollComponent,
-    ContactComponent
+    ContactComponent,
+    SliderCumpleaniosComponent
   ],
   imports: [
     BrowserModule,

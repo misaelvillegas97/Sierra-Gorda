@@ -1,0 +1,9 @@
+################# Files Routes #################
+
+# npm install <- this wo¿ill install all required dependencies
+
+# Copy all this files on next routes:
+
+# _custom-styles.scss
+## angular-bootstrap-md/scss/_custom-styles.scss
+
