@@ -41,6 +41,7 @@
 #user-hover-menu {
   // Posicionamiento
   position: absolute;
+  // float: left;
   right: 8%;
   top: 43%;
   width: 27%;
@@ -53,8 +54,8 @@
 
   .header {
     width: 100%;
-    span {
-      float: left;
+    p {
+      // float: left;
       text-align: left;
       font-weight: 700;
       margin-left: 15px;
@@ -62,4 +63,39 @@
       color: #868686
     }
   }
+
+  .content-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    div {
+      width: 60%;
+    }
+
+    input {
+      width: 100%;
+      border-radius: 10px;
+      border: 1.5px solid whitesmoke;
+      padding-left: 10px;
+    }
+
+    input:disabled {
+      cursor: not-allowed;
+      pointer-events: inherit !important;
+    }
+  }
 }
+
+@media only screen and (max-width: 1366px) {
+  #user-hover-menu {
+    right:  8% !important;
+  }
+}
+
+@media only screen and (max-width: 1920px) and (min-width: 1367px) {
+  #user-hover-menu {
+    right:  13% !important;
+  }
+}
+

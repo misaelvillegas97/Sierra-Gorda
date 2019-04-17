@@ -17,18 +17,34 @@
     <!-- <ul class="navbar-nav ml-auto"></ul> -->
     <!-- Links -->
     <div class="ml-auto float-lg-right text-right">
-      <span class="user-grettings">¡Hola! <span class="bold">Emilio</span></span>
-      <img
-        src="https://centrik.in/wp-content/uploads/2017/02/user-image-.png"
-        alt=""
-        class="img-thumbnail rounded-circle user-pic"
-      />
-      <div id="user-hover-menu" class="shadow">
-        <div class="header">
-          <span> {{nombreUsuario}} {{apellidoUsuario}} </span>
-        </div>
+      <div>
+        <span class="user-grettings">¡Hola! <span class="bold">Emilio</span></span>
+        <img
+          src="https://centrik.in/wp-content/uploads/2017/02/user-image-.png"
+          alt=""
+          class="img-thumbnail rounded-circle user-pic"
+        />
       </div>
     </div>
+    <div id="user-hover-menu" class="shadow">
+        <div class="header">
+          <p> {{nombreUsuario}} {{apellidoUsuario}} </p>
+        </div> <br>
+        <div class="content-form">
+          <div>
+            <span for="txt_user">Telefono:</span> <br>
+            <input type="text" disabled/>
+          </div>
+          <div>
+            <span for="txt_user">Nombre:</span> <br>
+            <input type="text" value="Emilio Cárdenas Fuentes" disabled/>
+          </div>
+          <div>
+            <span for="txt_user">Contraseña:</span> <br>
+            <input type="password" value="•••••••" disabled/>
+          </div>
+        </div>
+      </div>
   </links>
   <!-- Collapsible content -->
 </mdb-navbar>
