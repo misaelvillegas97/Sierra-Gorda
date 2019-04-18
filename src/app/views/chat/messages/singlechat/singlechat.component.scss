@@ -1,6 +1,7 @@
 .chat-header {
   border-radius: 10px;
   font-size: 10pt;
+  background-color: white
 }
 
 .actions {
@@ -10,23 +11,54 @@
 }
 
 .chat-messages {
-  height: 80%;
+  height: 76%;
   overflow-y: auto;
+}
+
+// Scroll Bar
+.chat-messages::-webkit-scrollbar {
+  width: 5px;
+}
+
+.chat-messages::-webkit-scrollbar-track {
+  /* box-shadow: inset 0 0 5px #ccc; */
+  border-radius: 5px;
+}
+
+.chat-messages::-webkit-scrollbar-thumb {
+  background: #00A9B7;
+  border-radius: 5px;
+}
+
+.chat-messages::-webkit-scrollbar-thumb:hover {
+  background: rgb(0, 132, 144);
 }
 
 .user-info {
   width: 100%;
+  p {
+    margin-bottom: 0;
+    line-height: 11pt;
+    .user-name {
+      font-size: 11pt;
+      font-weight: 700;
+      color: #616161;
+      line-height: 13pt;
+    }
+
+    .user-company {
+      font-size: 10pt;
+      font-weight: 500;
+      color: #868686;
+    }
+  }
 }
 
-.mytext {
-  border: 0;
-  padding: 10px;
-  background: whitesmoke;
-}
 .text {
   width: 75%;
   display: flex;
   flex-direction: column;
+  font-weight: 500;
 }
 .text > p:first-of-type {
   width: 100%;
@@ -45,10 +77,13 @@
 .text-l {
   float: left;
   padding-right: 10px;
+  width: 100%;
 }
 .text-r {
   float: right;
   padding-left: 10px;
+  width: 100%;
+
 }
 .avatar {
   display: flex;
@@ -66,16 +101,13 @@
   display: flex;
 }
 .msj-rta {
+  @extend .shadow-green;
   float: right;
-  background: #ffffff;
-  -webkit-box-shadow: 0px -1px 5px 1px rgba(89, 137, 74, 0.63);
-  box-shadow: 0px -1px 5px 1px rgba(89, 137, 74, 0.63);
+  background: #EEF6E8;
 }
 .msj {
   float: left;
   background: #78ce47;
-  -webkit-box-shadow: 0px -1px 5px 1px rgba(89, 137, 74, 0.63);
-  box-shadow: 0px -1px 5px 1px rgba(89, 137, 74, 0.63);
 }
 .frame {
   // background: #e0e0de;
@@ -131,17 +163,21 @@ input:focus {
 }
 
 .chat-input-footer {
-  padding-top: 6px;
+  padding-top: 10px;
+  padding-bottom: 12px;
+  background-color: white;
+  border-radius: 7px;
 }
 
 input.chat-input {
   margin-left: 1em !important;
   padding-left: 0.5em !important;
+  margin-right: 8px;
   border-radius: 15px;
-  width: 72%;
-  height: 25px;
+  width: 80%;
+  height: 27px;
   border: none;
-  background-color: rgb(226, 226, 226);
+  background-color: #e2e2e2;
 }
 
 .emoji-button {
@@ -159,4 +195,9 @@ input.chat-input {
   background-color: #fa8f5b;
   height: 25px;
   border: none;
+}
+
+.shadow-green {
+  -webkit-box-shadow: 4px 4px 0px -1px #A4D690;
+  box-shadow: 4px 4px 0px -1px #A4D690;
 }

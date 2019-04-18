@@ -7,36 +7,49 @@
 }
 
 .custom-progress-percent-container {
-  position: absolute;
+  // position: absolute;
 
-  padding-left: .8em;
-  padding-right: .8em;
+  padding-left: 40px;
+  padding-right: 40px;
   padding-top: 0;
-  // margin-bottom: 0px;
   width: 100%;
   bottom: 5%;
+
+  h6 {
+    color: white;
+    font-weight: 600;
+    font-family: Calibri;
+    font-size: 15pt;
+  }
 }
 
 .custom-progress {
   border: 2px solid white;
   border-radius: 22px !important;
   height: 22px !important;
-}
-
-.custom-progress > span {
-  position: absolute;
-  left: 49%;
-  color: #00c0cb;
-  font-weight: 600 !important;
+  background-color: white
 }
 
 .progress-bar {
-  background-color: #98e0e3;
+  background-color: #FFAD00;
+  text-align: center;
+  span {
+    color: white;
+    font-weight: 600 !important;
+  }
 }
 
 .stepper-header {
-  // padding-left: 1.2em;
-  padding-top: .5em;
+  padding-top: 1.5em;
+  padding-left: 1.5em;
+  padding-bottom: .5em;
+  margin-bottom: 1em;
+  background-color: #005DB9;
+  border-radius: 15px 15px 0px 0px;
+  p {
+    font-style: italic;
+    color: white;
+  }
 }
 
 .stepper-header-title {
@@ -52,9 +65,37 @@
 button.next-button {
   border: none;
   border-radius: 15px;
-  background-color: #00ADBA;
+  background-color: #005DB9;
   color: white;
   font-weight: 500 !important;
   padding-left: 1em !important;
   padding-right: 1em !important;
+}
+
+.close-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: #00AEBB;
+  color: white;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 24px;
+
+  i {
+    position: absolute;
+    margin-left: -12px;
+    margin-top: -2px;
+  }
+}
+
+.stepper-answer {
+  textarea {
+    border-radius: 20px;
+    border: none;
+    resize: none;
+  }
 }

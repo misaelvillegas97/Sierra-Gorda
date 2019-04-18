@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CumpleañosService } from 'src/app/providers/cumpleaños.service';
 
 @Component({
   selector: 'app-slider-cumpleanios',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SliderCumpleaniosComponent implements OnInit {
 
-  constructor() { }
+  constructor(public birthService: CumpleañosService) { }
 
   ngOnInit() {
   }

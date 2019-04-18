@@ -1,20 +1,50 @@
-<div class="chat-header border-bottom shadow-sm d-flex pt-3 pb-3">
-  <div class="user-img pl-3 pr-3">
-    <i class="fas fa-user"></i>
+<div class="chat-header border-bottom shadow-sm d-flex pt-2 pb-2 align-items-center">
+  <div class="user-img pl-3 pr-1">
+    <!-- <i class="fas fa-user"></i> -->
+    <img class="img-fluid" src="/assets/img/img-02.png" />
   </div>
-  <div class="user-info pl-2">ID usuario: {{ data }}</div>
+  <!-- <div class="user-info pl-2">ID usuario: {{ data }}</div> -->
+  <div class="user-info pl-2">
+    <p>
+      <span class="user-name">
+        Nicolás Pérez
+      </span> <br>
+      <span class="user-company">
+        Sierra Gorda
+      </span>
+    </p>
+  </div>
   <div class="actions">
-    aquí va el botón :v
+      <a
+      href=""
+      class="text-cumpleaños"
+      style="text-decoration: underline #00A9B7 !important; color: #00A9B7"
+      >Abrir en el Chat
+      <i
+        class="fas fa-chevron-circle-right ml-2"
+        style="color: #00A9B7"
+      ></i>
+    </a>
   </div>
 </div>
 <div class="chat-messages">
   <ul>
     <li style="width:100%" class="pb-3" *ngFor="let mensaje of mensajes">
-      <div class="macro" [ngClass]="mensaje.author == 'me' ? 'msj' : 'msj-rta'">
+      <div
+        class="macro"
+        [ngClass]="mensaje.author == 'me' ? 'msj' : 'msj-rta'"
+        [ngStyle]="
+          {'color': mensaje.author == 'me' ? 'white' : '#616161'}
+        ">
         <div class="text text-l">
           <p>{{ mensaje.message }}</p>
           <p>
-            <small> {{ mensaje.time }} </small>
+            <small
+              [ngStyle]="
+                {'color': mensaje.author == 'me' ? 'white' : '#616161'}
+              ">
+              {{ mensaje.time }}
+            </small>
           </p>
         </div>
       </div>
@@ -23,9 +53,10 @@
 </div>
 <div class="chat-input-footer border-top d-flex">
   <input type="text" class="chat-input" />
-  <button class="emoji-button" (click)="toggle_emoji = !toggle_emoji">
+  <!-- <button class="emoji-button" (click)="toggle_emoji = !toggle_emoji">
     <i class="far fa-smile-beam" style="color:white; margin-left: -1px;"></i>
-  </button>
+  </button> -->
+  <img src="assets/img/navbar-home/14.png" alt="" style="width: 30px; height: 30px; margin-top: -2px" (click)="toggle_emoji = !toggle_emoji">
   <emoji-mart
     *ngIf="toggle_emoji"
     [style]="{ position: 'absolute', bottom: '40px', right: '15px' }"
@@ -33,7 +64,8 @@
     showPreview="false"
     title="Selecciona un emoji"
   ></emoji-mart>
-  <button class="send-message" (click)="send_message()">
+  <!-- <button class="send-message" (click)="send_message()">
     enviar
-  </button>
+  </button> -->
+  <img src="assets/img/navbar-home/15.png" alt="" style="width: 30px; height: 30px; margin-top: -2px">
 </div>

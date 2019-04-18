@@ -342,13 +342,15 @@ button.right-side-2 {
   // Dimentions
   bottom: 5%;
   right: 25%;
-  width: 400px;
-  height: 450px;
+  width: 472px;
+  height: 416px;
 
   z-index: 152;
 
   // Details
   background-color: white;
+  background-image: url(/assets/img/navbar-home/13.png);
+
   border-radius: 10px 10px 10px 10px;
 }
 
@@ -431,8 +433,8 @@ button.right-side-2 {
   position: fixed;
   // Dimentions
   top: 10%;
-  left: 15%;
-  right: 15%;
+  left: 20%;
+  right: 20%;
 
   z-index: 152;
 

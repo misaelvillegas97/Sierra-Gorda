@@ -50,7 +50,7 @@
   background-color: white;
   z-index: 111;
 
-  // visibility: hidden;
+  visibility: hidden;
 
   .header {
     width: 100%;
@@ -70,19 +70,61 @@
     align-items: center;
 
     div {
-      width: 60%;
+      width: 90%;
     }
 
     input {
+      font-family: Calibri;
       width: 100%;
+      height: 25px;
       border-radius: 10px;
-      border: 1.5px solid whitesmoke;
+      background-color: #EBEDF0;
+      border: none;
       padding-left: 10px;
+      font-size: 14pt;
     }
 
     input:disabled {
       cursor: not-allowed;
       pointer-events: inherit !important;
+      font-weight: 500;
+      font-style: italic;
+    }
+
+    img {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      margin-top: 2px;
+      margin-left: -23px;
+    }
+
+    .edit-button {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      margin-top: 2px;
+      margin-left: -24px;
+      background-color: #00ADBA;
+      border-radius: 15px;
+    }
+
+    .i-edit {
+      color: white;
+      font-size: 9pt;
+      margin-left: 4.1px;
+      margin-top: 4.3px;
+      position: absolute;
+    }
+
+    .label {
+      color: #FF6A02;
+      font-size: 12pt;
+      font-weight: 600;
+    }
+
+    .input-label {
+      @extend .label;
     }
   }
 }
@@ -99,3 +141,8 @@
   }
 }
 
+.btn-login {
+  background-color: #FF6A02;
+  color: white;
+  border-radius: 20pt;
+}

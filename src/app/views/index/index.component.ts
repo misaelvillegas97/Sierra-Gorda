@@ -335,6 +335,24 @@ export class IndexComponent implements OnInit {
   }
   //#endregion
 
+  //#region Links Hover Actions
+    onHoverLink(id: string, tipo: number) {
+
+      switch (tipo) {
+        // 1 Entrada
+        case 1:
+          console.log(id + tipo);
+          $(`#icon-${id}`).attr('src', `assets/img/gif/entrada/${id}.gif`);
+          break;
+
+        // 2 Salida
+        case 2:
+          $(`#icon-${id}`).attr('src', `assets/img/gif/salida/${id}-salida.gif`);
+          break;
+      }
+    }
+  //#endregion
+
   // Global configuration
   clickedInside($event: Event) {
     $event.preventDefault();

@@ -62,3 +62,16 @@ input.chat-input {
   margin-top: 2px;
   color: #00ADBA;
 }
+
+.inner {
+  display: none;
+  width: 100%;
+  #options {
+    display: flex;
+  }
+}
+
+.custom-select {
+  font-size: 9pt;
+  font-weight: 600;
+}

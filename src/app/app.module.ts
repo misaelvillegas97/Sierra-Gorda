@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
+import { Ng2Rut } from 'ng2-rut';
 
 // External Imports
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
@@ -8,8 +10,10 @@ import * as $ from 'jquery';
 
 // Angular Material Imports
 import { CdkStepperModule } from '@angular/cdk/stepper';
-import { MatStepperModule, MatIconModule, MatButtonModule } from '@angular/material';
+import { MatStepperModule, MatIconModule, MatButtonModule, MatFormFieldModule, MatSelectModule } from '@angular/material';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatInputModule } from '@angular/material/input';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -47,6 +51,8 @@ import { SliderCumpleaniosComponent } from './views/index/slider-cumpleanios/sli
   ],
   imports: [
     BrowserModule,
+    Ng2Rut,
+    HttpClientModule,
     AppRoutingModule,
     PickerModule,
     MDBBootstrapModule.forRoot(),
@@ -56,7 +62,11 @@ import { SliderCumpleaniosComponent } from './views/index/slider-cumpleanios/sli
     MatStepperModule,
     MatIconModule,
     MatButtonModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatChipsModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

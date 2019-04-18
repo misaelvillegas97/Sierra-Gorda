@@ -17,20 +17,19 @@ export class SlayerComponent implements OnInit {
   createSlayer() {
     const slider = new MasterSlider();
 
-
     slider.control('arrows', {
       autohide: false
     });
-    slider.setup('masterslider2', {
-      width: 1041,
-      height: 316,
-      space: 110,
-      mouse: true,
-      loop: true,
-      autoplay: true,
-      speed: 50,
+
+    slider.setup('masterslider', {
+      width: 600,
+      height: 380,
+      space: 10,
+      // fullwidth:true,
+      // speed: 18,
       view: 'fadeWave',
-      layout: 'boxed',
+      layout: 'partialview',
+      loop: true,
       controls: {
         arrows: {
           autohide: false
@@ -39,6 +38,12 @@ export class SlayerComponent implements OnInit {
           autohide: false
         }
       }
+    });
+    slider.control('bullets', {
+      autohide: false,
+      dir: 'H',
+      align: 'bottom',
+      margin: 10
     });
   }
 }

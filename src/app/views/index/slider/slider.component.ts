@@ -25,13 +25,13 @@ export class SliderComponent implements OnInit {
     slider.setup('masterslider', {
       width: 750,
       height: 440,
-      space: 110,
+      space: 280,
       mouse: true,
       loop: true,
       autoplay: true,
-      speed: 50,
+      speed: 18,
       view: 'fadeWave',
-      layout: 'boxed',
+      layout: 'partialview',
       controls: {
         arrows: {
           autohide: false

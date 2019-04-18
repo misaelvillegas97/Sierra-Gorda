@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
+declare var $: any;
 @Component({
   selector: 'app-contact',
   templateUrl: './contact.component.html',
@@ -12,6 +13,16 @@ export class ContactComponent implements OnInit {
   errorMessage = '';
   errorMessageDisplayed = false;
 
+  CARGOS = [
+    'Gerencia',
+    'Superintendencia',
+    'Cargo'
+  ];
+
+  LUGARES = [
+    'Sierra Gorda',
+    'Oficina Central'
+  ];
   response = [];
 
 // tslint:disable-next-line: no-output-on-prefix
@@ -28,6 +39,18 @@ export class ContactComponent implements OnInit {
       this.errorMessage = 'El parámetro de búsqueda no puede ser menor a 3 caracteres.';
       this.errorMessageDisplayed = true;
     }
+  }
+
+  toggleOptions() {
+    $('.inner').slideToggle( 1000, function() {
+    });
+  }
+
+  // Global configuration
+  clickedInside($event: Event) {
+    $event.preventDefault();
+    $event.stopPropagation();  // <- esto detendrá la propagación
+    console.log('Se clickeó dentro del container');
   }
 
 }
