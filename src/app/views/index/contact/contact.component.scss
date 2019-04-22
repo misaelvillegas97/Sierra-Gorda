@@ -91,7 +91,7 @@ input.chat-input {
   font-style: italic;
   font-family: Calibri;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -100,6 +100,7 @@ input.chat-input {
   border-radius: 15px;
   display: flex;
   justify-content: center;
+  margin-bottom: 15px;
 
   .picture {
 
@@ -108,5 +109,14 @@ input.chat-input {
   .content {
     display: flex;
     flex-direction: column;
+
+    h6 {
+      font-size: 12pt;
+      font-weight: 600;
+    }
+
+    .info-general-usuario {
+      font-weight: 500;
+    }
   }
 }

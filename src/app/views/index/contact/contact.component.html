@@ -66,7 +66,19 @@
 
         </div>
         <div class="content">
-          <h6>{{ usuario.nombre }}</h6>
+          <h6>
+            {{ usuario.primer_nombre_usuario + ' ' + usuario.segundo_nombre_usuario }}
+            {{ usuario.apellido_pat_usuario != null? usuario?.apellido_pat_usuario : '' }} {{ usuario.apellido_mat_usuario != null? usuario?.apellido_mat_usuario : '' }}
+          </h6>
+          <span class="info-general-usuario">{{ usuario.nombre_gerencia }}</span>
+          <div>
+            <span class="info-general-usuario">{{ usuario.nombre_cargo }}</span>
+            <div class="row p-0 m-0 d-flex justify-content-between">
+              <span class="info-general-usuario">{{ usuario.telefono_usuario }}</span>
+              <span class="info-general-usuario">{{ usuario.nombre_lugar_trabajo }}</span>
+            </div>
+            <span class="info-general-usuario">{{ usuario.correo_usuario }}</span>
+          </div>
         </div>
       </div>
     </div>

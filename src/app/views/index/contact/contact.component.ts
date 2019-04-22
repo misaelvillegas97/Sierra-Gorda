@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter, ElementRef, ViewChild } from '@angular/core';
 import { ProfileService } from '../../../providers/profile.service';
+import { UsuarioBuscar } from 'src/app/providers/login.service';
 
 declare var $: any;
 @Component({
@@ -14,7 +15,7 @@ export class ContactComponent implements OnInit {
   noUsers = 'No se han encontrado trabajadores llamados';
   noUsersDisplayed = false;
 
-  findedUsers = [];
+  findedUsers: UsuarioBuscar[] = [];
 
   @ViewChild('cargoSelect') cargo: ElementRef;
   @ViewChild('lugarSelect') lugar: ElementRef;

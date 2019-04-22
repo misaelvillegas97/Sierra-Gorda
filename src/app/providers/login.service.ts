@@ -128,5 +128,27 @@ export interface RespuestaStatus {
 export interface RespuestaBuscar {
   err: number;
   message: string;
-  usuarios: LoggedUser[]
+  usuarios: UsuarioBuscar[]
+}
+
+export interface UsuarioBuscar {
+  apellido_mat_usuario?: string;
+  apellido_pat_usuario?: string;
+  cantidad_recon?: number;
+  correo_usuario?: string;
+  dv_usuario?: string;
+  fecha_nacimiento_usuario?: Date;
+  id_estado_usuario_fk?: number;
+  id_usuario?: number;
+  img_perfil_usuario?: string;
+  nombre_cargo?: string;
+  nombre_gerencia?: string;
+  nombre_lugar_trabajo?: string;
+  pass_usuario?: string;
+  primer_nombre_usuario?: string;
+  rut_usuario?: string;
+  segundo_nombre_usuario?: string;
+  telefono_usuario?: string;
+  tercer_nombre_usuario?: string;
+  token?: string;
 }

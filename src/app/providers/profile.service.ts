@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { LoginService, LoggedUser, RespuestaBuscar } from './login.service';
+import { LoginService, LoggedUser, RespuestaBuscar, UsuarioBuscar } from './login.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 const URL = 'http://c3wsapi.cl:2200/sg/';
@@ -15,7 +15,7 @@ const httpOptions = {
 export class ProfileService {
 
   constructor(private ls: LoginService, private http: HttpClient) {
-    this.getAllUsers();
+    // this.getAllUsers();
   }
 
   async changeUserInfo(user: LoggedUser) {
@@ -49,7 +49,7 @@ export class ProfileService {
   }
 
   async search(nombre: string, filtroCargo?: string, filtroLugar?: string, filtroGerencia?: string) {
-    let respuesta: LoggedUser[] = [];
+    let respuesta: UsuarioBuscar[] = [];
     const DATA = {
       nombre,
       filtro_c: filtroCargo !== '0' ? filtroCargo : null,
