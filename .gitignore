@@ -52,3 +52,4 @@ Thumbs.db
 firebase.json
 firebase-debug.log
 .firebase/hosting.ZGlzdFxTaWVycmEtR29yZGE.cache
+*.cache
