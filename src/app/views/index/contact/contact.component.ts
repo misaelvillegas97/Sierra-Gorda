@@ -1,4 +1,5 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ElementRef, ViewChild } from '@angular/core';
+import { ProfileService } from '../../../providers/profile.service';
 
 declare var $: any;
 @Component({
@@ -7,11 +8,17 @@ declare var $: any;
   styleUrls: ['./contact.component.scss']
 })
 export class ContactComponent implements OnInit {
-  search = '';
-  searchDisplayed = false;
-
   errorMessage = '';
   errorMessageDisplayed = false;
+
+  noUsers = 'No se han encontrado trabajadores llamados';
+  noUsersDisplayed = false;
+
+  findedUsers = [];
+
+  @ViewChild('cargoSelect') cargo: ElementRef;
+  @ViewChild('lugarSelect') lugar: ElementRef;
+  @ViewChild('gerenciaSelect') gerencia: ElementRef;
 
   CARGOS = [
     'Gerencia',
@@ -28,17 +35,9 @@ export class ContactComponent implements OnInit {
 // tslint:disable-next-line: no-output-on-prefix
   @Output() onQuit = new EventEmitter<boolean>();
 
-  constructor() { }
+  constructor( private ps: ProfileService ) { }
 
   ngOnInit() {
-  }
-
-  search_user( name: string ) {
-    console.log(name);
-    if (name.length < 3) {
-      this.errorMessage = 'El parámetro de búsqueda no puede ser menor a 3 caracteres.';
-      this.errorMessageDisplayed = true;
-    }
   }
 
   toggleOptions() {
@@ -51,6 +50,29 @@ export class ContactComponent implements OnInit {
     $event.preventDefault();
     $event.stopPropagation();  // <- esto detendrá la propagación
     console.log('Se clickeó dentro del container');
+  }
+
+  async search(nombre: string) {
+    if (nombre.length < 4) {
+      this.errorMessage = '* El parámetro de búsqueda no puede ser menor a 3 caracteres';
+      this.errorMessageDisplayed = true;
+      return false;
+    }
+    this.errorMessageDisplayed = false;
+    this.findedUsers = await this.ps.search(
+      nombre,
+      this.cargo.nativeElement.value.toString(),
+      this.lugar.nativeElement.value.toString(),
+      this.gerencia.nativeElement.value.toString());
+    if (this.findedUsers.length === 0) {
+      this.noUsers = 'No se han encontrado trabajadores llamados ' + nombre;
+      this.noUsersDisplayed = true;
+    }
+  }
+
+  deleteSearchMessages() {
+    this.noUsersDisplayed = false;
+    this.errorMessageDisplayed = false;
   }
 
 }

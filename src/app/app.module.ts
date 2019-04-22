@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { Ng2Rut } from 'ng2-rut';
@@ -25,7 +26,6 @@ import { SliderPresupuestoComponent } from './views/index/slider-presupuesto/sli
 import { MessagesComponent } from './views/chat/messages/messages.component';
 import { CardComponent } from './views/chat/messages/card/card.component';
 import { SinglechatComponent } from './views/chat/messages/singlechat/singlechat.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PollComponent } from './views/index/poll/poll.component';
 import { SinglepollComponent } from './views/index/poll/singlepoll/singlepoll.component';
 import { CardPollComponent } from './views/index/poll/card-poll/card-poll.component';

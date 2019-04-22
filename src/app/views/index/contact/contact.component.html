@@ -1,5 +1,5 @@
 <div class="d-flex justify-content-between container">
-  <h3 class="poll-title">Contactos</h3>
+  <h3 class="poll-title noselect">Contactos</h3>
   <div class="close m-0">
     <!-- <i class="fas fa-times-circle" (click)="onQuit.emit(false)"></i> -->
   </div>
@@ -7,13 +7,13 @@
 <br />
 <div class="container poll-container">
   <div class="search-container">
-    <div class="pt-1"><span>Buscar</span></div>
+    <div class="pt-1"><span class="noselect">Buscar</span></div>
     <div class="pb-2">
       <img src="assets/img/navbar-home/5.png" alt="" style="width: 30px; height: 30px; margin-top: -2px; cursor: pointer" (click)="toggleOptions()">
     </div>
   </div>
   <div class="inner">
-    <div class="pb-2"  id="options">
+    <div class="pb-2" id="options">
       <div>
         <select class="custom-select" #cargoSelect>
           <option selected value="0">Cargos</option>
@@ -26,13 +26,20 @@
           <option *ngFor="let lugar of LUGARES" [value]="lugar">{{ lugar }}</option>
         </select>
       </div>
+      <div class="ml-2">
+        <select class="custom-select" #gerenciaSelect>
+          <option selected value="0">Lugar de trabajo</option>
+          <option *ngFor="let lugar of LUGARES" [value]="lugar">{{ lugar }}</option>
+        </select>
+      </div>
     </div>
   </div>
-  <div class="pb-2">
-    <input type="text" class="chat-input" (keyup.enter)="search_user(searchInput.value)" #searchInput/>
-    <span class="search-icon" (click)="search_user(searchInput.value)" style="cursor: pointer"><i class="fa fa-search"></i></span>
+  <div class="">
+    <input type="text" class="chat-input" (keyup)="deleteSearchMessages()" (keyup.enter)="search(searchInput.value)" #searchInput/>
+    <span class="search-icon" (click)="search(searchInput.value)" style="cursor: pointer"><i class="fa fa-search"></i></span>
   </div>
-  <div *ngIf="cargoSelect.value != 0 || lugarSelect.value != 0">
+  <span [hidden]="!errorMessageDisplayed" class="search-error noselect">{{ errorMessage }}</span>
+  <div *ngIf="cargoSelect.value != 0 || lugarSelect.value != 0" class="pt-2">
     <mat-chip-list #chipList >
         <mat-chip [selectable]="true"
                   *ngIf="cargoSelect.value != 0"
@@ -49,5 +56,19 @@
           <mat-icon matChipRemove *ngIf="true">cancel</mat-icon>
         </mat-chip>
       </mat-chip-list>
+  </div>
+  <br>
+  <div class="display-users">
+    <span [hidden]="!noUsersDisplayed" class="nouser-message noselect">{{noUsers}}</span>
+    <div *ngIf="findedUsers.length !== 0" style="margin: 0; padding: 0;">
+      <div *ngFor="let usuario of findedUsers" class="user-contact-container">
+        <div class="picture">
+
+        </div>
+        <div class="content">
+          <h6>{{ usuario.nombre }}</h6>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

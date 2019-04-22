@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -42,6 +41,9 @@ export class LoginService {
         }
 
         this.userLogged = res.userauth;
+        if (this.userLogged.telefono.substring(0, 3) !== '+56') {
+          this.userLogged.telefono = '+56' + this.userLogged.telefono;
+        }
         localStorage.setItem('sg-position', res.userauth.cargo);
         localStorage.setItem('sg-userID', btoa(res.userauth.id.toString()));
         localStorage.setItem('sg-user', (res.userauth.rut + '-' + res.userauth.dv_rut));
@@ -64,6 +66,9 @@ export class LoginService {
       .then(
         (res: RespuestaStatus) => {
           this.userLogged = res.usuario;
+          if (this.userLogged.telefono.substring(0, 3) !== '+56') {
+            this.userLogged.telefono = '+56' + this.userLogged.telefono;
+          }
           console.log(this.userLogged);
         }
       );
@@ -73,6 +78,7 @@ export class LoginService {
     localStorage.removeItem('sg-position');
     localStorage.removeItem('sg-user');
     localStorage.removeItem('sg-userName');
+    // localStorage.removeItem('sg-userID');
     this.userLogged = undefined;
   }
 
@@ -107,13 +113,20 @@ export interface LoggedUser {
   primer_nombre: string;
   rut: number;
   segundo_nombre?: string;
-  telefono?: number;
+  telefono?: string;
   tercer_nombre?: string;
   url_img?: string;
+  privilegio?: string;
 }
 
 export interface RespuestaStatus {
   err: number;
   message: string;
   usuario: LoggedUser;
+}
+
+export interface RespuestaBuscar {
+  err: number;
+  message: string;
+  usuarios: LoggedUser[]
 }

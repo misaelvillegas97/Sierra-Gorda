@@ -63,3 +63,13 @@ html.noscroll {
   border-radius: 12px !important;
   box-shadow: .1em 0.2rem .5rem rgba(0, 0, 0, 0.15) !important;
 }
+
+input:focus{
+  outline: none !important;
+}
+
+.noselect {
+  user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}

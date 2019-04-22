@@ -75,3 +75,38 @@ input.chat-input {
   font-size: 9pt;
   font-weight: 600;
 }
+
+.search-error {
+  font-size: 12pt;
+  color: white;
+  font-weight: 500;
+  font-style: italic;
+  font-family: Calibri;
+}
+
+.nouser-message {
+  font-size: 12pt;
+  color: white;
+  font-weight: 500;
+  font-style: italic;
+  font-family: Calibri;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-contact-container {
+  background-color: white;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+
+  .picture {
+
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+  }
+}
