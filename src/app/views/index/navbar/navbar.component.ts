@@ -62,7 +62,7 @@ export class NavbarComponent implements OnInit {
             value = '+56' + value;
           }
           this.ls.userLogged.telefono = value;
-          res = await this.ps.changeUserInfo(this.ls.userLogged);
+          res = await this.ps.changeUserInfo(this.ls.userLogged.telefono, 2);
           console.log(res);
           break;
         }
@@ -73,7 +73,7 @@ export class NavbarComponent implements OnInit {
       case 2:
         if (value !== '' || value !== this.ls.userLogged.telefono) {
           this.ls.userLogged.email = value;
-          res = await this.ps.changeUserInfo(this.ls.userLogged);
+          res = await this.ps.changeUserInfo(this.ls.userLogged.email, 3);
           console.log(res);
           break;
         }
@@ -83,10 +83,11 @@ export class NavbarComponent implements OnInit {
       // Contraseña
       case 3:
         if (value !== '') {
+          console.log(value);
           this.ls.userLogged.pass = btoa(value);
           this.ls.userLogged.pass = btoa(this.ls.userLogged.pass);
           this.ls.userLogged.pass = btoa(this.ls.userLogged.pass);
-          res = await this.ps.changeUserInfo(this.ls.userLogged);
+          res = await this.ps.changeUserInfo(this.ls.userLogged.pass, 4);
           console.log(res);
           break;
         }

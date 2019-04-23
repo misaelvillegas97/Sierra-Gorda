@@ -50,11 +50,10 @@ export class ContactComponent implements OnInit {
   clickedInside($event: Event) {
     $event.preventDefault();
     $event.stopPropagation();  // <- esto detendrá la propagación
-    console.log('Se clickeó dentro del container');
   }
 
   async search(nombre: string) {
-    if (nombre.length < 4) {
+    if (nombre.trim().length < 4) {
       this.errorMessage = '* El parámetro de búsqueda no puede ser menor a 3 caracteres';
       this.errorMessageDisplayed = true;
       return false;
@@ -62,7 +61,7 @@ export class ContactComponent implements OnInit {
     this.errorMessageDisplayed = false;
     this.findedUsers = [];
     this.findedUsers = await this.ps.search(
-      nombre,
+      nombre.trim(),
       this.cargo.nativeElement.value.toString(),
       this.lugar.nativeElement.value.toString(),
       this.gerencia.nativeElement.value.toString());

@@ -9,7 +9,7 @@ export class AppComponent {
   title = 'Sierra-Gorda';
 
   toggle_chat(state: boolean) {
-    console.log('works');
+    // console.log('works');
     if (state) {
       document.getElementById('chat-container').style.visibility = 'visible';
     } else {

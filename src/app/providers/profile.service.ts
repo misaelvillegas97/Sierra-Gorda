@@ -26,20 +26,37 @@ export class ProfileService {
     this.getAllPositions();
   }
 
-  async changeUserInfo(user: LoggedUser) {
-    const DATA = {
-      id: user.id,
-      correo: user.email,
-      telefono: user.telefono,
-      pass: user.pass
-    };
+  async changeUserInfo(value: any, type: number) {
     let respuesta = -1;
-    await this.http.post(URL + 'usuario/updateusuario', DATA, httpOptions)
+    let data = {};
+    switch (type) {
+      case 2:
+        data = {
+          id: this.ls.userLogged.id,
+          telefono: value
+        };
+        break;
+
+      case 3:
+        data = {
+          id: this.ls.userLogged.id,
+          correo: value
+        };
+        break;
+
+      case 4:
+        console.log(value);
+        data = {
+          id: this.ls.userLogged.id,
+          pass: value
+        };
+    }
+    await this.http.post(URL + 'usuario/updateusuario', data, httpOptions)
       .toPromise()
       .then(
         (res) => {
           // this.ls.userLogged = res;
-          console.log(res);
+          // console.log(res);
           respuesta = 0;
         }
       );
@@ -73,6 +90,7 @@ export class ProfileService {
             return [];
           }
           respuesta = res.usuarios;
+          console.table(res.usuarios);
           return respuesta;
         }
       ).catch(
@@ -92,7 +110,7 @@ export class ProfileService {
         (res: ResponsePosition) => {
           if (res.cargo.length !== 0) {
             this.positions = res.cargo;
-            console.table(this.positions);
+            // console.table(this.positions);
           }
           return;
         }
@@ -139,7 +157,7 @@ export class ProfileService {
         (res: ResponseGerency) => {
           if (res.gerencias.length !== 0) {
             this.gerencies = res.gerencias;
-            console.table(this.gerencies);
+            // console.table(this.gerencies);
           }
           return;
         }
@@ -158,7 +176,7 @@ export class ProfileService {
         (res: ResponsePlaces) => {
           if (res.lugar_trabajo.length !== 0) {
             this.places = res.lugar_trabajo;
-            console.table(this.places);
+            // console.table(this.places);
           }
           return;
         }

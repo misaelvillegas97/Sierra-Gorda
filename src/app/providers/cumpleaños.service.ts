@@ -15,7 +15,7 @@ export class CumpleañosService {
       .toPromise()
       .then(
         res => {
-          console.log(res);
+          // console.log(res);
         }
       );
   }

@@ -343,11 +343,14 @@ export class IndexComponent implements OnInit {
         case 1:
           console.log(id + tipo);
           $(`#icon-${id}`).attr('src', `https://c3devapp.cl/sg/assets/img/gif/entrada/${id}.gif`);
+          $(`#icon-${id}`).removeClass('shadow');
+          $(`#icon-${id}`).css('padding', '0px');
+          $(`#icon-${id}`).css('padding-top', '0px');
           break;
 
         // 2 Salida
         case 2:
-          $(`#icon-${id}`).attr('src', `https://c3devapp.cl/sg/assets/img/salida/${id}-salida.gif`);
+          $(`#icon-${id}`).attr('src', `https://c3devapp.cl/sg/assets/img/gif/salida/${id}-salida.gif`);
           break;
       }
     }
@@ -357,6 +360,6 @@ export class IndexComponent implements OnInit {
   clickedInside($event: Event) {
     $event.preventDefault();
     $event.stopPropagation();  // <- esto detendrá la propagación
-    console.log('Se clickeó dentro del container');
+    // console.log('Se clickeó dentro del container');
   }
 }

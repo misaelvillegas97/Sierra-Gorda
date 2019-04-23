@@ -70,7 +70,7 @@ export class LoginService {
           if (this.userLogged.telefono.substring(0, 3) !== '+56') {
             this.userLogged.telefono = '+56' + this.userLogged.telefono;
           }
-          console.log(this.userLogged);
+          // console.log(this.userLogged);
         }
       );
   }

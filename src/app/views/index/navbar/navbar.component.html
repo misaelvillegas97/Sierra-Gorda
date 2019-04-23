@@ -43,15 +43,15 @@
               <div class="mt-3">
                 <span for="txt_correo" class="input-label"><i class="fas fa-envelope"></i> Correo:</span> <br>
                 <input type="text" #correo [value]="ls.userLogged?.email" disabled/>
-                <span class="edit-button" (click)="correo.disabled = !correo.disabled" (click)="!correo.disabled? changeUserInfo(2, correo.value): 'console.log(false)'" [ngStyle]="{'background-color': !correo.disabled? '#8DCF85': '#00ADBA'}">
+                <span class="edit-button" (click)="!correo.disabled? changeUserInfo(2, correo.value): 'console.log(false)'" (click)="correo.disabled = !correo.disabled" [ngStyle]="{'background-color': !correo.disabled? '#8DCF85': '#00ADBA'}">
                   <i class="fas fa-pencil-alt i-edit" *ngIf="correo.disabled"></i>
                   <i class="fas fa-save i-edit" *ngIf="!correo.disabled" [ngStyle]="{'margin-left': !correo.disabled? '5px': '4.1px'}"></i>
                 </span>
               </div>
               <div class="mt-3">
                 <span for="txt_pass" class="input-label"><i class="fas fa-lock"></i> Contraseña:</span> <br>
-                <input type="password" #pass value="•••••••" disabled>
-                <span class="edit-button" (click)="pass.disabled = !pass.disabled" (click)="!pass.disabled? changeUserInfo(3, pass.value): ''" [ngStyle]="{'background-color': !pass.disabled? '#8DCF85': '#00ADBA'}">
+                <input type="password" #pass placeholder="•••••••" disabled>
+                <span class="edit-button" (click)="!pass.disabled? changeUserInfo(3, pass.value): ''" (click)="pass.disabled = !pass.disabled" [ngStyle]="{'background-color': !pass.disabled? '#8DCF85': '#00ADBA'}">
                   <i class="fas fa-pencil-alt i-edit" *ngIf="pass.disabled"></i>
                   <i class="fas fa-save i-edit" *ngIf="!pass.disabled" [ngStyle]="{'margin-left': !pass.disabled? '5px': '4.1px'}"></i>
                 </span>
