@@ -9,61 +9,72 @@
   <div class="search-container">
     <div class="pt-1"><span class="noselect">Buscar</span></div>
     <div class="pb-2">
-      <img src="assets/img/navbar-home/5.png" alt="" style="width: 30px; height: 30px; margin-top: -2px; cursor: pointer" (click)="toggleOptions()">
+      <img src="https://c3devapp.cl/sg/assets/img/navbar-home/5.png" alt="" style="width: 30px; height: 30px; margin-top: -2px; cursor: pointer" (click)="toggleOptions()">
     </div>
   </div>
   <div class="inner">
     <div class="pb-2" id="options">
       <div>
         <select class="custom-select" #cargoSelect>
-          <option selected value="0">Cargos</option>
-          <option *ngFor="let cargo of CARGOS" [value]="cargo">{{ cargo }}</option>
+          <option selected value="0">--- Cargos ---</option>
+          <option *ngFor="let position of ps.positions" [value]="position.id">{{ position.nombre_cargo }}</option>
         </select>
       </div>
       <div class="ml-2">
         <select class="custom-select" #lugarSelect>
-          <option selected value="0">Lugar de trabajo</option>
-          <option *ngFor="let lugar of LUGARES" [value]="lugar">{{ lugar }}</option>
+          <option selected value="0">--- Lugar de trabajo ---</option>
+          <option *ngFor="let place of ps.places" [value]="place.id">{{ place.nombre_lugar_trabajo }}</option>
         </select>
       </div>
       <div class="ml-2">
         <select class="custom-select" #gerenciaSelect>
-          <option selected value="0">Lugar de trabajo</option>
-          <option *ngFor="let lugar of LUGARES" [value]="lugar">{{ lugar }}</option>
+          <option selected value="0">--- Gerencias ---</option>
+          <option *ngFor="let gerency of ps.gerencies" [value]="gerency.id">{{ gerency.nombre_gerencia }}</option>
         </select>
       </div>
     </div>
   </div>
-  <div class="">
+  <!-- <div class="">
     <input type="text" class="chat-input" (keyup)="deleteSearchMessages()" (keyup.enter)="search(searchInput.value)" #searchInput/>
     <span class="search-icon" (click)="search(searchInput.value)" style="cursor: pointer"><i class="fa fa-search"></i></span>
+  </div> -->
+  <div class="input-group mb-1">
+    <input type="text" class="form-control chat-input" (keyup)="deleteSearchMessages()" (keyup.enter)="search(searchInput.value)" #searchInput>
+    <div class="input-group-append" (click)="search(searchInput.value)" style="cursor: pointer">
+      <span class="input-group-text"><i class="fa fa-search"></i></span>
+    </div>
   </div>
   <span [hidden]="!errorMessageDisplayed" class="search-error noselect">{{ errorMessage }}</span>
-  <div *ngIf="cargoSelect.value != 0 || lugarSelect.value != 0" class="pt-2">
+  <div *ngIf="cargoSelect?.value != 0 || lugarSelect?.value != 0 || gerenciaSelect?.value != 0" class="pt-1">
     <mat-chip-list #chipList >
         <mat-chip [selectable]="true"
-                  *ngIf="cargoSelect.value != 0"
+                  *ngIf="cargoSelect?.value != 0"
                   [removable]="true">
         <!-- <mat-chip [selectable]="true"
                   [removable]="true" (removed)="remove(fruit)"> -->
-          {{ cargoSelect.value }}
+          {{ ps.getArrayNameById(cargoSelect.value, 1) }}
           <mat-icon matChipRemove *ngIf="true">cancel</mat-icon>
         </mat-chip>
         <mat-chip [selectable]="true"
-                  *ngIf="lugarSelect.value != 0"
+                  *ngIf="lugarSelect?.value != 0"
                   [removable]="true" >
-          {{ lugarSelect.value }}
+          {{ ps.getArrayNameById(lugarSelect.value, 2) }}
+          <mat-icon matChipRemove *ngIf="true">cancel</mat-icon>
+        </mat-chip>
+        <mat-chip [selectable]="true"
+                  *ngIf="gerenciaSelect?.value != 0"
+                  [removable]="true" >
+          {{ ps.getArrayNameById(gerenciaSelect.value, 3) }}
           <mat-icon matChipRemove *ngIf="true">cancel</mat-icon>
         </mat-chip>
       </mat-chip-list>
   </div>
-  <br>
-  <div class="display-users">
+  <div class="display-users pt-2">
     <span [hidden]="!noUsersDisplayed" class="nouser-message noselect">{{noUsers}}</span>
     <div *ngIf="findedUsers.length !== 0" style="margin: 0; padding: 0;">
       <div *ngFor="let usuario of findedUsers" class="user-contact-container">
         <div class="picture">
-
+          <img _ngcontent-c5="" class="img-fluid" src="https://c3devapp.cl/sg/assets/img/img-01.png">
         </div>
         <div class="content">
           <h6>
@@ -72,12 +83,12 @@
           </h6>
           <span class="info-general-usuario">{{ usuario.nombre_gerencia }}</span>
           <div>
-            <span class="info-general-usuario">{{ usuario.nombre_cargo }}</span>
-            <div class="row p-0 m-0 d-flex justify-content-between">
-              <span class="info-general-usuario">{{ usuario.telefono_usuario }}</span>
-              <span class="info-general-usuario">{{ usuario.nombre_lugar_trabajo }}</span>
+            <span class="info-general-usuario"><i class="fas fa-hard-hat"></i>{{ usuario.nombre_cargo }}</span>
+            <div class="row p-0 m-0 d-flex">
+              <span class="info-general-usuario mr-2"><i class="fas fa-phone fa-rotate-90"></i>{{ usuario.telefono_usuario }}</span>
+              <span class="info-general-usuario ml-4"><i class="fas fa-map-marker-alt"></i>{{ usuario.nombre_lugar_trabajo }}</span>
             </div>
-            <span class="info-general-usuario">{{ usuario.correo_usuario }}</span>
+            <span class="info-general-usuario"><i class="fas fa-envelope"></i>{{ usuario.correo_usuario }}</span>
           </div>
         </div>
       </div>

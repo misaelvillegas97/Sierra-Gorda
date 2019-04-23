@@ -1,12 +1,12 @@
-<img src="assets/img/header.png" alt="" class="absolute w-100" style="z-index: -1">
+<img src="https://c3devapp.cl/sg/assets/img/header.png" alt="" class="absolute w-100" style="z-index: -1">
 <!--Navbar-->
-<mdb-navbar SideClass="navbar navbar-expand-lg navbar-light theme-banner darken-1 shadow-none pt-4" style='background-image: url("assets/img/header.png")'>
+<mdb-navbar SideClass="navbar navbar-expand-lg navbar-light theme-banner darken-1 shadow-none pt-4" style='background-image: url("https://c3devapp.cl/sg/assets/img/header.png")'>
   <!-- Navbar brand -->
   <mdb-navbar-brand
     ><a class="navbar-brand" class="ml-2 pl-2 mt-4" href="#">
       <img
         class="img-fluid mt-4"
-        src="assets/img/logo_SG.png"
+        src="https://c3devapp.cl/sg/assets/img/logo_SG.png"
         style="width: 180px"
         alt=""
       /> </a
@@ -34,7 +34,7 @@
               <div>
                 <span for="txt_fono" class="input-label"><i class="fas fa-phone fa-rotate-90"></i> Teléfono:</span> <br>
                 <input type="text" [value]="ls.userLogged?.telefono" pattern="/^(\+?56)?(\s?)(0?9)(\s?)[98765]\d{7}$/" #telefono disabled/>
-                <!-- <img src="assets/img/navbar-home/4.png" alt="" (click)="telefono.disabled = !telefono.disabled"> -->
+                <!-- <img src="https://c3devapp.cl/sg/assets/img/navbar-home/4.png" alt="" (click)="telefono.disabled = !telefono.disabled"> -->
                 <span class="edit-button" (click)="!telefono.disabled? changeUserInfo(1, telefono.value): ''" (click)="telefono.disabled = !telefono.disabled" [ngStyle]="{'background-color': !telefono.disabled? '#8DCF85': '#00ADBA'}">
                   <i class="fas fa-pencil-alt i-edit" *ngIf="telefono.disabled"></i>
                   <i class="fas fa-save i-edit" *ngIf="!telefono.disabled" [ngStyle]="{'margin-left': !telefono.disabled? '5px': '4.1px'}"></i>

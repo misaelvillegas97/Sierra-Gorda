@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, EventEmitter, ElementRef, ViewChild } from '@angular/core';
 import { ProfileService } from '../../../providers/profile.service';
-import { UsuarioBuscar } from 'src/app/providers/login.service';
+import { UsuarioBuscar } from 'src/app/interface/interface';
 
 declare var $: any;
 @Component({
@@ -36,7 +36,7 @@ export class ContactComponent implements OnInit {
 // tslint:disable-next-line: no-output-on-prefix
   @Output() onQuit = new EventEmitter<boolean>();
 
-  constructor( private ps: ProfileService ) { }
+  constructor( public ps: ProfileService ) { }
 
   ngOnInit() {
   }
@@ -60,6 +60,7 @@ export class ContactComponent implements OnInit {
       return false;
     }
     this.errorMessageDisplayed = false;
+    this.findedUsers = [];
     this.findedUsers = await this.ps.search(
       nombre,
       this.cargo.nativeElement.value.toString(),

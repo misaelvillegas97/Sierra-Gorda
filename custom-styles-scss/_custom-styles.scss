@@ -1,0 +1,25 @@
+// Your custom styles
+.carousel-indicators {
+  bottom: -55px !important;
+}
+
+.carousel-indicators .active {
+  opacity: 1;
+  background-color: #00A9B7;
+}
+
+.carousel-indicators li {
+  background-color: #D2D9EF;
+  opacity: 1;
+}
+
+.carousel .carousel-indicators li {
+  width: 0.75rem;
+  height: 0.75rem;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.carousel-inner {
+  padding-top: .9em;
+}

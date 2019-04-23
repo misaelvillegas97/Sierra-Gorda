@@ -6,7 +6,7 @@
 }
 
 .poll-container {
-  height: 70%;
+  max-height: 82.2%;
   overflow-y: scroll;
   margin-right: 5px;
   padding-left: 2em;
@@ -50,10 +50,17 @@ input.chat-input {
   padding-right: 3em;
   font-size: 8pt;
   border-radius: 15px;
-  width: 100%;
+  // width: 100%;
   height: 25px;
   border: none;
   background-color: rgb(255, 255, 255);
+}
+
+.input-group-text {
+  height: 25px;
+  background-color: white;
+  border: none;
+  border-radius: 0px 15px 15px 0px;
 }
 
 .search-icon {
@@ -93,17 +100,24 @@ input.chat-input {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-direction: column;
+}
+
+.display-users {
+  // overflow-y: scroll;
+  // height: 100%;
 }
 
 .user-contact-container {
   background-color: white;
   border-radius: 15px;
+  padding: 6px;
   display: flex;
-  justify-content: center;
+  justify-content: stretch;
   margin-bottom: 15px;
 
   .picture {
-
+    padding: 15px
   }
 
   .content {
@@ -111,12 +125,27 @@ input.chat-input {
     flex-direction: column;
 
     h6 {
-      font-size: 12pt;
+      font-size: 16pt;
+      font-family: Calibri;
       font-weight: 600;
+      margin-top: 6px;
+      margin-bottom: 0px;
+      line-height: 8pt;
+      color: #656666;
     }
 
     .info-general-usuario {
-      font-weight: 500;
+      font-weight: 300;
+      font-family: Calibri;
+      font-size: 14pt;
+      color: rgb(125, 127, 129)
+    }
+
+    span {
+      i {
+        margin-right: 5px;
+        color: #FF5000
+      }
     }
   }
 }

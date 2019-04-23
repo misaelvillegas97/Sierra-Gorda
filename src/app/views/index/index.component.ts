@@ -342,12 +342,12 @@ export class IndexComponent implements OnInit {
         // 1 Entrada
         case 1:
           console.log(id + tipo);
-          $(`#icon-${id}`).attr('src', `assets/img/gif/entrada/${id}.gif`);
+          $(`#icon-${id}`).attr('src', `https://c3devapp.cl/sg/assets/img/gif/entrada/${id}.gif`);
           break;
 
         // 2 Salida
         case 2:
-          $(`#icon-${id}`).attr('src', `assets/img/gif/salida/${id}-salida.gif`);
+          $(`#icon-${id}`).attr('src', `https://c3devapp.cl/sg/assets/img/salida/${id}-salida.gif`);
           break;
       }
     }

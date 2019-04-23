@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
-import { LoginService, LoggedUser, RespuestaBuscar, UsuarioBuscar } from './login.service';
+import { LoginService } from './login.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { RespuestaBuscar, ResponsePosition, ResponseGerency, ResponsePlaces, Gerencies, Places } from '../interface/interface';
+import { LoggedUser, UsuarioBuscar, Positions } from '../interface/interface';
 
 const URL = 'http://c3wsapi.cl:2200/sg/';
 
@@ -13,9 +15,15 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class ProfileService {
+  public positions: Positions[];
+  public gerencies: Gerencies[];
+  public places: Places[];
 
   constructor(private ls: LoginService, private http: HttpClient) {
     // this.getAllUsers();
+    this.getAllGerency();
+    this.getAllPlaces();
+    this.getAllPositions();
   }
 
   async changeUserInfo(user: LoggedUser) {
@@ -26,7 +34,7 @@ export class ProfileService {
       pass: user.pass
     };
     let respuesta = -1;
-    this.http.post(URL + 'usuario/updateusuario', DATA, httpOptions)
+    await this.http.post(URL + 'usuario/updateusuario', DATA, httpOptions)
       .toPromise()
       .then(
         (res) => {
@@ -61,8 +69,10 @@ export class ProfileService {
       .toPromise()
       .then(
         (res: RespuestaBuscar) => {
-          console.log(res);
-          respuesta = res['usuarios'];
+          if (res.err === 404) {
+            return [];
+          }
+          respuesta = res.usuarios;
           return respuesta;
         }
       ).catch(
@@ -72,5 +82,91 @@ export class ProfileService {
         }
       );
     return respuesta;
+  }
+
+  // Cargos
+  getAllPositions() {
+    this.http.get(URL + 'empresa/cargo/')
+      .toPromise()
+      .then(
+        (res: ResponsePosition) => {
+          if (res.cargo.length !== 0) {
+            this.positions = res.cargo;
+            console.table(this.positions);
+          }
+          return;
+        }
+      ).catch(
+        err => {
+          console.error(err);
+          return;
+        }
+      );
+  }
+
+  getArrayNameById(_id: string, array: number): string {
+    switch (array) {
+      case 1:
+        let cargos: Positions;
+        cargos = this.positions.find(
+          cargo => cargo.id === parseInt(_id, 0)
+          );
+        return cargos.nombre_cargo;
+        break;
+
+      case 2:
+        let lugar: Places;
+        lugar = this.places.find(
+          place => place.id === parseInt(_id, 0)
+          );
+        return lugar.nombre_lugar_trabajo;
+        break;
+
+      case 3:
+        let gerencia: Gerencies;
+        gerencia = this.gerencies.find(
+          gerency => gerency.id === parseInt(_id, 0)
+          );
+        return gerencia.nombre_gerencia;
+        break;
+    }
+  }
+
+  getAllGerency() {
+    this.http.get(URL + 'empresa/gerencias/')
+      .toPromise()
+      .then(
+        (res: ResponseGerency) => {
+          if (res.gerencias.length !== 0) {
+            this.gerencies = res.gerencias;
+            console.table(this.gerencies);
+          }
+          return;
+        }
+      ).catch(
+        err => {
+          console.error(err);
+          return;
+        }
+      );
+  }
+
+  getAllPlaces() {
+    this.http.get(URL + 'empresa/lugar_trabajo/')
+      .toPromise()
+      .then(
+        (res: ResponsePlaces) => {
+          if (res.lugar_trabajo.length !== 0) {
+            this.places = res.lugar_trabajo;
+            console.table(this.places);
+          }
+          return;
+        }
+      ).catch(
+        err => {
+          console.error(err);
+          return;
+        }
+      );
   }
 }

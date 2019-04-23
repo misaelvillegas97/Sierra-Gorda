@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { RespuestaStatus, RespuestaLogin, LoggedUser } from '../interface/interface';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -90,65 +91,4 @@ export class LoginService {
     }
   }
 
-}
-
-export interface RespuestaLogin {
-  err: number;
-  message: string;
-  userauth: LoggedUser;
-}
-
-export interface LoggedUser {
-  apellido_materno?: string;
-  apellido_paterno?: string;
-  cargo?: string;
-  dv_rut: number;
-  email?: string;
-  fecha_creacion?: Date;
-  fecha_nacimiento?: Date;
-  gerencia?: string;
-  id: number;
-  lugar_trabajo?: string;
-  pass?: string;
-  primer_nombre: string;
-  rut: number;
-  segundo_nombre?: string;
-  telefono?: string;
-  tercer_nombre?: string;
-  url_img?: string;
-  privilegio?: string;
-}
-
-export interface RespuestaStatus {
-  err: number;
-  message: string;
-  usuario: LoggedUser;
-}
-
-export interface RespuestaBuscar {
-  err: number;
-  message: string;
-  usuarios: UsuarioBuscar[]
-}
-
-export interface UsuarioBuscar {
-  apellido_mat_usuario?: string;
-  apellido_pat_usuario?: string;
-  cantidad_recon?: number;
-  correo_usuario?: string;
-  dv_usuario?: string;
-  fecha_nacimiento_usuario?: Date;
-  id_estado_usuario_fk?: number;
-  id_usuario?: number;
-  img_perfil_usuario?: string;
-  nombre_cargo?: string;
-  nombre_gerencia?: string;
-  nombre_lugar_trabajo?: string;
-  pass_usuario?: string;
-  primer_nombre_usuario?: string;
-  rut_usuario?: string;
-  segundo_nombre_usuario?: string;
-  telefono_usuario?: string;
-  tercer_nombre_usuario?: string;
-  token?: string;
 }
