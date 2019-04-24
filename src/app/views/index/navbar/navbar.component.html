@@ -33,7 +33,7 @@
             <div class="content-form">
               <div>
                 <span for="txt_fono" class="input-label"><i class="fas fa-phone fa-rotate-90"></i> Teléfono:</span> <br>
-                <input type="text" [value]="ls.userLogged?.telefono" pattern="/^(\+?56)?(\s?)(0?9)(\s?)[98765]\d{7}$/" #telefono disabled/>
+                <input type="text" [value]="ls.userLogged?.telefono" pattern="/[+][56][/0-9]{0,10}$/" #telefono disabled/>
                 <!-- <img src="https://c3devapp.cl/sg/assets/img/navbar-home/4.png" alt="" (click)="telefono.disabled = !telefono.disabled"> -->
                 <span class="edit-button" (click)="!telefono.disabled? changeUserInfo(1, telefono.value): ''" (click)="telefono.disabled = !telefono.disabled" [ngStyle]="{'background-color': !telefono.disabled? '#8DCF85': '#00ADBA'}">
                   <i class="fas fa-pencil-alt i-edit" *ngIf="telefono.disabled"></i>

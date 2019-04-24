@@ -73,3 +73,10 @@ input:focus{
   -webkit-user-select: none;
   -ms-user-select: none;
 }
+
+.jsCalendar tbody td.jsCalendar-colorful-orange {
+  background-color: #ffab77;
+  border-color: #ffab77;
+	color: #fff !important;
+	border:none;
+}

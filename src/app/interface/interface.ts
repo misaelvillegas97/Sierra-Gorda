@@ -1,3 +1,5 @@
+import { Time } from '@angular/common';
+
 export interface RespuestaLogin {
   err: number;
   message: string;
@@ -94,3 +96,23 @@ export interface Gerencies {
   id: number;
   nombre_gerencia: string;
 }
+
+//#region actividades
+export interface ResponseNumberActivityByMonth {
+  err: number;
+  message: string;
+  dias: number[];
+}
+
+export interface Activity {
+  id: number;
+  titulo_actividad: string;
+  descripcion_actividad?: string;
+  horario_inicio?: Time;
+  horario_fin?: Time;
+  fecha_actividad: Date;
+  ubicacion_actividad?: string;
+  nombre_lugar_trabajo?: string;
+  img_portada?: string;
+}
+//#endregion

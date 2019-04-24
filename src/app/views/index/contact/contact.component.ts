@@ -42,7 +42,7 @@ export class ContactComponent implements OnInit {
   }
 
   toggleOptions() {
-    $('.inner').slideToggle( 1000, function() {
+    $('.inner').slideToggle( 1000, () => {
     });
   }
 

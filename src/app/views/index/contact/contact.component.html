@@ -17,19 +17,19 @@
       <div>
         <select class="custom-select" #cargoSelect>
           <option selected value="0">--- Cargos ---</option>
-          <option *ngFor="let position of ps.positions" [value]="position.id">{{ position.nombre_cargo }}</option>
+          <option *ngFor="let position of ps.positions" [value]="position.id">{{ position.nombre_cargo | titlecase }}</option>
         </select>
       </div>
       <div class="ml-2">
         <select class="custom-select" #lugarSelect>
           <option selected value="0">--- Lugar de trabajo ---</option>
-          <option *ngFor="let place of ps.places" [value]="place.id">{{ place.nombre_lugar_trabajo }}</option>
+          <option *ngFor="let place of ps.places" [value]="place.id">{{ place.nombre_lugar_trabajo | titlecase }}</option>
         </select>
       </div>
       <div class="ml-2">
         <select class="custom-select" #gerenciaSelect>
           <option selected value="0">--- Gerencias ---</option>
-          <option *ngFor="let gerency of ps.gerencies" [value]="gerency.id">{{ gerency.nombre_gerencia }}</option>
+          <option *ngFor="let gerency of ps.gerencies" [value]="gerency.id">{{ gerency.nombre_gerencia | titlecase }}</option>
         </select>
       </div>
     </div>
@@ -52,19 +52,19 @@
                   [removable]="true">
         <!-- <mat-chip [selectable]="true"
                   [removable]="true" (removed)="remove(fruit)"> -->
-          {{ ps.getArrayNameById(cargoSelect.value, 1) }}
+          {{ ps.getArrayNameById(cargoSelect.value, 1) | titlecase }}
           <mat-icon matChipRemove *ngIf="true">cancel</mat-icon>
         </mat-chip>
         <mat-chip [selectable]="true"
                   *ngIf="lugarSelect?.value != 0"
                   [removable]="true" >
-          {{ ps.getArrayNameById(lugarSelect.value, 2) }}
+          {{ ps.getArrayNameById(lugarSelect.value, 2) | titlecase }}
           <mat-icon matChipRemove *ngIf="true">cancel</mat-icon>
         </mat-chip>
         <mat-chip [selectable]="true"
                   *ngIf="gerenciaSelect?.value != 0"
                   [removable]="true" >
-          {{ ps.getArrayNameById(gerenciaSelect.value, 3) }}
+          {{ ps.getArrayNameById(gerenciaSelect.value, 3) | titlecase }}
           <mat-icon matChipRemove *ngIf="true">cancel</mat-icon>
         </mat-chip>
       </mat-chip-list>
@@ -81,12 +81,12 @@
             {{ usuario.primer_nombre_usuario + ' ' + usuario.segundo_nombre_usuario }}
             {{ usuario.apellido_pat_usuario != null? usuario?.apellido_pat_usuario : '' }} {{ usuario.apellido_mat_usuario != null? usuario?.apellido_mat_usuario : '' }}
           </h6>
-          <span class="info-general-usuario">{{ usuario.nombre_gerencia }}</span>
+          <span class="info-general-usuario">{{ usuario.nombre_gerencia | titlecase }}</span>
           <div>
-            <span class="info-general-usuario"><i class="fas fa-hard-hat"></i>{{ usuario.nombre_cargo }}</span>
+            <span class="info-general-usuario"><i class="fas fa-hard-hat"></i>{{ usuario.nombre_cargo | titlecase }}</span>
             <div class="row p-0 m-0 d-flex">
-              <span class="info-general-usuario mr-2"><i class="fas fa-phone fa-rotate-90"></i>{{ usuario.telefono_usuario }}</span>
-              <span class="info-general-usuario ml-4"><i class="fas fa-map-marker-alt"></i>{{ usuario.nombre_lugar_trabajo }}</span>
+              <span class="info-general-usuario mr-2"><i class="fas fa-phone fa-rotate-90"></i>{{ usuario.telefono_usuario | titlecase }}</span>
+              <span class="info-general-usuario ml-4"><i class="fas fa-map-marker-alt"></i>{{ usuario.nombre_lugar_trabajo | titlecase }}</span>
             </div>
             <span class="info-general-usuario"><i class="fas fa-envelope"></i>{{ usuario.correo_usuario }}</span>
           </div>
