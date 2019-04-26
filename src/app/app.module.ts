@@ -31,6 +31,7 @@ import { SinglepollComponent } from './views/index/poll/singlepoll/singlepoll.co
 import { CardPollComponent } from './views/index/poll/card-poll/card-poll.component';
 import { ContactComponent } from './views/index/contact/contact.component';
 import { SliderCumpleaniosComponent } from './views/index/slider-cumpleanios/slider-cumpleanios.component';
+import { ActivitiesComponent } from './views/index/activities/activities.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { SliderCumpleaniosComponent } from './views/index/slider-cumpleanios/sli
     SinglepollComponent,
     CardPollComponent,
     ContactComponent,
-    SliderCumpleaniosComponent
+    SliderCumpleaniosComponent,
+    ActivitiesComponent
   ],
   imports: [
     BrowserModule,

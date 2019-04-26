@@ -1,0 +1,77 @@
+<div class="row">
+  <div
+    class="col-lg-6 col-md-12 col-sm-12 p-2 first-half-card-activity pt-3 pb-3"
+  >
+    <div class="container-fluid h-100">
+      <span class="date-activity"
+        >{{ this.daynameselected }} {{ this.dayselected }}</span
+      >
+      <br />
+      <mdb-carousel class="carousel slide pt-0 mt-0 h-100" [animation]="'slide'" *ngIf="selectedActivity.length !== 0" [isControls]="true" [interval]="0" id="actividades-carousel">
+        <mdb-carousel-item *ngFor="let actividad of selectedActivity">
+          <div class="w-100">
+              <div class="jumbotron rounded shadow-sm p-2 mt-2 mb-1 d-flex justify-content-center align-items-center w-100" style="height: 8.4em;">
+                  <div class="sin-eventos mx-auto text-center">
+                    <img
+                      src="https://c3devapp.cl/sg/assets/img/sin_eventos.png"
+                      class="mt-0 pt-0 pb-2"
+                      alt=""
+                    />
+                  </div>
+                </div>
+                <h6 class="text-1 bold activity-name pt-2">
+                  {{ actividad.titulo_actividad }}
+                </h6>
+          </div>
+            <a
+              href=""
+              class="text-cumpleaños"
+              style="text-decoration: underline #00A9B7 !important; color: #00A9B7; position: absolute; right: 0; bottom: 0;"
+              >Mostrar detalles
+              <i
+                class="fas fa-external-link-alt ml-2"
+                style="color: #00A9B7"
+              ></i
+            ></a>
+        </mdb-carousel-item>
+      </mdb-carousel>
+      <!-- En caso que no hayan eventos el día actual -->
+      <div *ngIf="selectedActivity.length === 0">
+          <div class="jumbotron rounded shadow-sm p-2 mt-2 mb-1"  style="height: 8.4em;">
+              <div class="sin-eventos mx-auto text-center">
+                <p class="no-event mb-0 pt-0">
+                  Hoy no tenemos eventos agendados
+                </p>
+                <img
+                  src="https://c3devapp.cl/sg/assets/img/sin_eventos.png"
+                  class="mt-0 pt-0 pb-2"
+                  alt=""
+                />
+              </div>
+            </div>
+            <!-- <h6 class="text-1 bold activity-name pt-2">
+              Nombre Actividad Lorem ipsum dolor sit amet consectetur.
+            </h6>
+            <br />
+            <div class="text-right">
+              <a
+                href=""
+                class="text-cumpleaños"
+                style="text-decoration: underline #00A9B7 !important; color: #00A9B7"
+                >Mostrar detalles
+                <i
+                  class="fas fa-external-link-alt ml-2"
+                  style="color: #00A9B7"
+                ></i
+              ></a>
+            </div> -->
+      </div>
+    </div>
+  </div>
+  <div
+    class="col-lg-6 col-md-12 col-sm-12 text-center p-0 mx-auto d-flex justify-content-around"
+  >
+    <!-- Aquí va el calendario :v -->
+    <div class="jsCalendar h-100" id="my-calendar"></div>
+  </div>
+</div>

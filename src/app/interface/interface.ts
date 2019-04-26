@@ -101,7 +101,13 @@ export interface Gerencies {
 export interface ResponseNumberActivityByMonth {
   err: number;
   message: string;
-  dias: number[];
+  actividades: ActivityList[];
+}
+
+export interface ActivityList {
+  dia: number;
+  cantidad_eventos: number;
+  evento: Activity[];
 }
 
 export interface Activity {

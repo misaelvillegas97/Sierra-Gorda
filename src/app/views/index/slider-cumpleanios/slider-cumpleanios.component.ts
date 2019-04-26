@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { CumpleañosService } from 'src/app/providers/cumpleaños.service';
+import { CarouselComponent } from 'angular-bootstrap-md';
 
 @Component({
   selector: 'app-slider-cumpleanios',
@@ -8,9 +9,14 @@ import { CumpleañosService } from 'src/app/providers/cumpleaños.service';
 })
 export class SliderCumpleaniosComponent implements OnInit {
 
+  @ViewChild('carousel') carousel: CarouselComponent;
+
   constructor(public birthService: CumpleañosService) { }
 
   ngOnInit() {
+    if (true) {
+      console.log(this.carousel);
+    }
   }
 
 }

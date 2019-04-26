@@ -20,6 +20,42 @@
   margin-right: 5px;
 }
 
+#actividades-carousel {
+  .carousel-indicators {
+    bottom: -15px !important;
+  }
+
+  .carousel-indicators .active {
+    opacity: 1;
+    background-color: #00A9B7;
+  }
+
+  .carousel-indicators li {
+    background-color: #D2D9EF;
+    opacity: 1;
+  }
+
+  .carousel .carousel-indicators li {
+    width: 0.75rem;
+    height: 0.75rem;
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+
+  .carousel-inner {
+    height: 100% !important;
+
+    .carousel-item {
+      height: 100% !important;
+    }
+  }
+}
+
 .carousel-inner {
-  padding-top: .9em;
+  // padding-top: .9em;
+}
+
+.mat-chip {
+  font-size: 12px;
+  font-weight: 500;
 }

@@ -169,36 +169,11 @@
   font-weight: 500;
 }
 
-.div-activity {
-  margin: 0;
-  margin-top: 1em;
-  // padding: 1em;
-  background-color: white;
-  border-radius: 10px;
-}
-
-.desc-card {
-  font-size: 9pt;
-  line-height: 6pt;
-  // padding-top: 2pt;
-}
-
-.text-date-card-activity {
-  color: #757575;
-  font-weight: 600px;
-}
-
-.bold {
-  font-weight: 600 !important;
-}
-
-.s-bold {
-  font-weight: 900 !important;
-}
-
+// Actividades
 .div-activity .first-half-card-activity {
   background-color: #eeeeee;
   border-radius: 10px 0px 0px 10px !important;
+  height: 300px
 }
 
 .date-activity {
@@ -207,25 +182,26 @@
   color: #8f8f8f;
   font-weight: 600;
 }
-
-.activity-name {
-  line-height: 13pt !important;
-  font-size: 11pt;
+.div-activity {
+  margin: 0;
+  margin-top: 1em;
+  // padding: 1em;
+  background-color: white;
+  border-radius: 10px;
+  height: 300px
+}
+.desc-card {
+  font-size: 9pt;
+  line-height: 6pt;
+  // padding-top: 2pt;
 }
 
-.no-event {
-  text-align: center;
-  font-style: italic;
-  font-weight: 300;
-  font-size: 12pt;
-  color: #a1a6ac;
+.bold {
+  font-weight: 600 !important;
 }
 
-.text-actividad {
-  color: rgb(144, 144, 144);
-  font-weight: 500 !important;
-  font-size: 11pt;
-  font-style: italic;
+.s-bold {
+  font-weight: 900 !important;
 }
 
 .text-cumpleaños {

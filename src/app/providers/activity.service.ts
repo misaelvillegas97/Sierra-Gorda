@@ -9,15 +9,16 @@ const URL = 'http://c3wsapi.cl:2200/sg/actividades/';
 })
 export class ActivityService {
   actividadesList: Activity[] = [];
-  activitiesNumber: number[];
+  activitiesPerMonth: number[];
+  activityPerDay: number;
   fechap = new Date('12-4-2012');
 
   constructor(private http: HttpClient) {
-    // this.getActivitiesNumberByMonth(4, 2019);
+    // this.getactivitiesPerMonthByMonth(4, 2019);
   }
 
   async getActivitiesNumberByMonth(month: number, year: number) {
-    await this.http.get(URL + `getdiasconactividades/${
+    await this.http.get(URL + `getdiasconactividadeslist/${
       year
       }/${
       month.toString().length !== 1 ? month : '0' + month.toString()
@@ -25,12 +26,22 @@ export class ActivityService {
       .toPromise()
       .then(
         (res: ResponseNumberActivityByMonth) => {
-          this.activitiesNumber = [];
+          this.activitiesPerMonth = [];
 
-          this.activitiesNumber = res.dias;
+          // tslint:disable-next-line: prefer-const
+          for (let actividad of res.actividades) {
+            this.activitiesPerMonth.push(actividad.dia);
+            this.activityPerDay = actividad.cantidad_eventos;
+
+            // tslint:disable-next-line: prefer-const
+            for (let actividadDetalle of actividad.evento ) {
+              actividadDetalle.fecha_actividad = new Date(actividadDetalle.fecha_actividad);
+              this.actividadesList.push(actividadDetalle);
+            }
+          }
         }
       );
-    return this.activitiesNumber;
+    return this.activitiesPerMonth;
   }
 
   getActivitiesById(_id: number): Activity {
@@ -43,7 +54,13 @@ export class ActivityService {
     return selectedActivity;
   }
 
-  getActivityByDate() {
+  getActivityByDate(_date: Date) {
+    let selectedActivity: Activity[];
 
+    selectedActivity = this.actividadesList.filter(
+      actividad => actividad.fecha_actividad.getDate() === _date.getDate()
+    );
+
+    return selectedActivity;
   }
 }

@@ -320,52 +320,7 @@
         </small>
         <br />
         <div class="div-activity shadow">
-          <div class="row">
-            <div
-              class="col-lg-6 col-md-12 col-sm-12 p-2 first-half-card-activity pt-3 pb-3"
-            >
-              <div class="container-fluid">
-                <span class="date-activity"
-                  >{{ this.daynameselected }} {{ this.dayselected }}</span
-                >
-                <br />
-                <div class="jumbotron rounded shadow-sm p-2 mt-2 mb-1">
-                  <div class="sin-eventos mx-auto text-center" #noevent>
-                    <p class="no-event mb-0 pt-0">
-                      Hoy no tenemos eventos agendados
-                    </p>
-                    <img
-                      src="https://c3devapp.cl/sg/assets/img/sin_eventos.png"
-                      class="mt-0 pt-0 pb-2"
-                      alt=""
-                    />
-                  </div>
-                </div>
-                <h6 class="text-1 bold activity-name pt-2">
-                  Nombre Actividad Lorem ipsum dolor sit amet consectetur.
-                </h6>
-                <br />
-                <div class="text-right">
-                  <a
-                    href=""
-                    class="text-cumpleaños"
-                    style="text-decoration: underline #00A9B7 !important; color: #00A9B7"
-                    >Mostrar detalles
-                    <i
-                      class="fas fa-external-link-alt ml-2"
-                      style="color: #00A9B7"
-                    ></i
-                  ></a>
-                </div>
-              </div>
-            </div>
-            <div
-              class="col-lg-6 col-md-12 col-sm-12 text-center p-0 mx-auto d-flex justify-content-around"
-            >
-              <!-- Aquí va el calendario :v -->
-              <div class="jsCalendar h-100" id="my-calendar"></div>
-            </div>
-          </div>
+          <app-activities></app-activities>
         </div>
       </div>
     </div>
