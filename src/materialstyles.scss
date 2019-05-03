@@ -28,3 +28,8 @@
 .mat-horizontal-content-container {
   padding: 0px 40px 0px 40px !important;
 }
+
+.cdk-overlay-container {
+  position: fixed;
+  z-index: 2000 !important;
+}

@@ -17,6 +17,11 @@ export class CumpleañosService {
         res => {
           // console.log(res);
         }
+      )
+      .catch(
+        err => {
+          alert('No hay conexión con el servidor');
+        }
       );
   }
 }

@@ -1,11 +1,13 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, AfterViewInit, Output, EventEmitter } from '@angular/core';
+import { PollService } from 'src/app/providers/poll.service';
+import { Poll } from 'src/app/interface/interface';
 
 @Component({
   selector: 'app-poll',
   templateUrl: './poll.component.html',
   styleUrls: ['./poll.component.scss']
 })
-export class PollComponent implements OnInit {
+export class PollComponent implements OnInit, AfterViewInit {
 
 // tslint:disable-next-line: no-output-on-prefix
   @Output() onSelectPoll = new EventEmitter<number>();
@@ -36,10 +38,21 @@ export class PollComponent implements OnInit {
     }
   ];
 
+  pollList: Poll[];
 
-  constructor() { }
+  constructor(public ps: PollService) { }
 
   ngOnInit() {
+  }
+
+  ngAfterViewInit(): void {
+    this.ps.getAllEncuestas()
+      .then(
+        polls => {
+          this.pollList = polls;
+          console.table(polls);
+        }
+      );
   }
 
   pollSelect( id: any ) {

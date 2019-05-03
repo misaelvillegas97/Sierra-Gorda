@@ -8,6 +8,9 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'Sierra-Gorda';
 
+  constructor() {
+  }
+
   toggle_chat(state: boolean) {
     // console.log('works');
     if (state) {

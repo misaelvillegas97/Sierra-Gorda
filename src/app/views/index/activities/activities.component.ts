@@ -27,6 +27,20 @@ export class ActivitiesComponent implements OnInit {
   monthselected: string;
   activeCalendar: any;
   selectedActivity: Activity[] = [];
+  months = [
+    'Enero',
+    'Febrero',
+    'Marzo',
+    'Abril',
+    'Mayo',
+    'Junio',
+    'Julio',
+    'Agosto',
+    'Septiembre',
+    'Octubre',
+    'Nobiembre',
+    'Diciembre',
+  ];
 
   constructor(private as: ActivityService) {
     this.dayselected = new Date().getDate();
@@ -135,7 +149,6 @@ export class ActivitiesComponent implements OnInit {
   // tslint:disable-next-line: variable-name
   loadDayActivity(_date: Date) {
     this.selectedActivity = this.as.getActivityByDate(_date);
-    console.table(this.selectedActivity);
   }
   //#endregion
 

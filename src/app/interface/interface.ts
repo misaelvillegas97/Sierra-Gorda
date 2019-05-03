@@ -122,3 +122,30 @@ export interface Activity {
   img_portada?: string;
 }
 //#endregion
+
+//#region encuestas
+export interface ResponsePolls {
+  err: number;
+  message: string;
+  encuestas: Poll[]
+}
+
+export interface Poll {
+  id: number;
+  titulo: string;
+  visto: number;
+  preguntas: Question[]
+}
+
+export interface Question {
+  id_pregunta: number;
+  texto_respuesta: string;
+  tipo: number;
+  alternativas: Alternative[];
+}
+
+export interface Alternative {
+  id_alternativa: number;
+  texto: string;
+}
+//#endregion

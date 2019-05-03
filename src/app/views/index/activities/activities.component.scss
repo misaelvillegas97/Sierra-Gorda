@@ -13,15 +13,125 @@
 }
 
 .text-actividad {
-  color: rgb(144, 144, 144);
   font-weight: 500 !important;
   font-size: 11pt;
   font-style: italic;
+  text-decoration: underline #00A9B7 !important;
+  color: #00A9B7;
+  position: absolute;
+  right: 0;
+  bottom: 6.1%;
 }
-
-
 
 .text-date-card-activity {
   color: #757575;
   font-weight: 600px;
+}
+
+.desc-actividad {
+  background-color: rgb(240, 240, 240);
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 10pt;
+  font-weight: 300;
+  color: #474747;
+  span {
+    font-size: 11pt;
+    color: #474747;
+  }
+}
+
+.lugar-actividad {
+  margin-top: 12px;
+  margin-bottom: 12px;
+  background-color: rgb(240, 240, 240);
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 10pt;
+  font-weight: 300;
+  color: #474747;
+  span {
+    font-size: 11pt;
+    color: #474747;
+  }
+}
+
+.modal-title {
+  font-size: 15pt;
+  font-weight: 700;
+  color: #FF4514;;
+}
+
+.btn-interesa {
+  background-color: #3FBAC5;
+  color: white;
+  border-radius: 20pt;
+}
+
+.btn-asistire {
+  background-color: #99C87A;
+  color: white;
+  border-radius: 20pt;
+}
+
+.modal-footer {
+  border-top: none;
+  padding: .5;
+}
+
+.modal-body {
+  span.asis {
+    font-size: 11pt;
+    font-weight: 600;
+    color: #474747;
+  }
+
+  span.result {
+    font-size: 11pt;
+    font-weight: 500;
+    color: #474747;
+  }
+}
+
+.modal-content {
+  background-color: white;
+  border-radius: 10px
+}
+
+.bg-image {
+  background-image: url(https://www.milenio.com/uploads/media/2019/02/01/sierra-gorda-queretaro-declarada-reserva.jpg);
+
+  /* Add the blur effect */
+  filter: blur(8px);
+  -webkit-filter: blur(8px);
+
+  /* Full height */
+  height: 100%;
+  position: absolute;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.modal-fecha {
+  display: flex;
+  justify-content: center;
+
+  span {
+    font-size: 10pt;
+    font-weight: 500;
+    width: 100%;
+    font-style: italic;
+    // border-bottom: 1px solid #dee2e6;
+    text-align: right;
+    padding-right: 18px;
+    color: #cacaca
+  }
+}
+
+.modal-header {
+  border-bottom: none;
+  padding-bottom: 0.5em;
 }

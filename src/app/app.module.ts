@@ -3,6 +3,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { Ng2Rut } from 'ng2-rut';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // External Imports
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
@@ -15,6 +16,7 @@ import { MatStepperModule, MatIconModule, MatButtonModule, MatFormFieldModule, M
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatInputModule } from '@angular/material/input';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -59,6 +61,8 @@ import { ActivitiesComponent } from './views/index/activities/activities.compone
     PickerModule,
     MDBBootstrapModule.forRoot(),
     BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
     // Material Module Imports
     CdkStepperModule,
     MatStepperModule,
@@ -68,7 +72,9 @@ import { ActivitiesComponent } from './views/index/activities/activities.compone
     MatChipsModule,
     MatInputModule,
     MatFormFieldModule,
-    MatSelectModule
+    MatSelectModule,
+    MatSnackBarModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

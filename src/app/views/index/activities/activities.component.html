@@ -14,6 +14,7 @@
                   <div class="sin-eventos mx-auto text-center">
                     <img
                       src="https://c3devapp.cl/sg/assets/img/sin_eventos.png"
+                      draggable="false"
                       class="mt-0 pt-0 pb-2"
                       alt=""
                     />
@@ -24,15 +25,52 @@
                 </h6>
           </div>
             <a
-              href=""
-              class="text-cumpleaños"
-              style="text-decoration: underline #00A9B7 !important; color: #00A9B7; position: absolute; right: 0; bottom: 0;"
-              >Mostrar detalles
+              href="javascript:void(0)"
+              class="text-actividad"
+              (click)="basicModal.show()"
+              >Ver detalles
               <i
                 class="fas fa-external-link-alt ml-2"
                 style="color: #00A9B7"
               ></i
             ></a>
+
+            <!-- Modal Evento -->
+
+            <div mdbModal #basicModal="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close pull-right" aria-label="Close" (click)="basicModal.hide()">
+                      <span aria-hidden="true">×</span>
+                    </button>
+                    <h4 class="modal-title w-100" id="myModalLabel">{{ actividad.titulo_actividad | titlecase}}</h4>
+                  </div>
+                  <div class="modal-fecha">
+                    <span>{{ actividad.fecha_actividad.getDate() }} de {{ months[actividad.fecha_actividad.getMonth()] }}, {{ actividad.fecha_actividad.getFullYear() }}</span>
+                  </div>
+                  <div class="modal-body">
+                    <div class="desc-actividad shadow-sm">
+                      <span class="bold">Descripción</span> <br>
+                      {{ actividad.descripcion_actividad }}
+                    </div>
+                    <div class="lugar-actividad shadow-sm">
+                      <span class="bold">¿Dónde?</span> <br>
+                      <span>{{ actividad.ubicacion_actividad }}</span> <br>
+                      <span class="bold">¿Horario?</span> <br>
+                      <span>Desde las {{ actividad.horario_inicio }} hasta las {{ actividad.horario_fin }}</span>
+                    </div>
+                    <span class="asis">Interesados: </span><span class="result">-</span><br>
+                    <span class="asis">Asistirán: </span><span class="result">-</span><br>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="submit" #loguear class="btn btn-interesa">Me interesa</button>
+                    <button type="submit" #loguear class="btn btn-asistire">Asistiré</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
         </mdb-carousel-item>
       </mdb-carousel>
       <!-- En caso que no hayan eventos el día actual -->
@@ -44,27 +82,12 @@
                 </p>
                 <img
                   src="https://c3devapp.cl/sg/assets/img/sin_eventos.png"
+                  draggable="false"
                   class="mt-0 pt-0 pb-2"
                   alt=""
                 />
               </div>
             </div>
-            <!-- <h6 class="text-1 bold activity-name pt-2">
-              Nombre Actividad Lorem ipsum dolor sit amet consectetur.
-            </h6>
-            <br />
-            <div class="text-right">
-              <a
-                href=""
-                class="text-cumpleaños"
-                style="text-decoration: underline #00A9B7 !important; color: #00A9B7"
-                >Mostrar detalles
-                <i
-                  class="fas fa-external-link-alt ml-2"
-                  style="color: #00A9B7"
-                ></i
-              ></a>
-            </div> -->
       </div>
     </div>
   </div>

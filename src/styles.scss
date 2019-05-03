@@ -10,6 +10,10 @@ strong {
   font-weight: bolder !important;
 }
 
+img {
+  @extend .no-select;
+}
+
 // Scroll Bar
 ::-webkit-scrollbar {
   width: 5px;
@@ -35,7 +39,7 @@ strong {
 }
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0;}
 
 .orange-tooltip {
   background-color: #F27137;
@@ -49,7 +53,7 @@ html.noscroll {
 
 #masterslider2 .ms-container .ms-inner-controls-cont .ms-view {
   border-radius: 12px !important;
-  // box-shadow: .1em 0.2rem .5rem rgba(0, 0, 0, 0.15) !important;
+  box-shadow: .1em 0.2rem .5rem rgba(0, 0, 0, 0.05) !important;
 }
 
 #masterslider .ms-container .ms-inner-controls-cont .ms-view {
@@ -69,6 +73,8 @@ input:focus{
 }
 
 .no-select {
+  user-drag: none;
+  -webkit-user-drag: none; /* Prevents dragging of images/divs etc */
   -webkit-user-select: none; /* Safari 3.1+ */
   -moz-user-select: none; /* Firefox 2+ */
   -ms-user-select: none; /* IE 10+ */
@@ -80,4 +86,17 @@ input:focus{
   border-color: #ffab77;
 	color: #fff !important;
 	border:none;
+}
+
+.snackbar-login {
+  background-color: #F27137;
+  color: white;
+  font-weight: 500;
+  margin: 35px !important;
+  padding: 16px 17px !important;
+  border-radius: 5px;
+  z-index: 1051 !important;
+  &-err {
+    background-color: rgb(204, 65, 0)
+  }
 }

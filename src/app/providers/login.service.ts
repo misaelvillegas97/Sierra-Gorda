@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { RespuestaStatus, RespuestaLogin, LoggedUser } from '../interface/interface';
+import { MatSnackBar } from '@angular/material';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -15,7 +16,7 @@ export class LoginService {
 
   userLogged: LoggedUser;
 
-  constructor(public http: HttpClient) {
+  constructor(public http: HttpClient, private snackbar: MatSnackBar) {
     console.log('Servicio iniciado');
     if (this.userLogged === null) { this.userLogged = undefined; }
     this.isLoggedIn();
@@ -38,6 +39,17 @@ export class LoginService {
       .then( (res: RespuestaLogin) => {
         if (res.err) {
           respuesta = res.err;
+          switch ( res.err ) {
+            case 404:
+              this.snackbar.open('Rut o contraseña incorrectos' , null, {
+                duration: 3000,
+                verticalPosition: 'bottom',
+                horizontalPosition: 'right',
+                panelClass: ['snackbar-login', 'snackbar-login-err'],
+                announcementMessage: 'Mensaje de bienvenida',
+              });
+              break;
+          }
           return res.err;
         }
 
@@ -54,9 +66,31 @@ export class LoginService {
             (res.userauth.primer_nombre + ' ' + res.userauth.apellido_paterno + ' ' + res.userauth.apellido_materno)
           );
         respuesta = 0;
+        this.snackbar.open('Iniciaste sesión como: ' + res.userauth.primer_nombre + ' ' + res.userauth.apellido_paterno, null, {
+          duration: 3000,
+          verticalPosition: 'bottom',
+          horizontalPosition: 'right',
+          panelClass: ['snackbar-login'],
+          announcementMessage: 'Mensaje de bienvenida'
+        });
         return respuesta;
-      }).catch((err) => {
-      });
+      })
+      .catch(
+        err => {
+          switch (err.status) {
+            case 0:
+              alert('0 - Error trying to connect WebService <<http://c3wsapi.cl>> | Login');
+              break;
+            case 404:
+              alert('404 - Page doesn\'t exist <<http://c3wsapi.cl>> | Login');
+              break;
+            case 500:
+              alert('500 - Error on code <<http://c3wsapi.cl>> | Login');
+              break;
+          }
+          return [];
+        }
+      );
 
     return respuesta;
   }
@@ -71,20 +105,36 @@ export class LoginService {
             this.userLogged.telefono = '+56' + this.userLogged.telefono;
           }
           // console.log(this.userLogged);
-        }
-      );
+        })
+        .catch(
+          err => {
+            switch (err.status) {
+              case 0:
+                alert('0 - Error trying to connect WebService <<http://c3wsapi.cl>> | Obtener usuario');
+                break;
+              case 404:
+                alert('404 - Page doesn\'t exist <<http://c3wsapi.cl>> | Obtener usuario');
+                break;
+              case 500:
+                alert('500 - Error on code <<http://c3wsapi.cl>> | Obtener usuario');
+                break;
+            }
+            return [];
+          }
+        );
   }
 
   logout() {
     localStorage.removeItem('sg-position');
     localStorage.removeItem('sg-user');
     localStorage.removeItem('sg-userName');
-    // localStorage.removeItem('sg-userID');
+    localStorage.removeItem('sg-userID');
     this.userLogged = undefined;
   }
 
   isLoggedIn(): boolean {
-    if (localStorage.getItem('sg-user') && localStorage.getItem('sg-position') && localStorage.getItem('sg-userName')) {
+    if (localStorage.getItem('sg-user') && localStorage.getItem('sg-position') &&
+        localStorage.getItem('sg-userName') && localStorage.getItem('sg-userID')) {
       return true;
     } else {
       return false;

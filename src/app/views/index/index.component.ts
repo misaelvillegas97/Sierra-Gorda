@@ -1,4 +1,6 @@
-import { Component, OnInit, ViewEncapsulation, HostListener } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewEncapsulation, HostListener, ViewChild } from '@angular/core';
+import { LoginService } from 'src/app/providers/login.service';
+import { ModalDirective } from 'angular-bootstrap-md';
 
 declare var $: any;
 
@@ -8,8 +10,12 @@ declare var $: any;
   styleUrls: ['./index.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class IndexComponent implements OnInit {
+export class IndexComponent implements OnInit, AfterViewInit {
   //#region Declarations
+
+  // Login Form and Dialog
+  @ViewChild('loginModal') loginModal: ModalDirective;
+  loginText = 'Inicia sesión';
 
   // Filtro UV
   uvactual = 3;
@@ -29,9 +35,13 @@ export class IndexComponent implements OnInit {
   pollID: number = undefined;
   //#endregion
 
-  constructor() {}
+  constructor(public ls: LoginService) {}
 
   ngOnInit() {
+  }
+
+  ngAfterViewInit(): void {
+    // alert('Ancho de ' + screen.width + 'px');
   }
 
 
@@ -192,9 +202,11 @@ export class IndexComponent implements OnInit {
   }
   @HostListener('document:click', ['$event']) clickedOutside($event) {
     // here you can hide your menu
-    this.toggle_chat(false);
     this.toggle_contact(false);
-    this.toggle_poll(false);
+    if (this.ls.isLoggedIn()) {
+      this.toggle_poll(false);
+      this.toggle_chat(false);
+    }
   }
   //#endregion
 
@@ -320,5 +332,57 @@ export class IndexComponent implements OnInit {
   clickedInside($event: Event) {
     $event.preventDefault();
     $event.stopPropagation();  // <- esto detendrá la propagación
+  }
+
+  setModalText(opt) {
+    if (opt === 1) {
+      this.loginText = 'Inicia sesión para acceder a las encuestras';
+    }
+
+    if (opt === 2) {
+      this.loginText = 'Inicia sesión para acceder al chat';
+    }
+  }
+
+  async login(form) {
+    let rut = this.formateaRut(form.rut);
+    let pass = form.pass
+    const rutD = rut.replace('.', '').replace('.', '').split('-');
+    const run = parseInt(rutD[0].toString(), 0);
+    const dv = parseInt(rutD[1].toString(), 0);
+    pass = btoa(pass);
+    pass = btoa(pass);
+    pass = btoa(pass);
+    await this.ls.login(run, dv, pass)
+    .then(
+      res => {
+        if (res !== 404) {
+          this.loginModal.hide();
+        }
+      }
+    );
+  }
+
+  formateaRut(rut) {
+    var actual = rut.replace(/^0+/, "");
+    if (actual != '' && actual.length > 1) {
+        var sinPuntos = actual.replace(/\./g, "");
+        var actualLimpio = sinPuntos.replace(/-/g, "");
+        var inicio = actualLimpio.substring(0, actualLimpio.length - 1);
+        var rutPuntos = "";
+        var i = 0;
+        var j = 1;
+        for (i = inicio.length - 1; i >= 0; i--) {
+            var letra = inicio.charAt(i);
+            rutPuntos = letra + rutPuntos;
+            if (j % 3 == 0 && j <= inicio.length - 1) {
+                rutPuntos = "." + rutPuntos;
+            }
+            j++;
+        }
+        var dv = actualLimpio.substring(actualLimpio.length - 1);
+        rutPuntos = rutPuntos + "-" + dv;
+    }
+    return rutPuntos;
   }
 }
