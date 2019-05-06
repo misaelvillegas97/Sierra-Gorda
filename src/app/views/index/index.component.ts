@@ -2,7 +2,7 @@ import { Component, OnInit, AfterViewInit, ViewEncapsulation, HostListener, View
 import { LoginService } from 'src/app/providers/login.service';
 import { ModalDirective } from 'angular-bootstrap-md';
 
-declare var $: any;
+declare let $: any;
 
 @Component({
   selector: 'app-index',
@@ -344,9 +344,9 @@ export class IndexComponent implements OnInit, AfterViewInit {
     }
   }
 
-  async login(form) {
-    let rut = this.formateaRut(form.rut);
-    let pass = form.pass
+  async login(form: {rut: string, pass: string}) {
+    const rut = this.formateaRut(form.rut);
+    let pass = form.pass;
     const rutD = rut.replace('.', '').replace('.', '').split('-');
     const run = parseInt(rutD[0].toString(), 0);
     const dv = parseInt(rutD[1].toString(), 0);
@@ -364,24 +364,25 @@ export class IndexComponent implements OnInit, AfterViewInit {
   }
 
   formateaRut(rut) {
-    var actual = rut.replace(/^0+/, "");
-    if (actual != '' && actual.length > 1) {
-        var sinPuntos = actual.replace(/\./g, "");
-        var actualLimpio = sinPuntos.replace(/-/g, "");
-        var inicio = actualLimpio.substring(0, actualLimpio.length - 1);
-        var rutPuntos = "";
-        var i = 0;
-        var j = 1;
+    const actual = rut.replace(/^0+/, '');
+    let rutPuntos = '';
+    if (actual !== '' && actual.length > 1) {
+        const sinPuntos = actual.replace(/\./g, '');
+        const actualLimpio = sinPuntos.replace(/-/g, '');
+        const inicio = actualLimpio.substring(0, actualLimpio.length - 1);
+        let i = 0;
+        let j = 1;
         for (i = inicio.length - 1; i >= 0; i--) {
-            var letra = inicio.charAt(i);
+            // tslint:disable-next-line: prefer-const
+            let letra = inicio.charAt(i);
             rutPuntos = letra + rutPuntos;
-            if (j % 3 == 0 && j <= inicio.length - 1) {
-                rutPuntos = "." + rutPuntos;
+            if (j % 3 === 0 && j <= inicio.length - 1) {
+                rutPuntos = '.' + rutPuntos;
             }
             j++;
         }
-        var dv = actualLimpio.substring(actualLimpio.length - 1);
-        rutPuntos = rutPuntos + "-" + dv;
+        const dv = actualLimpio.substring(actualLimpio.length - 1);
+        rutPuntos = rutPuntos + '-' + dv;
     }
     return rutPuntos;
   }
