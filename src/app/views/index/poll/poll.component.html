@@ -6,11 +6,13 @@
 </div>
 <br />
 <div class="container-fluid poll-container">
-  <app-card-poll
-    *ngFor="let poll of polls"
-    [poll]="poll"
-    (click)="pollSelect(poll.id)"
-  ></app-card-poll>
+  <ng-container *ngIf="pollList">
+    <app-card-poll
+      *ngFor="let poll of pollList"
+      [poll]="poll"
+      (click)="pollSelect(poll)"
+    ></app-card-poll>
+  </ng-container>
 </div>
 
 <div class="message-icon" (click)="onQuit.emit(false)">

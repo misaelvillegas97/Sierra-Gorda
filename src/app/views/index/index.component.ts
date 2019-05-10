@@ -1,6 +1,9 @@
 import { Component, OnInit, AfterViewInit, ViewEncapsulation, HostListener, ViewChild } from '@angular/core';
 import { LoginService } from 'src/app/providers/login.service';
-import { ModalDirective } from 'angular-bootstrap-md';
+import { MDBModalService, MDBModalRef } from 'angular-bootstrap-md';
+import { LoginModalComponent } from 'src/app/modals/login-modal/login-modal.component';
+import { Poll } from 'src/app/interface/interface';
+import { PollModalComponent } from 'src/app/modals/poll-modal/poll-modal.component';
 
 declare let $: any;
 
@@ -13,9 +16,8 @@ declare let $: any;
 export class IndexComponent implements OnInit, AfterViewInit {
   //#region Declarations
 
-  // Login Form and Dialog
-  @ViewChild('loginModal') loginModal: ModalDirective;
-  loginText = 'Inicia sesión';
+  // Login Form and Poll Dialog
+  modalRef: MDBModalRef;
 
   // Filtro UV
   uvactual = 3;
@@ -30,12 +32,7 @@ export class IndexComponent implements OnInit, AfterViewInit {
   chatSelected = false;
   userID: number = undefined;
 
-  // Single poll state
-  pollSelected = false;
-  pollID: number = undefined;
-  //#endregion
-
-  constructor(public ls: LoginService) {}
+  constructor(public ls: LoginService, private modalService: MDBModalService) {}
 
   ngOnInit() {
   }
@@ -128,18 +125,14 @@ export class IndexComponent implements OnInit, AfterViewInit {
       document.getElementById('html').classList.add('noscroll');
     } else {
       document.getElementById('poll-container').classList.remove('fadeInLeftBig');
-      document.getElementById('poll-container').classList.add('fadeOutLeftBig');
       document.getElementById('html').classList.remove('noscroll');
-      setTimeout(() => {
-        document.getElementById('poll-container').style.display = 'none';
-        document.getElementById('poll-sidebar').style.display = 'block';
-        document.getElementById('poll-container').classList.remove('fadeOutLeftBig');
-        document.getElementById('poll-container').classList.add('fadeInLeftBig');
+      // setTimeout(() => {
+      document.getElementById('poll-container').style.display = 'none';
+      document.getElementById('poll-sidebar').style.display = 'block';
+      document.getElementById('poll-container').classList.add('fadeInLeftBig');
 
-      }, 500);
+      // }, 500);
     }
-    this.pollSelected = false;
-    this.pollID = undefined;
     return false;
   }
 
@@ -157,16 +150,22 @@ export class IndexComponent implements OnInit, AfterViewInit {
     }
   }
 
-  loadSelectedPoll(id: any): void {
-    // select
-    this.pollID = id;
-    this.pollSelected = true;
-    this.toggle_poll_sidebar(false);
-  }
-
-  closeSelectedPoll() {
-    this.pollSelected = false;
-    this.pollID = undefined;
+  loadSelectedPoll(poll: Poll): void {
+    this.toggle_poll(false);
+    const modalOptions = {
+      backdrop: true,
+      keyboard: true,
+      focus: true,
+      show: false,
+      ignoreBackdropClick: true,
+      class: 'poll-modal-container modal-dialog-centered animated fadeIn',
+      containerClass: '',
+      animated: true,
+      data: {
+        poll
+      }
+    };
+    this.modalRef = this.modalService.show(PollModalComponent, modalOptions);
   }
   //#endregion
 
@@ -334,56 +333,38 @@ export class IndexComponent implements OnInit, AfterViewInit {
     $event.stopPropagation();  // <- esto detendrá la propagación
   }
 
-  setModalText(opt) {
-    if (opt === 1) {
-      this.loginText = 'Inicia sesión para acceder a las encuestras';
+  openModal( opt: number ) {
+    let data = {};
+    switch (opt) {
+      case 0:
+        data = {
+          title: 'Inicia sesión'
+        };
+        break;
+
+      case 1: // Encuestas
+        data = {
+          title: 'Inicia sesión para acceder a las encuestas'
+        };
+        break;
+
+      case 2: // chat
+        data = {
+          title: 'Inicia sesión para acceder al chat'
+        };
     }
 
-    if (opt === 2) {
-      this.loginText = 'Inicia sesión para acceder al chat';
-    }
-  }
-
-  async login(form: {rut: string, pass: string}) {
-    const rut = this.formateaRut(form.rut);
-    let pass = form.pass;
-    const rutD = rut.replace('.', '').replace('.', '').split('-');
-    const run = parseInt(rutD[0].toString(), 0);
-    const dv = parseInt(rutD[1].toString(), 0);
-    pass = btoa(pass);
-    pass = btoa(pass);
-    pass = btoa(pass);
-    await this.ls.login(run, dv, pass)
-    .then(
-      res => {
-        if (res !== 404) {
-          this.loginModal.hide();
-        }
-      }
-    );
-  }
-
-  formateaRut(rut) {
-    const actual = rut.replace(/^0+/, '');
-    let rutPuntos = '';
-    if (actual !== '' && actual.length > 1) {
-        const sinPuntos = actual.replace(/\./g, '');
-        const actualLimpio = sinPuntos.replace(/-/g, '');
-        const inicio = actualLimpio.substring(0, actualLimpio.length - 1);
-        let i = 0;
-        let j = 1;
-        for (i = inicio.length - 1; i >= 0; i--) {
-            // tslint:disable-next-line: prefer-const
-            let letra = inicio.charAt(i);
-            rutPuntos = letra + rutPuntos;
-            if (j % 3 === 0 && j <= inicio.length - 1) {
-                rutPuntos = '.' + rutPuntos;
-            }
-            j++;
-        }
-        const dv = actualLimpio.substring(actualLimpio.length - 1);
-        rutPuntos = rutPuntos + '-' + dv;
-    }
-    return rutPuntos;
+    const modalOptions = {
+      backdrop: true,
+      keyboard: true,
+      focus: true,
+      show: false,
+      ignoreBackdropClick: false,
+      class: 'loginModal-container modal-dialog-centered',
+      containerClass: '',
+      animated: true,
+      data
+    };
+    this.modalRef = this.modalService.show(LoginModalComponent, modalOptions);
   }
 }

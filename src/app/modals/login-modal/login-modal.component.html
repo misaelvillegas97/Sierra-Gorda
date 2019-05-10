@@ -1,0 +1,89 @@
+<div style="
+  position: absolute;
+  background-color: #FF6A02;
+  opacity: 1;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 20000;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+"
+
+class="animated fadeIn faster"
+
+*ngIf="loading"
+>
+<div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+</div>
+
+<div class="modal-header">
+  <h4 class="modal-title w-100" id="myModalLabel">{{ title }}</h4>
+</div>
+<form (ngSubmit)="login(f.value)" #f="ngForm" novalidate="novalidate">
+  <div class="modal-body d-flex justify-content-center">
+    <div class="content-form w-100">
+      <div class="input-group mt-3 w-100">
+        <span for="txt_correo" class="input-label w-100"
+          ><i class="fas fa-user-alt"></i> Rut:</span
+        >
+        <input
+          type="text"
+          class="form-control"
+          #rut="ngModel"
+          name="rut"
+          max="9"
+          placeholder="Ingresa tu rut"
+          validateRut
+          ngModel
+          formatRut
+        />
+        <div class="input-group-append">
+          <!-- Falta poner cursor: ? -->
+          <span *ngIf="rut.invalid" class="input-group-text">
+            <i class="fa fa-times-circle" style="color:var(--danger)"></i>
+          </span>
+          <span *ngIf="rut.valid" class="input-group-text">
+            <i class="fa fa-check-circle" style="color:var(--success)"></i>
+          </span>
+        </div>
+      </div>
+      <div class="input-group mt-3 w-100">
+        <span for="txt_pass" class="input-label w-100"
+          ><i class="fas fa-lock"></i> Contraseña:</span
+        >
+        <input
+          type="password"
+          class="form-control"
+          name="pass"
+          #pass="ngModel"
+          min="3"
+          ngModel
+          placeholder="•••••••"
+        />
+        <div class="input-group-append">
+          <!-- Falta poner cursor: ? -->
+          <span *ngIf="pass.invalid" class="input-group-text">
+            <i class="fa fa-check-circle" style="color:var(--danger)"></i>
+          </span>
+          <span *ngIf="pass.valid" class="input-group-text">
+            <i class="fa fa-check-circle" style="color:var(--success)"></i>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer d-flex justify-content-center">
+    <button
+      type="submit"
+      #loguear
+      class="btn btbn-block btn-iniciar"
+      [disabled]="f.invalid"
+    >
+      Entrar
+    </button>
+  </div>
+</form>

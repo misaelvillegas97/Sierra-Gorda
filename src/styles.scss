@@ -100,3 +100,23 @@ input:focus{
     background-color: rgb(204, 65, 0)
   }
 }
+
+// Modals margins and width
+
+.loginModal-container {
+  justify-content: center;
+  .modal-content {
+    max-width: 400px !important;
+    background-color: white;
+    border-radius: 10px !important
+  }
+}
+
+.poll-modal-container {
+  max-width: 60% !important;
+  .modal-content {
+    background-color: #00c0cb;
+    border-radius: 15px !important;
+  }
+}
+

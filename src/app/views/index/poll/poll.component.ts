@@ -9,54 +9,33 @@ import { Poll } from 'src/app/interface/interface';
 })
 export class PollComponent implements OnInit, AfterViewInit {
 
-// tslint:disable-next-line: no-output-on-prefix
-  @Output() onSelectPoll = new EventEmitter<number>();
+  // tslint:disable-next-line: no-output-on-prefix
+  @Output() onSelectPoll = new EventEmitter<Poll>();
 
-// tslint:disable-next-line: no-output-on-prefix
+  // tslint:disable-next-line: no-output-on-prefix
   @Output() onQuit = new EventEmitter<boolean>();
-
-  polls = [
-    {
-      id: 1,
-      nombre: 'Nicolás Pérez',
-    },
-    {
-      id: 2,
-      nombre: 'Catalina Díaz',
-    },
-    {
-      id: 3,
-      nombre: 'María José Valenzuela',
-    },
-    {
-      id: 4,
-      nombre: 'Luis Alarcón',
-    },
-    {
-      id: 5,
-      nombre: 'Pedro García',
-    }
-  ];
 
   pollList: Poll[];
 
   constructor(public ps: PollService) { }
 
   ngOnInit() {
-  }
-
-  ngAfterViewInit(): void {
     this.ps.getAllEncuestas()
       .then(
         polls => {
           this.pollList = polls;
-          console.table(polls);
+          console.table(this.pollList);
+          console.table(this.pollList[0].preguntas);
+          console.table(this.pollList[0].preguntas[0].alternativas);
         }
       );
   }
 
-  pollSelect( id: any ) {
-    this.onSelectPoll.emit( id );
+  ngAfterViewInit(): void {
+  }
+
+  pollSelect(poll: Poll) {
+    this.onSelectPoll.emit(poll);
   }
 
 }

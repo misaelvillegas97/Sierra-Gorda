@@ -20,7 +20,7 @@
     <!-- Links -->
     <div class="ml-auto ">
       <div (mouseover)="onNameHover(true)" (mouseleave)="onNameHover(false)" *ngIf="ls.isLoggedIn()">
-        <span class="user-grettings" (mouseover)="onNameHover(true)">¡Hola! <span class="bold" (mouseover)="onNameHover(true)">{{this.ls.userLogged?.primer_nombre}}</span></span>
+        <span class="user-grettings" (mouseover)="onNameHover(true)">¡Hola! <span class="bold" (mouseover)="onNameHover(true)">{{this.ls.userLogged?.primer_nombre_usuario}}</span></span>
         <img
           (mouseover)="onNameHover(true)"
           src="https://centrik.in/wp-content/uploads/2017/02/user-image-.png"
@@ -29,12 +29,12 @@
         />
         <div id="user-hover-menu" class="shadow"  *ngIf="ls.isLoggedIn()">
             <div class="header">
-              <p> {{ this.ls.userLogged?.primer_nombre }} {{ this.ls.userLogged?.apellido_paterno }} {{ this.ls.userLogged?.apellido_materno != null? this.ls.userLogged?.apellido_materno : '' }} </p>
+              <p> {{ this.ls.userLogged?.primer_nombre_usuario }} {{ this.ls.userLogged?.apellido_pat_usuario }} {{ this.ls.userLogged?.apellido_mat_usuario != null? this.ls.userLogged?.apellido_mat_usuario : '' }} </p>
             </div>
             <div class="content-form">
               <div>
                 <span for="txt_fono" class="input-label"><i class="fas fa-phone fa-rotate-90"></i> Teléfono:</span> <br>
-                <input type="text" [value]="ls.userLogged?.telefono" pattern="/[+][56][/0-9]{0,10}$/" #telefono disabled/>
+                <input type="text" [value]="ls.userLogged?.telefono_usuario" pattern="/[+][56][/0-9]{0,10}$/" #telefono disabled/>
                 <!-- <img src="https://c3devapp.cl/sg/assets/img/navbar-home/4.png" alt="" (click)="telefono.disabled = !telefono.disabled"> -->
                 <span class="edit-button" (click)="!telefono.disabled? changeUserInfo(1, telefono.value): ''" (click)="telefono.disabled = !telefono.disabled" [ngStyle]="{'background-color': !telefono.disabled? '#8DCF85': '#00ADBA'}">
                   <i class="fas fa-pencil-alt i-edit" *ngIf="telefono.disabled"></i>
@@ -43,7 +43,7 @@
               </div>
               <div class="mt-3">
                 <span for="txt_correo" class="input-label"><i class="fas fa-envelope"></i> Correo:</span> <br>
-                <input type="text" #correo [value]="ls.userLogged?.email" disabled/>
+                <input type="text" #correo [value]="ls.userLogged?.correo_usuario" disabled/>
                 <span class="edit-button" (click)="!correo.disabled? changeUserInfo(2, correo.value): 'console.log(false)'" (click)="correo.disabled = !correo.disabled" [ngStyle]="{'background-color': !correo.disabled? '#8DCF85': '#00ADBA'}">
                   <i class="fas fa-pencil-alt i-edit" *ngIf="correo.disabled"></i>
                   <i class="fas fa-save i-edit" *ngIf="!correo.disabled" [ngStyle]="{'margin-left': !correo.disabled? '5px': '4.1px'}"></i>
@@ -63,33 +63,13 @@
             </div>
         </div>
       </div>
-      <div (mouseover)="onNameHover(true)" (mouseleave)="onNameHover(false)" *ngIf="!ls.isLoggedIn()">
+      <div (click)="openModal(0)" *ngIf="!ls.isLoggedIn()">
           <span class="user-grettings">Iniciar Sesión</span>
           <img
-            (mouseover)="onNameHover(true)"
             src="https://centrik.in/wp-content/uploads/2017/02/user-image-.png"
             alt=""
             class="img-thumbnail rounded-circle user-pic"
           />
-          <div id="user-hover-menu" class="shadow">
-              <div class="header">
-                <p> Iniciar Sesión </p>
-              </div>
-              <div class="content-form">
-                <div class="mt-3">
-                  <span for="txt_correo" class="input-label"><i class="fas fa-user-alt"></i> Rut:</span>
-                  <input type="text" #rut formatRut placeholder="Ingrese su rut"/>
-                </div>
-                <div class="mt-3">
-                  <span for="txt_pass" class="input-label"><i class="fas fa-lock"></i> Contraseña:</span>
-                  <input type="password" #pass placeholder="•••••••" >
-                </div>
-                <div class="mt-3">
-                  <!-- <button type="submit" (click)="loguear.disabled = true" #loguear class="btn btn-block btn-login" (click)="login(rut.value, pass.value)">Entrar</button> -->
-                  <button type="submit" #loguear class="btn btn-block btn-login" (click)="login(rut.value, pass.value)">Entrar</button>
-                </div>
-              </div>
-          </div>
         </div>
     </div>
   </links>

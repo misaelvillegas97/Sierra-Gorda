@@ -1,0 +1,53 @@
+<div class="modal-content">
+  <div class="modal-header stepper-header container-fluid d-flex flex-column">
+      <h6 class="stepper-header-title">
+        {{ poll.titulo }}
+      </h6>
+      <p>Te invitamos Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+      <div class="close-button m-0" style="cursor: pointer;">
+        <i class="fas fa-times-circle" (click)="modalRef.hide()"></i>
+      </div>
+  </div>
+  <div class="modal-body">
+    <mat-horizontal-stepper linear #stepper>
+      <ng-container *ngFor="let question of poll.preguntas; let i= index">
+        <mat-step [editable]="true">
+          <div class="stepper-question">
+            {{ question.texto_pregunta }}
+          </div>
+          <div class="stepper-answer pt-2">
+            <textarea name="" id="" class="form-control" rows="10"></textarea>
+          </div>
+          <div class="w-100 text-right mr-0 mt-2">
+            <button class="next-button" matStepperPrevious style="margin-top: 10px; margin-bottom: 10px;" *ngIf="i !== 0">Anterior</button>
+            <button class="next-button" matStepperNext style="margin-top: 10px; margin-bottom: 10px;" *ngIf="i !== (poll.preguntas.length -1)">Siguiente</button>
+          </div>
+        </mat-step>
+      </ng-container>
+      <!-- <mat-step>
+        You are now done.
+        <div class="w-100 text-right mr-0">
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button (click)="stepper.reset()">Reset</button>
+        </div>
+      </mat-step> -->
+    </mat-horizontal-stepper>
+  </div>
+  <div class="modal-footer w-100">
+    <div class="custom-progress-percent-container">
+      <h6>Progreso</h6>
+      <div class="progress custom-progress">
+        <div
+        class="progress-bar"
+        role="progressbar"
+        style="width: 25%"
+        aria-valuenow="25"
+        aria-valuemin="0"
+        aria-valuemax="100">
+        <span>25%</span>
+      </div>
+      </div>
+    </div>
+    <div class="spacer"></div>
+  </div>
+</div>

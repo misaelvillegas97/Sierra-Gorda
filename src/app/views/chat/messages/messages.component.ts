@@ -1,4 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { ChatService } from 'src/app/providers/chat.service';
+import { Chat } from 'src/app/interface/interface';
 
 @Component({
   selector: 'app-messages',
@@ -7,73 +9,21 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class MessagesComponent implements OnInit {
 
+  // tslint:disable-next-line: no-output-on-prefix
   @Output() public onSelectChat = new EventEmitter<number>();
+  // tslint:disable-next-line: no-output-on-prefix
   @Output() public onQuit = new EventEmitter<boolean>();
 
-  faker = [
-    {
-      id: 1,
-      nombre: 'Nicolás Pérez',
-      empresa: 'Sierra Gorda',
-      unread: 0
-    },
-    {
-      id: 2,
-      nombre: 'Catalina Díaz',
-      empresa: 'Sierra Gorda',
-      unread: 5
-    },
-    {
-      id: 3,
-      nombre: 'María José Valenzuela',
-      empresa: 'Sierra Gorda',
-      unread: 12
-    },
-    {
-      id: 4,
-      nombre: 'Luis Alarcón',
-      empresa: 'Sierra Gorda',
-      unread: 11
-    },
-    {
-      id: 5,
-      nombre: 'Pedro García',
-      empresa: 'Sierra Gorda',
-      unread: 0
-    },
-    {
-      id: 6,
-      nombre: 'Nicolás Pérez',
-      empresa: 'Sierra Gorda',
-      unread: 0
-    },
-    {
-      id: 7,
-      nombre: 'Catalina Díaz',
-      empresa: 'Sierra Gorda',
-      unread: 5
-    },
-    {
-      id: 8,
-      nombre: 'María José Valenzuela',
-      empresa: 'Sierra Gorda',
-      unread: 12
-    },
-    {
-      id: 9,
-      nombre: 'Luis Alarcón',
-      empresa: 'Sierra Gorda',
-      unread: 11
-    },
-    {
-      id: 10,
-      nombre: 'Pedro García',
-      empresa: 'Sierra Gorda',
-      unread: 0
-    },
-  ]
+  chatList: Chat[];
 
-  constructor() { }
+  constructor( public cs: ChatService ) {
+    this.cs.getAllChats()
+      .then(
+        (res) => {
+          console.log(res);
+        }
+      );
+  }
 
   ngOnInit() {
   }

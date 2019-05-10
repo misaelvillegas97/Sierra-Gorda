@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { RespuestaStatus, RespuestaLogin, LoggedUser } from '../interface/interface';
+import { RespuestaStatus, RespuestaLogin, Usuario } from '../interface/interface';
 import { MatSnackBar } from '@angular/material';
 
 const httpOptions = {
@@ -14,7 +14,7 @@ const httpOptions = {
 })
 export class LoginService {
 
-  userLogged: LoggedUser;
+  userLogged: Usuario;
 
   constructor(public http: HttpClient, private snackbar: MatSnackBar) {
     console.log('Servicio iniciado');
@@ -54,19 +54,19 @@ export class LoginService {
         }
 
         this.userLogged = res.userauth;
-        if (this.userLogged.telefono.substring(0, 3) !== '+56') {
-          this.userLogged.telefono = '+56' + this.userLogged.telefono;
+        if (this.userLogged.telefono_usuario.substring(0, 3) !== '+56') {
+          this.userLogged.telefono_usuario = '+56' + this.userLogged.telefono_usuario;
         }
-        localStorage.setItem('sg-position', res.userauth.cargo);
-        localStorage.setItem('sg-userID', btoa(res.userauth.id.toString()));
-        localStorage.setItem('sg-user', (res.userauth.rut + '-' + res.userauth.dv_rut));
+        localStorage.setItem('sg-position', res.userauth.nombre_cargo);
+        localStorage.setItem('sg-userID', btoa(res.userauth.id_usuario.toString()));
+        localStorage.setItem('sg-user', (res.userauth.rut_usuario + '-' + res.userauth.dv_usuario));
         localStorage
           .setItem(
             'sg-userName',
-            (res.userauth.primer_nombre + ' ' + res.userauth.apellido_paterno + ' ' + res.userauth.apellido_materno)
+            (res.userauth.primer_nombre_usuario + ' ' + res.userauth.apellido_pat_usuario + ' ' + res.userauth.apellido_mat_usuario)
           );
         respuesta = 0;
-        this.snackbar.open('Iniciaste sesión como: ' + res.userauth.primer_nombre + ' ' + res.userauth.apellido_paterno, null, {
+        this.snackbar.open('Iniciaste sesión como: ' + res.userauth.primer_nombre_usuario + ' ' + res.userauth.apellido_pat_usuario, null, {
           duration: 3000,
           verticalPosition: 'bottom',
           horizontalPosition: 'right',
@@ -79,16 +79,34 @@ export class LoginService {
         err => {
           switch (err.status) {
             case 0:
-              alert('0 - Error trying to connect WebService <<http://c3wsapi.cl>> | Login');
+              this.snackbar.open('Sin conexión con el servidor' , null, {
+                duration: 3000,
+                verticalPosition: 'bottom',
+                horizontalPosition: 'right',
+                panelClass: ['snackbar-login', 'snackbar-login-err'],
+                announcementMessage: 'Mensaje de bienvenida',
+              });
               break;
             case 404:
-              alert('404 - Page doesn\'t exist <<http://c3wsapi.cl>> | Login');
+              this.snackbar.open('Página no encontrada' , null, {
+                duration: 3000,
+                verticalPosition: 'bottom',
+                horizontalPosition: 'right',
+                panelClass: ['snackbar-login', 'snackbar-login-err'],
+                announcementMessage: 'Mensaje de bienvenida',
+              });
               break;
             case 500:
-              alert('500 - Error on code <<http://c3wsapi.cl>> | Login');
+              this.snackbar.open('Error en el webservice' , null, {
+                duration: 3000,
+                verticalPosition: 'bottom',
+                horizontalPosition: 'right',
+                panelClass: ['snackbar-login', 'snackbar-login-err'],
+                announcementMessage: 'Mensaje de bienvenida',
+              });
               break;
           }
-          return [];
+          return -1;
         }
       );
 
@@ -101,8 +119,8 @@ export class LoginService {
       .then(
         (res: RespuestaStatus) => {
           this.userLogged = res.usuario;
-          if (this.userLogged.telefono.substring(0, 3) !== '+56') {
-            this.userLogged.telefono = '+56' + this.userLogged.telefono;
+          if (this.userLogged.telefono_usuario.substring(0, 3) !== '+56') {
+            this.userLogged.telefono_usuario = '+56' + this.userLogged.telefono_usuario;
           }
           // console.log(this.userLogged);
         })

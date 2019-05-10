@@ -3,34 +3,34 @@ import { Time } from '@angular/common';
 export interface RespuestaLogin {
   err: number;
   message: string;
-  userauth: LoggedUser;
+  userauth: Usuario;
 }
 
-export interface LoggedUser {
-  apellido_materno?: string;
-  apellido_paterno?: string;
-  cargo?: string;
-  dv_rut: number;
-  email?: string;
-  fecha_creacion?: Date;
-  fecha_nacimiento?: Date;
-  gerencia?: string;
-  id: number;
-  lugar_trabajo?: string;
-  pass?: string;
-  primer_nombre: string;
-  rut: number;
-  segundo_nombre?: string;
-  telefono?: string;
-  tercer_nombre?: string;
-  url_img?: string;
-  privilegio?: string;
-}
+// export interface LoggedUser {
+//   apellido_materno?: string;
+//   apellido_paterno?: string;
+//   cargo?: string;
+//   dv_rut: number;
+//   email?: string;
+//   fecha_creacion?: Date;
+//   fecha_nacimiento?: Date;
+//   gerencia?: string;
+//   id: number;
+//   lugar_trabajo?: string;
+//   pass?: string;
+//   primer_nombre: string;
+//   rut: number;
+//   segundo_nombre?: string;
+//   telefono?: string;
+//   tercer_nombre?: string;
+//   url_img?: string;
+//   privilegio?: string;
+// }
 
 export interface RespuestaStatus {
   err: number;
   message: string;
-  usuario: LoggedUser;
+  usuario: Usuario;
 }
 
 export interface RespuestaBuscar {
@@ -55,6 +55,30 @@ export interface UsuarioBuscar {
   pass_usuario?: string;
   primer_nombre_usuario?: string;
   rut_usuario?: string;
+  segundo_nombre_usuario?: string;
+  telefono_usuario?: string;
+  tercer_nombre_usuario?: string;
+  token?: string;
+}
+
+export interface Usuario {
+  apellido_mat_usuario?: string;
+  apellido_pat_usuario: string;
+  cantidad_recon?: string;
+  correo_usuario?: string;
+  dv_usuario: string;
+  fecha_creacion_usuario: string;
+  fecha_nacimiento_usuario: string;
+  id_estado_usuario_fk: number;
+  id_priv?: number;
+  id_usuario: number;
+  img_perfil_usuario?: string;
+  nombre_cargo?: string;
+  nombre_gerencia?: string;
+  nombre_lugar_trabajo?: string;
+  nombre_superintendencia?: string;
+  primer_nombre_usuario: string;
+  rut_usuario: string;
   segundo_nombre_usuario?: string;
   telefono_usuario?: string;
   tercer_nombre_usuario?: string;
@@ -134,12 +158,12 @@ export interface Poll {
   id: number;
   titulo: string;
   visto: number;
-  preguntas: Question[]
+  preguntas: Question[];
 }
 
 export interface Question {
   id_pregunta: number;
-  texto_respuesta: string;
+  texto_pregunta: string;
   tipo: number;
   alternativas: Alternative[];
 }
@@ -148,4 +172,51 @@ export interface Alternative {
   id_alternativa: number;
   texto: string;
 }
+//#endregion
+
+//#region conversaciones
+
+export interface ResponseAllChats {
+  err: any;
+  message: string;
+  chat: Chat[];
+}
+
+export interface Chat {
+  id: number;
+  destinatario: Receiver;
+  cont_novisto: number;
+}
+
+export interface Receiver {
+    telefono: string;
+    cargo: string;
+    lugar_trabajo: string;
+    token: string;
+    id_usuario: number;
+    primer_nombre_usuario: string;
+    segundo_nombre_usuario?: string;
+    tercer_nombre_usuario?: string;
+    apellido_pat_usuario?: string;
+    apellido_mat_usuario?: string;
+    img_perfil_usuario?: string;
+    gerencia?: string;
+    fecha_nacimiento: string;
+}
+
+export interface ResponseChatById {
+  err: number;
+  message: string;
+  mensajes: Messages[];
+}
+
+export interface Messages {
+  id: number;
+  fecha: Date;
+  text: string;
+  visto: number;
+  id_remitente: number;
+  id_destinatario: number;
+}
+
 //#endregion

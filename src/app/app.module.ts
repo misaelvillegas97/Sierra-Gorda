@@ -34,6 +34,8 @@ import { CardPollComponent } from './views/index/poll/card-poll/card-poll.compon
 import { ContactComponent } from './views/index/contact/contact.component';
 import { SliderCumpleaniosComponent } from './views/index/slider-cumpleanios/slider-cumpleanios.component';
 import { ActivitiesComponent } from './views/index/activities/activities.component';
+import { LoginModalComponent } from './modals/login-modal/login-modal.component';
+import { PollModalComponent } from './modals/poll-modal/poll-modal.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +53,9 @@ import { ActivitiesComponent } from './views/index/activities/activities.compone
     CardPollComponent,
     ContactComponent,
     SliderCumpleaniosComponent,
-    ActivitiesComponent
+    ActivitiesComponent,
+    LoginModalComponent,
+    PollModalComponent
   ],
   imports: [
     BrowserModule,
@@ -77,6 +81,7 @@ import { ActivitiesComponent } from './views/index/activities/activities.compone
 
   ],
   providers: [],
+  entryComponents: [LoginModalComponent, PollModalComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

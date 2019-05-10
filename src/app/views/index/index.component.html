@@ -212,6 +212,18 @@
           src="https://c3devapp.cl/sg/assets/img/gif/PNG/1 SECCION_NOTICIAS.png"
           class="img-buttons img-fluid"
         />
+        <img
+          draggable="false"
+          hidden="true"
+          src="https://c3devapp.cl/sg/assets/img/gif/salida/noticias-salida.gif"
+          class="img-buttons img-fluid"
+        />
+        <img
+          draggable="false"
+          hidden="true"
+          src="https://c3devapp.cl/sg/assets/img/gif/entrada/noticias.gif"
+          class="img-buttons img-fluid"
+        />
       </a>
     </div>
     <div
@@ -224,6 +236,18 @@
           (mouseover)="onHoverLink('seguridad',1)"
           (mouseleave)="onHoverLink('seguridad',2)"
           src="https://c3devapp.cl/sg/assets/img/gif/PNG/2 SECCION_SEGURIDAD.png"
+          class="img-buttons img-fluid"
+        />
+        <img
+          draggable="false"
+          hidden="true"
+          src="https://c3devapp.cl/sg/assets/img/gif/salida/seguridad-salida.gif"
+          class="img-buttons img-fluid"
+        />
+        <img
+          draggable="false"
+          hidden="true"
+          src="https://c3devapp.cl/sg/assets/img/gif/entrada/seguridad.gif"
           class="img-buttons img-fluid"
         />
       </a>
@@ -240,6 +264,18 @@
           src="https://c3devapp.cl/sg/assets/img/gif/PNG/3 SECCION_TERECONOZCO.png"
           class="img-buttons img-fluid"
         />
+        <img
+          draggable="false"
+          hidden="true"
+          src="https://c3devapp.cl/sg/assets/img/gif/salida/reconozco-salida.gif"
+          class="img-buttons img-fluid"
+        />
+        <img
+          draggable="false"
+          hidden="true"
+          src="https://c3devapp.cl/sg/assets/img/gif/entrada/reconozco.gif"
+          class="img-buttons img-fluid"
+        />
       </a>
     </div>
     <div
@@ -254,6 +290,18 @@
           src="https://c3devapp.cl/sg/assets/img/gif/PNG/4 SECCION_BENEFICIOS.png"
           class="img-buttons img-fluid"
         />
+        <img
+          draggable="false"
+          hidden="true"
+          src="https://c3devapp.cl/sg/assets/img/gif/salida/beneficios-salida.gif"
+          class="img-buttons img-fluid"
+        />
+        <img
+          draggable="false"
+          hidden="true"
+          src="https://c3devapp.cl/sg/assets/img/gif/entrada/beneficios.gif"
+          class="img-buttons img-fluid"
+        />
       </a>
     </div>
     <div
@@ -266,6 +314,18 @@
           (mouseover)="onHoverLink('galeria',1)"
           (mouseleave)="onHoverLink('galeria',2)"
           src="https://c3devapp.cl/sg/assets/img/gif/PNG/5 SECCION_GALERIA.png"
+          class="img-buttons img-fluid"
+        />
+        <img
+          draggable="false"
+          hidden="true"
+          src="https://c3devapp.cl/sg/assets/img/gif/salida/galeria-salida.gif"
+          class="img-buttons img-fluid"
+        />
+        <img
+          draggable="false"
+          hidden="true"
+          src="https://c3devapp.cl/sg/assets/img/gif/entrada/galeria.gif"
           class="img-buttons img-fluid"
         />
       </a>
@@ -461,8 +521,7 @@
 <button
   class="blue-button left-side wow fadeInDownBig"
   (click)="clickedInside($event)"
-  (click)="ls.isLoggedIn()? toggle_poll(true): loginModal.show()"
-  (click)="!ls.isLoggedIn()? setModalText(1): ''"
+  (click)="ls.isLoggedIn()? toggle_poll(true): openModal(1)"
 >
   <img
     src="https://c3devapp.cl/sg/assets/img/Encuesta.png"
@@ -488,8 +547,7 @@
 <button
   class="green-button right-side-2 wow fadeInUpBig"
   (click)="clickedInside($event)"
-  (click)="ls.isLoggedIn()? toggle_chat(true): loginModal.show()"
-  (click)="!ls.isLoggedIn()? setModalText(2): ''"
+  (click)="ls.isLoggedIn()? toggle_chat(true): openModal(2)"
 >
   <img
     src="https://c3devapp.cl/sg/assets/img/chat.png"
@@ -569,49 +627,3 @@
   </div>
 </div>
 
-<!-- Modal Login -->
-<div mdbModal #loginModal="mdbModal" class="modal fade" tabindex="-1" id="loginModal" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title w-100" id="myModalLabel">{{ loginText }}</h4>
-        </div>
-        <form (ngSubmit)="login( f.value )" #f="ngForm" novalidate="novalidate">
-        <div class="modal-body d-flex justify-content-center">
-          <div class="content-form w-100">
-            <!-- <div class="mt-3 w-100">
-              <input type="text" #rut="ngModel" name="rut" [ngClass]="{'invalid-rut': rut.invalid && rut.dirty}" placeholder="Ingresa tu rut" validateRut ngModel formatRut/>
-            </div> -->
-            <div class="input-group mt-3 w-100">
-              <span for="txt_correo" class="input-label w-100"><i class="fas fa-user-alt"></i> Rut:</span>
-              <input type="text" class="form-control" #rut="ngModel" name="rut" max="9" placeholder="Ingresa tu rut" validateRut ngModel formatRut/>
-              <div class="input-group-append"> <!-- Falta poner cursor: ? -->
-                <span *ngIf="rut.invalid" class="input-group-text">
-                  <i class="fa fa-times-circle" style="color:var(--danger)"></i>
-                </span>
-                <span *ngIf="rut.valid" class="input-group-text">
-                  <i class="fa fa-check-circle" style="color:var(--success)"></i>
-                </span>
-              </div>
-            </div>
-            <div class="input-group mt-3 w-100">
-              <span for="txt_pass" class="input-label w-100"><i class="fas fa-lock"></i> Contraseña:</span>
-              <input type="password" class="form-control" name="pass" #pass="ngModel" min="3" ngModel placeholder="•••••••">
-              <div class="input-group-append"> <!-- Falta poner cursor: ? -->
-                <span *ngIf="pass.invalid" class="input-group-text">
-                  <i class="fa fa-check-circle" style="color:var(--danger)"></i>
-                </span>
-                <span *ngIf="pass.valid" class="input-group-text">
-                  <i class="fa fa-check-circle" style="color:var(--success)"></i>
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="modal-footer d-flex justify-content-center">
-          <button type="submit" #loguear class="btn btbn-block btn-iniciar" [disabled]="f.invalid">Entrar</button>
-        </div>
-      </form>
-      </div>
-    </div>
-  </div>

@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Poll } from 'src/app/interface/interface';
 
 @Component({
   selector: 'app-card-poll',
@@ -7,7 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class CardPollComponent implements OnInit {
 
-  @Input() poll;
+  @Input() poll: Poll;
 
   constructor() { }
 

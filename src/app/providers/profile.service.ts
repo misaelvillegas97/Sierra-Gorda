@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { LoginService } from './login.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { RespuestaBuscar, ResponsePosition, ResponseGerency, ResponsePlaces, Gerencies, Places } from '../interface/interface';
-import { LoggedUser, UsuarioBuscar, Positions } from '../interface/interface';
+import { UsuarioBuscar, Positions } from '../interface/interface';
 
 const URL = 'http://c3wsapi.cl:2200/sg/';
 
@@ -32,14 +32,14 @@ export class ProfileService {
     switch (type) {
       case 2:
         data = {
-          id: this.ls.userLogged.id,
+          id: this.ls.userLogged.id_usuario,
           telefono: value
         };
         break;
 
       case 3:
         data = {
-          id: this.ls.userLogged.id,
+          id: this.ls.userLogged.id_usuario,
           correo: value
         };
         break;
@@ -47,7 +47,7 @@ export class ProfileService {
       case 4:
         console.log(value);
         data = {
-          id: this.ls.userLogged.id,
+          id: this.ls.userLogged.id_usuario,
           pass: value
         };
     }
@@ -55,8 +55,6 @@ export class ProfileService {
       .toPromise()
       .then(
         (res) => {
-          // this.ls.userLogged = res;
-          // console.log(res);
           respuesta = 0;
         }
       );

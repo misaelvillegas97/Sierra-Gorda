@@ -1,6 +1,8 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { LoginService } from 'src/app/providers/login.service';
 import { ProfileService } from 'src/app/providers/profile.service';
+import { MDBModalRef, MDBModalService } from 'angular-bootstrap-md';
+import { LoginModalComponent } from 'src/app/modals/login-modal/login-modal.component';
 
 declare var $: any;
 
@@ -14,7 +16,10 @@ export class NavbarComponent implements OnInit {
   @ViewChild('correo') correoRef: ElementRef;
   @ViewChild('pass') passRef: ElementRef;
 
-  constructor(public ls: LoginService, private ps: ProfileService) { }
+  modalRef: MDBModalRef;
+  modalOptions = {};
+
+  constructor(public ls: LoginService, private ps: ProfileService, private modalService: MDBModalService) { }
 
 
 
@@ -40,29 +45,18 @@ export class NavbarComponent implements OnInit {
     }
   }
 
-  async login(rut: string, pass: string) {
-    const rutD = rut.replace('.', '').replace('.', '').split('-');
-    const run = parseInt(rutD[0].toString(), 0);
-    const dv = parseInt(rutD[1].toString(), 0);
-    pass = btoa(pass);
-    pass = btoa(pass);
-    pass = btoa(pass);
-    await this.ls.login(run, dv, pass);
-    console.log(await this.ls.userLogged);
-  }
-
   async changeUserInfo(variable: number, value: any) {
     let res: number;
     switch (variable) {
       // Teléfono
       case 1:
-        if (value !== '' || value !== this.ls.userLogged.telefono) {
+        if (value !== '' || value !== this.ls.userLogged.telefono_usuario) {
           if (value.substring(0, 3) !== '+56') {
             console.log(value.substring(0,3));
             value = '+56' + value;
           }
-          this.ls.userLogged.telefono = value;
-          res = await this.ps.changeUserInfo(this.ls.userLogged.telefono, 2);
+          this.ls.userLogged.telefono_usuario = value;
+          res = await this.ps.changeUserInfo(this.ls.userLogged.telefono_usuario, 2);
           console.log(res);
           break;
         }
@@ -71,9 +65,9 @@ export class NavbarComponent implements OnInit {
 
       // Correo
       case 2:
-        if (value !== '' || value !== this.ls.userLogged.telefono) {
-          this.ls.userLogged.email = value;
-          res = await this.ps.changeUserInfo(this.ls.userLogged.email, 3);
+        if (value !== '' || value !== this.ls.userLogged.telefono_usuario) {
+          this.ls.userLogged.correo_usuario = value;
+          res = await this.ps.changeUserInfo(this.ls.userLogged.correo_usuario, 3);
           console.log(res);
           break;
         }
@@ -84,10 +78,10 @@ export class NavbarComponent implements OnInit {
       case 3:
         if (value !== '') {
           console.log(value);
-          this.ls.userLogged.pass = btoa(value);
-          this.ls.userLogged.pass = btoa(this.ls.userLogged.pass);
-          this.ls.userLogged.pass = btoa(this.ls.userLogged.pass);
-          res = await this.ps.changeUserInfo(this.ls.userLogged.pass, 4);
+          value = btoa(value);
+          value = btoa(value);
+          value = btoa(value);
+          res = await this.ps.changeUserInfo(value, 4);
           console.log(res);
           break;
         }
@@ -98,6 +92,41 @@ export class NavbarComponent implements OnInit {
     }
 
     return res;
+  }
+
+  openModal( opt: number ) {
+    let data = {}
+    switch (opt) {
+      case 0:
+        data = {
+          title: 'Inicia sesión'
+        };
+        break;
+
+      case 1: // Encuestas
+        data = {
+          title: 'Inicia sesión para acceder a las encuestas'
+        };
+        break;
+
+      case 2: // chat
+        data = {
+          title: 'Inicia sesión para acceder al chat'
+        };
+    }
+
+    this.modalOptions = {
+      backdrop: true,
+      keyboard: true,
+      focus: true,
+      show: false,
+      ignoreBackdropClick: false,
+      class: 'loginModal-container modal-dialog-centered',
+      containerClass: '',
+      animated: true,
+      data
+    };
+    this.modalRef = this.modalService.show(LoginModalComponent, this.modalOptions);
   }
 
 }

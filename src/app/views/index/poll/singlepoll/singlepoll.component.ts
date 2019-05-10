@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+// import { PollService } from 'src/app/providers/poll.service';
 
 @Component({
   selector: 'app-singlepoll',
@@ -12,7 +13,9 @@ export class SinglepollComponent implements OnInit {
 // tslint:disable-next-line: no-output-on-prefix
   @Output() onQuit = new EventEmitter<boolean>();
 
-  constructor() { }
+  constructor() {
+
+  }
 
   ngOnInit() {
   }
