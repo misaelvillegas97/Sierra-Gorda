@@ -179,13 +179,14 @@ export interface Alternative {
 export interface ResponseAllChats {
   err: any;
   message: string;
-  chat: Chat[];
+  chats: Chat[];
 }
 
 export interface Chat {
   id: number;
   destinatario: Receiver;
   cont_novisto: number;
+  fecha_ult_mensaje: Date;
 }
 
 export interface Receiver {
@@ -207,13 +208,13 @@ export interface Receiver {
 export interface ResponseChatById {
   err: number;
   message: string;
-  mensajes: Messages[];
+  data: Messages[];
 }
 
 export interface Messages {
   id: number;
   fecha: Date;
-  text: string;
+  texto: string;
   visto: number;
   id_remitente: number;
   id_destinatario: number;
