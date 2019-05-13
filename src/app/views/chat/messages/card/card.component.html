@@ -1,16 +1,16 @@
-<div class="card-chat d-flex justify-content-between shadow mb-3 wow fadeInUp" style="cursor: pointer; user-select: none" id="user-{{user.id}}">
+<div class="card-chat d-flex justify-content-between shadow mb-3 wow fadeInUp" style="cursor: pointer; user-select: none" id="user-{{ chat.destinatario.id_usuario }}">
   <!-- Message content -->
   <div>
     <div class="user-remitent">
-      {{ user.nombre }}
+      {{ chat.destinatario?.primer_nombre_usuario + ' ' + chat.destinatario?.apellido_pat_usuario }}
     </div>
     <div class="user-company">
-      {{ user.empresa }}
+      Sierra Gorda
     </div>
   </div>
   <!-- Actions -->
   <div class="card-extras my-auto">
-    <mdb-badge pill="true" class="badge-m" color="color-blue" style="user-select: none" *ngIf="user.unread != 0">{{ user.unread > 10? '+10': user.unread }}</mdb-badge>
+    <mdb-badge pill="true" class="badge-m" color="color-blue" style="user-select: none" *ngIf="chat.cont_novisto != 0">{{ chat?.cont_novisto > 10? '+10': chat?.cont_novisto }}</mdb-badge>
     <i
       class="fas fa-chevron-circle-right ml-2"
       style="color: #00A9B7"

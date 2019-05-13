@@ -2,8 +2,9 @@ import { Component, OnInit, AfterViewInit, ViewEncapsulation, HostListener, View
 import { LoginService } from 'src/app/providers/login.service';
 import { MDBModalService, MDBModalRef } from 'angular-bootstrap-md';
 import { LoginModalComponent } from 'src/app/modals/login-modal/login-modal.component';
-import { Poll } from 'src/app/interface/interface';
+import { Poll, Chat } from 'src/app/interface/interface';
 import { PollModalComponent } from 'src/app/modals/poll-modal/poll-modal.component';
+import { SinglechatComponent } from '../chat/messages/singlechat/singlechat.component';
 
 declare let $: any;
 
@@ -31,6 +32,7 @@ export class IndexComponent implements OnInit, AfterViewInit {
   // Single chat state
   chatSelected = false;
   userID: number = undefined;
+  chat: Chat = undefined;
 
   constructor(public ls: LoginService, private modalService: MDBModalService) {}
 
@@ -93,20 +95,22 @@ export class IndexComponent implements OnInit, AfterViewInit {
       if (this.userID !== undefined) {
         document.getElementById(`user-${this.userID}`).classList.remove('active');
       }
+      SinglechatComponent.prototype.ngOnDestroy();
       this.chatSelected = false;
       this.userID = undefined;
     }
     return false;
   }
 
-  loadSelectedChat(data: any): void {
-    if (data !== this.userID) {
+  loadSelectedChat(data: Chat): void {
+    this.chat = data;
+    if (data.destinatario.id_usuario !== this.userID) {
       if (this.userID !== undefined) {
         document.getElementById(`user-${this.userID}`).classList.remove('active');
         this.chatSelected = false;
         this.userID = undefined;
       }
-      this.userID = data;
+      this.userID = data.destinatario.id_usuario ;
       this.chatSelected = true;
       document.getElementById(`user-${this.userID}`).classList.add('active');
 

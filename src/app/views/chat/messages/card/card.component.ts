@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Chat } from 'src/app/interface/interface';
 
 @Component({
   selector: 'app-card',
@@ -6,7 +7,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./card.component.scss']
 })
 export class CardComponent implements OnInit {
-  @Input() user;
+  @Input() chat: Chat;
 
   constructor() { }
 

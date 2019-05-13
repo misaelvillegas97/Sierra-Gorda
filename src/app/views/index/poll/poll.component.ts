@@ -24,9 +24,9 @@ export class PollComponent implements OnInit, AfterViewInit {
       .then(
         polls => {
           this.pollList = polls;
-          console.table(this.pollList);
-          console.table(this.pollList[0].preguntas);
-          console.table(this.pollList[0].preguntas[0].alternativas);
+          // console.table(this.pollList);
+          // console.table(this.pollList[0].preguntas);
+          // console.table(this.pollList[0].preguntas[0].alternativas);
         }
       );
   }

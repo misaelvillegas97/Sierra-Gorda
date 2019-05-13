@@ -5,13 +5,15 @@
   </div>
 </div>
 <br />
-<div class="container-fluid chat-container">
-  <app-card
-    *ngFor="let user of faker"
-    [user]="user"
-    (click)="chatSelect(user.id)"
-  ></app-card>
-</div>
+<ng-container *ngIf="chatList">
+  <div class="container-fluid chat-container">
+    <app-card
+      *ngFor="let chat of chatList"
+      [chat]="chat"
+      (click)="chatSelect(chat)"
+    ></app-card>
+  </div>
+</ng-container>
 
 <div class="message-icon" (click)="onQuit.emit(false)">
   <img

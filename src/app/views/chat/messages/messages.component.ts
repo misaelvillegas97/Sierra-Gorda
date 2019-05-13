@@ -10,25 +10,32 @@ import { Chat } from 'src/app/interface/interface';
 export class MessagesComponent implements OnInit {
 
   // tslint:disable-next-line: no-output-on-prefix
-  @Output() public onSelectChat = new EventEmitter<number>();
+  @Output() public onSelectChat = new EventEmitter<Chat>();
   // tslint:disable-next-line: no-output-on-prefix
   @Output() public onQuit = new EventEmitter<boolean>();
 
   chatList: Chat[];
 
   constructor( public cs: ChatService ) {
-    this.cs.getAllChats()
-      .then(
-        (res) => {
-          console.log(res);
-        }
-      );
+    this.loadChats();
   }
 
   ngOnInit() {
   }
 
-  chatSelect(id: number) {
+  async loadChats() {
+    await this.cs.getAllChats()
+      .then(
+        (res) => {
+          if (res === 1) {
+            this.chatList = this.cs.chatList;
+            // console.log(this.chatList);
+          }
+        }
+      );
+  }
+
+  chatSelect(id: Chat) {
     this.onSelectChat.emit(id);
   }
 }

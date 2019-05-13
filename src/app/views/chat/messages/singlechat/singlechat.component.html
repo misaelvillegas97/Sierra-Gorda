@@ -7,7 +7,7 @@
   <div class="user-info pl-2">
     <p>
       <span class="user-name">
-        Nicolás Pérez
+        {{ data.destinatario.primer_nombre_usuario + ' ' + data.destinatario.apellido_pat_usuario }}
       </span> <br>
       <span class="user-company">
         Sierra Gorda
@@ -28,22 +28,22 @@
   </div>
 </div>
 <div class="chat-messages">
-  <ul>
-    <li style="width:100%" class="pb-3" *ngFor="let mensaje of mensajes">
+  <ul *ngIf="cs.messagesList">
+    <li style="width:100%" class="pb-3" *ngFor="let mensaje of messagesList">
       <div
         class="macro"
-        [ngClass]="mensaje.author == 'me' ? 'msj' : 'msj-rta'"
+        [ngClass]=" isSender(mensaje.id_remitente) ? 'msj' : 'msj-rta'"
         [ngStyle]="
-          {'color': mensaje.author == 'me' ? 'white' : '#616161'}
+          {'color': isSender(mensaje.id_remitente) ? 'white' : '#616161'}
         ">
         <div class="text text-l">
-          <p>{{ mensaje.message }}</p>
+          <p>{{ mensaje.texto }}</p>
           <p>
             <small
               [ngStyle]="
-                {'color': mensaje.author == 'me' ? 'white' : '#616161'}
+                {'color': isSender(mensaje.id_remitente) ? 'white' : '#616161'}
               ">
-              {{ mensaje.time }}
+              {{ mensaje.fecha }}
             </small>
           </p>
         </div>

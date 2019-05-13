@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { LoginService } from './login.service';
 import { HttpClient } from '@angular/common/http';
-import { ResponseAllChats, Chat, ResponseChatById } from '../interface/interface';
+import { ResponseAllChats, Chat, ResponseChatById, Messages } from '../interface/interface';
 
 const URL = 'http://c3wsapi.cl:2200/sg/';
 
@@ -10,18 +10,30 @@ const URL = 'http://c3wsapi.cl:2200/sg/';
 })
 export class ChatService {
   chatList: Chat[] = [];
+  messagesList: Messages[] = [];
 
   constructor(private ls: LoginService, private http: HttpClient) { }
 
   async getAllChats() {
     let respuesta = 0;
     if ( this.ls.isLoggedIn() ) {
-      return await this.http.get(URL + 'chat/getlistachatsinlim/' + atob(localStorage.getItem('sg-userID'))   )
+      await this.http.get( URL + 'chat/getlistachatsinlim/' + atob(localStorage.getItem('sg-userID')) )
       .toPromise()
       .then(
         (res: ResponseAllChats) => {
-          console.table();
-          this.chatList = res.chat;
+          // console.table(res.chats);
+          this.chatList = res.chats;
+
+          this.chatList.sort( (a, b) => {
+            if (a.fecha_ult_mensaje > b.fecha_ult_mensaje) {
+              return 1;
+            }
+            if (a.fecha_ult_mensaje < b.fecha_ult_mensaje) {
+              return -1;
+            }
+            // a must be equal to b
+            return 0;
+          });
           respuesta = 1;
           return;
         }
@@ -48,16 +60,27 @@ export class ChatService {
   }
 
   async getMessagesByChat(_chatID: number) {
+    let respuesta = -1;
     if ( this.ls.isLoggedIn() ) {
-      await this.http.get(URL + 'chat/getlistamensajesinlim/' + _chatID + '/' + localStorage.getItem('sg-userID') )
+      await this.http.get(URL + 'chat/getlistamensajesinlim/' + _chatID + '/' + atob(localStorage.getItem('sg-userID'))  )
       .toPromise()
       .then(
         (res: ResponseChatById) => {
           if (res.err) {
-            return [];
+            respuesta = 0;
+            return;
           }
 
-          return res.mensajes;
+          this.messagesList = [];
+          // tslint:disable-next-line: prefer-for-of
+          for (let i = 0; i < res.data.length; i++) {
+            const mensaje = res.data[i];
+            // console.log(mensaje);
+            this.messagesList.push(mensaje);
+          }
+
+          respuesta = 1;
+          return;
         }
       ).catch(
         err => {
@@ -72,9 +95,12 @@ export class ChatService {
               alert('500 - Error on code <<http://c3wsapi.cl>> | Obtener mensajes');
               break;
           }
-          return [];
+          respuesta = 0;
+          return;
         }
       );
+
     }
+    return respuesta;
   }
 }
