@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { RespuestaStatus, RespuestaLogin, Usuario } from '../interface/interface';
 import { MatSnackBar } from '@angular/material';
+import { Router } from '@angular/router';
+import { ActivitiesComponent } from '../views/index/activities/activities.component';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -16,7 +18,7 @@ export class LoginService {
 
   userLogged: Usuario;
 
-  constructor(public http: HttpClient, private snackbar: MatSnackBar) {
+  constructor(public http: HttpClient, private snackbar: MatSnackBar, private route: Router) {
     console.log('Servicio iniciado');
     if (this.userLogged === null) { this.userLogged = undefined; }
     this.isLoggedIn();
@@ -73,6 +75,17 @@ export class LoginService {
           panelClass: ['snackbar-login'],
           announcementMessage: 'Mensaje de bienvenida'
         });
+
+        switch (this.route.url) {
+          case '/':
+            // location.reload();
+            this.route.navigateByUrl('/refresh', {skipLocationChange: true}).then(
+              ()=> {
+                this.route.navigateByUrl('/');
+              }
+              );
+            break;
+        }
         return respuesta;
       })
       .catch(

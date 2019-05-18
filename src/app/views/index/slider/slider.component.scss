@@ -43,6 +43,7 @@
   height: 90px;
   left: -30px;
   width: 500px;
+  width: max-content;
   background-color: rgba(255, 255, 255, 0.8);
   border-radius: 0px 80px 80px 0px;
 }
@@ -52,10 +53,11 @@
   left: -2px;
 }
 
-.ms-caption > div > h4 {
-  position: absolute;
-  top: 0px;
+.ms-caption > div > div > h4 {
+  // position: absolute;
+  // top: 0px;
   left: 30px;
+  padding-right: 1em;
 
   font-weight: bolder !important;
   color: #5f6466;

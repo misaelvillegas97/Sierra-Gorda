@@ -2,8 +2,37 @@
 <div class="ms-partialview-template" id="partial-view-1">
   <!-- masterslider -->
   <div class="master-slider ms-skin-default" id="masterslider">
-
-    <div class="ms-slide">
+    <ng-container *ngIf="gs.galleryList">
+      <div class="ms-slide" *ngFor="let news of gs.galleryList; let i = index">
+        <img
+          src="assets/masterslider/style/blank.gif"
+          data-src="{{ news.url_img_noticia }}"
+          alt="lorem ipsum dolor sit"
+        />
+        <div class="ms-layer ms-caption" style=" left:30px;">
+          <p>
+            <span>
+              {{ news.fecha_creacion_noticia.getDate() }}
+              <br />
+              <small>
+                {{ monthShortM[news.fecha_creacion_noticia.getMonth()] }}
+              </small></span>
+          </p>
+          <div class="row m-0">
+            <div class="color-1-1"></div>
+            <div class="color-1-2"></div>
+            <div>
+              <h4 class="pt-3 pl-3">
+                <strong>{{ news.titulo_1 }}</strong><br /><span
+                  >{{ news.titulo_2 }}</span
+                >
+              </h4>
+          </div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+    <!-- <div class="ms-slide">
       <img
         src="assets/masterslider/style/blank.gif"
         data-src="https://c3devapp.cl/sg/assets/img/banner_ejemplo_1.png"
@@ -19,69 +48,16 @@
         <div class="row m-0">
           <div class="color-1-1"></div>
           <div class="color-1-2"></div>
-          <h4 class="pt-3 pl-3">
-            <strong>Taller «Desarrollo de habilidades</strong><br /><span
-              >para la Gestión del Desempeño»</span
-            >
-          </h4>
+          <div>
+            <h4 class="pt-3 pl-3">
+              <strong>Taller «Desarrollo de habilidades</strong><br /><span
+                >para la Gestión del Desempeño»</span
+              >
+            </h4>
+          </div>
+
         </div>
       </div>
-      <!-- <div class="ms-info"></div> -->
-    </div>
-
-    <div class="ms-slide">
-      <img
-        src="assets/masterslider/style/blank.gif"
-        data-src="https://c3devapp.cl/sg/assets/img/banner_ejemplo_1.png"
-        alt="lorem ipsum dolor sit"
-      />
-      <div class="ms-layer ms-caption" style=" left:30px;">
-        <p>
-          <span
-            >15<br />
-            <small>FEB</small></span
-          >
-        </p>
-        <div class="row m-0">
-          <div class="color-1-1"></div>
-          <div class="color-1-2"></div>
-          <h4 class="pt-3 pl-3">
-            <strong>Taller «Desarrollo de habilidades</strong><br /><span
-              >para la Gestión del Desempeño»</span
-            >
-          </h4>
-        </div>
-      </div>
-      <!-- <div class="ms-info"></div> -->
-    </div>
-
-    <div class="ms-slide">
-      <img
-        src="assets/masterslider/style/blank.gif"
-        data-src="https://c3devapp.cl/sg/assets/img/banner_ejemplo_1.png"
-        alt="lorem ipsum dolor sit"
-      />
-      <div class="ms-layer ms-caption" style=" left:30px;">
-        <p>
-          <span
-            >15<br />
-            <small>FEB</small></span
-          >
-        </p>
-        <div class="row m-0">
-          <div class="color-1-1"></div>
-          <div class="color-1-2"></div>
-          <h4 class="pt-3 pl-3">
-            <strong>Taller «Desarrollo de habilidades</strong><br /><span
-              >para la Gestión del Desempeño»</span
-            >
-          </h4>
-        </div>
-      </div>
-      <!-- <div class="ms-info"></div> -->
-    </div>
-
+    </div> -->
   </div>
 </div>
-
-

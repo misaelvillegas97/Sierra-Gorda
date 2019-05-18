@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, AfterViewInit } from '@angular/core';
+import { GalleryService } from 'src/app/providers/gallery.service';
 
 declare var MasterSlider: any;
 @Component({
@@ -6,14 +7,48 @@ declare var MasterSlider: any;
   templateUrl: './slider.component.html',
   styleUrls: ['./slider.component.scss']
 })
-export class SliderComponent implements OnInit {
+export class SliderComponent implements OnInit, AfterViewInit {
+  monthShort = [
+    'Ene',
+    'Feb',
+    'Mar',
+    'Abr',
+    'May',
+    'Jun',
+    'Jul',
+    'Ago',
+    'Sep',
+    'Oct',
+    'Nov',
+    'Dic'
+  ];
+  monthShortM = [
+    'ENE',
+    'FEB',
+    'MAR',
+    'ABR',
+    'MAY',
+    'JUN',
+    'JUL',
+    'AGO',
+    'SEP',
+    'OCT',
+    'NOV',
+    'DIC'
+  ];
   @Input() code: number;
 
-  constructor() {}
+  constructor(public gs: GalleryService) {}
 
   ngOnInit() {
-    this.createSlayer();
+    this.gs.getBanner().finally(() => {
+      setTimeout(() => {
+        this.createSlayer();
+      }, 0);
+    });
   }
+
+  ngAfterViewInit() {}
 
   createSlayer() {
     const slider = new MasterSlider();

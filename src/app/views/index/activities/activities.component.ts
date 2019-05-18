@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Activity } from 'src/app/interface/interface';
 import { ActivityService } from 'src/app/providers/activity.service';
+import { LoginService } from 'src/app/providers/login.service';
 
 declare var $: any;
 declare var jsCalendar: any;
@@ -42,7 +43,7 @@ export class ActivitiesComponent implements OnInit {
     'Diciembre',
   ];
 
-  constructor(private as: ActivityService) {
+  constructor(private as: ActivityService, public ls: LoginService) {
     this.dayselected = new Date().getDate();
     this.daynameselected = dayname[new Date().getDay()];
     this.jsCalendarSettings();
@@ -52,7 +53,6 @@ export class ActivitiesComponent implements OnInit {
     this.jsCalendarLoader();
   }
 
-  //#region Actividades
   jsCalendarSettings() {
     jsCalendar.prototype.colorfulSelect = function(dates: any[], color: any) {
       if (typeof dates === 'undefined') {
@@ -141,7 +141,6 @@ export class ActivitiesComponent implements OnInit {
             this.activeCalendar.colorfulSelect(dia + '/' + month + '/' + year, 'jsCalendar-colorful-orange')
           }
           this.selectedActivity = this.as.getActivityByDate(new Date());
-          console.log(this.selectedActivity);
         }
       );
   }
@@ -150,7 +149,48 @@ export class ActivitiesComponent implements OnInit {
   loadDayActivity(_date: Date) {
     this.selectedActivity = this.as.getActivityByDate(_date);
   }
-  //#endregion
 
+  async setInterest(id: number) {
+    if (this.ls.isLoggedIn()) {
+      await this.as.insertInterestAssistance(id, 1);
+    }
+  }
 
+  async setAssistance(id: number) {
+    if (this.ls.isLoggedIn()) {
+      await this.as.insertInterestAssistance(id, 2);
+    }
+  }
+
+  buttonValidator(actividad: Activity, _type: number): boolean {
+    if (this.ls.isLoggedIn()) {
+      if (actividad.interes_asistencia !== undefined ||
+          actividad.interes_asistencia !== null ||
+          actividad.interes_asistencia.length === 0) {
+        if (actividad.interes_asistencia[_type].meinteresa) {
+          return true;
+        } else {
+          return false;
+        }
+      } else {
+        return false;
+      }
+    } else {
+      return true;
+    }
+  }
+
+  fillInfoActividad( _actividad: Activity, _type: number): number {
+    if (this.ls.isLoggedIn()) {
+      if (_actividad.interes_asistencia !== undefined ||
+        _actividad.interes_asistencia !== null ||
+        _actividad.interes_asistencia.length === 0) {
+          return _actividad.interes_asistencia[_type].valor;
+        } else {
+          return null;
+        }
+    } else {
+      return null;
+    }
+  }
 }

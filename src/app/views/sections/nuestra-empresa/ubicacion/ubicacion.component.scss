@@ -1,0 +1,50 @@
+.map-img {
+  position: absolute;
+  top: 12%;
+  left: 10%;
+  z-index: -2;
+}
+
+.info-dialog {
+  max-width: 520px;
+  border-radius: 15px;
+  background-color: white;
+  margin-top: 15em;
+  padding: 14px;
+  padding-left: 20px;
+  margin-left: 26em;
+
+  h2 {
+    font-family: Calibri;
+    color: var(--orange);
+    font-weight: 600;
+  }
+
+  p {
+    font-family: Calibri;
+    font-weight: 400;
+    font-size: 15pt;
+    color: #8b8b8b;
+  }
+}
+
+.orange-text {
+  color: var(--orange) !important;
+}
+
+@media only screen and (max-width: 720px) {
+  .info-dialog {
+    margin-left: 0;
+    margin-top: 0;
+  }
+}
+
+@media only screen and (max-width: 1920px) and (min-width: 1500px) {
+  .info-dialog {
+    margin-left: 40em;
+  }
+
+  .map-img {
+    left: 20%;
+  }
+}

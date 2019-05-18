@@ -144,6 +144,19 @@ export interface Activity {
   ubicacion_actividad?: string;
   nombre_lugar_trabajo?: string;
   img_portada?: string;
+  interes_asistencia?: InterestAssistance[];
+}
+
+export interface ResponseInterestAssistance {
+  err: number;
+  message: string;
+  actividad: InterestAssistance[];
+}
+
+export interface InterestAssistance {
+  id: number;
+  valor: number; // <-- Cantidad de interes o asistencia.
+  meinteresa: boolean;
 }
 //#endregion
 
@@ -218,6 +231,36 @@ export interface Messages {
   visto: number;
   id_remitente: number;
   id_destinatario: number;
+}
+
+//#endregion
+
+//#region galeria
+
+export interface ResponseGallery {
+  err: number;
+  message: string;
+  banners: Gallery[];
+}
+
+export interface Gallery {
+  fecha_creacion_noticia: Date;
+  formato: number;
+  id_noticia: number;
+  titulo_noticia: string;
+  url_img_noticia: string;
+  titulo_1?: string;
+  titulo_2?: string;
+}
+
+//#endregion
+
+//#region Cumpleaños
+
+export interface ResponseBirthday {
+  err: number;
+  message: string;
+  usuarios: Usuario[];
 }
 
 //#endregion

@@ -1,0 +1,84 @@
+<div class="container">
+  <h1 class="estar-tv-title animated fadeInLeftBig">
+    ESTAR Conectados TV
+  </h1>
+
+  <div class="estar-content">
+    <div class="row">
+      <!-- Video y subtítulo -->
+      <div class="col-lg-8 col-md-7 col-sm-12">
+        <div class="animated fadeIn">
+          <video class="video-fluid shadow" style="border-radius: 10px 10px 0 0;" muted defaultmuted controls poster="http://c3soporte00200.cl/sg/noticias/uploads/videos/SIERRA_GORDA_CLIMA_TEASER.jpg">
+              <!-- <source src="https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_30mb.mp4" type="video/mp4"> -->
+              <source src="http://c3soporte00200.cl/sg/noticias/uploads/videos/SIERRA_GORDA_CLIMA_TEASER.mp4" type="video/mp4">
+          </video>
+        </div>
+        <h6 class="estar-tv-subtitle animated fadeInLeftBig">MISIÓN / VISIÓN DE SIERRA GORDA SCM</h6>
+        <p class="estar-tv-subtext animated fadeInLeftBig">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos reprehenderit officia earum similique repellendus quis animi numquam tenetur.
+        </p>
+        <a class="estar-tv-ver-mas animated fadeInLeftBig" style="cursor: pointer">MOSTRAR MÁS</a>
+      </div>
+
+      <!-- Panel categorías -->
+      <div class="col-lg-4 col-md-5 col-sm-12 p-0 m-0 animated fadeInRightBig">
+        <div class="categorias shadow" style="max-height: 550px;" [@routeAnimations]="prepareRoute(outlet)">
+          <router-outlet #outlet="outlet"></router-outlet>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<hr class="mt-4 mb-4 style-two ">
+
+<div class="container">
+  <div class="visto-content">
+    <div class="row">
+      <div class="col-12">
+        <h6 class="visto-title">
+            <i class="fas fa-heart pr-2" style="color: var(--orange)"></i>LO MÁS VISTO
+        </h6>
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-12 d-flex mt-4 animated wow fadeInUp">
+        <div class="row m-0 p-0">
+          <div class="col-lg-5 col-md-5 col-sm-5 visto-img">
+            <img src="https://cdn.cultofmac.com/wp-content/uploads/2017/03/iOS-App-Store-2-780x536.jpg" alt="contenido-de-prueba" class="img-fluid">
+          </div>
+          <div class="col-lg-7 col-md-7 col-sm-7 visto-img-description">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam exercitationem accusantium ex magni, delectus dignissimos doloribus dolor totam nam odit fugiat. Totam nostrum, asperiores magnam atque vel laudantium itaque porro!</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-12 d-flex mt-4 animated wow fadeInUp">
+        <div class="row m-0 p-0">
+          <div class="col-lg-5 col-md-5 col-sm-5 visto-img">
+            <img src="https://cdn.cultofmac.com/wp-content/uploads/2017/03/iOS-App-Store-2-780x536.jpg" alt="contenido-de-prueba" class="img-fluid">
+          </div>
+          <div class="col-lg-7 col-md-7 col-sm-7 visto-img-description">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam exercitationem accusantium ex magni, delectus dignissimos doloribus dolor totam nam odit fugiat. Totam nostrum, asperiores magnam atque vel laudantium itaque porro!</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-12 d-flex mt-4 animated wow fadeInUp">
+        <div class="row m-0 p-0">
+          <div class="col-lg-5 col-md-5 col-sm-5 visto-img">
+            <img src="https://cdn.cultofmac.com/wp-content/uploads/2017/03/iOS-App-Store-2-780x536.jpg" alt="contenido-de-prueba" class="img-fluid">
+          </div>
+          <div class="col-lg-7 col-md-7 col-sm-7 visto-img-description">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam exercitationem accusantium ex magni, delectus dignissimos doloribus dolor totam nam odit fugiat. Totam nostrum, asperiores magnam atque vel laudantium itaque porro!</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-12 d-flex mt-4 animated wow fadeInUp">
+        <div class="row m-0 p-0">
+          <div class="col-lg-5 col-md-5 col-sm-5 visto-img">
+            <img src="https://cdn.cultofmac.com/wp-content/uploads/2017/03/iOS-App-Store-2-780x536.jpg" alt="contenido-de-prueba" class="img-fluid">
+          </div>
+          <div class="col-lg-7 col-md-7 col-sm-7 visto-img-description">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam exercitationem accusantium ex magni, delectus dignissimos doloribus dolor totam nam odit fugiat. Totam nostrum, asperiores magnam atque vel laudantium itaque porro!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

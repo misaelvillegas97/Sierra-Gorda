@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ResponseNumberActivityByMonth, Activity } from '../interface/interface';
+import { ResponseNumberActivityByMonth, Activity, ResponseInterestAssistance } from '../interface/interface';
+import { LoginService } from './login.service';
 
 const URL = 'http://c3wsapi.cl:2200/sg/actividades/';
 
@@ -13,11 +14,13 @@ export class ActivityService {
   activityPerDay: number;
   fechap = new Date('12-4-2012');
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private ls: LoginService) {
     // this.getactivitiesPerMonthByMonth(4, 2019);
   }
 
   async getActivitiesNumberByMonth(month: number, year: number) {
+    this.actividadesList = [];
+    this.activitiesPerMonth = [];
     await this.http.get(URL + `getdiasconactividadeslist/${
       year
       }/${
@@ -37,6 +40,19 @@ export class ActivityService {
             for (let actividadDetalle of actividad.evento ) {
               actividadDetalle.fecha_actividad = new Date(actividadDetalle.fecha_actividad);
               this.actividadesList.push(actividadDetalle);
+              if (this.ls.isLoggedIn()) {
+                this.http.get( URL + 'getinteresasistencia/' + actividadDetalle.id + '/' + atob(localStorage.getItem('sg-userID')))
+                .toPromise()
+                .then(
+                  (res: ResponseInterestAssistance) => {
+                    if (res.err) {
+                      return;
+                    }
+                    actividadDetalle.interes_asistencia = res.actividad;
+                    return;
+                  }
+                );
+              }
             }
           }
         })
@@ -77,5 +93,24 @@ export class ActivityService {
     );
 
     return selectedActivity;
+  }
+
+  insertInterestAssistance(_id: number, _type: number) {
+    // Type 1: Interest
+    // Type 2: Assistance
+
+    const DATA: object = {
+      id_usuario: atob(localStorage.getItem('sg-userID')),
+      id_actividad: _id,
+      tipo: _type
+    };
+
+    this.http.post( URL + 'agregarinteresasistencia/', DATA )
+      .toPromise()
+      .then(
+        (res) => {
+          console.log(res);
+        }
+      );
   }
 }

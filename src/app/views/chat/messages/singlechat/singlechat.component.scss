@@ -135,12 +135,14 @@ ul {
   width: 100%;
   list-style-type: none;
   padding: 18px;
-  // position: absolute;
   bottom: 47px;
   display: flex;
   flex-direction: column;
   top: 0;
   overflow-y: scroll;
+  margin-bottom: 0;
+  padding-bottom: 0;
+  scroll-behavior: smooth;
 }
 input:focus {
   outline: none;
@@ -190,11 +192,10 @@ input.chat-input {
 }
 
 .send-message {
-  margin-left: 5px;
-  border-radius: 20px;
-  background-color: #fa8f5b;
-  height: 25px;
+  margin: 0;
+  padding: 0;
   border: none;
+  background: none;
 }
 
 .shadow-green {

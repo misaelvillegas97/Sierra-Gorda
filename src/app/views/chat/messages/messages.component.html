@@ -5,10 +5,10 @@
   </div>
 </div>
 <br />
-<ng-container *ngIf="chatList">
+<ng-container *ngIf="cs.chatList">
   <div class="container-fluid chat-container">
     <app-card
-      *ngFor="let chat of chatList"
+      *ngFor="let chat of cs.chatList"
       [chat]="chat"
       (click)="chatSelect(chat)"
     ></app-card>

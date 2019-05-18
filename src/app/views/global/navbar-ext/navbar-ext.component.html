@@ -1,0 +1,77 @@
+<img src="https://c3devapp.cl/sg/assets/img/Header_Interiores.png" alt="" class="absolute w-100  animated fadeInDownBig" draggable="false" style="z-index: -1">
+<!--Navbar-->
+<mdb-navbar SideClass="navbar navbar-expand-lg navbar-light theme-banner darken-1 shadow-none pt-4 pb-4 mb-4" style="background-color: red">
+  <!-- Navbar brand -->
+  <mdb-navbar-brand class="no-select"
+    ><a class="navbar-brand" class="ml-2 pl-2 mt-4 no-select" routerLink="/">
+      <img
+        class="img-fluid mt-4 no-select"
+        src="https://c3devapp.cl/sg/assets/img/logo_SG.png"
+        style="width: 180px"
+        draggable="false"
+        alt=""
+      /> </a
+  ></mdb-navbar-brand>
+
+  <!-- Collapsible content -->
+  <links>
+    <!-- Links -->
+    <!-- <ul class="navbar-nav ml-auto"></ul> -->
+    <!-- Links -->
+    <div class="ml-auto ">
+      <div (mouseover)="onNameHover(true)" (mouseleave)="onNameHover(false)" *ngIf="ls.isLoggedIn()">
+        <span class="user-grettings" (mouseover)="onNameHover(true)">¡Hola! <span class="bold" (mouseover)="onNameHover(true)">{{this.ls.userLogged?.primer_nombre_usuario}}</span></span>
+        <img
+          (mouseover)="onNameHover(true)"
+          src="https://centrik.in/wp-content/uploads/2017/02/user-image-.png"
+          alt=""
+          class="img-thumbnail rounded-circle user-pic"
+        />
+        <div id="user-hover-menu" class="shadow"  *ngIf="ls.isLoggedIn()">
+            <div class="header">
+              <p> {{ this.ls.userLogged?.primer_nombre_usuario }} {{ this.ls.userLogged?.apellido_pat_usuario }} {{ this.ls.userLogged?.apellido_mat_usuario != null? this.ls.userLogged?.apellido_mat_usuario : '' }} </p>
+            </div>
+            <div class="content-form">
+              <div>
+                <span for="txt_fono" class="input-label"><i class="fas fa-phone fa-rotate-90"></i> Teléfono:</span> <br>
+                <input type="text" [value]="ls.userLogged?.telefono_usuario" pattern="/[+][56][/0-9]{0,10}$/" #telefono disabled/>
+                <span class="edit-button" (click)="!telefono.disabled? changeUserInfo(1, telefono.value): ''" (click)="telefono.disabled = !telefono.disabled" [ngStyle]="{'background-color': !telefono.disabled? '#8DCF85': '#00ADBA'}">
+                  <i class="fas fa-pencil-alt i-edit" *ngIf="telefono.disabled"></i>
+                  <i class="fas fa-save i-edit" *ngIf="!telefono.disabled" [ngStyle]="{'margin-left': !telefono.disabled? '5px': '4.1px'}"></i>
+                </span>
+              </div>
+              <div class="mt-3">
+                <span for="txt_correo" class="input-label"><i class="fas fa-envelope"></i> Correo:</span> <br>
+                <input type="text" #correo [value]="ls.userLogged?.correo_usuario" disabled/>
+                <span class="edit-button" (click)="!correo.disabled? changeUserInfo(2, correo.value): 'console.log(false)'" (click)="correo.disabled = !correo.disabled" [ngStyle]="{'background-color': !correo.disabled? '#8DCF85': '#00ADBA'}">
+                  <i class="fas fa-pencil-alt i-edit" *ngIf="correo.disabled"></i>
+                  <i class="fas fa-save i-edit" *ngIf="!correo.disabled" [ngStyle]="{'margin-left': !correo.disabled? '5px': '4.1px'}"></i>
+                </span>
+              </div>
+              <div class="mt-3">
+                <span for="txt_pass" class="input-label"><i class="fas fa-lock"></i> Contraseña:</span> <br>
+                <input type="password" #pass placeholder="•••••••" disabled>
+                <span class="edit-button" (click)="!pass.disabled? changeUserInfo(3, pass.value): ''" (click)="pass.disabled = !pass.disabled" [ngStyle]="{'background-color': !pass.disabled? '#8DCF85': '#00ADBA'}">
+                  <i class="fas fa-pencil-alt i-edit" *ngIf="pass.disabled"></i>
+                  <i class="fas fa-save i-edit" *ngIf="!pass.disabled" [ngStyle]="{'margin-left': !pass.disabled? '5px': '4.1px'}"></i>
+                </span>
+              </div>
+              <div class="mt-4 text-right">
+                <a class="input-label" style="text-decoration: underline" (click)="ls.logout()">Cerrar Sesión <i class="fas fa-sign-out-alt"></i></a>
+              </div>
+            </div>
+        </div>
+      </div>
+      <div (click)="openModal(0)" *ngIf="!ls.isLoggedIn()">
+          <span class="user-grettings">Iniciar Sesión</span>
+          <img
+            src="https://centrik.in/wp-content/uploads/2017/02/user-image-.png"
+            alt=""
+            class="img-thumbnail rounded-circle user-pic"
+          />
+        </div>
+    </div>
+  </links>
+  <!-- Collapsible content -->
+</mdb-navbar>
+<!--/.Navbar-->

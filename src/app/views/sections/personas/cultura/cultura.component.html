@@ -1,0 +1,118 @@
+<div class="container animated fadeInUpBig">
+  <form #f="ngForm">
+    <div class="row d-flex animated fadeIn">
+      <div class="toggle w-100 d-flex justify-content-center">
+        <input type="radio" name="estar"  #default="ngModel" ngModel value="default" id="estar-default" checked selected/>
+        <!-- <label for="estar-default" *ngIf="f.value['estar'] !== 'default' && f.value['estar'] !== ''" class="estar-buttons estar-buttons-default"></label> -->
+        <label for="estar-default" [ngClass]="{'estar-buttons-active': f.value['estar'] === '' || f.value['estar'] === 'default'}" class="estar-buttons estar-buttons-default"></label>
+
+        <input type="radio" name="estar" value="e" #estar="ngModel" ngModel id="estar-e"/>
+        <label for="estar-e" [ngClass]="{'estar-buttons-active': f.value['estar'] === 'e'}" class="estar-buttons estar-buttons-e">E</label>
+
+        <input type="radio" name="estar" value="s" #estar="ngModel" ngModel id="estar-s"/>
+        <label for="estar-s" [ngClass]="{'estar-buttons-active': f.value['estar'] === 's'}" class="estar-buttons estar-buttons-s">S</label>
+
+        <input type="radio" name="estar" value="t" #estar="ngModel" ngModel id="estar-t"/>
+        <label for="estar-t" [ngClass]="{'estar-buttons-active': f.value['estar'] === 't'}" class="estar-buttons estar-buttons-t">T</label>
+
+        <input type="radio" name="estar" value="a" #estar="ngModel" ngModel id="estar-a"/>
+        <label for="estar-a" [ngClass]="{'estar-buttons-active': f.value['estar'] === 'a'}" class="estar-buttons estar-buttons-a">A</label>
+
+        <input type="radio" name="estar" value="r" #estar="ngModel" ngModel id="estar-r"/>
+        <label for="estar-r" [ngClass]="{'estar-buttons-active': f.value['estar'] === 'r'}" class="estar-buttons estar-buttons-r">R</label>
+
+      </div>
+    </div>
+  </form>
+  <br>
+  <div class="row d-flex justify-content-center">
+    <div class="col-lg-10">
+      <div class="estar-dialog shadow m-4 p-4 w-100 h-100 animated fadeIn">
+        <ng-container *ngTemplateOutlet="
+          f.value['estar'] === '' || f.value['estar'] === 'default' ? tEstarD:
+          f.value['estar'] === 'e' ? tEstarE :
+          f.value['estar'] === 's' ? tEstarS :
+          f.value['estar'] === 't' ? tEstarT :
+          f.value['estar'] === 'a' ? tEstarA :
+          f.value['estar'] === 'r' ? tEstarR : ''
+        ">
+        </ng-container>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<ng-template #tEstarD>
+  <div class="row">
+    <div class="col-lg-8 col-md-8 col-sm-12"></div>
+    <div class="col-lg-4 col-md-4 col-sm-12"></div>
+  </div>
+</ng-template>
+
+<ng-template #tEstarE>
+  <div class="row h-100 animated fadeIn">
+    <div class="col-lg-8 col-md-8 col-sm-12 h-100 estar-dialog-texto-e">
+      <h6>ENFOQUE EN LOS RESULTADOS</h6>
+      <br>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam saepe natus quis, perferendis corporis fugit sint illo suscipit quia voluptatum autem vitae quasi! Porro, officia est? Ea ex voluptatem repellendus.
+      </p>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-12">
+      foto_aqui
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #tEstarS>
+  <div class="row h-100 animated fadeIn">
+    <div class="col-lg-8 col-md-8 col-sm-12 h-100 estar-dialog-texto-s">
+      <h6>SEGURIDAD</h6>
+      <br>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos nostrum explicabo aperiam, molestias recusandae dolorem! Ipsam quod eos beatae aspernatur alias, quia tempore laudantium autem architecto rerum fugiat earum quibusdam?
+      </p>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-12"></div>
+  </div>
+</ng-template>
+
+<ng-template #tEstarT>
+  <div class="row h-100 animated fadeIn">
+    <div class="col-lg-8 col-md-8 col-sm-12 h-100 estar-dialog-texto-t">
+      <h6>TRABAJO EN EQUIPO</h6>
+      <br>
+      <p>
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veritatis est magnam vel aspernatur repellendus itaque unde. Est ullam laudantium debitis maxime, officia repudiandae pariatur in iste. Porro officia reiciendis suscipit.
+      </p>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-12"></div>
+  </div>
+</ng-template>
+
+<ng-template #tEstarA>
+  <div class="row h-100 animated fadeIn">
+    <div class="col-lg-8 col-md-8 col-sm-12 h-100 estar-dialog-texto-a">
+      <h6>AUSTERIDAD</h6>
+      <br>
+      <p>
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veniam, soluta! Iste aperiam voluptate atque laudantium neque, ut perferendis qui? Officiis iure pariatur illum libero vero voluptatum maiores nostrum aperiam quidem?
+      </p>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-12"></div>
+  </div>
+</ng-template>
+
+<ng-template #tEstarR>
+  <div class="row h-100 animated fadeIn">
+    <div class="col-lg-8 col-md-8 col-sm-12 h-100 estar-dialog-texto-r">
+      <h6>RECTITUD E INTEGRIDAD</h6>
+      <br>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam, nam debitis velit error dolorum nulla repellat rem quis fugiat fugit voluptatum corporis delectus quo natus at laboriosam maxime cupiditate exercitationem!
+      </p>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-12"></div>
+  </div>
+</ng-template>

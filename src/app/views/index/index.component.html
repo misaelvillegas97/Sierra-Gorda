@@ -1,3 +1,5 @@
+<app-navbar></app-navbar>
+
 <!-- First Banner -->
 <div class="container-fluid wow fadeIn">
   <app-slider code="banner-principal"></app-slider>
@@ -10,89 +12,89 @@
   <div
     class="row text-center mx-auto d-flex justify-content-between  pl-4 pb-2"
   >
-    <div
-      class="col-xs-12 col-sm-6 col-md-6 col-lg-3 wow fadeInLeftBig pb-2"
-      (mouseover)="onButtonHover('Nuestra Compañía', true)"
-      (mouseleave)="onButtonHover('Nuestra Compañía', false)"
-    >
-      <button id="compania" class="link-buttons">
-        <div class="row m-0">
-          <div id="compania-1" class="color-1-1"></div>
-          <div id="compania-2" class="color-1-2"></div>
-          <span id="compania-3" class="text-1 pr-2 text-buttons my-auto mx-auto"
-            >Nuestra<br /><strong>COMPAÑÍA</strong></span
-          >
-        </div>
-      </button>
-      <div id="compania-options" class="container-open-link-1">
-        <div class="triangle-up"></div>
-        <ul>
-          <li routerLink="/" style="cursor: pointer;">
-            <span>Quienes Somos</span><i class="fas fa-chevron-right"></i>
-          </li>
-          <li routerLink="/" style="cursor: pointer;">
-            <span>Historia</span><i class="fas fa-chevron-right"></i>
-          </li>
-          <li routerLink="/" style="cursor: pointer;">
-            <span>Propiedad</span><i class="fas fa-chevron-right"></i>
-          </li>
-          <li routerLink="/" style="cursor: pointer;">
-            <span>Equipo Ejecutivo</span><i class="fas fa-chevron-right"></i>
-          </li>
-          <li routerLink="/" style="cursor: pointer;">
-            <span>Gerencia / Superintendencias</span
-            ><i class="fas fa-chevron-right"></i>
-          </li>
-          <li routerLink="/" style="cursor: pointer;">
-            <span>Proceso Productivo</span><i class="fas fa-chevron-right"></i>
-          </li>
-          <li routerLink="/" style="cursor: pointer;">
-            <span>Políticas</span><i class="fas fa-chevron-right"></i>
-          </li>
-          <li routerLink="/" style="cursor: pointer;">
-            <span>Ubicación</span><i class="fas fa-chevron-right"></i>
-          </li>
-        </ul>
+  <div
+    class="col-xs-12 col-sm-6 col-md-6 col-lg-3 wow fadeInLeftBig pb-2"
+    (mouseover)="onButtonHover('Nuestra Compañía', true)"
+    (mouseleave)="onButtonHover('Nuestra Compañía', false)"
+  >
+    <button id="compania" class="link-buttons">
+      <div class="row m-0">
+        <div id="compania-1" class="color-1-1"></div>
+        <div id="compania-2" class="color-1-2"></div>
+        <span id="compania-3" class="text-1 pr-2 text-buttons my-auto mx-auto"
+          >Nuestra<br /><strong>COMPAÑÍA</strong></span
+        >
       </div>
+    </button>
+    <div id="compania-options" class="container-open-link-1">
+      <div class="triangle-up"></div>
+      <ul>
+        <li routerLink="/nuestra-empresa/quienes-somos" style="cursor: pointer;">
+          <span>Quienes Somos</span><i class="fas fa-chevron-right"></i>
+        </li>
+        <li routerLink="/nuestra-empresa/historia" style="cursor: pointer;">
+          <span>Historia</span><i class="fas fa-chevron-right"></i>
+        </li>
+        <li routerLink="/nuestra-empresa/propiedad" style="cursor: pointer;">
+          <span>Propiedad</span><i class="fas fa-chevron-right"></i>
+        </li>
+        <li routerLink="/" style="cursor: pointer;">
+          <span>Equipo Ejecutivo</span><i class="fas fa-chevron-right"></i>
+        </li>
+        <li routerLink="/nuestra-empresa/gerencia-superintendencias" style="cursor: pointer;">
+          <span>Gerencia / Superintendencias</span
+          ><i class="fas fa-chevron-right"></i>
+        </li>
+        <li routerLink="/nuestra-empresa/proceso-productivo" style="cursor: pointer;">
+          <span>Proceso Productivo</span><i class="fas fa-chevron-right"></i>
+        </li>
+        <li routerLink="/nuestra-empresa/politicas" style="cursor: pointer;">
+          <span>Políticas</span><i class="fas fa-chevron-right"></i>
+        </li>
+        <li routerLink="/nuestra-empresa/ubicacion" style="cursor: pointer;">
+          <span>Ubicación</span><i class="fas fa-chevron-right"></i>
+        </li>
+      </ul>
     </div>
-    <div
-      class="col-xs-12 col-sm-6 col-md-6 col-lg-3 wow fadeInUpBig pb-4"
-      (mouseover)="onButtonHover('Personas', true)"
-      (mouseleave)="onButtonHover('Personas', false)"
-    >
-      <button id="personas" class="link-buttons">
-        <div class="row m-0">
-          <div id="personas-1" class="color-2-1"></div>
-          <div id="personas-2" class="color-2-2"></div>
-          <span id="personas-3" class="pr-2 text-2 text-buttons my-auto mx-auto"
-            ><strong>PERSONAS</strong></span
-          >
-        </div>
-      </button>
-      <div id="personas-options" class="container-open-link-2">
-        <div class="triangle-up"></div>
-        <ul>
-          <li routerLink="/" style="cursor: pointer;">
-            <span>Cultura</span><i class="fas fa-chevron-right"></i>
-          </li>
-          <li routerLink="/" style="cursor: pointer;">
-            <span>Portal de Videos</span><i class="fas fa-chevron-right"></i>
-          </li>
-          <li routerLink="/" style="cursor: pointer;">
-            <span>Revista</span><i class="fas fa-chevron-right"></i>
-          </li>
-          <li routerLink="/" style="cursor: pointer;">
-            <span>Cumpleaños</span><i class="fas fa-chevron-right"></i>
-          </li>
-          <li routerLink="/" style="cursor: pointer;">
-            <span>Persa SG</span><i class="fas fa-chevron-right"></i>
-          </li>
-          <li routerLink="/" style="cursor: pointer;">
-            <span>Comunidades</span><i class="fas fa-chevron-right"></i>
-          </li>
-        </ul>
+  </div>
+  <div
+    class="col-xs-12 col-sm-6 col-md-6 col-lg-3 wow fadeInLeftBig pb-4"
+    (mouseover)="onButtonHover('Personas', true)"
+    (mouseleave)="onButtonHover('Personas', false)"
+  >
+    <button id="personas" class="link-buttons">
+      <div class="row m-0">
+        <div id="personas-1" class="color-2-1"></div>
+        <div id="personas-2" class="color-2-2"></div>
+        <span id="personas-3" class="pr-2 text-2 text-buttons my-auto mx-auto"
+          ><strong>PERSONAS</strong></span
+        >
       </div>
+    </button>
+    <div id="personas-options" class="container-open-link-2">
+      <div class="triangle-up"></div>
+      <ul>
+        <li routerLink="/personas/cultura" style="cursor: pointer;">
+          <span>Cultura</span><i class="fas fa-chevron-right"></i>
+        </li>
+        <li routerLink="/personas/portal" style="cursor: pointer;">
+          <span>Portal de Videos</span><i class="fas fa-chevron-right"></i>
+        </li>
+        <li routerLink="/personas/revista" style="cursor: pointer;">
+          <span>Revista</span><i class="fas fa-chevron-right"></i>
+        </li>
+        <li routerLink="/personas/cumpleanios" style="cursor: pointer;">
+          <span>Cumpleaños</span><i class="fas fa-chevron-right"></i>
+        </li>
+        <li routerLink="/personas/persasg" style="cursor: pointer;">
+          <span>Persa SG</span><i class="fas fa-chevron-right"></i>
+        </li>
+        <li routerLink="/personas/comunidades" style="cursor: pointer;">
+          <span>Comunidades</span><i class="fas fa-chevron-right"></i>
+        </li>
+      </ul>
     </div>
+  </div>
     <div
       class="col-xs-12 col-sm-6 col-md-6 col-lg-3 wow fadeInUpBig pb-4"
       (mouseover)="onButtonHover('Aplicaciones', true)"

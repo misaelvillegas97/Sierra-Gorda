@@ -11,7 +11,9 @@ export class SliderCumpleaniosComponent implements OnInit {
 
   @ViewChild('carousel') carousel: CarouselComponent;
 
-  constructor(public birthService: CumpleañosService) { }
+  constructor(public bs: CumpleañosService) {
+    this.bs.getAllBirth();
+  }
 
   ngOnInit() {
   }

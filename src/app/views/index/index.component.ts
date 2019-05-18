@@ -5,6 +5,7 @@ import { LoginModalComponent } from 'src/app/modals/login-modal/login-modal.comp
 import { Poll, Chat } from 'src/app/interface/interface';
 import { PollModalComponent } from 'src/app/modals/poll-modal/poll-modal.component';
 import { SinglechatComponent } from '../chat/messages/singlechat/singlechat.component';
+import { ChatService } from 'src/app/providers/chat.service';
 
 declare let $: any;
 
@@ -34,7 +35,7 @@ export class IndexComponent implements OnInit, AfterViewInit {
   userID: number = undefined;
   chat: Chat = undefined;
 
-  constructor(public ls: LoginService, private modalService: MDBModalService) {}
+  constructor(public ls: LoginService, private modalService: MDBModalService, private cs: ChatService) {}
 
   ngOnInit() {
   }
@@ -103,21 +104,31 @@ export class IndexComponent implements OnInit, AfterViewInit {
   }
 
   loadSelectedChat(data: Chat): void {
-    this.chat = data;
+    SinglechatComponent.prototype.ngOnDestroy();
     if (data.destinatario.id_usuario !== this.userID) {
       if (this.userID !== undefined) {
         document.getElementById(`user-${this.userID}`).classList.remove('active');
+        this.cs.messagesList = [];
         this.chatSelected = false;
         this.userID = undefined;
+        this.chat = undefined;
       }
-      this.userID = data.destinatario.id_usuario ;
-      this.chatSelected = true;
-      document.getElementById(`user-${this.userID}`).classList.add('active');
+      this.chat = undefined;
+      this.userID = undefined;
+      this.chatSelected = false;
+      setTimeout(() => {
+        this.chatSelected = true;
+        this.userID = data.destinatario.id_usuario ;
+        this.chat = data;
+        document.getElementById(`user-${this.userID}`).classList.add('active');
+      }, 0);
 
     } else {
       document.getElementById(`user-${this.userID}`).classList.remove('active');
+      this.cs.messagesList = [];
       this.chatSelected = false;
       this.userID = undefined;
+      this.chat = undefined;
     }
   }
   //#endregion Chat

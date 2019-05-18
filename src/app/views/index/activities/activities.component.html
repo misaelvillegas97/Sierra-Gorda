@@ -60,12 +60,12 @@
                       <span class="bold">¿Horario?</span> <br>
                       <span>Desde las {{ actividad.horario_inicio }} hasta las {{ actividad.horario_fin }}</span>
                     </div>
-                    <span class="asis">Interesados: </span><span class="result">-</span><br>
-                    <span class="asis">Asistirán: </span><span class="result">-</span><br>
+                    <span class="asis">Interesados: </span><span class="result">{{ fillInfoActividad(actividad, 0)? fillInfoActividad(actividad, 0):'Inicie sesión para ver' }}</span><br>
+                    <span class="asis">Asistirán: </span><span class="result">{{ fillInfoActividad(actividad, 1)? fillInfoActividad(actividad, 1):'Inicie sesión para ver' }}</span><br>
                   </div>
                   <div class="modal-footer">
-                    <button type="submit" #loguear class="btn btn-interesa">Me interesa</button>
-                    <button type="submit" #loguear class="btn btn-asistire">Asistiré</button>
+                    <button type="submit" class="btn btn-interesa" #meinteresa [disabled]="buttonValidator(actividad, 0)" (click)="setInterest(actividad.id)" (click)="meinteresa.disabled = true">Me interesa</button>
+                    <button type="submit" class="btn btn-asistire" #asistire [disabled]="buttonValidator(actividad, 1)" (click)="setAssistance(actividad.id)" (click)="asistire.disabled = true">Asistiré</button>
                   </div>
                 </div>
               </div>

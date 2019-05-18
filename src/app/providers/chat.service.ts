@@ -75,9 +75,19 @@ export class ChatService {
           // tslint:disable-next-line: prefer-for-of
           for (let i = 0; i < res.data.length; i++) {
             const mensaje = res.data[i];
-            // console.log(mensaje);
+            mensaje.fecha = new Date(mensaje.fecha);
             this.messagesList.push(mensaje);
           }
+
+          this.messagesList.sort( (a, b) => {
+            if (a.fecha > b.fecha) {
+              return 1;
+            }
+            if (a.fecha < b.fecha) {
+              return -1;
+            }
+            return 0;
+          });
 
           respuesta = 1;
           return;
@@ -102,5 +112,41 @@ export class ChatService {
 
     }
     return respuesta;
+  }
+
+  async postMessageChat( _idRecivier: number, text: string ) {
+    let respuesta = -1;
+
+    const data = {
+      id_remitente: atob(localStorage.getItem('sg-userID')),
+      id_destinatario: _idRecivier,
+      texto: text
+    };
+
+    if ( this.ls.isLoggedIn() ) {
+      await this.http.post( URL + 'chat/insertmensajechat/', data)
+        .toPromise()
+        .then(
+          (res) => {
+            console.log('Mensaje Enviado');
+            this.getMessagesByChat(_idRecivier);
+          }
+        );
+    }
+  }
+
+  async postView(_idChat: number) {
+
+    if (this.ls.isLoggedIn()) {
+      await this.http.get( URL + 'chat/actualizarvisto/' + _idChat + '/' + atob(localStorage.getItem('sg-userID')) )
+        .toPromise()
+        .then(
+          (res) => {
+            this.getAllChats();
+            console.log(res);
+          }
+        );
+    }
+
   }
 }

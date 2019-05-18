@@ -1,0 +1,336 @@
+<div class="container h-50">
+  <div class="row m-0 p-0">
+    <div class="col-6 animated fadeInLeft">
+      <h1 class="persa-title">
+        PERSA SG
+      </h1>
+      <p class="persa-subtitle">
+        Compra y/o vende diferentes artículos entre compañeros.
+      </p>
+    </div>
+    <div class="col-6 select-category-container">
+      <div class="select-category">
+        <div
+          class="select-category-option mr-2"
+          [ngClass]="{ 'select-category-option-active': getSelected() }"
+          (click)="toggleSelected()"
+        >
+          <i class="fas fa-shopping-cart"></i>
+        </div>
+        <div
+          class="select-category-option"
+          [ngClass]="{ 'select-category-option-active': !getSelected() }"
+          (click)="toggleSelected()"
+        >
+          <i class="fas fa-tags"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ng-container *ngIf="loading">
+    <div class="persa-content-loading animated fadeIn">
+      <div class="lds-roller">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      se está cargando la lista de productos...
+    </div>
+  </ng-container>
+
+  <ng-container *ngTemplateOutlet="getSelected() ? productList : optionList">
+  </ng-container>
+  <div class="w-100 m-4 p-4"></div>
+</div>
+
+<ng-template #productList>
+  <div class="persa-content animated fadeInUp faster" *ngIf="!loading">
+    <div class="row">
+      <!-- Search Input -->
+      <div class="col-lg-3 col-md-5-col-sm-12">
+        <div class="input-group mb-3 search-bar">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="txt_buscar"
+              ><i class="fas fa-search"></i
+            ></span>
+          </div>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Buscar"
+            aria-label="buscar"
+            aria-describedby="txt_buscar"
+          />
+        </div>
+      </div>
+      <div class="col-12"></div>
+    </div>
+    <div class="row">
+      <div class="col-lg-4 col-md-6 col-sm-12 m-0 p-0">
+        <!-- Proporción de imágenes 325*208 -->
+        <div class="persa-content-list-item">
+          <div class="view overlay zoom" style="border-radius: 10px;">
+            <img
+              src="https://acs2.blob.core.windows.net/imgcatalogo/l/VA_a3dd9508ec53446e9da3aa25fc836dcd.jpg"
+              class="img-fluid persa-content-list-item-image"
+              alt="zoom"
+            />
+            <div
+              class="mask flex-center waves-effect blue-overlay waves-light"
+              (click)="openModal('Producto1')"
+            >
+              <p class="text-overlay">
+                <i class="fas fa-search-plus"></i><br />Click para ver más
+              </p>
+            </div>
+          </div>
+          <h6>Nombre Producto</h6>
+          <p>
+            $
+            <span class="p-2 bg-white">
+              15.000.000
+            </span>
+          </p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 col-sm-12 m-0 p-0">
+        <!-- Proporción de imágenes 325*208 -->
+        <div class="persa-content-list-item">
+          <div class="view overlay zoom" style="border-radius: 10px;">
+            <img
+              src="https://acs2.blob.core.windows.net/imgcatalogo/l/VA_a3dd9508ec53446e9da3aa25fc836dcd.jpg"
+              class="img-fluid persa-content-list-item-image"
+              alt="zoom"
+            />
+            <div
+              class="mask flex-center waves-effect blue-overlay waves-light"
+              (click)="openModal('Producto2')"
+            >
+              <p class="text-overlay">
+                <i class="fas fa-search-plus"></i><br />Click para ver más
+              </p>
+            </div>
+          </div>
+          <h6>Nombre Producto</h6>
+          <p>
+            $
+            <span class="p-2 bg-white">
+              15.000.000
+            </span>
+          </p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 col-sm-12 m-0 p-0">
+        <!-- Proporción de imágenes 325*208 -->
+        <div class="persa-content-list-item">
+          <div class="view overlay zoom" style="border-radius: 10px;">
+            <img
+              src="https://acs2.blob.core.windows.net/imgcatalogo/l/VA_a3dd9508ec53446e9da3aa25fc836dcd.jpg"
+              class="img-fluid persa-content-list-item-image"
+              alt="zoom"
+            />
+            <div
+              class="mask flex-center waves-effect blue-overlay waves-light"
+              (click)="openModal('Producto3')"
+            >
+              <p class="text-overlay">
+                <i class="fas fa-search-plus"></i><br />Click para ver más
+              </p>
+            </div>
+          </div>
+          <h6>Nombre Producto</h6>
+          <p>
+            $
+            <span class="p-2 bg-white">
+              15.000.000
+            </span>
+          </p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 col-sm-12 m-0 p-0">
+        <!-- Proporción de imágenes 325*208 -->
+        <div class="persa-content-list-item">
+          <div class="view overlay zoom" style="border-radius: 10px;">
+            <img
+              src="https://acs2.blob.core.windows.net/imgcatalogo/l/VA_a3dd9508ec53446e9da3aa25fc836dcd.jpg"
+              class="img-fluid persa-content-list-item-image"
+              alt="zoom"
+            />
+            <div
+              class="mask flex-center waves-effect blue-overlay waves-light"
+              (click)="openModal('Producto4')"
+            >
+              <p class="text-overlay">
+                <i class="fas fa-search-plus"></i><br />Click para ver más
+              </p>
+            </div>
+          </div>
+          <h6>Nombre Producto</h6>
+          <p>
+            $
+            <span class="p-2 bg-white">
+              15.000.000
+            </span>
+          </p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 col-sm-12 m-0 p-0">
+        <!-- Proporción de imágenes 325*208 -->
+        <div class="persa-content-list-item">
+          <div class="view overlay zoom" style="border-radius: 10px;">
+            <img
+              src="https://acs2.blob.core.windows.net/imgcatalogo/l/VA_a3dd9508ec53446e9da3aa25fc836dcd.jpg"
+              class="img-fluid persa-content-list-item-image"
+              alt="zoom"
+            />
+            <div
+              class="mask flex-center waves-effect blue-overlay waves-light"
+              (click)="openModal('Producto5')"
+            >
+              <p class="text-overlay">
+                <i class="fas fa-search-plus"></i><br />Click para ver más
+              </p>
+            </div>
+          </div>
+          <h6>Nombre Producto</h6>
+          <p>
+            $
+            <span class="p-2 bg-white">
+              15.000.000
+            </span>
+          </p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 col-sm-12 m-0 p-0">
+        <!-- Proporción de imágenes 325*208 -->
+        <div class="persa-content-list-item">
+          <div class="view overlay zoom" style="border-radius: 10px;">
+            <img
+              src="https://acs2.blob.core.windows.net/imgcatalogo/l/VA_a3dd9508ec53446e9da3aa25fc836dcd.jpg"
+              class="img-fluid persa-content-list-item-image"
+              alt="zoom"
+            />
+            <div
+              class="mask flex-center waves-effect blue-overlay waves-light"
+              (click)="openModal('Producto6')"
+            >
+              <p class="text-overlay">
+                <i class="fas fa-search-plus"></i><br />Click para ver más
+              </p>
+            </div>
+          </div>
+          <h6>Nombre Producto</h6>
+          <p>
+            $
+            <span class="p-2 bg-white">
+              15.000.000
+            </span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #optionList>
+  <div class="persa-options">
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-sm-12">
+        <!-- Agregar Publicación -->
+        <div class="persa-options-add">
+          <h6>Agregar Prublicación</h6>
+          <p>Selecciona la categoría de tu artículo</p>
+
+          <div class="persa-options-add-categories">
+            <div class="persa-options-add-categories-container">
+              <div class="persa-options-add-categories-circle">
+                <i class="fas fa-home"></i>
+              </div>
+              <span>Muebles</span>
+            </div>
+            <div class="persa-options-add-categories-container">
+              <div class="persa-options-add-categories-circle">
+                <i class="fas fa-mobile-alt"></i>
+              </div>
+              <span>Tecnología</span>
+            </div>
+            <div class="persa-options-add-categories-container">
+              <div class="persa-options-add-categories-circle">
+                <i class="fas fa-tshirt"></i>
+              </div>
+              <span>Vestuario</span>
+            </div>
+            <div class="persa-options-add-categories-container">
+              <div class="persa-options-add-categories-circle">
+                <i class="fas fa-headphones-alt"></i>
+              </div>
+              <span>Música</span>
+            </div>
+            <div class="persa-options-add-categories-container">
+              <div class="persa-options-add-categories-circle">
+                <i class="fas fa-bicycle"></i>
+              </div>
+              <span>Deporte</span>
+            </div>
+            <div class="persa-options-add-categories-container">
+              <div class="persa-options-add-categories-circle">
+                <i class="fas fa-boxes"></i>
+              </div>
+              <span>Otros</span>
+            </div>
+          </div>
+          <div class="persa-options-add-input mt-4 mb-4">
+            <input type="text" placeholder="Nombre del producto" name="txt_name" id="txt_name" maxlength="60" #txt_name="ngModel" ngModel>
+            <small class="float-right">Máximo 60 caracteres | {{ (txt_name.value.length? txt_name.value.length: 0) }}/60</small>
+          </div>
+          <div class="persa-options-add-input mb-4">
+            <textarea type="text" placeholder="Detalle del producto" name="txt_desc" id="txt_desc" rows="5" maxlength="200" #txt_desc="ngModel" ngModel> </textarea>
+            <small class="float-right">Máximo 200 caracteres | {{ (txt_desc.value.length? txt_desc.value.length: 0) }}/200</small>
+          </div>
+          <div class="persa-options-add-input-quant mb-4">
+            <label for="txt_quantity">Productos disponibles</label>
+            <input placeholder="0" type="number" name="txt_quantity" id="txt_quantity" #txt_quantity="ngModel" ngModel>
+          </div>
+          <div class="persa-options-add-input-quant mb-4">
+            <label for="txt_price">Valor del producto</label> <span class="dolar">$</span>
+            <input type="number" placeholder="0" name="txt_price" id="txt_price" maxlength="60" #txt_price="ngModel" ngModel>
+          </div>
+          <div class="persa-options-add-photos">
+            <h6>Agregar Fotos</h6>
+            <div class="input-group-container">
+              <label for="upload_1">
+                <i class="fas fa-image text-white"></i> <br>
+                Subir Foto
+              </label>
+              <input type="file" hidden id="upload_1" #upload_2>
+              <label for="upload_2">
+                <i class="fas fa-image text-white"></i> <br>
+                Subir Foto
+              </label>
+              <input type="file" hidden id="upload_2" #upload_3>
+              <label for="upload_3">
+                <i class="fas fa-image text-white"></i> <br>
+                Subir Foto
+              </label>
+              <input type="file" hidden id="upload_3" #upload_4>
+              <label for="upload_4">
+                <i class="fas fa-image text-white"></i> <br>
+                Subir Foto
+              </label>
+              <input type="file" hidden id="upload_4" #upload_1>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-12 p-2">
+        <!-- Estado de publicaciones -->
+      </div>
+    </div>
+  </div>
+</ng-template>
