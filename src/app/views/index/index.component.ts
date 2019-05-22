@@ -322,7 +322,7 @@ export class IndexComponent implements OnInit, AfterViewInit {
   }
   //#endregion
 
-  //#region Links Hover Actions
+  //#region Links Hover Actions | Secciones
   onHoverLink(id: string, tipo: number) {
 
     switch (tipo) {

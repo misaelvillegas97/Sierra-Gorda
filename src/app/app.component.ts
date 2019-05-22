@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router, NavigationStart, Event, NavigationEnd, NavigationError } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +9,23 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'Sierra-Gorda';
 
-  constructor() {
+  constructor(private router: Router) {
+    this.router.events.subscribe((event: Event) => {
+      if (event instanceof NavigationStart) {
+          // Show loading indicator
+      }
+
+      if (event instanceof NavigationEnd) {
+          // Hide loading indicator
+      }
+
+      if (event instanceof NavigationError) {
+          // Hide loading indicator
+
+          // Present error to user
+          console.log(event.error);
+      }
+  });
   }
 
   toggle_chat(state: boolean) {

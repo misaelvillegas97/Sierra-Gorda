@@ -2,10 +2,6 @@
   width: 60% !important;
 }
 
-// .slider-2 {
-//   height: 10% !important;
-// }
-
 .link-buttons {
   // Size
   width: 230px;
@@ -33,6 +29,10 @@
 }
 
 // Setting: Button's color
+#compania, #personas, #aplicaciones, #herramientas {
+  transition: background-color .2s;
+}
+
 .color-buttons {
   height: 65px;
   margin-left: 0 !important;
@@ -215,6 +215,8 @@
   background-color: white;
   z-index: 120;
   border-radius: 0px 15px 0px 0px;
+
+  transition: height 0.5s ease-out
 }
 
 button.left-side {
@@ -492,6 +494,7 @@ button.right-side-2 {
       text-align: left;
       padding: .25em;
       padding-left: 10px;
+      transition: background-color 0.2s;
 
       span {
         font-family: Calibri;
