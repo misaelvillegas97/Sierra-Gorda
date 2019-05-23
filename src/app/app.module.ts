@@ -51,6 +51,10 @@ import { CategoriasComponent } from './views/sections/personas/portal/categorias
 import { ListaVideosComponent } from './views/sections/personas/portal/lista-videos/lista-videos.component';
 import { PersasgComponent } from './views/sections/personas/persasg/persasg.component';
 import { PersaModalComponent } from './modals/persa-modal/persa-modal.component';
+import { SafeHtmlPipe } from './pipes/safe-html.pipe';
+import { EditInfoModalComponent } from './modals/edit-info-modal/edit-info-modal.component';
+import { FooterSComponent } from './views/sections/footer-s/footer-s.component';
+
 
 @NgModule({
   declarations: [
@@ -85,7 +89,10 @@ import { PersaModalComponent } from './modals/persa-modal/persa-modal.component'
     CategoriasComponent,
     ListaVideosComponent,
     PersasgComponent,
-    PersaModalComponent
+    PersaModalComponent,
+    SafeHtmlPipe,
+    EditInfoModalComponent,
+    FooterSComponent
   ],
   imports: [
     BrowserModule,
@@ -111,7 +118,7 @@ import { PersaModalComponent } from './modals/persa-modal/persa-modal.component'
 
   ],
   providers: [],
-  entryComponents: [LoginModalComponent, PollModalComponent, PersaModalComponent],
+  entryComponents: [LoginModalComponent, PollModalComponent, PersaModalComponent, EditInfoModalComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

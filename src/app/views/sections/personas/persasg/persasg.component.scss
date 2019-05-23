@@ -49,12 +49,13 @@
     &-categories {
       display: flex;
       justify-content: space-between;
-      margin-bottom: 10px;
+      // margin-bottom: 10px;
       &-container {
         max-width: 70px;
         display: flex;
         flex-direction: column;
         justify-content: center;
+        margin: 5px;
         & span {
           text-align: center;
           font-size: 10pt;
@@ -69,9 +70,19 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        & label{
+          cursor: pointer;
+        }
         & i {
           color: white;
           font-size: 20pt;
+        }
+      }
+
+      &-active {
+        background-color: white !important;
+        i {
+          color: var(--blueSG) !important;
         }
       }
     }
@@ -381,4 +392,84 @@
     font-size: 36pt;
     color: white;
   }
+}
+
+// select categories
+
+$darkNavy: #213140;
+$teal1: #66b3fb;
+$teal2: #4b9dea;
+$charcoal: #555555;
+$gold: #b6985a;
+
+$activeShadow: 0 0 10px rgba($teal1, 0.5);
+
+@mixin hideInput {
+  width: 0;
+  height: 0;
+  position: absolute;
+  left: -9999px;
+}
+@mixin breakpoint($point) {
+  @if $point == 1100 {
+    @media (max-width: 1100px) {
+      @content;
+    }
+  } @else if $point == 800 {
+    @media (max-width: 800px) {
+      @content;
+    }
+  }
+}
+
+body:not(:-moz-handler-blocked) fieldset {
+  display: table-cell;
+}
+
+/* TOGGLE STYLING */
+.toggle {
+  margin: 0 0 1.5rem;
+  box-sizing: border-box;
+  font-size: 0;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: stretch;
+  input {
+    @include hideInput;
+  }
+  input + label {
+    /* padding: 0.75rem 2rem; */
+    width: 70px;
+    margin: 0;
+    height: 70px;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100px !important;
+    box-sizing: border-box;
+    background-color: var(--blueSG);
+    line-height: 140%;
+    text-align: center;
+    // box-shadow: 0em 0rem 0.1rem rgba(0, 0, 0, 0.35);
+    transition: background-color 0.4s;
+
+    /* ADD THESE PROPERTIES TO SWITCH FROM AUTO WIDTH TO FULL WIDTH */
+    // flex: 0 0 50%; display: flex; justify-content: center; align-items: center;
+    /* ----- */
+  }
+
+  @include breakpoint(800) {
+    input + label {
+      padding: 0.75rem 0.25rem;
+      flex: 0 0 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}
+
+label {
+  user-select: none;
 }

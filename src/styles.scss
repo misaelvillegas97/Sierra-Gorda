@@ -71,9 +71,20 @@ html.noscroll {
   width: 100%;
 }
 
+video:focus {
+    outline: none !important;
+}
+
 #masterslider2 .ms-container .ms-inner-controls-cont .ms-view {
   border-radius: 12px !important;
-  box-shadow: .1em 0.2rem .5rem rgba(0, 0, 0, 0.05) !important;
+  padding-top: 5px;
+  padding-bottom: 10px;
+  // box-shadow: .1em 0.2rem .5rem rgba(0, 0, 0, 0.15) !important;
+}
+
+#masterslider2 .ms-container .ms-inner-controls-cont .ms-view .ms-slide-bgcont{
+  border-radius: 12px !important;
+  box-shadow: .1em 0.2rem .5rem rgba(0, 0, 0, 0.15) !important;
 }
 
 #masterslider .ms-container .ms-inner-controls-cont .ms-view {

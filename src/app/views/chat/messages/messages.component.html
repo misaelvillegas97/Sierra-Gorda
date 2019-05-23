@@ -1,10 +1,21 @@
 <div class="d-flex justify-content-between">
   <h3 class="chat-title">Chat</h3>
-  <div class="close">
-    <!-- <i class="fas fa-times" (click)="onQuit.emit(false)"></i> -->
+  <div class="d-flex">
+    <span class="select-category-text">
+      {{ categoryText }}
+    </span>
+    <div class="select-category">
+        <div [ngClass]="{'select-category-active': isFavorites}" (click)="setFavorites()" style="cursor: pointer;">
+            <i class="fas fa-star"></i>
+        </div>
+        <div [ngClass]="{'select-category-active': isRecent}" (click)="setRecent()" style="cursor: pointer;">
+            <i class="fas fa-history"></i>
+        </div>
+      </div>
   </div>
 </div>
 <br />
+
 <ng-container *ngIf="cs.chatList">
   <div class="container-fluid chat-container">
     <app-card

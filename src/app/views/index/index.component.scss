@@ -216,7 +216,7 @@
   z-index: 120;
   border-radius: 0px 15px 0px 0px;
 
-  transition: height 0.5s ease-out
+  transition: height 0.5s cubic-bezier(0.39, 0.58, 0.04, 0.85);
 }
 
 button.left-side {

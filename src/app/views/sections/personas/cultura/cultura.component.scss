@@ -4,6 +4,12 @@ $teal2: #4b9dea;
 $charcoal: #555555;
 $gold: #b6985a;
 
+$darkblue: #214083;
+$green: #109147;
+$yellow: #FCD902;
+$orangestar: #ED5624;
+$redestar: #DE1E26;
+
 $activeShadow: 0 0 10px rgba($teal1, 0.5);
 
 /* MIXINS */
@@ -105,19 +111,19 @@ label {
   }
 
   &-e {
-    color: var(--darkblue);
+    color: $darkblue;
   }
   &-s {
-    color: var(--green);
+    color: $green;
   }
   &-t {
-    color: var(--yellow);
+    color: $yellow;
   }
   &-a {
-    color: var(--orangestar);
+    color: $orangestar;
   }
   &-r {
-    color: var(--redestar);
+    color: $redestar;
   }
 }
 
@@ -133,11 +139,50 @@ label {
 
   p {
     color: #8b8b8b;
-    font-size: 12pt;
-    font-weight: 300;
+    font-size: 11pt;
+    font-weight: 500;
     strong {
       font-style: italic;
       font-weight: 500 !important;
+    }
+  }
+
+  &-texto-default {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    p {
+      strong {
+        font-style: normal;
+        font-weight: 700 !important;
+
+      }
+    }
+
+    div {
+      span {
+        margin: 0px 25px 0px 0px;
+      }
+    }
+
+    span:nth-child(1) {
+      color: $darkblue
+    }
+
+    span:nth-child(2) {
+      color: $green
+    }
+
+    span:nth-child(3) {
+      color: $yellow
+    }
+
+    span:nth-child(4) {
+      color: $orangestar
+    }
+
+    span:nth-child(5) {
+      color: $redestar
     }
   }
 
@@ -146,7 +191,7 @@ label {
     flex-direction: column;
     justify-content: center;
     h6 {
-      color: var(--darkblue);
+      color: $darkblue;
     }
   }
 
@@ -155,7 +200,7 @@ label {
     flex-direction: column;
     justify-content: center;
     h6 {
-      color: var(--green);
+      color: $green;
     }
   }
 
@@ -164,7 +209,7 @@ label {
     flex-direction: column;
     justify-content: center;
     h6 {
-      color: var(--yellow);
+      color: $yellow;
     }
   }
 
@@ -173,7 +218,7 @@ label {
     flex-direction: column;
     justify-content: center;
     h6 {
-      color: var(--orangestar);
+      color: $orangestar;
     }
   }
 
@@ -182,7 +227,7 @@ label {
     flex-direction: column;
     justify-content: center;
     h6 {
-      color: var(--redestar);
+      color: $redestar;
     }
   }
 }

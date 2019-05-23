@@ -5,6 +5,25 @@
   padding-left: .6em;
 }
 
+// Scroll Bar
+.poll-container::-webkit-scrollbar {
+  width: 5px;
+}
+
+.poll-container::-webkit-scrollbar-track {
+  /* box-shadow: inset 0 0 5px #ccc; */
+  border-radius: 5px;
+}
+
+.poll-container::-webkit-scrollbar-thumb {
+  background: rgb(255, 255, 255);
+  border-radius: 5px;
+}
+
+.poll-container::-webkit-scrollbar-thumb:hover {
+  background: rgb(255, 255, 255);
+}
+
 .poll-container {
   max-height: 82.2%;
   overflow-y: scroll;

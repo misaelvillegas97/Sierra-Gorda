@@ -4,7 +4,9 @@
       <div class="toggle w-100 d-flex justify-content-center">
         <input type="radio" name="estar"  #default="ngModel" ngModel value="default" id="estar-default" checked selected/>
         <!-- <label for="estar-default" *ngIf="f.value['estar'] !== 'default' && f.value['estar'] !== ''" class="estar-buttons estar-buttons-default"></label> -->
-        <label for="estar-default" [ngClass]="{'estar-buttons-active': f.value['estar'] === '' || f.value['estar'] === 'default'}" class="estar-buttons estar-buttons-default"></label>
+        <label for="estar-default" [ngClass]="{'estar-buttons-active': f.value['estar'] === '' || f.value['estar'] === 'default'}" class="estar-buttons estar-buttons-default">
+          <img src="https://c3devapp.cl/sg/assets/img/img_logo_estar.png" alt="" class="img-fluid">
+        </label>
 
         <input type="radio" name="estar" value="e" #estar="ngModel" ngModel id="estar-e"/>
         <label for="estar-e" [ngClass]="{'estar-buttons-active': f.value['estar'] === 'e'}" class="estar-buttons estar-buttons-e">E</label>
@@ -44,9 +46,24 @@
 </div>
 
 <ng-template #tEstarD>
-  <div class="row">
-    <div class="col-lg-8 col-md-8 col-sm-12"></div>
-    <div class="col-lg-4 col-md-4 col-sm-12"></div>
+  <div class="row h-100 animated fadeIn">
+    <div class="col-lg-8 col-md-8 col-sm-12 h-100 estar-dialog-texto-default">
+      <p>
+          Los valores <strong>ESTAR</strong> son parte de lo que integramos en cada uno de nuestros
+          trabajos, y se compone del enfoque en los <i>resultados</i>, la <i>seguridad</i>, el <i>trabajo en
+          equipo</i>, la <i>austeridad</i>, y la <i>rectitud</i> e <i>integridad</i>.
+      </p>
+      <div>
+        <span><i class="fas fa-circle"></i></span>
+        <span><i class="fas fa-circle"></i></span>
+        <span><i class="fas fa-circle"></i></span>
+        <span><i class="fas fa-circle"></i></span>
+        <span><i class="fas fa-circle"></i></span>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-12 d-flex align-items-center">
+      <img src="https://c3devapp.cl/sg/assets/img/img_logo_estar.png" alt="" class="img-fluid">
+    </div>
   </div>
 </ng-template>
 
@@ -59,8 +76,8 @@
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam saepe natus quis, perferendis corporis fugit sint illo suscipit quia voluptatum autem vitae quasi! Porro, officia est? Ea ex voluptatem repellendus.
       </p>
     </div>
-    <div class="col-lg-4 col-md-4 col-sm-12">
-      foto_aqui
+    <div class="col-lg-4 col-md-4 col-sm-12 d-flex align-items-center">
+      <img src="https://c3devapp.cl/sg/assets/img/img_valor_resultado.png" alt="" class="img-fluid">
     </div>
   </div>
 </ng-template>
@@ -74,7 +91,9 @@
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos nostrum explicabo aperiam, molestias recusandae dolorem! Ipsam quod eos beatae aspernatur alias, quia tempore laudantium autem architecto rerum fugiat earum quibusdam?
       </p>
     </div>
-    <div class="col-lg-4 col-md-4 col-sm-12"></div>
+    <div class="col-lg-4 col-md-4 col-sm-12 d-flex align-items-center">
+      <img src="https://c3devapp.cl/sg/assets/img/img_valor_seguridad.png" alt="" class="img-fluid">
+    </div>
   </div>
 </ng-template>
 
@@ -87,7 +106,9 @@
         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veritatis est magnam vel aspernatur repellendus itaque unde. Est ullam laudantium debitis maxime, officia repudiandae pariatur in iste. Porro officia reiciendis suscipit.
       </p>
     </div>
-    <div class="col-lg-4 col-md-4 col-sm-12"></div>
+    <div class="col-lg-4 col-md-4 col-sm-12 d-flex align-items-center">
+      <img src="https://c3devapp.cl/sg/assets/img/img_valor_trabajo_equipo.png" alt="" class="img-fluid">
+    </div>
   </div>
 </ng-template>
 
@@ -100,7 +121,9 @@
         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veniam, soluta! Iste aperiam voluptate atque laudantium neque, ut perferendis qui? Officiis iure pariatur illum libero vero voluptatum maiores nostrum aperiam quidem?
       </p>
     </div>
-    <div class="col-lg-4 col-md-4 col-sm-12"></div>
+    <div class="col-lg-4 col-md-4 col-sm-12 d-flex align-items-center">
+      <img src="https://c3devapp.cl/sg/assets/img/img_valor_austeridad.png" alt="" class="img-fluid">
+    </div>
   </div>
 </ng-template>
 
@@ -113,6 +136,8 @@
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam, nam debitis velit error dolorum nulla repellat rem quis fugiat fugit voluptatum corporis delectus quo natus at laboriosam maxime cupiditate exercitationem!
       </p>
     </div>
-    <div class="col-lg-4 col-md-4 col-sm-12"></div>
+    <div class="col-lg-4 col-md-4 col-sm-12 d-flex align-items-center">
+      <img src="https://c3devapp.cl/sg/assets/img/img_valor_rectitud.png" alt="" class="img-fluid">
+    </div>
   </div>
 </ng-template>

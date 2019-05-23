@@ -33,33 +33,25 @@
             </div>
             <div class="content-form">
               <div>
-                <span for="txt_fono" class="input-label"><i class="fas fa-phone fa-rotate-90"></i> Teléfono:</span> <br>
-                <input type="text" [value]="ls.userLogged?.telefono_usuario" pattern="/[+][56][/0-9]{0,10}$/" #telefono disabled/>
-                <!-- <img src="https://c3devapp.cl/sg/assets/img/navbar-home/4.png" alt="" (click)="telefono.disabled = !telefono.disabled"> -->
-                <span class="edit-button" (click)="!telefono.disabled? changeUserInfo(1, telefono.value): ''" (click)="telefono.disabled = !telefono.disabled" [ngStyle]="{'background-color': !telefono.disabled? '#8DCF85': '#00ADBA'}">
-                  <i class="fas fa-pencil-alt i-edit" *ngIf="telefono.disabled"></i>
-                  <i class="fas fa-save i-edit" *ngIf="!telefono.disabled" [ngStyle]="{'margin-left': !telefono.disabled? '5px': '4.1px'}"></i>
-                </span>
+                <button
+                  type="submit"
+                  (click)="editInfo()"
+                  class="btn btn-iniciar ml-2"
+                >
+                  Editar información
+                </button>
+                <button
+                  type="submit"
+                  (click)="ls.logout()"
+                  class="btn btn-iniciar ml-2 mt-2"
+                  style="padding: 15px 22px 15px 50px;"
+                >
+                  Cerrar Sesión <i class="fas fa-sign-out-alt ml-4"></i>
+                </button>
               </div>
-              <div class="mt-3">
-                <span for="txt_correo" class="input-label"><i class="fas fa-envelope"></i> Correo:</span> <br>
-                <input type="text" #correo [value]="ls.userLogged?.correo_usuario" disabled/>
-                <span class="edit-button" (click)="!correo.disabled? changeUserInfo(2, correo.value): 'console.log(false)'" (click)="correo.disabled = !correo.disabled" [ngStyle]="{'background-color': !correo.disabled? '#8DCF85': '#00ADBA'}">
-                  <i class="fas fa-pencil-alt i-edit" *ngIf="correo.disabled"></i>
-                  <i class="fas fa-save i-edit" *ngIf="!correo.disabled" [ngStyle]="{'margin-left': !correo.disabled? '5px': '4.1px'}"></i>
-                </span>
-              </div>
-              <div class="mt-3">
-                <span for="txt_pass" class="input-label"><i class="fas fa-lock"></i> Contraseña:</span> <br>
-                <input type="password" #pass placeholder="•••••••" disabled>
-                <span class="edit-button" (click)="!pass.disabled? changeUserInfo(3, pass.value): ''" (click)="pass.disabled = !pass.disabled" [ngStyle]="{'background-color': !pass.disabled? '#8DCF85': '#00ADBA'}">
-                  <i class="fas fa-pencil-alt i-edit" *ngIf="pass.disabled"></i>
-                  <i class="fas fa-save i-edit" *ngIf="!pass.disabled" [ngStyle]="{'margin-left': !pass.disabled? '5px': '4.1px'}"></i>
-                </span>
-              </div>
-              <div class="mt-4 text-right">
+              <!-- <div class="mt-4 text-right">
                 <a class="input-label" style="text-decoration: underline" (click)="ls.logout()">Cerrar Sesión <i class="fas fa-sign-out-alt"></i></a>
-              </div>
+              </div> -->
             </div>
         </div>
       </div>

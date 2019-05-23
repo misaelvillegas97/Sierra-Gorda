@@ -10,6 +10,9 @@ import { Chat } from 'src/app/interface/interface';
 export class MessagesComponent implements OnInit, OnDestroy {
   interval;
   selectedChat: Chat;
+  isFavorites: boolean;
+  isRecent: boolean;
+  categoryText;
 
   // tslint:disable-next-line: no-output-on-prefix
   @Output() public onSelectChat = new EventEmitter<Chat>();
@@ -17,8 +20,13 @@ export class MessagesComponent implements OnInit, OnDestroy {
   @Output() public onQuit = new EventEmitter<boolean>();
 
   chatList: Chat[];
+  chatFavourite: Chat[];
 
   constructor( public cs: ChatService ) {
+    this.isFavorites = false;
+    this.isRecent = true;
+    this.categoryText = 'Recientes';
+
     this.loadChats();
     this.interval = setInterval(
       async () => {
@@ -59,5 +67,17 @@ export class MessagesComponent implements OnInit, OnDestroy {
   chatSelect(id: Chat) {
     this.selectedChat = id;
     this.onSelectChat.emit(id);
+  }
+
+  setFavorites() {
+    this.isFavorites = true;
+    this.isRecent = false;
+    this.categoryText = 'Favoritos';
+  }
+
+  setRecent() {
+    this.isFavorites = false;
+    this.isRecent = true;
+    this.categoryText = 'Recientes';
   }
 }

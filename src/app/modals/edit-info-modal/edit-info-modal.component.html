@@ -1,0 +1,63 @@
+<div style="
+  position: absolute;
+  background-color: #FF6A02;
+  opacity: 1;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 20000;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+"
+
+class="animated fadeIn faster"
+
+*ngIf="loading"
+>
+  <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+</div>
+
+<div class="modal-header">
+  <h4 class="modal-title w-100" id="myModalLabel">{{ this.ls.userLogged?.primer_nombre_usuario }} {{ this.ls.userLogged?.apellido_pat_usuario }} {{ this.ls.userLogged?.apellido_mat_usuario != null? this.ls.userLogged?.apellido_mat_usuario : '' }}</h4>
+</div>
+<div class="modal-body d-flex justify-content-center">
+  <div class="content-form w-100">
+    <div>
+      <span for="txt_fono" class="input-label"><i class="fas fa-phone fa-rotate-90"></i> Teléfono:</span> <br>
+      <input type="text" [value]="ls.userLogged?.telefono_usuario" pattern="/[+][56][/0-9]{0,10}$/" #telefono disabled/>
+      <span class="edit-button" (click)="!telefono.disabled? changeUserInfo(1, telefono.value): ''" (click)="telefono.disabled = !telefono.disabled" [ngStyle]="{'background-color': !telefono.disabled? '#8DCF85': '#00ADBA'}">
+        <i class="fas fa-pencil-alt i-edit" *ngIf="telefono.disabled"></i>
+        <i class="fas fa-save i-edit" *ngIf="!telefono.disabled" [ngStyle]="{'margin-left': !telefono.disabled? '5px': '4.1px'}"></i>
+      </span>
+    </div>
+    <div class="mt-3">
+      <span for="txt_correo" class="input-label"><i class="fas fa-envelope"></i> Correo:</span> <br>
+      <input type="text" #correo [value]="ls.userLogged?.correo_usuario" disabled/>
+      <span class="edit-button" (click)="!correo.disabled? changeUserInfo(2, correo.value): 'console.log(false)'" (click)="correo.disabled = !correo.disabled" [ngStyle]="{'background-color': !correo.disabled? '#8DCF85': '#00ADBA'}">
+        <i class="fas fa-pencil-alt i-edit" *ngIf="correo.disabled"></i>
+        <i class="fas fa-save i-edit" *ngIf="!correo.disabled" [ngStyle]="{'margin-left': !correo.disabled? '5px': '4.1px'}"></i>
+      </span>
+    </div>
+    <div class="mt-3">
+      <span for="txt_pass" class="input-label"><i class="fas fa-lock"></i> Contraseña:</span> <br>
+      <input type="password" #pass placeholder="•••••••" disabled>
+      <span class="edit-button" (click)="!pass.disabled? changeUserInfo(3, pass.value): ''" (click)="pass.disabled = !pass.disabled" [ngStyle]="{'background-color': !pass.disabled? '#8DCF85': '#00ADBA'}">
+        <i class="fas fa-pencil-alt i-edit" *ngIf="pass.disabled"></i>
+        <i class="fas fa-save i-edit" *ngIf="!pass.disabled" [ngStyle]="{'margin-left': !pass.disabled? '5px': '4.1px'}"></i>
+      </span>
+    </div>
+  </div>
+</div>
+<div class="modal-footer d-flex justify-content-center">
+  <button
+    type="submit"
+    (click)="modalRef.hide()"
+    class="btn btn-block btn-iniciar"
+    [disabled]="!pass.disabled || !correo.disabled || !telefono.disabled"
+  >
+    Cerrar
+  </button>
+</div>

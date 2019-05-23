@@ -1,3 +1,7 @@
+$green-window: #78ce47;
+$dark-green-window: #00AE41;
+$lightBlue: #00A9B7;
+
 .chat-title {
   color: white;
   font-weight: 900 !important;
@@ -31,4 +35,47 @@
 
 .close > i {
   cursor: pointer;
+}
+
+.select-category {
+  background-color: $dark-green-window;
+  margin-top: 24px;
+  margin-right: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 40px;
+
+  div {
+    width: 30px;
+    height: 30px;
+    border-radius: 50px;
+    background-color: #78ce47;
+    margin: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    i {
+      color: white;
+    }
+
+    transition: width 0.3s, height 0.3s;
+  }
+  &-active {
+    width: 35px !important;
+    height: 35px !important;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+
+    i {
+      // color: $lightBlue !important;
+    }
+  }
+
+  &-text {
+    margin-top: 39px;
+    margin-right: 10px;
+    color: white;
+    font-weight: 500;
+    font-size: 11pt;
+  }
 }

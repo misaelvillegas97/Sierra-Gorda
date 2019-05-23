@@ -60,7 +60,7 @@ export class SliderComponent implements OnInit, AfterViewInit {
     slider.setup('masterslider', {
       width: 750,
       height: 440,
-      space: 280,
+      space: 550,
       mouse: true,
       loop: true,
       autoplay: true,

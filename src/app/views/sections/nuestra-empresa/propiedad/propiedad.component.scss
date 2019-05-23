@@ -1,4 +1,12 @@
+.user-select {
+  user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+}
+
 h1 {
+  @extend .user-select;
   font-weight: 800;
   color: #5a5a5a;
   font-size: 35pt;
@@ -21,6 +29,7 @@ h1 {
 }
 
 .subtitle {
+  @extend .user-select;
   strong {
     font-weight: 600 !important;
   }
@@ -31,6 +40,7 @@ h1 {
 }
 
 .full-text {
+  @extend .user-select;
   color: #8b8b8b;
   font-size: 12pt;
   font-weight: 300;
@@ -40,6 +50,7 @@ h1 {
 }
 
 li {
+  @extend .user-select;
   list-style: none;
 }
 li {

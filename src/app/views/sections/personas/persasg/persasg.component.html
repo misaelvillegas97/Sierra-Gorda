@@ -243,90 +243,240 @@
     <div class="row">
       <div class="col-lg-6 col-md-6 col-sm-12">
         <!-- Agregar Publicación -->
-        <div class="persa-options-add">
-          <h6>Agregar Prublicación</h6>
-          <p>Selecciona la categoría de tu artículo</p>
+        <form #f="ngForm">
+          <div class="persa-options-add">
+            <h6>Agregar Prublicación</h6>
+            <p>Selecciona la categoría de tu artículo</p>
+            <div class="persa-options-add-categories animated fadeIn">
+              <div class="toggle w-100 d-flex justify-content-center">
+                <div class="persa-options-add-categories-container">
+                  <div class="persa-options-add-categories-circle">
+                    <input
+                      type="radio"
+                      name="new-product-category"
+                      #default="ngModel"
+                      ngModel
+                      value="0"
+                      id="new-product-category-muebles"
+                      checked
+                      selected
+                    />
+                    <label
+                      for="new-product-category-muebles"
+                      [ngClass]="{
+                        'persa-options-add-categories-active':
+                          f.value['new-product-category'] === '0'
+                      }"
+                      class=""
+                    >
+                      <i class="fas fa-home"></i>
+                    </label>
+                  </div>
+                  <span>Muebles</span>
+                </div>
+                <div class="persa-options-add-categories-container">
+                  <div class="persa-options-add-categories-circle">
+                    <input
+                      type="radio"
+                      name="new-product-category"
+                      #default="ngModel"
+                      ngModel
+                      value="1"
+                      id="new-product-category-tecno"
+                    />
+                    <label
+                      for="new-product-category-tecno"
+                      [ngClass]="{
+                        'persa-options-add-categories-active':
+                          f.value['new-product-category'] === '1'
+                      }"
+                      class="persa-options-add-categories"
+                      ><i class="fas fa-mobile-alt"></i
+                    ></label>
+                  </div>
+                  <span>Tecnología</span>
+                </div>
+                <div class="persa-options-add-categories-container">
+                  <div class="persa-options-add-categories-circle">
+                    <input
+                      type="radio"
+                      name="new-product-category"
+                      #default="ngModel"
+                      ngModel
+                      value="2"
+                      id="new-product-category-vestuario"
+                    />
+                    <label
+                      for="new-product-category-vestuario"
+                      [ngClass]="{
+                        'persa-options-add-categories-active':
+                          f.value['new-product-category'] === '2'
+                      }"
+                      class=""
+                      ><i class="fas fa-tshirt"></i
+                    ></label>
+                  </div>
+                  <span>Vestuario</span>
+                </div>
+                <div class="persa-options-add-categories-container">
+                  <div class="persa-options-add-categories-circle">
+                    <input
+                      type="radio"
+                      name="new-product-category"
+                      #default="ngModel"
+                      ngModel
+                      value="3"
+                      id="new-product-category-musica"
+                    />
+                    <label
+                      for="new-product-category-musica"
+                      [ngClass]="{
+                        'persa-options-add-categories-active':
+                          f.value['new-product-category'] === '3'
+                      }"
+                      class=""
+                      ><i class="fas fa-headphones-alt"></i
+                    ></label>
+                  </div>
+                  <span>Música</span>
+                </div>
+                <div class="persa-options-add-categories-container">
+                  <div class="persa-options-add-categories-circle">
+                    <input
+                      type="radio"
+                      name="new-product-category"
+                      #default="ngModel"
+                      ngModel
+                      value="4"
+                      id="new-product-category-deporte"
+                    />
+                    <label
+                      for="new-product-category-deporte"
+                      [ngClass]="{
+                        'persa-options-add-categories-active':
+                          f.value['new-product-category'] === '4'
+                      }"
+                      class=""
+                      ><i class="fas fa-bicycle"></i
+                    ></label>
+                  </div>
+                  <span>Deporte</span>
+                </div>
+                <div class="persa-options-add-categories-container">
+                  <div class="persa-options-add-categories-circle">
+                    <input
+                      type="radio"
+                      name="new-product-category"
+                      #default="ngModel"
+                      ngModel
+                      value="5"
+                      id="new-product-category-otros"
+                    />
+                    <label
+                      for="new-product-category-otros"
+                      [ngClass]="{
+                        'persa-options-add-categories-active':
+                          f.value['new-product-category'] === '5'
+                      }"
+                      class=""
+                      ><i class="fas fa-boxes"></i
+                    ></label>
+                  </div>
+                  <span>Otros</span>
+                </div>
+              </div>
+            </div>
+            <div class="persa-options-add-input mb-4">
+              <input
+                type="text"
+                placeholder="Nombre del producto"
+                name="txt_name"
+                id="txt_name"
+                maxlength="60"
+                #txt_name="ngModel"
+                ngModel
+              />
+              <small class="float-right"
+                >Máximo 60 caracteres |
+                {{
+                  txt_name.value.length ? txt_name.value.length : 0
+                }}/60</small
+              >
+            </div>
+            <div class="persa-options-add-input mb-4">
+              <textarea
+                type="text"
+                placeholder="Detalle del producto"
+                name="txt_desc"
+                id="txt_desc"
+                rows="5"
+                maxlength="200"
+                #txt_desc="ngModel"
+                ngModel
+              >
+              </textarea>
+              <small class="float-right"
+                >Máximo 200 caracteres |
+                {{
+                  txt_desc.value.length ? txt_desc.value.length : 0
+                }}/200</small
+              >
+            </div>
+            <div class="persa-options-add-input-quant mb-4">
+              <label for="txt_quantity">Productos disponibles</label>
+              <input
+                placeholder="0"
+                type="number"
+                name="txt_quantity"
+                id="txt_quantity"
+                #txt_quantity="ngModel"
+                ngModel
+              />
+            </div>
+            <div class="persa-options-add-input-quant mb-4">
+              <label for="txt_price">Valor del producto</label>
+              <span class="dolar">$</span>
+              <input
+                type="number"
+                placeholder="0"
+                name="txt_price"
+                id="txt_price"
+                maxlength="60"
+                #txt_price="ngModel"
+                ngModel
+              />
+            </div>
 
-          <div class="persa-options-add-categories">
-            <div class="persa-options-add-categories-container">
-              <div class="persa-options-add-categories-circle">
-                <i class="fas fa-home"></i>
+            <div class="persa-options-add-photos">
+              <h6>Agregar Fotos</h6>
+              <div class="input-group-container">
+                <label for="upload_1">
+                  <i class="fas fa-image text-white"></i> <br />
+                  Subir Foto
+                </label>
+                <input type="file" hidden id="upload_1" name="upload_1" (change)="cropImage(1, $event)" #upload_1="ngModel" ngModel />
+                <label for="upload_2">
+                  <i class="fas fa-image text-white"></i> <br />
+                  Subir Foto
+                </label>
+                <input type="file" hidden id="upload_2" name="upload_2" #upload_2="ngModel" ngModel />
+                <label for="upload_3">
+                  <i class="fas fa-image text-white"></i> <br />
+                  Subir Foto
+                </label>
+                <input type="file" hidden id="upload_3" name="upload_3" #upload_3="ngModel" ngModel />
+                <label for="upload_4">
+                  <i class="fas fa-image text-white"></i> <br />
+                  Subir Foto
+                </label>
+                <input type="file" hidden id="upload_4" name="upload_4" #upload_4="ngModel" ngModel />
               </div>
-              <span>Muebles</span>
-            </div>
-            <div class="persa-options-add-categories-container">
-              <div class="persa-options-add-categories-circle">
-                <i class="fas fa-mobile-alt"></i>
-              </div>
-              <span>Tecnología</span>
-            </div>
-            <div class="persa-options-add-categories-container">
-              <div class="persa-options-add-categories-circle">
-                <i class="fas fa-tshirt"></i>
-              </div>
-              <span>Vestuario</span>
-            </div>
-            <div class="persa-options-add-categories-container">
-              <div class="persa-options-add-categories-circle">
-                <i class="fas fa-headphones-alt"></i>
-              </div>
-              <span>Música</span>
-            </div>
-            <div class="persa-options-add-categories-container">
-              <div class="persa-options-add-categories-circle">
-                <i class="fas fa-bicycle"></i>
-              </div>
-              <span>Deporte</span>
-            </div>
-            <div class="persa-options-add-categories-container">
-              <div class="persa-options-add-categories-circle">
-                <i class="fas fa-boxes"></i>
-              </div>
-              <span>Otros</span>
             </div>
           </div>
-          <div class="persa-options-add-input mt-4 mb-4">
-            <input type="text" placeholder="Nombre del producto" name="txt_name" id="txt_name" maxlength="60" #txt_name="ngModel" ngModel>
-            <small class="float-right">Máximo 60 caracteres | {{ (txt_name.value.length? txt_name.value.length: 0) }}/60</small>
-          </div>
-          <div class="persa-options-add-input mb-4">
-            <textarea type="text" placeholder="Detalle del producto" name="txt_desc" id="txt_desc" rows="5" maxlength="200" #txt_desc="ngModel" ngModel> </textarea>
-            <small class="float-right">Máximo 200 caracteres | {{ (txt_desc.value.length? txt_desc.value.length: 0) }}/200</small>
-          </div>
-          <div class="persa-options-add-input-quant mb-4">
-            <label for="txt_quantity">Productos disponibles</label>
-            <input placeholder="0" type="number" name="txt_quantity" id="txt_quantity" #txt_quantity="ngModel" ngModel>
-          </div>
-          <div class="persa-options-add-input-quant mb-4">
-            <label for="txt_price">Valor del producto</label> <span class="dolar">$</span>
-            <input type="number" placeholder="0" name="txt_price" id="txt_price" maxlength="60" #txt_price="ngModel" ngModel>
-          </div>
-          <div class="persa-options-add-photos">
-            <h6>Agregar Fotos</h6>
-            <div class="input-group-container">
-              <label for="upload_1">
-                <i class="fas fa-image text-white"></i> <br>
-                Subir Foto
-              </label>
-              <input type="file" hidden id="upload_1" #upload_2>
-              <label for="upload_2">
-                <i class="fas fa-image text-white"></i> <br>
-                Subir Foto
-              </label>
-              <input type="file" hidden id="upload_2" #upload_3>
-              <label for="upload_3">
-                <i class="fas fa-image text-white"></i> <br>
-                Subir Foto
-              </label>
-              <input type="file" hidden id="upload_3" #upload_4>
-              <label for="upload_4">
-                <i class="fas fa-image text-white"></i> <br>
-                Subir Foto
-              </label>
-              <input type="file" hidden id="upload_4" #upload_1>
-            </div>
-          </div>
-        </div>
+        </form>
+        <pre>
+            {{f.value | json}}
+          </pre>
       </div>
       <div class="col-lg-6 col-md-6 col-sm-12 p-2">
         <!-- Estado de publicaciones -->
@@ -334,3 +484,26 @@
     </div>
   </div>
 </ng-template>
+
+<!-- <button type="button" mdbBtn color="primary" class="relative waves-light" (click)="basicModal.show()" mdbWavesEffect></button> -->
+
+<div mdbModal #basicModal="mdbModal" class="modal fade"  tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true" [config]="{ignoreBackdropClick: true, keyboard: false}">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close pull-right" aria-label="Close" (click)="basicModal.hide()">
+          <span aria-hidden="true">×</span>
+        </button>
+        <h4 class="modal-title w-100" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        <div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" mdbBtn color="secondary" class="waves-light" aria-label="Close" (click)="basicModal.hide()" mdbWavesEffect>Close</button>
+        <button type="button" mdbBtn color="primary" class="relative waves-light" mdbWavesEffect>Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>

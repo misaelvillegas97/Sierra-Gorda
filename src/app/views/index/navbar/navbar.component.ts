@@ -3,6 +3,7 @@ import { LoginService } from 'src/app/providers/login.service';
 import { ProfileService } from 'src/app/providers/profile.service';
 import { MDBModalRef, MDBModalService } from 'angular-bootstrap-md';
 import { LoginModalComponent } from 'src/app/modals/login-modal/login-modal.component';
+import { EditInfoModalComponent } from 'src/app/modals/edit-info-modal/edit-info-modal.component';
 
 declare var $: any;
 
@@ -92,6 +93,21 @@ export class NavbarComponent implements OnInit {
     }
 
     return res;
+  }
+
+  editInfo() {
+    this.modalOptions = {
+      backdrop: true,
+      keyboard: true,
+      focus: true,
+      show: false,
+      ignoreBackdropClick: false,
+      class: 'loginModal-container modal-dialog-centered',
+      containerClass: '',
+      animated: true
+    };
+
+    this.modalRef = this.modalService.show(EditInfoModalComponent, this.modalOptions);
   }
 
   openModal( opt: number ) {
