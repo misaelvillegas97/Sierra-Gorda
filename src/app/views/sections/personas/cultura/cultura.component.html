@@ -5,19 +5,19 @@
         <input type="radio" name="estar"  #default="ngModel" ngModel value="default" id="estar-default" checked selected/>
         <!-- <label for="estar-default" *ngIf="f.value['estar'] !== 'default' && f.value['estar'] !== ''" class="estar-buttons estar-buttons-default"></label> -->
         <label for="estar-default" [ngClass]="{'estar-buttons-active': f.value['estar'] === '' || f.value['estar'] === 'default'}" class="estar-buttons estar-buttons-default">
-          <img src="https://c3devapp.cl/sg/assets/img/img_logo_estar.png" alt="" class="img-fluid">
+          <img src="https://c3devapp.cl/sg/assets/img/img_logo_estar.png" (click)="valueSelected = 'default'" alt="" style="width: 40px; height: auto">
         </label>
 
-        <input type="radio" name="estar" value="e" #estar="ngModel" ngModel id="estar-e"/>
+        <input type="radio" name="estar" value="e" #estar="ngModel" ngModel  (click)="valueSelected = 'default'"id="estar-e"/>
         <label for="estar-e" [ngClass]="{'estar-buttons-active': f.value['estar'] === 'e'}" class="estar-buttons estar-buttons-e">E</label>
 
-        <input type="radio" name="estar" value="s" #estar="ngModel" ngModel id="estar-s"/>
+        <input type="radio" name="estar" value="s" #estar="ngModel" ngModel  (click)="valueSelected = 'default'"id="estar-s"/>
         <label for="estar-s" [ngClass]="{'estar-buttons-active': f.value['estar'] === 's'}" class="estar-buttons estar-buttons-s">S</label>
 
-        <input type="radio" name="estar" value="t" #estar="ngModel" ngModel id="estar-t"/>
+        <input type="radio" name="estar" value="t" #estar="ngModel" ngModel  (click)="valueSelected = 'default'"id="estar-t"/>
         <label for="estar-t" [ngClass]="{'estar-buttons-active': f.value['estar'] === 't'}" class="estar-buttons estar-buttons-t">T</label>
 
-        <input type="radio" name="estar" value="a" #estar="ngModel" ngModel id="estar-a"/>
+        <input type="radio" name="estar" value="a" #estar="ngModel" ngModel  (click)="valueSelected = 'default'"id="estar-a"/>
         <label for="estar-a" [ngClass]="{'estar-buttons-active': f.value['estar'] === 'a'}" class="estar-buttons estar-buttons-a">A</label>
 
         <input type="radio" name="estar" value="r" #estar="ngModel" ngModel id="estar-r"/>
@@ -50,8 +50,8 @@
     <div class="col-lg-8 col-md-8 col-sm-12 h-100 estar-dialog-texto-default">
       <p>
           Los valores <strong>ESTAR</strong> son parte de lo que integramos en cada uno de nuestros
-          trabajos, y se compone del enfoque en los <i>resultados</i>, la <i>seguridad</i>, el <i>trabajo en
-          equipo</i>, la <i>austeridad</i>, y la <i>rectitud</i> e <i>integridad</i>.
+          trabajos, y se compone del <strong>enfoque en los resultados</strong>, la <strong>seguridad</strong>, el <strong>trabajo en
+          equipo</strong>, la <strong>austeridad</strong>, y la <strong>rectitud</strong> e <strong>integridad</strong>.
       </p>
       <div>
         <span><i class="fas fa-circle"></i></span>
@@ -73,7 +73,7 @@
       <h6>ENFOQUE EN LOS RESULTADOS</h6>
       <br>
       <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam saepe natus quis, perferendis corporis fugit sint illo suscipit quia voluptatum autem vitae quasi! Porro, officia est? Ea ex voluptatem repellendus.
+        Trabajamos por los <strong>objetivos de la compañía</strong>, debemos conocerlos y saber cómo aportamos e impactamos desde nuestra posición a los resultados globales.
       </p>
     </div>
     <div class="col-lg-4 col-md-4 col-sm-12 d-flex align-items-center">
@@ -88,7 +88,7 @@
       <h6>SEGURIDAD</h6>
       <br>
       <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos nostrum explicabo aperiam, molestias recusandae dolorem! Ipsam quod eos beatae aspernatur alias, quia tempore laudantium autem architecto rerum fugiat earum quibusdam?
+        Predicar y practicar la seguridad es nuestra tarea de cada día, tenemos normas y exigencias que respetar, pero <strong>es nuestro compromiso cuidarnos y cuidar a los demás</strong>.
       </p>
     </div>
     <div class="col-lg-4 col-md-4 col-sm-12 d-flex align-items-center">
@@ -103,7 +103,7 @@
       <h6>TRABAJO EN EQUIPO</h6>
       <br>
       <p>
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veritatis est magnam vel aspernatur repellendus itaque unde. Est ullam laudantium debitis maxime, officia repudiandae pariatur in iste. Porro officia reiciendis suscipit.
+        Todo en Sierra Gorda SCM somos una gran red, que va más allá de nuestro propio equipo. Somos interdependientes, necesitamos <strong>conocernos, conectarnos y apoyarnos cada día para lograr nuestros objetivos</strong>.
       </p>
     </div>
     <div class="col-lg-4 col-md-4 col-sm-12 d-flex align-items-center">
@@ -118,7 +118,7 @@
       <h6>AUSTERIDAD</h6>
       <br>
       <p>
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veniam, soluta! Iste aperiam voluptate atque laudantium neque, ut perferendis qui? Officiis iure pariatur illum libero vero voluptatum maiores nostrum aperiam quidem?
+        <strong>Optimizar los recursos y los conocimientos de tu equipo con inteligencia y responsabilidad.</strong> Si utilizamos cada vez mejor los recursos de la compañía, se facilitará el logro de los objetivos.
       </p>
     </div>
     <div class="col-lg-4 col-md-4 col-sm-12 d-flex align-items-center">
@@ -133,7 +133,7 @@
       <h6>RECTITUD E INTEGRIDAD</h6>
       <br>
       <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam, nam debitis velit error dolorum nulla repellat rem quis fugiat fugit voluptatum corporis delectus quo natus at laboriosam maxime cupiditate exercitationem!
+        <strong>Ser consistente, responsable y pensar</strong> en el interés colectivo y de la compañía en nuestros actos, que prueban a diario nuestra calidad personal.
       </p>
     </div>
     <div class="col-lg-4 col-md-4 col-sm-12 d-flex align-items-center">

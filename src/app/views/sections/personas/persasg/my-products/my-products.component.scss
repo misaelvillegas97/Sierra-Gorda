@@ -1,0 +1,249 @@
+$blueSG: #3fbac5;
+$blueSG-80: #3ebac5cc;
+$blueSG-40: #3ebac566;
+$blueSG-20: #3fbac533;
+
+.persa-options {
+  &-add {
+    background-color: $blueSG-20;
+    border-radius: 15px;
+    padding: 30px 20px;
+    display: -ms-flexbox;
+    display: flex;
+    flex-direction: column;
+    color: #5c5c5c;
+
+    & h6 {
+      font-weight: 600;
+      font-size: 15pt;
+    }
+
+    & p {
+      font-weight: 400;
+      font-size: 12pt;
+    }
+
+    &-categories {
+      display: -ms-flexbox;
+      display: flex;
+      justify-content: space-between;
+      // margin-bottom: 10px;
+      &-container {
+        max-width: 70px;
+        display: -ms-flexbox;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin: 5px;
+        & span {
+          text-align: center;
+          font-size: 10pt;
+          font-weight: 500;
+        }
+      }
+      &-circle {
+        background-color: $blueSG;
+        border-radius: 100px;
+        width: 70px;
+        height: 70px;
+        display: -ms-flexbox;
+display: flex;
+        justify-content: center;
+        align-items: center;
+        & label{
+          cursor: pointer;
+        }
+        & i {
+          color: white;
+          font-size: 20pt;
+        }
+      }
+
+      &-active {
+        background-color: white !important;
+        i {
+          color: $blueSG !important;
+        }
+      }
+    }
+
+    input {
+      background-color: $blueSG-40;
+      border-radius: 15px;
+      font-size: 10pt;
+      border: none;
+      padding: 7px 20px;
+      color: white;
+      &::placeholder {
+        color: white;
+      }
+      &:-ms-input-placeholder {
+        color: white;
+      }
+      &::-ms-input-placeholder {
+        color: white;
+      }
+    }
+
+    input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    textarea {
+      background-color: $blueSG-40;
+      border-radius: 15px;
+      font-size: 10pt;
+      border: none;
+      padding: 7px 20px;
+      color: white;
+      resize: none;
+      &::placeholder {
+        color: white;
+      }
+      &:-ms-input-placeholder {
+        color: white;
+      }
+      &::-ms-input-placeholder {
+        color: white;
+      }
+      &:focus {
+        outline: none !important;
+        box-shadow: none !important;
+      }
+    }
+
+    &-input {
+      input {
+        width: 100%;
+      }
+
+      textarea {
+        width: 100%;
+      }
+    }
+
+    &-input-quant {
+      & label {
+        font-size: 10pt;
+        font-weight: 600;
+        padding-right: 10px;
+      }
+
+      .dolar {
+        color: $blueSG;
+        font-size: 12pt;
+        font-weight: 700;
+      }
+    }
+
+    &-photos {
+      h6 {
+        font-size: 12pt;
+        font-weight: 600;
+        color: #5C5C5C;
+      }
+      .input-group-container {
+        display: -ms-flexbox;
+        display: flex;
+        justify-content: center;
+        label {
+          color: white;
+          background-color: $blueSG-40;
+          border-radius: 15px;
+          text-align: center;
+          padding: 40px 20px;
+          margin: 0px 10px;
+          cursor: pointer;
+        }
+
+        label:nth-child(1) {
+          margin-left: 0;
+        }
+
+        label:nth-child(4) {
+          margin-right: 0;
+        }
+      }
+    }
+  }
+}
+
+@mixin hideInput {
+  width: 0;
+  height: 0;
+  position: absolute;
+  left: -9999px;
+}
+@mixin breakpoint($point) {
+  @if $point == 1100 {
+    @media (max-width: 1100px) {
+      @content;
+    }
+  } @else if $point == 800 {
+    @media (max-width: 800px) {
+      @content;
+    }
+  }
+}
+
+body:not(:-moz-handler-blocked) fieldset {
+  display: table-cell;
+}
+
+/* TOGGLE STYLING */
+.toggle {
+  margin: 0 0 1.5rem;
+  box-sizing: border-box;
+  font-size: 0;
+  display: -ms-flexbox;
+display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: stretch;
+  input {
+    @include hideInput;
+  }
+  input + label {
+    /* padding: 0.75rem 2rem; */
+    width: 70px;
+    margin: 0;
+    height: 70px;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100px !important;
+    box-sizing: border-box;
+    background-color: $blueSG;
+    line-height: 140%;
+    text-align: center;
+    // box-shadow: 0em 0rem 0.1rem rgba(0, 0, 0, 0.35);
+    transition: background-color 0.4s;
+
+    /* ADD THESE PROPERTIES TO SWITCH FROM AUTO WIDTH TO FULL WIDTH */
+    // flex: 0 0 50%; display: -ms-flexbox;
+display: flex; justify-content: center; align-items: center;
+    /* ----- */
+  }
+
+  @include breakpoint(800) {
+    input + label {
+      padding: 0.75rem 0.25rem;
+      flex: 0 0 50%;
+      display: -ms-flexbox;
+display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}
+
+label {
+  user-select: none;
+}
+
+.preview-img {
+  display: flex;
+  display: -ms-flexbox;
+  justify-content: center;
+}

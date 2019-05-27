@@ -35,10 +35,12 @@
               "node_modules/angular-bootstrap-md/scss/bootstrap/bootstrap.scss",
               "node_modules/angular-bootstrap-md/scss/mdb-free.scss",
               "src/materialstyles.scss",
+              "node_modules/croppie/croppie.css",
               "src/styles.scss"
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.js",
+              "node_modules/croppie/croppie.js",
               "node_modules/chart.js/dist/Chart.js",
               "node_modules/hammerjs/hammer.min.js",
               "node_modules/moment/min/moment.min.js"

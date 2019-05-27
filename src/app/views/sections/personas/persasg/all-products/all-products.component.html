@@ -1,0 +1,202 @@
+<ng-container *ngIf="loading">
+  <div class="persa-content-loading animated fadeIn">
+    <div class="lds-roller">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    se está cargando la lista de productos...
+  </div>
+</ng-container>
+
+<div class="persa-content animated fadeInUp faster" *ngIf="!loading">
+  <div class="row">
+    <!-- Search Input -->
+    <div class="col-lg-3 col-md-5-col-sm-12">
+      <div class="input-group mb-3 search-bar">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="txt_buscar"
+            ><i class="fas fa-search"></i
+          ></span>
+        </div>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Buscar"
+          aria-label="buscar"
+          aria-describedby="txt_buscar"
+        />
+      </div>
+    </div>
+    <div class="col-12"></div>
+  </div>
+  <div class="row">
+    <div class="col-lg-4 col-md-6 col-sm-12 m-0 p-0">
+      <!-- Proporción de imágenes 325*208 -->
+      <div class="persa-content-list-item">
+        <div class="view overlay zoom" style="border-radius: 10px;">
+          <img
+            src="https://acs2.blob.core.windows.net/imgcatalogo/l/VA_a3dd9508ec53446e9da3aa25fc836dcd.jpg"
+            class="img-fluid persa-content-list-item-image"
+            alt="zoom"
+          />
+          <div
+            class="mask flex-center waves-effect blue-overlay waves-light"
+            (click)="openModal('Producto1')"
+          >
+            <p class="text-overlay">
+              <i class="fas fa-search-plus"></i><br />Click para ver más
+            </p>
+          </div>
+        </div>
+        <h6>Nombre Producto</h6>
+        <p>
+          $
+          <span class="p-2 bg-white">
+            15.000.000
+          </span>
+        </p>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-6 col-sm-12 m-0 p-0">
+      <!-- Proporción de imágenes 325*208 -->
+      <div class="persa-content-list-item">
+        <div class="view overlay zoom" style="border-radius: 10px;">
+          <img
+            src="https://acs2.blob.core.windows.net/imgcatalogo/l/VA_a3dd9508ec53446e9da3aa25fc836dcd.jpg"
+            class="img-fluid persa-content-list-item-image"
+            alt="zoom"
+          />
+          <div
+            class="mask flex-center waves-effect blue-overlay waves-light"
+            (click)="openModal('Producto2')"
+          >
+            <p class="text-overlay">
+              <i class="fas fa-search-plus"></i><br />Click para ver más
+            </p>
+          </div>
+        </div>
+        <h6>Nombre Producto</h6>
+        <p>
+          $
+          <span class="p-2 bg-white">
+            15.000.000
+          </span>
+        </p>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-6 col-sm-12 m-0 p-0">
+      <!-- Proporción de imágenes 325*208 -->
+      <div class="persa-content-list-item">
+        <div class="view overlay zoom" style="border-radius: 10px;">
+          <img
+            src="https://acs2.blob.core.windows.net/imgcatalogo/l/VA_a3dd9508ec53446e9da3aa25fc836dcd.jpg"
+            class="img-fluid persa-content-list-item-image"
+            alt="zoom"
+          />
+          <div
+            class="mask flex-center waves-effect blue-overlay waves-light"
+            (click)="openModal('Producto3')"
+          >
+            <p class="text-overlay">
+              <i class="fas fa-search-plus"></i><br />Click para ver más
+            </p>
+          </div>
+        </div>
+        <h6>Nombre Producto</h6>
+        <p>
+          $
+          <span class="p-2 bg-white">
+            15.000.000
+          </span>
+        </p>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-6 col-sm-12 m-0 p-0">
+      <!-- Proporción de imágenes 325*208 -->
+      <div class="persa-content-list-item">
+        <div class="view overlay zoom" style="border-radius: 10px;">
+          <img
+            src="https://acs2.blob.core.windows.net/imgcatalogo/l/VA_a3dd9508ec53446e9da3aa25fc836dcd.jpg"
+            class="img-fluid persa-content-list-item-image"
+            alt="zoom"
+          />
+          <div
+            class="mask flex-center waves-effect blue-overlay waves-light"
+            (click)="openModal('Producto4')"
+          >
+            <p class="text-overlay">
+              <i class="fas fa-search-plus"></i><br />Click para ver más
+            </p>
+          </div>
+        </div>
+        <h6>Nombre Producto</h6>
+        <p>
+          $
+          <span class="p-2 bg-white">
+            15.000.000
+          </span>
+        </p>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-6 col-sm-12 m-0 p-0">
+      <!-- Proporción de imágenes 325*208 -->
+      <div class="persa-content-list-item">
+        <div class="view overlay zoom" style="border-radius: 10px;">
+          <img
+            src="https://acs2.blob.core.windows.net/imgcatalogo/l/VA_a3dd9508ec53446e9da3aa25fc836dcd.jpg"
+            class="img-fluid persa-content-list-item-image"
+            alt="zoom"
+          />
+          <div
+            class="mask flex-center waves-effect blue-overlay waves-light"
+            (click)="openModal('Producto5')"
+          >
+            <p class="text-overlay">
+              <i class="fas fa-search-plus"></i><br />Click para ver más
+            </p>
+          </div>
+        </div>
+        <h6>Nombre Producto</h6>
+        <p>
+          $
+          <span class="p-2 bg-white">
+            15.000.000
+          </span>
+        </p>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-6 col-sm-12 m-0 p-0">
+      <!-- Proporción de imágenes 325*208 -->
+      <div class="persa-content-list-item">
+        <div class="view overlay zoom" style="border-radius: 10px;">
+          <img
+            src="https://acs2.blob.core.windows.net/imgcatalogo/l/VA_a3dd9508ec53446e9da3aa25fc836dcd.jpg"
+            class="img-fluid persa-content-list-item-image"
+            alt="zoom"
+          />
+          <div
+            class="mask flex-center waves-effect blue-overlay waves-light"
+            (click)="openModal('Producto6')"
+          >
+            <p class="text-overlay">
+              <i class="fas fa-search-plus"></i><br />Click para ver más
+            </p>
+          </div>
+        </div>
+        <h6>Nombre Producto</h6>
+        <p>
+          $
+          <span class="p-2 bg-white">
+            15.000.000
+          </span>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

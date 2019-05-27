@@ -124,14 +124,16 @@
   z-index: 1001;
   width: 100%;
   height: 100%;
-  display: flex;
+  display: -ms-flexbox;
+display: flex;
   justify-content: space-between;
   align-items: center;
   padding-top: 1em;
 }
 
 .left-side-content {
-  display: flex;
+  display: -ms-flexbox;
+display: flex;
   align-items: center;
   width: 42%;
   height: 100%;
@@ -200,7 +202,8 @@
 }
 
 .center-icon {
-  display: flex;
+  display: -ms-flexbox;
+display: flex;
   align-items: center;
   width: 18%;
   height: 100%;
@@ -221,7 +224,8 @@
 .right-side-content-1 {
   width: 50%;
   height: 100%;
-  display: flex;
+  display: -ms-flexbox;
+display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
@@ -239,7 +243,8 @@
 }
 
 .v-s {
-  display: flex;
+  display: -ms-flexbox;
+display: flex;
   justify-content: center;
   align-items: center;
   color: #adadad;
@@ -248,7 +253,8 @@
 }
 
 .acumulado {
-  display: flex;
+  display: -ms-flexbox;
+display: flex;
   flex-direction: column;
   width: 140px;
 }
@@ -267,7 +273,8 @@
 .right-side-content-2 {
   width: 50%;
   height: 100%;
-  display: flex;
+  display: -ms-flexbox;
+display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
@@ -275,7 +282,8 @@
 }
 
 .v-s {
-  display: flex;
+  display: -ms-flexbox;
+display: flex;
   justify-content: center;
   align-items: center;
   color: #adadad;
@@ -284,7 +292,8 @@
 }
 
 .acumulado {
-  display: flex;
+  display: -ms-flexbox;
+display: flex;
   flex-direction: column;
   width: 140px;
 }
@@ -311,7 +320,8 @@
 .right-side-content-3 {
   width: 50%;
   height: 100%;
-  display: flex;
+  display: -ms-flexbox;
+display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
@@ -326,7 +336,8 @@
 }
 
 .right-side-content-3 .v-s {
-  display: flex;
+  display: -ms-flexbox;
+display: flex;
   justify-content: center;
   align-items: center;
   color: #adadad;
@@ -335,7 +346,8 @@
 }
 
 .right-side-content-3 .acumulado {
-  display: flex;
+  display: -ms-flexbox;
+display: flex;
   flex-direction: column;
   width: 140px;
 }
@@ -355,7 +367,8 @@
 .right-side-content {
   width: 50%;
   height: 100%;
-  display: flex;
+  display: -ms-flexbox;
+display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;

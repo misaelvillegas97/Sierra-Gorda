@@ -1,0 +1,80 @@
+$orange: #ff5900;
+$blueSG: #3fbac5;
+$blueSG-80: #3ebac5cc;
+$blueSG-40: #3ebac566;
+$blueSG-light: #72ccd4;
+$blueSG-20: #3fbac533;
+
+.product {
+  &-container {
+    width: 100%;
+    height: 100%;
+    background-color: $blueSG-20;
+    border-radius: 15px;
+    padding: 30px 20px;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    color: #5c5c5c;
+  }
+
+  &-card {
+    // height: 40px;
+    overflow: hidden;
+    padding: 15px 10px;
+    background-color: $blueSG;
+    border-radius: 10px;
+
+    transition: height 1s ease-in-out;
+
+    &-title {
+      display: -ms-flexbox;
+      display: flex;
+      justify-content: space-between;
+      color: white;
+      h6 {
+        font-weight: 700;
+      }
+
+      &-advice {
+        color: $orange
+      }
+    }
+  }
+
+  &-date {
+    color: white;
+    font-weight: 400;
+    font-size: 10pt;
+    margin-bottom: 8px;
+
+    &-title {
+      color: white;
+      font-weight: 600;
+      font-size: 10pt;
+      margin: 0;
+      margin-top: 20px;
+    }
+  }
+
+  &-interest {
+    &-title {
+      color: white;
+      font-weight: 500;
+      margin-top: 10px;
+    }
+
+    &-data {
+      color: white;
+      font-size: 10pt;
+    }
+
+    &-container {
+      background-color: $blueSG-light;
+      border-radius: 10px;
+      padding: 30px 15px;
+    }
+
+  }
+}

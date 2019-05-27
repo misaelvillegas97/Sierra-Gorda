@@ -54,7 +54,8 @@
 }
 
 .search-container {
-  display: flex;
+  display: -ms-flexbox;
+display: flex;
   justify-content: space-between;
 }
 
@@ -93,7 +94,8 @@ input.chat-input {
   display: none;
   width: 100%;
   #options {
-    display: flex;
+    display: -ms-flexbox;
+display: flex;
   }
 }
 
@@ -116,7 +118,8 @@ input.chat-input {
   font-weight: 500;
   font-style: italic;
   font-family: Calibri;
-  display: flex;
+  display: -ms-flexbox;
+display: flex;
   justify-content: space-between;
   align-items: center;
   flex-direction: column;
@@ -131,7 +134,8 @@ input.chat-input {
   background-color: white;
   border-radius: 15px;
   padding: 6px;
-  display: flex;
+  display: -ms-flexbox;
+display: flex;
   justify-content: stretch;
   margin-bottom: 15px;
 
@@ -140,7 +144,8 @@ input.chat-input {
   }
 
   .content {
-    display: flex;
+    display: -ms-flexbox;
+display: flex;
     flex-direction: column;
 
     h6 {

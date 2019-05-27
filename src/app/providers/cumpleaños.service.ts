@@ -41,7 +41,7 @@ export class CumpleañosService {
       )
       .catch(
         err => {
-          alert('No hay conexión con el servidor');
+          //alert('No hay conexión con el servidor');
         }
       );
   }

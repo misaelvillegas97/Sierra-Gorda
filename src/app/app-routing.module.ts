@@ -15,6 +15,12 @@ import { PortalComponent } from './views/sections/personas/portal/portal.compone
 import { CategoriasComponent } from './views/sections/personas/portal/categorias/categorias.component';
 import { ListaVideosComponent } from './views/sections/personas/portal/lista-videos/lista-videos.component';
 import { PersasgComponent } from './views/sections/personas/persasg/persasg.component';
+import { ProductListComponent } from './views/sections/personas/persasg/my-products/product-list/product-list.component';
+import { ProductEditComponent } from './views/sections/personas/persasg/my-products/product-edit/product-edit.component';
+import { AllProductsComponent } from './views/sections/personas/persasg/all-products/all-products.component';
+import { MyProductsComponent } from './views/sections/personas/persasg/my-products/my-products.component';
+// import { OperacionesComponent } from './views/sections/nuestra-empresa/gerencia-superintendencias/operaciones/operaciones.component';
+import { GerenciaSuperintendenciasComponent } from './views/sections/nuestra-empresa/gerencia-superintendencias/gerencia-superintendencias.component';
 
 const routes: Routes = [
   {
@@ -49,6 +55,21 @@ const routes: Routes = [
       {
         path: 'propiedad',
         component: PropiedadComponent
+      },
+      {
+        path: 'gerencia',
+        component: GerenciaSuperintendenciasComponent,
+        children: [
+          {
+            path: '',
+            redirectTo: 'operaciones',
+            pathMatch: 'full'
+          },
+          {
+            path: 'operaciones',
+            loadChildren: './views/sections/nuestra-empresa/gerencia-superintendencias/operaciones/operaciones.module#OperacionesModule',
+          }
+        ]
       },
       {
         path: 'ubicacion',
@@ -95,7 +116,37 @@ const routes: Routes = [
       },
       {
         path: 'persasg',
-        component: PersasgComponent
+        component: PersasgComponent,
+        children: [
+          {
+            path: 'lista-productos',
+            component: AllProductsComponent
+          },
+          {
+            path: 'mis-productos',
+            component: MyProductsComponent,
+            children: [
+              {
+                path: '',
+                component: ProductListComponent
+              },
+              {
+                path: 'edit/:idProducto',
+                component: ProductEditComponent
+              },
+              {
+                path: '**',
+                pathMatch: 'full',
+                redirectTo: ''
+              }
+            ]
+          },
+          {
+            path: '**',
+            pathMatch: 'full',
+            redirectTo: 'lista-productos'
+          }
+        ]
       }
     ]
   },

@@ -100,7 +100,8 @@
 
    // Display Setting
    position: absolute;
-   display: flex;
+   display: -ms-flexbox;
+display: flex;
    flex-direction: column;
    align-items: center;
 
@@ -161,7 +162,7 @@
     border-right: 15px solid transparent;
     border-bottom: 14px solid #FF5000;
     position: absolute;
-    top: -14px;
+    top: -13px;
   }
 
   ul {
@@ -185,7 +186,7 @@
     border-right: 15px solid transparent;
     border-bottom: 14px solid #FFC500;
     position: absolute;
-    top: -14px;
+    top: -13px;
   }
 
   ul {
@@ -208,7 +209,7 @@
     border-right: 15px solid transparent;
     border-bottom: 14px solid #00A9B7;
     position: absolute;
-    top: -14px;
+    top: -13px;
   }
 
   ul {
@@ -231,7 +232,7 @@
     border-right: 15px solid transparent;
     border-bottom: 14px solid #6ABE4A;
     position: absolute;
-    top: -14px;
+    top: -13px;
   }
 
   ul {

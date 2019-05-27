@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="action-button">
+    <button class="action-button-item" [routerLink]="['operaciones']" routerLinkActive="action-button-item-active">Operaciones</button>
+    <button class="action-button-item" [routerLink]="['finanzas']" routerLinkActive="action-button-item-active">Finanzas</button>
+    <button class="action-button-item" [routerLink]="['rrhh']" routerLinkActive="action-button-item-active">Recursos<br/>Humanos</button>
+    <button class="action-button-item" [routerLink]="['servivios-corporativos']" routerLinkActive="action-button-item-active">Servicios<br/>Corporativos</button>
+    <button class="action-button-item" [routerLink]="['aaee-legal']" routerLinkActive="action-button-item-active">Sustentabilidad<br/>AA.EE y Legal</button>
+    <button class="action-button-item" [routerLink]="['gerencia-general']" routerLinkActive="action-button-item-active">Gerencia<br/>General</button>
+  </div>
+  <router-outlet></router-outlet>
+</div>

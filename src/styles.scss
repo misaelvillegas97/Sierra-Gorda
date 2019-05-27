@@ -7,7 +7,7 @@
   --blueSG: #3fbac5;
   --blueSG-80: #3ebac5cc;
   --blueSG-40: #3ebac566;
-  --blueSG-20: rgba(63, 186, 197, 0.2);
+  --blueSG-20: #3fbac533;
   --calipso: #4dc2b3;
   --calipso-80: #4dc2b3cc;
   --darkCalipso: #3a9e91;
@@ -58,8 +58,18 @@ img {
   margin-right: 0px !important;
 }
 
-html, body { height: 100%; }
-body { margin: 0;}
+html{ height:100%; max-width: 100%;}
+body{ min-height:100%; padding:0; margin:0; position:relative; }
+
+// body::after{ content:''; display:block; height:100px; }
+
+footer{
+  position:absolute;
+  bottom:0;
+  right: 0;
+  width:100%;
+  height:186px;
+}
 
 .orange-tooltip {
   background-color: #F27137;
@@ -82,8 +92,8 @@ video:focus {
   // box-shadow: .1em 0.2rem .5rem rgba(0, 0, 0, 0.15) !important;
 }
 
-#masterslider2 .ms-container .ms-inner-controls-cont .ms-view .ms-slide-bgcont{
-  border-radius: 12px !important;
+#masterslider2 .ms-container .ms-inner-controls-cont .ms-view .ms-slide{
+  // border-radius: 12px !important;
   box-shadow: .1em 0.2rem .5rem rgba(0, 0, 0, 0.15) !important;
 }
 

@@ -56,7 +56,8 @@
 
 .text {
   width: 75%;
-  display: flex;
+  display: -ms-flexbox;
+display: flex;
   flex-direction: column;
   font-weight: 500;
 }
@@ -86,7 +87,8 @@
 
 }
 .avatar {
-  display: flex;
+  display: -ms-flexbox;
+display: flex;
   justify-content: center;
   align-items: center;
   width: 25%;
@@ -98,7 +100,8 @@
   width: 85%;
   border-radius: 5px;
   padding: 5px;
-  display: flex;
+  display: -ms-flexbox;
+display: flex;
 }
 .msj-rta {
   @extend .shadow-green;
@@ -119,7 +122,8 @@
   position: absolute;
   bottom: 0;
   width: 100%;
-  display: flex;
+  display: -ms-flexbox;
+display: flex;
 }
 body > div > div > div:nth-child(2) > span {
   background: whitesmoke;
@@ -136,7 +140,8 @@ ul {
   list-style-type: none;
   padding: 18px;
   bottom: 47px;
-  display: flex;
+  display: -ms-flexbox;
+display: flex;
   flex-direction: column;
   top: 0;
   overflow-y: scroll;

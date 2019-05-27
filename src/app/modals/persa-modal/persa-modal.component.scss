@@ -48,7 +48,8 @@
 }
 
 .buy {
-  display: flex;
+  display: -ms-flexbox;
+display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-end;

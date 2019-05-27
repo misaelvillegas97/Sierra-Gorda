@@ -6,10 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cultura.component.scss']
 })
 export class CulturaComponent implements OnInit {
+  valueSelected = '';
 
-  constructor() { }
-
+  constructor() {}
+  
   ngOnInit() {
+    this.valueSelected = 'default'
   }
 
   console(e: any) {

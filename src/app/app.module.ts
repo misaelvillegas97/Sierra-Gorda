@@ -9,6 +9,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { PickerModule } from '@ctrl/ngx-emoji-mart';
 import * as $ from 'jquery';
+import * as Coppie from 'croppie';
 
 // Angular Material Imports
 import { CdkStepperModule } from '@angular/cdk/stepper';
@@ -17,6 +18,9 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatInputModule } from '@angular/material/input';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+
+// Modules Router
+import { OperacionesModule } from './views/sections/nuestra-empresa/gerencia-superintendencias/operaciones/operaciones.module';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -54,6 +58,11 @@ import { PersaModalComponent } from './modals/persa-modal/persa-modal.component'
 import { SafeHtmlPipe } from './pipes/safe-html.pipe';
 import { EditInfoModalComponent } from './modals/edit-info-modal/edit-info-modal.component';
 import { FooterSComponent } from './views/sections/footer-s/footer-s.component';
+import { ProductListComponent } from './views/sections/personas/persasg/my-products/product-list/product-list.component';
+import { ProductEditComponent } from './views/sections/personas/persasg/my-products/product-edit/product-edit.component';
+import { AllProductsComponent } from './views/sections/personas/persasg/all-products/all-products.component';
+import { MyProductsComponent } from './views/sections/personas/persasg/my-products/my-products.component';
+import { GerenciaSuperintendenciasComponent } from './views/sections/nuestra-empresa/gerencia-superintendencias/gerencia-superintendencias.component';
 
 
 @NgModule({
@@ -92,13 +101,19 @@ import { FooterSComponent } from './views/sections/footer-s/footer-s.component';
     PersaModalComponent,
     SafeHtmlPipe,
     EditInfoModalComponent,
-    FooterSComponent
+    FooterSComponent,
+    ProductListComponent,
+    ProductEditComponent,
+    AllProductsComponent,
+    MyProductsComponent,
+    GerenciaSuperintendenciasComponent
   ],
   imports: [
     BrowserModule,
     Ng2Rut,
     HttpClientModule,
     AppRoutingModule,
+    // OperacionesModule,
     PickerModule,
     MDBBootstrapModule.forRoot(),
     BrowserAnimationsModule,

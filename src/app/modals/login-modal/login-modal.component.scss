@@ -27,7 +27,8 @@
 }
 
 .content-form {
-  display: flex;
+  display: -ms-flexbox;
+display: flex;
   flex-direction: column;
   align-items: center;
 

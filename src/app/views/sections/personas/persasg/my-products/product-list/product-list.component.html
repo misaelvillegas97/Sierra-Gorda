@@ -1,0 +1,30 @@
+<div class="product-container">
+  <div class="product-card">
+    <div class="product-card-title">
+      <h6>Nombre de referencia</h6>
+      <span><i class="fas fa-exclamation-circle product-card-title-advice"></i><i class="fas fa-chevron-circle-right ml-2" style="color: white" aria-hidden="true"></i></span>
+    </div>
+    <div class="product-card-content">
+
+      <!-- TODO: Implementar pipe Date para formatear fecha -->
+      <h6 class="product-date-title">Fecha de publicación</h6>
+      <span class="product-date">20 de Marzo 2019</span>
+
+      <h6 class="product-interest-title">Lista de interesados</h6>
+      <!-- TODO: Implementar *ngIf para validar si existe algún interesado -->
+      <ng-container>
+          <!-- TODO: Implementar *ngFor para lista de interesados -->
+        <div class="product-interest-container">
+          <div class="product-interest-data">
+            <span>Juan Gallegillos Muñoz</span> <br>
+            <span>Teléfono: +56943213456</span> <br>
+            <span>Correo: correo@mail.com</span>
+          </div>
+
+        </div>
+      </ng-container>
+
+    </div>
+
+  </div>
+</div>

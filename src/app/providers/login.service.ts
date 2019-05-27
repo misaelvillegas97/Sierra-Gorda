@@ -80,7 +80,7 @@ export class LoginService {
           case '/':
             // location.reload();
             this.route.navigateByUrl('/refresh', {skipLocationChange: true}).then(
-              ()=> {
+              () => {
                 this.route.navigateByUrl('/');
               }
               );
@@ -141,13 +141,13 @@ export class LoginService {
           err => {
             switch (err.status) {
               case 0:
-                alert('0 - Error trying to connect WebService <<http://c3wsapi.cl>> | Obtener usuario');
+                // alert('0 - Error trying to connect WebService <<http://c3wsapi.cl>> | Obtener usuario');
                 break;
               case 404:
-                alert('404 - Page doesn\'t exist <<http://c3wsapi.cl>> | Obtener usuario');
+                // alert('404 - Page doesn\'t exist <<http://c3wsapi.cl>> | Obtener usuario');
                 break;
               case 500:
-                alert('500 - Error on code <<http://c3wsapi.cl>> | Obtener usuario');
+                // alert('500 - Error on code <<http://c3wsapi.cl>> | Obtener usuario');
                 break;
             }
             return [];

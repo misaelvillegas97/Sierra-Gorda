@@ -64,7 +64,8 @@
   }
 
   .content-form {
-    display: flex;
+    display: -ms-flexbox;
+display: flex;
     flex-direction: column;
     align-items: center;
 
@@ -162,7 +163,8 @@
   #user-hover-menu {
     right:  20% !important;
     div {
-      display: flex;
+      display: -ms-flexbox;
+display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;

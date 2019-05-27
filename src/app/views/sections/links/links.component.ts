@@ -8,8 +8,18 @@ declare let $: any;
   styleUrls: ['./links.component.scss']
 })
 export class LinksComponent implements OnInit {
+  // Variables
+  // personas: boolean;
+  // compania: boolean;
+  // herramientas: boolean;
+  // aplicaciones: boolean;
 
-  constructor() { }
+  constructor() {
+    // this.personas = false;
+    // this.compania = false;
+    // this.herramientas = false;
+    // this.aplicaciones = false;
+  }
 
   ngOnInit() {
   }
@@ -24,6 +34,7 @@ export class LinksComponent implements OnInit {
             $('#compania-1').css('background-color', '#FF5000');
             $('#compania-2').css('background-color', '#FF5000');
             $('#compania-3').css('color', 'white');
+            // this.compania = true;
             $('#compania-options').addClass('animated');
             $('#compania-options').addClass('fadeIn');
             $('#compania-options').addClass('faster');
@@ -33,6 +44,7 @@ export class LinksComponent implements OnInit {
             $('#compania-1').removeAttr('style');
             $('#compania-2').removeAttr('style');
             $('#compania-3').removeAttr('style');
+            // this.compania = false;
             $('#compania-options').removeClass('animated');
             $('#compania-options').removeClass('fadeIn');
             $('#compania-options').removeClass('faster');
@@ -42,6 +54,7 @@ export class LinksComponent implements OnInit {
 
         case 'Personas':
           if (state) {
+            // this.personas = true;
             $('#personas').css('background-color', '#FFC500');
             $('#personas').css('box-shadow', 'none');
             $('#personas-1').css('background-color', '#FFC500');
@@ -52,6 +65,7 @@ export class LinksComponent implements OnInit {
             $('#personas-options').addClass('faster');
             $('#personas-options').css('visibility', 'visible');
           } else {
+            // this.personas = false;
             $('#personas').removeAttr('style');
             $('#personas-1').removeAttr('style');
             $('#personas-2').removeAttr('style');
@@ -65,6 +79,7 @@ export class LinksComponent implements OnInit {
 
         case 'Aplicaciones':
           if (state) {
+            // this.aplicaciones = true;
             $('#aplicaciones').css('background-color', '#00BDC8');
             $('#aplicaciones').css('box-shadow', 'none');
             $('#aplicaciones-1').css('background-color', '#00BDC8');
@@ -75,6 +90,7 @@ export class LinksComponent implements OnInit {
             $('#aplicaciones-options').addClass('faster');
             $('#aplicaciones-options').css('visibility', 'visible');
           } else {
+            // this.aplicaciones = false;
             $('#aplicaciones').removeAttr('style');
             $('#aplicaciones-1').removeAttr('style');
             $('#aplicaciones-2').removeAttr('style');
@@ -88,6 +104,7 @@ export class LinksComponent implements OnInit {
 
         case 'Mis Herramientas':
           if (state) {
+            // this.herramientas = true;
             $('#herramientas').css('background-color', '#6ABE4A');
             $('#herramientas').css('box-shadow', 'none');
             $('#herramientas-1').css('background-color', '#6ABE4A');
@@ -98,6 +115,7 @@ export class LinksComponent implements OnInit {
             $('#herramientas-options').addClass('faster');
             $('#herramientas-options').css('visibility', 'visible');
           } else {
+            // this.herramientas = false;
             $('#herramientas').removeAttr('style');
             $('#herramientas-1').removeAttr('style');
             $('#herramientas-2').removeAttr('style');

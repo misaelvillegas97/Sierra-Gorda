@@ -41,7 +41,7 @@ export class IndexComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    // alert('Ancho de ' + screen.width + 'px');
+    // //alert('Ancho de ' + screen.width + 'px');
   }
 
 
@@ -234,10 +234,10 @@ export class IndexComponent implements OnInit, AfterViewInit {
           $('#compania-1').css('background-color', '#FF5000');
           $('#compania-2').css('background-color', '#FF5000');
           $('#compania-3').css('color', 'white');
+          $('#compania-options').css('visibility', 'visible');
           $('#compania-options').addClass('animated');
           $('#compania-options').addClass('fadeIn');
           $('#compania-options').addClass('faster');
-          $('#compania-options').css('visibility', 'visible');
         } else {
           $('#compania').removeAttr('style');
           $('#compania-1').removeAttr('style');

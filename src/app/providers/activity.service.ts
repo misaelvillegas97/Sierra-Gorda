@@ -60,13 +60,13 @@ export class ActivityService {
           err => {
             switch (err.status) {
               case 0:
-                alert('0 - Error trying to connect WebService <<http://c3wsapi.cl>> | Obtener actividades');
+                //alert('0 - Error trying to connect WebService <<http://c3wsapi.cl>> | Obtener actividades');
                 break;
               case 404:
-                alert('404 - Page doesn\'t exist <<http://c3wsapi.cl>> | Obtener actividades');
+                //alert('404 - Page doesn\'t exist <<http://c3wsapi.cl>> | Obtener actividades');
                 break;
               case 500:
-                alert('500 - Error on code <<http://c3wsapi.cl>> | Obtener actividades');
+                //alert('500 - Error on code <<http://c3wsapi.cl>> | Obtener actividades');
                 break;
             }
             return [];
