@@ -1,16 +1,43 @@
-<div class="animated fadeIn slow">
+<div class="animated fadeIn">
   <div class="categorias-header"> <i class="fas fa-chevron-left text-white mr-2" style="cursor: pointer" routerLink="../"></i> {{ titleCategoria }}</div>
   <div class="categorias-body">
-    <div class="lista">
-      <div class="row">
-        <ng-container *ngIf="ps.videosList">
-          <div class="video-container pt-2" *ngFor="let video of ps.videosList; let i=index">
-            <img src="{{video.url_img}}" alt="" style="width: 40%;">
-            <h6>{{ video.titulo }}</h6>
-          </div>
-        </ng-container>
+    <!-- Valida si hay videos -->
+    <ng-container *ngIf="ps.videosList">
+      <!-- Iteración a la cantidad de videos -->
+      <ng-container *ngFor="let video of ps.videosList; let i=index">
+        <div class="animated wow fadeInRight">
+          <div class="row video-container">
+            <div class="col-lg-5 col-md-5 col-sm-4 p-0 video-img">
 
+              <div class="view overlay zoom" style="border-radius: 10px;">
+                <img src="{{video.url_img}}" class="img-fluid" alt="zoom"/>
+                <div class="mask flex-center waves-effect overlay-color waves-light" (click)="emitVideo(video)">
+                  <p class="text-overlay"><i class="fas fa-play"></i></p>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-7 col-md-7 col-sm-7 video-title">
+              <h6>{{ video.titulo }}</h6>
+            </div>
+          </div>
+
+          <!-- Separación entre videos -->
+          <hr *ngIf="(i + 1) !== ps.videosList.length">
+        </div>
+      </ng-container>
+    </ng-container>
+    <ng-container *ngIf="!ps.videosList">
+      <div class="w-100 h-100" style="display: flex; justify-content: center; align-items: center;">
+        <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
       </div>
-    </div>
+    </ng-container>
+    <ng-container *ngIf="ps.videosList.length === 0">
+      <div class="w-100 h-100" style="display: flex; justify-content: center; align-items: center;">
+        <h6 style="color: #8f8f8f; font-style: italic; font-size: 10pt; font-weight: 600;">
+          No hay videos para esta categoría.
+        </h6>
+      </div>
+    </ng-container>
+
   </div>
 </div>

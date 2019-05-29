@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { fader, slider, fadeAnimation } from '../../../../../router-animations';
+import { PortalService } from 'src/app/providers/portal.service';
 
 @Component({
   selector: 'app-portal',
@@ -9,7 +10,9 @@ import { fader, slider, fadeAnimation } from '../../../../../router-animations';
 })
 export class PortalComponent implements OnInit {
 
-  constructor() { }
+  constructor( private ps: PortalService ) {
+    this.ps.loadDefaultVideo();
+  }
 
   ngOnInit() {
   }

@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PortalService } from 'src/app/providers/portal.service';
-import { Category } from 'src/app/interface/portal-interface';
+import { Category, Video } from 'src/app/interface/portal-interface';
 
 @Component({
   selector: 'app-lista-videos',
@@ -14,9 +14,7 @@ export class ListaVideosComponent implements OnInit, OnDestroy {
   categoria: Category;
   private sub: any;
 
-  constructor( public ps: PortalService, private route: ActivatedRoute ) { }
-
-  ngOnInit() {
+  constructor( public ps: PortalService, private route: ActivatedRoute ) {
     this.sub = this.route.params.subscribe( params => {
       this.titleCategoria = params.idCategoria; // (+) converts string 'id' to a number
       if (this.ps.categoryList === undefined) {
@@ -24,17 +22,25 @@ export class ListaVideosComponent implements OnInit, OnDestroy {
           () => {
             this.categoria = this.ps.getCategoryByName(this.titleCategoria);
             this.ps.getVideosByCategory(this.categoria.id);
-            console.log(this.categoria)
+            console.log(this.categoria);
           }
         );
+      } else {
+        this.categoria = this.ps.getCategoryByName(this.titleCategoria);
+        this.ps.getVideosByCategory(this.categoria.id);
+        console.log(this.categoria);
       }
     });
   }
 
+  ngOnInit() {  }
+
   ngOnDestroy(): void {
-    console.log(this.sub);
     this.sub.unsubscribe();
-    console.log(this.sub);
+  }
+
+  emitVideo(_video: Video) {
+
   }
 
 }
