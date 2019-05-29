@@ -47,7 +47,7 @@ testem.log
 .DS_Store
 Thumbs.db
 
-/.firebase
+.firebase
 /e2e
 firebase.json
 firebase-debug.log
