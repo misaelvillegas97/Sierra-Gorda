@@ -3,7 +3,7 @@
     <div class="col-lg-6 col-md-6 col-sm-12">
       <!-- Agregar Publicación -->
       <form #f="ngForm">
-        <div class="persa-options-add">
+        <div class="persa-options-add" id="insert-div">
           <h6>Agregar Prublicación</h6>
           <p>Selecciona la categoría de tu artículo</p>
           <div class="persa-options-add-categories animated fadeIn">
@@ -155,8 +155,7 @@
               #txt_name="ngModel"
               ngModel
             />
-            <small class="float-right"
-              >Máximo 60 caracteres |
+            <small class="float-right">
               {{
                 txt_name.value.length ? txt_name.value.length : 0
               }}/60</small
@@ -174,8 +173,7 @@
               ngModel
             >
             </textarea>
-            <small class="float-right"
-              >Máximo 200 caracteres |
+            <small class="float-right">
               {{
                 txt_desc.value.length ? txt_desc.value.length : 0
               }}/200</small
@@ -194,49 +192,58 @@
           </div>
           <div class="persa-options-add-input-quant mb-4">
             <label for="txt_price">Valor del producto</label>
-            <span class="dolar">$</span>
-            <input
-              type="number"
-              placeholder="0"
-              name="txt_price"
-              id="txt_price"
-              maxlength="60"
-              #txt_price="ngModel"
-              ngModel
-            />
+            <div>
+              <span class="dolar">$</span>
+              <input
+                type="number"
+                placeholder="0"
+                name="txt_price"
+                id="txt_price"
+                maxlength="60"
+                #txt_price="ngModel"
+                ngModel
+              />
+            </div>
           </div>
 
           <div class="persa-options-add-photos">
             <h6>Agregar Fotos</h6>
             <div class="input-group-container">
-              <label for="upload_1">
-                <i class="fas fa-image text-white"></i> <br />
+              <label for="upload_1" class="first">
+                <img [src]="newProduct.upload_1_b64" *ngIf="newProduct.upload_1_b64" alt="" style="max-width: 66px !important; border-radius: 5px;" class="img-fluid">
+                <i class="fas fa-image text-white" *ngIf="!newProduct.upload_1_b64"></i> <br />
                 Subir Foto
               </label>
               <input type="hidden" hidden id="upload_1_b64" name="upload_1_b64" #upload_1_b64="ngModel" [(ngModel)]="newProduct.upload_1_b64"/>
               <input type="file" hidden id="upload_1" name="upload_1" (change)="cropImage(1, $event)" #upload_1="ngModel" [(ngModel)]="newProduct.upload_1" />
 
               <label for="upload_2">
-                <i class="fas fa-image text-white"></i> <br />
+                  <img [src]="newProduct.upload_2_b64" *ngIf="newProduct.upload_2_b64" alt="" style="max-width: 66px !important; border-radius: 5px;" class="img-fluid">
+                  <i class="fas fa-image text-white" *ngIf="!newProduct.upload_2_b64"></i> <br />
                 Subir Foto
               </label>
               <input type="hidden" hidden id="upload_2_b64" name="upload_2_b64" #upload_2_b64="ngModel" [(ngModel)]="newProduct.upload_2_b64"/>
               <input type="file" hidden id="upload_2" name="upload_2" (change)="cropImage(2, $event)" #upload_2="ngModel" [(ngModel)]="newProduct.upload_2" />
 
               <label for="upload_3">
-                <i class="fas fa-image text-white"></i> <br />
+                  <img [src]="newProduct.upload_3_b64" *ngIf="newProduct.upload_3_b64" alt="" style="max-width: 66px !important; border-radius: 5px;" class="img-fluid">
+                  <i class="fas fa-image text-white" *ngIf="!newProduct.upload_3_b64"></i> <br />
                 Subir Foto
               </label>
               <input type="hidden" hidden id="upload_3_b64" name="upload_3_b64" #upload_3_b64="ngModel" [(ngModel)]="newProduct.upload_3_b64"/>
               <input type="file" hidden id="upload_3" name="upload_3" (change)="cropImage(3, $event)" #upload_3="ngModel" [(ngModel)]="newProduct.upload_3" />
 
-              <label for="upload_4">
-                <i class="fas fa-image text-white"></i> <br />
+              <label for="upload_4" class="last">
+                  <img [src]="newProduct.upload_4_b64" *ngIf="newProduct.upload_4_b64" alt="" style="max-width: 66px !important; border-radius: 5px;" class="img-fluid">
+                  <i class="fas fa-image text-white" *ngIf="!newProduct.upload_4_b64"></i> <br />
                 Subir Foto
               </label>
               <input type="hidden" hidden id="upload_4_b64" name="upload_4_b64" #upload_4_b64="ngModel" [(ngModel)]="newProduct.upload_4_b64"/>
               <input type="file" hidden id="upload_4" name="upload_4" (change)="cropImage(4, $event)" #upload_4="ngModel" [(ngModel)]="newProduct.upload_4" />
             </div>
+          </div>
+          <div class="row mt-3 justify-content-end">
+            <button type="submit" class="persa-options-add-button">Publicar Artículo</button>
           </div>
         </div>
       </form>

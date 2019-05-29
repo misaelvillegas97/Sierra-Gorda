@@ -6,27 +6,6 @@ export interface RespuestaLogin {
   userauth: Usuario;
 }
 
-// export interface LoggedUser {
-//   apellido_materno?: string;
-//   apellido_paterno?: string;
-//   cargo?: string;
-//   dv_rut: number;
-//   email?: string;
-//   fecha_creacion?: Date;
-//   fecha_nacimiento?: Date;
-//   gerencia?: string;
-//   id: number;
-//   lugar_trabajo?: string;
-//   pass?: string;
-//   primer_nombre: string;
-//   rut: number;
-//   segundo_nombre?: string;
-//   telefono?: string;
-//   tercer_nombre?: string;
-//   url_img?: string;
-//   privilegio?: string;
-// }
-
 export interface RespuestaStatus {
   err: number;
   message: string;
@@ -199,6 +178,7 @@ export interface Chat {
   id: number;
   destinatario: Receiver;
   cont_novisto: number;
+  favorito: boolean;
   fecha_ult_mensaje: Date;
 }
 

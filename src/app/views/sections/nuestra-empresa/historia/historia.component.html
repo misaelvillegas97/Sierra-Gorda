@@ -2,17 +2,27 @@
     <div class="row">
       <div class="col-lg-6 col-md-6 col-sm-12  animated fadeInLeftBig">
         <h1  style="user-select: none">Historia</h1>
-        <p class="subtitle"  style="user-select: none">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam ad cum doloremque. Nihil alias similique minus dignissimos? Blanditiis aperiam quis qui quaerat enim. Deserunt quasi fugit exercitationem, minima delectus voluptate.</p>
+        <!-- <p class="subtitle"  style="user-select: none">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam ad cum doloremque. Nihil alias similique minus dignissimos? Blanditiis aperiam quis qui quaerat enim. Deserunt quasi fugit exercitationem, minima delectus voluptate.</p> -->
       </div>
       <div class="col-lg-6 col-md-6 col-sm-12 animated fadeInRightBig">
       </div>
     </div>
 
-    <div class="row">
-      <input type="radio" name="estar" id="estar-e">
-      <input type="radio" name="estar" id="estar-s">
-      <input type="radio" name="estar" id="estar-t">
-      <input type="radio" name="estar" id="estar-a">
-      <input type="radio" name="estar" id="estar-r">
+    <div class="slideshow-container mt-4 pt-4">
+
+      <div class="mySlides animated fadeIn">
+        <img src="https://c3devapp.cl/sg/assets/img/img_historia_1.png" style="width:100%">
+      </div>
+
+      <div class="mySlides animated fadeIn">
+        <img src="https://c3devapp.cl/sg/assets/img/img_historia_2.png" style="width:100%">
+      </div>
+
+      <div class="mySlides animated fadeIn">
+        <img src="https://c3devapp.cl/sg/assets/img/img_historia_3.png" style="width:100%">
+      </div>
+
+      <a class="prev" (click)="plusSlides(-1)" *ngIf="slideIndex !== 1">&#10094;</a>
+      <a class="next" (click)="plusSlides(1)" *ngIf="slideIndex !== 3">&#10095;</a>
     </div>
 </div>

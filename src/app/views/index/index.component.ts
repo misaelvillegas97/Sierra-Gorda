@@ -109,9 +109,6 @@ export class IndexComponent implements OnInit, AfterViewInit {
       if (this.userID !== undefined) {
         document.getElementById(`user-${this.userID}`).classList.remove('active');
         this.cs.messagesList = [];
-        this.chatSelected = false;
-        this.userID = undefined;
-        this.chat = undefined;
       }
       this.chat = undefined;
       this.userID = undefined;

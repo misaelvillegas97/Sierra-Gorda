@@ -68,6 +68,26 @@ const routes: Routes = [
           {
             path: 'operaciones',
             loadChildren: './views/sections/nuestra-empresa/gerencia-superintendencias/operaciones/operaciones.module#OperacionesModule',
+          },
+          {
+            path: 'finanzas',
+            loadChildren: './views/sections/nuestra-empresa/gerencia-superintendencias/finanzas/finanzas.module#FinanzasModule'
+          },
+          {
+            path: 'rrhh',
+            loadChildren: './views/sections/nuestra-empresa/gerencia-superintendencias/rrhh/rrhh.module#RrhhModule'
+          },
+          {
+            path: 'serv-corp',
+            loadChildren: './views/sections/nuestra-empresa/gerencia-superintendencias/servicios-corporativos/servicios-corporativos.module#ServiciosCorporativosModule'
+          },
+          {
+            path: 'sustentabilidad',
+            loadChildren: './views/sections/nuestra-empresa/gerencia-superintendencias/sustentabilidad/sustentabilidad.module#SustentabilidadModule'
+          },
+          {
+            path: 'gerencia-general',
+            loadChildren: './views/sections/nuestra-empresa/gerencia-superintendencias/gerencia-general/gerencia-general.module#GerenciaGeneralModule'
           }
         ]
       },

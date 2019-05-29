@@ -76,7 +76,15 @@ export class SinglechatComponent implements OnInit, OnDestroy {
       }, 5000
     );
     this.mensaje = '';
-    this.cs.postView(this.data.id);
+    this.cs.postView(this.data.id).finally(
+      () => {
+        if (this.cs.messagesList.length !== 0) {
+          setTimeout(() => {
+            document.getElementById(`user-${this.data.destinatario.id_usuario}`).classList.add('active');
+          }, 0);
+        }
+      }
+    );
   }
 
   ngOnDestroy() {
@@ -138,7 +146,6 @@ export class SinglechatComponent implements OnInit, OnDestroy {
   calculardiferencia(_fecha: Date): string {
     const fechaInicial = moment(_fecha);
     const fechaFinal = moment(this.today);
-
     const diferencia = fechaFinal.diff(fechaInicial, 'minutes');
     let returnedValue;
 
@@ -156,8 +163,6 @@ export class SinglechatComponent implements OnInit, OnDestroy {
         }
       }
     }
-    // console.log(returnedValue);
-
     return returnedValue;
   }
 

@@ -1,30 +1,77 @@
-<div class="product-container">
-  <div class="product-card">
-    <div class="product-card-title">
-      <h6>Nombre de referencia</h6>
-      <span><i class="fas fa-exclamation-circle product-card-title-advice"></i><i class="fas fa-chevron-circle-right ml-2" style="color: white" aria-hidden="true"></i></span>
+<div class="product-container" id="product-list">
+
+  <div class="product-title">
+    <h6>
+      Estado de mis publicaciones
+    </h6>
+  </div>
+
+  <div class="m-0 scroll-setting">
+    <!-- TODO: Implementar *ngFor para listar productos -->
+    <div class="product-card" id="idPrueba1">
+      <div class="product-card-title">
+        <h6>Nombre de referencia</h6>
+        <span><i class="fas fa-chevron-circle-right ml-2 product-card-title-open" aria-hidden="true" (click)="growDiv('idPrueba1')" name="go-click"></i></span>
+      </div>
+      <div class="product-card-content" id="idPrueba1_content">
+
+        <!-- TODO: Implementar pipe Date para formatear fecha -->
+        <h6 class="product-date-title">Fecha de publicación</h6>
+        <span class="product-date">20 de Marzo 2019</span>
+
+        <hr>
+        <!-- Si es que no posee ventas -->
+        <ng-container>
+          <div class="product-response d-flex justify-content-between">
+              <a class="product-response-edit">Eliminar Publicación <i class="fas fa-trash ml-2"></i></a>
+              <a class="product-response-edit">Editar Publicación <i class="fas fa-edit ml-2"></i></a>
+          </div>
+        </ng-container>
+
+      </div>
     </div>
-    <div class="product-card-content">
 
-      <!-- TODO: Implementar pipe Date para formatear fecha -->
-      <h6 class="product-date-title">Fecha de publicación</h6>
-      <span class="product-date">20 de Marzo 2019</span>
+    <!-- TODO: Implementar *ngFor para listar productos -->
+    <div class="product-card" id="idPrueba2">
+      <div class="product-card-title">
+        <h6>Nombre de referencia</h6>
+        <span><i class="fas fa-exclamation-circle product-card-title-advice"></i><i class="fas fa-chevron-circle-right ml-2 product-card-title-open" aria-hidden="true" name="go-click" (click)="growDiv('idPrueba2')"></i></span>
+      </div>
+      <div class="product-card-content" id="idPrueba2_content">
 
-      <h6 class="product-interest-title">Lista de interesados</h6>
-      <!-- TODO: Implementar *ngIf para validar si existe algún interesado -->
-      <ng-container>
-          <!-- TODO: Implementar *ngFor para lista de interesados -->
-        <div class="product-interest-container">
-          <div class="product-interest-data">
-            <span>Juan Gallegillos Muñoz</span> <br>
-            <span>Teléfono: +56943213456</span> <br>
-            <span>Correo: correo@mail.com</span>
+        <!-- TODO: Implementar pipe Date para formatear fecha -->
+        <h6 class="product-date-title">Fecha de publicación</h6>
+        <span class="product-date">20 de Marzo 2019</span>
+
+        <h6 class="product-interest-title">Lista de interesados</h6>
+        <!-- TODO: Implementar *ngIf para validar si existe algún interesado -->
+        <ng-container>
+            <!-- TODO: Implementar *ngFor para lista de interesados -->
+          <div class="product-interest-container">
+            <div class="product-interest-data">
+              <span>Juan Gallegillos Muñoz</span> <br>
+              <span>Teléfono: +56943213456</span> <br>
+              <span>Correo: correo@mail.com</span>
+            </div>
           </div>
 
-        </div>
-      </ng-container>
+          <div class="product-response">
+            <h6>¿Vendiste este artículo?</h6>
+            <button class="product-response-button no">No</button><button class="product-response-button si">Si</button>
+          </div>
+        </ng-container>
 
+        <hr>
+        <!-- Si es que no posee ventas -->
+        <ng-container>
+          <div class="product-response d-flex justify-content-between">
+              <a class="product-response-edit">Eliminar Publicación <i class="fas fa-trash ml-2"></i></a>
+              <a class="product-response-edit">Editar Publicación <i class="fas fa-edit ml-2"></i></a>
+          </div>
+        </ng-container>
+      </div>
     </div>
-
   </div>
+
+
 </div>

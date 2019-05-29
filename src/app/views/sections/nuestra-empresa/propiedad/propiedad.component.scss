@@ -52,6 +52,7 @@ h1 {
 li {
   @extend .user-select;
   list-style: none;
+  line-height: 21pt;
 }
 li {
   &:nth-child(2)::before {

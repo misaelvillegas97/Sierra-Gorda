@@ -9,6 +9,7 @@
     "deprecation": {
       "severity": "warn"
     },
+    "variable-name": false,
     "import-blacklist": [
       true,
       "rxjs/Rx"
@@ -17,7 +18,7 @@
     "max-classes-per-file": false,
     "max-line-length": [
       true,
-      140
+      220
     ],
     "member-access": false,
     "member-ordering": [

@@ -7,7 +7,6 @@ import { GerenciaAyrComponent } from './gerencia-ayr/gerencia-ayr.component';
 
 import { OperacionesRoutingModule } from './operaciones-routing.module';
 import { OperacionesComponent } from './operaciones.component';
-import { OperacionesListaComponent } from './operaciones-lista/operaciones-lista.component';
 import { GerenciaPlantaComponent } from './gerencia-planta/gerencia-planta.component';
 import { GerenciaMantencionPlantaComponent } from './gerencia-mantencion-planta/gerencia-mantencion-planta.component';
 
@@ -18,7 +17,6 @@ import { GerenciaMantencionPlantaComponent } from './gerencia-mantencion-planta/
     GerenciaPmmComponent,
     GerenciaMantMinaComponent,
     GerenciaAyrComponent,
-    OperacionesListaComponent,
     GerenciaPlantaComponent,
     GerenciaMantencionPlantaComponent
   ],

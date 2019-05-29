@@ -34,6 +34,11 @@ img {
   @extend .no-select;
 }
 
+button:focus {
+  outline: none;
+}
+
+
 // Scroll Bar
 ::-webkit-scrollbar {
   width: 5px;
@@ -92,8 +97,13 @@ video:focus {
   // box-shadow: .1em 0.2rem .5rem rgba(0, 0, 0, 0.15) !important;
 }
 
-#masterslider2 .ms-container .ms-inner-controls-cont .ms-view .ms-slide{
-  // border-radius: 12px !important;
+// #masterslider2 .ms-container .ms-inner-controls-cont .ms-view .ms-slide{
+//   // border-radius: 12px !important;
+//   box-shadow: .1em 0.2rem .5rem rgba(0, 0, 0, 0.15) !important;
+// }
+
+#masterslider2 .ms-container .ms-inner-controls-cont .ms-view .ms-slide-bgcont{
+  border-radius: 12px !important;
   box-shadow: .1em 0.2rem .5rem rgba(0, 0, 0, 0.15) !important;
 }
 

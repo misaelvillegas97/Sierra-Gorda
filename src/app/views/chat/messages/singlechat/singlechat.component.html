@@ -14,6 +14,10 @@
       </span>
     </p>
   </div>
+  <div class="user-star">
+    <i class="fas fa-star" *ngIf="data.favorito"></i>
+    <i class="far fa-star" *ngIf="!data.favorito"></i>
+  </div>
   <div class="actions">
       <a
       routerLink="/"
@@ -72,6 +76,7 @@
       *ngIf="toggle_emoji"
       [style]="{ position: 'absolute', bottom: '40px', right: '15px' }"
       sheetSize="32"
+      (emojiClick)="addEmoji($event)"
       showPreview="false"
       title="Selecciona un emoji"
       [i18n]="I18n"

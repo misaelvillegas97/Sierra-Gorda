@@ -1,17 +1,25 @@
 $orange: #ff5900;
+$orange-strong: #ca4700;
 $blueSG: #3fbac5;
 $blueSG-80: #3ebac5cc;
 $blueSG-40: #3ebac566;
 $blueSG-light: #72ccd4;
+$blueSG-strong: #4eaab3;
 $blueSG-20: #3fbac533;
+
+.scroll-setting {
+  overflow-y: scroll !important;
+  padding-right: 20px;
+}
 
 .product {
   &-container {
     width: 100%;
     height: 100%;
+    overflow-y: scroll;
     background-color: $blueSG-20;
     border-radius: 15px;
-    padding: 30px 20px;
+    padding: 30px 0px 30px 20px;
     display: -ms-flexbox;
     display: flex;
     -ms-flex-direction: column;
@@ -19,14 +27,23 @@ $blueSG-20: #3fbac533;
     color: #5c5c5c;
   }
 
-  &-card {
-    // height: 40px;
-    overflow: hidden;
-    padding: 15px 10px;
-    background-color: $blueSG;
-    border-radius: 10px;
+  &-title {
+    & h6 {
+      color: #5c5c5c;
+      font-weight: 600;
+      font-size: 15pt;
+    }
+  }
 
-    transition: height 1s ease-in-out;
+  &-card {
+    height: 40px;
+    overflow: hidden;
+    padding: 10px 10px;
+    background-color: $blueSG;
+    border-radius: 20px;
+    margin-top: 20px;
+
+    transition: height 1s ease-in-out, margin-top 1s ease-in-out, border-radius 1s;
 
     &-title {
       display: -ms-flexbox;
@@ -38,7 +55,31 @@ $blueSG-20: #3fbac533;
       }
 
       &-advice {
-        color: $orange
+        color: white;
+      }
+
+      &-open {
+        color: white;
+        margin-right: 5px;
+        cursor: pointer;
+
+        -webkit-transform: rotate(90deg);
+        -moz-transform: rotate(90deg);
+        -ms-transform: rotate(90deg);
+        -o-transform: rotate(90deg);
+        transform: rotate(90deg);
+
+        -moz-transition: -moz-transform 1s;
+
+        transition: -webkit-transform 1s, -ms-transform 1s, -o-transform 1s, transform 1s;
+
+        &.rotate-icon {
+          -webkit-transform: rotate(-90deg) !important;
+          -moz-transform: rotate(-90deg) !important;
+          -ms-transform: rotate(-90deg) !important;
+          -o-transform: rotate(-90deg) !important;
+          transform: rotate(-90deg) !important;
+        }
       }
     }
   }
@@ -71,10 +112,53 @@ $blueSG-20: #3fbac533;
     }
 
     &-container {
+      margin-top: 10px;
       background-color: $blueSG-light;
       border-radius: 10px;
       padding: 30px 15px;
     }
+  }
 
+  &-response {
+    margin-top: 10px;
+
+    h6 {
+      color: white;
+      font-weight: 600;
+      font-size: 11pt;
+    }
+
+    &-button {
+      width: 100px;
+      height: 24px;
+      border-radius: 25px;
+      border: none;
+      margin-right: 10px;
+      font-size: 10pt;
+      font-weight: 600;
+      color: white;
+    }
+
+    &-button.si {
+      background-color: $orange;
+
+      &:focus {
+        background-color: $orange-strong
+      }
+    }
+
+    &-button.no {
+      background-color: $blueSG-light;
+
+      &:focus {
+        background-color: $blueSG-strong
+      }
+    }
+
+    &-edit {
+      color: white !important;
+      text-decoration: underline !important;
+      font-size: 10pt;
+    }
   }
 }

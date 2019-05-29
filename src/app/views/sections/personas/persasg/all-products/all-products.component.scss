@@ -33,6 +33,7 @@
 
 .text-overlay {
   @extend .user-select;
+  text-align: center !important;
   color: white;
   font-weight: 700;
   i {
@@ -92,7 +93,7 @@
 
       & p {
         @extend .user-select;
-        text-align: center;
+        text-align: left;
         font-weight: 800;
         color: white;
         font-size: 16pt;

@@ -23,7 +23,7 @@ export class SliderPresupuestoComponent implements OnInit {
       autohide: false
     });
     slider.setup('masterslider2', {
-      width: 1041,
+      width: 1050,
       height: 316,
       space: 550,
       mouse: true,

@@ -1,3 +1,6 @@
+$blueSG: #3fbac5;
+$blueSG-70: #3ebac5b3;
+
 h1 {
   font-weight: 800;
   color: #5a5a5a;
@@ -15,5 +18,48 @@ h1 {
   font-size: 13pt;
   font-weight: 400;
   color: #5a5a5a;
+}
 
+
+.mySlides {display: none}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 28%;
+  width: auto;
+  padding: 0px 10px;
+  margin-top: -22px;
+  color: white !important;
+  background-color: $blueSG-70;
+  font-weight: bold;
+  font-size: 20px;
+  transition: 0.6s ease;
+  border-radius: 20px !important;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+}
+
+.prev:hover, .next:hover {
+  background-color: $blueSG;
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .prev, .next,.text {font-size: 11px}
 }

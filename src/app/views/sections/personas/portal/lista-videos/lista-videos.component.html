@@ -3,7 +3,12 @@
   <div class="categorias-body">
     <div class="lista">
       <div class="row">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, dolore sit facilis dicta id corporis. Incidunt, nemo! Tenetur cupiditate, ipsa, possimus sequi molestiae illo hic fugit temporibus totam ex pariatur.
+        <ng-container *ngIf="ps.videosList">
+          <div class="video-container pt-2" *ngFor="let video of ps.videosList; let i=index">
+            <img src="{{video.url_img}}" alt="" style="width: 40%;">
+            <h6>{{ video.titulo }}</h6>
+          </div>
+        </ng-container>
 
       </div>
     </div>

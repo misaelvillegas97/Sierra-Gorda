@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-gerencia-mant-mina',
   templateUrl: './gerencia-mant-mina.component.html',
-  styleUrls: ['./gerencia-mant-mina.component.scss']
+  styleUrls: ['../../gerencia-superintendencias.component.scss']
 })
 export class GerenciaMantMinaComponent implements OnInit {
 

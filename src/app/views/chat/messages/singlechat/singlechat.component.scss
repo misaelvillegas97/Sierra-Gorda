@@ -1,3 +1,5 @@
+$orange: #ff5900;
+
 .chat-header {
   border-radius: 10px;
   font-size: 10pt;
@@ -141,7 +143,7 @@ ul {
   padding: 18px;
   bottom: 47px;
   display: -ms-flexbox;
-display: flex;
+  display: flex;
   flex-direction: column;
   top: 0;
   overflow-y: scroll;
@@ -152,21 +154,36 @@ display: flex;
 input:focus {
   outline: none;
 }
+
+input {
+  color: #868686;
+  font-family: Calibri;
+  font-weight: 500;
+}
+
 ::-webkit-input-placeholder {
   /* Chrome/Opera/Safari */
-  color: #d4d4d4;
+  color: #868686;
+  font-family: Calibri;
+  font-weight: 500;
 }
 ::-moz-placeholder {
   /* Firefox 19+ */
-  color: #d4d4d4;
+  color: #868686;
+  font-family: Calibri;
+  font-weight: 500;
 }
 :-ms-input-placeholder {
   /* IE 10+ */
-  color: #d4d4d4;
+  color: #868686;
+  font-family: Calibri;
+  font-weight: 500;
 }
 :-moz-placeholder {
   /* Firefox 18- */
-  color: #d4d4d4;
+  color: #868686;
+  font-family: Calibri;
+  font-weight: 500;
 }
 
 .chat-input-footer {
@@ -206,4 +223,11 @@ input.chat-input {
 .shadow-green {
   -webkit-box-shadow: 4px 4px 0px -1px #A4D690;
   box-shadow: 4px 4px 0px -1px #A4D690;
+}
+
+.user-star {
+  i {
+    color: $orange;
+    font-size: 16pt
+  }
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PortalService } from 'src/app/providers/portal.service';
 
 @Component({
   selector: 'app-categorias',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CategoriasComponent implements OnInit {
 
-  constructor() { }
+  constructor( public ps: PortalService ) {
+    this.ps.getCategorias();
+  }
 
   ngOnInit() {
   }

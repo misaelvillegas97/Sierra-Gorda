@@ -2,12 +2,14 @@ $blueSG: #3fbac5;
 $blueSG-80: #3ebac5cc;
 $blueSG-40: #3ebac566;
 $blueSG-20: #3fbac533;
+$orange: #ff5900;
+$orange-strong: #ca4700;
 
 .persa-options {
   &-add {
     background-color: $blueSG-20;
     border-radius: 15px;
-    padding: 30px 20px;
+    padding: 30px 20px ;
     display: -ms-flexbox;
     display: flex;
     flex-direction: column;
@@ -124,6 +126,10 @@ display: flex;
     }
 
     &-input-quant {
+      display: -ms-flexbox;
+      display: flex;
+      justify-content: space-between;
+
       & label {
         font-size: 10pt;
         font-weight: 600;
@@ -134,6 +140,9 @@ display: flex;
         color: $blueSG;
         font-size: 12pt;
         font-weight: 700;
+        position: absolute;
+        margin-left: -15px;
+        margin-top: 5px;
       }
     }
 
@@ -149,21 +158,50 @@ display: flex;
         justify-content: center;
         label {
           color: white;
-          background-color: $blueSG-40;
+          background-color: #3ebac566;
           border-radius: 15px;
           text-align: center;
-          padding: 40px 20px;
+          padding: 27px 17px;
           margin: 0px 10px;
           cursor: pointer;
+
+          font-size: 10pt;
+          font-weight: 600;
+
+          img {
+            max-width: 71px !important;
+            border-radius: 5px;
+            margin-bottom: 10px;
+          }
+
+          i {
+            font-size: 41pt;
+          }
         }
 
-        label:nth-child(1) {
+        label.first {
           margin-left: 0;
         }
 
-        label:nth-child(4) {
+        label.last{
           margin-right: 0;
         }
+      }
+    }
+
+    &-button {
+      padding: 3px 15px;
+      margin-top: 8px;
+      // margin-right: 10px;
+      border-radius: 25px;
+      border: none;
+      font-size: 10pt;
+      font-weight: 600;
+      color: white;
+      background-color: $orange;
+
+      &:active {
+        background-color: $orange-strong
       }
     }
   }

@@ -141,8 +141,8 @@ export class ChatService {
       await this.http.get( URL + 'chat/actualizarvisto/' + _idChat + '/' + atob(localStorage.getItem('sg-userID')) )
         .toPromise()
         .then(
-          (res) => {
-            this.getAllChats();
+          async (res) => {
+            await this.getAllChats();
             console.log(res);
           }
         );

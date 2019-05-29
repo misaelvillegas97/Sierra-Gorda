@@ -1,4 +1,13 @@
 <div class="categorias-header">CATEGORÍAS</div>
 <div class="categorias-body">
-  <button routerLink="alsdkjas">prueba</button> <br>
+  <ng-container *ngIf="ps.categoryList">
+    <button routerLink="{{ categoria.nombre }}" class="mt-2" *ngFor="let categoria of ps.categoryList">{{ categoria.nombre }}</button> <br>
+  </ng-container>
+
+  <ng-container *ngIf="!ps.categoryList">
+    <div style="display: flex; justify-content: center; align-items: center;">
+      <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+    </div>
+  </ng-container>
+
 </div>

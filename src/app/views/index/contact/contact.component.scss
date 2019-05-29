@@ -1,3 +1,5 @@
+$blueSG: #3fbac5;
+
 .poll-title {
   color: white;
   font-weight: 600 !important;
@@ -145,7 +147,7 @@ display: flex;
 
   .content {
     display: -ms-flexbox;
-display: flex;
+    display: flex;
     flex-direction: column;
 
     h6 {
@@ -162,7 +164,7 @@ display: flex;
       font-weight: 300;
       font-family: Calibri;
       font-size: 14pt;
-      color: rgb(125, 127, 129)
+      color: rgb(125, 127, 129);
     }
 
     span {
@@ -198,5 +200,18 @@ display: flex;
     position: absolute;
     margin-left: -12px;
     margin-top: -2px;
+  }
+}
+
+.info-general-usuario-mensaje {
+  text-decoration: underline !important;
+  color: $blueSG !important;
+
+  font-size: 11pt;
+  font-weight: 600;
+  font-style: italic;
+
+  i {
+    color: $blueSG;
   }
 }

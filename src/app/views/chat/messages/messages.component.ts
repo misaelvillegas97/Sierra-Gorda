@@ -27,20 +27,20 @@ export class MessagesComponent implements OnInit, OnDestroy {
     this.isRecent = true;
     this.categoryText = 'Recientes';
 
-    this.loadChats();
+    this.loadChats()
+        .finally(
+          () => {
+            this.setColor();
+          }
+        );
     this.interval = setInterval(
       async () => {
         await this.loadChats()
         .finally(
           () => {
-            if (this.cs.messagesList.length !== 0) {
-              setTimeout(() => {
-                document.getElementById(`user-${this.selectedChat.destinatario.id_usuario}`).classList.add('active');
-              }, 0);
-            }
+            this.setColor();
           }
         );
-
       }, 5000
     );
   }
@@ -79,5 +79,13 @@ export class MessagesComponent implements OnInit, OnDestroy {
     this.isFavorites = false;
     this.isRecent = true;
     this.categoryText = 'Recientes';
+  }
+
+  setColor() {
+    if (this.cs.messagesList.length !== 0) {
+      setTimeout(() => {
+        document.getElementById(`user-${this.selectedChat.destinatario.id_usuario}`).classList.add('active');
+      }, 0);
+    }
   }
 }
