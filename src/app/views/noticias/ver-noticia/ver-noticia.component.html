@@ -1,0 +1,130 @@
+<app-navbar-ext></app-navbar-ext>
+<br>
+<div style="height: 50px"></div>
+<app-links></app-links>
+<br>
+<div class="container">
+  <div class="noticia">
+    <div class="noticia-header mb-2">
+      <div class="row mb-4">
+        <div class="col-lg-8 col-md-8 col-sm-12 d-flex">
+          <span class="noticia-header-subtitle">Descubre todas las novedades que ocurren en Sierra Gorda SCM</span>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-12 noticia-sections">
+          <div class="noticia-sections-container">
+
+            <div class="noticia-sections-buttons">
+              <!-- Todas -->
+              <div class="volver-noticias" routerLink="/noticias/todas">
+                <img src="https://c3devapp.cl/sg/assets/img/Noticias/cuadritos_noticias.png" alt="a">
+              </div>
+              <p>Volver a noticia</p>
+            </div>
+
+            <div class="noticia-sections-buttons">
+              <!-- Destacadas -->
+              <i class="fas fa-chevron-circle-left"></i>
+              <p>Noticia Anterior</p>
+            </div>
+
+            <div class="noticia-sections-buttons">
+              <!-- Reportero Minero -->
+              <i class="fas fa-chevron-circle-right"></i>
+              <p>Noticia Siguiente</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <ng-container *ngIf="noticia">
+      <div class="noticia-content">
+        <div class="row">
+          <div class="col-6">
+            <h1 class="noticia-content-title">
+              {{ noticia.titulo_noticia }}
+            </h1>
+          </div>
+        </div>
+        <div class="row" style="
+          border-radius: 0px 0px 20px 20px;
+          padding: 0px 20px 10px 20px;
+          box-shadow: 0 0.9rem 0.9em rgba(0, 0, 0, 0.15) !important;
+        ">
+          <div class="col-lg-6 col-md-6 col-sm-12 pr-4 pt-4">
+            <p [innerHTML]="noticia.texto_noticia" class="noticia-content-text"></p>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-12 pt-4">
+            <ng-container *ngIf="noticia.imagen.imagen_cuerpo_1">
+              <!-- 550 * 240 -->
+              <div class="noticia-content-img" [style.backgroundImage]="'url('+ noticia.imagen.imagen_cuerpo_1 +')'" style="background-size: cover; background-position: center;">
+                <div class="noticia-content-flag" [ngClass]="{'reportero-minero': noticia.id_tipo_noticia_fk === 3}">
+                    <div class="noticia-content-flag-img p-0">
+                      <img src="https://c3devapp.cl/sg/assets/img/Noticias/2.png" *ngIf="noticia.id_tipo_noticia_fk === 1" alt="">
+                      <img src="https://c3devapp.cl/sg/assets/img/Noticias/2.png" *ngIf="noticia.id_tipo_noticia_fk === 2" alt="">
+                      <img src="https://c3devapp.cl/sg/assets/img/Noticias/4.png" *ngIf="noticia.id_tipo_noticia_fk === 3" alt="">
+                    </div>
+
+                    <div class="noticia-content-flag-fecha">
+                      <span class="day">15</span> <br>
+                      <span class="month">NOV</span>
+                    </div>
+                  </div>
+              </div>
+            </ng-container>
+
+            <!-- Botón me gusta -->
+            <div class="w-100 mt-4 d-flex justify-content-center">
+              <button class="like">Dar ¡Me Gusta! <i class="fas fa-thumbs-up text-white"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="noticia-addon">
+        <!-- comentarios -->
+        <br>
+        <div class="row noticia-addon-header">
+          <div class="col-9">
+            <h1>Comentarios</h1>
+          </div>
+          <div class="col-3 mt-3 text-right">
+            <span class="like-info">LIKES <i class="fas fa-ellipsis-v l-divider"></i> +{{noticia.cantidad_megusta}} <i class="fas fa-thumbs-up text-white l-like"></i></span>
+          </div>
+        </div>
+        <hr _ngcontent-c20="" class="mt-4 mb-4 style-two">
+        <div class="noticia-addon-content">
+          <div class="noticia-addon-content-comment p-0">
+            <!-- Iteración de comentarios -->
+            <ng-container *ngFor="let comentario of noticia.comentario">
+              <div class="noticia-addon-content-comment-card mb-2">
+                <div class="noticia-addon-content-comment-card-picture">
+                  <i class="fas fa-user-circle"></i>
+                </div>
+
+                <div class="noticia-addon-content-comment-card-text">
+                    <h6 style="font-weight: 700;">{{comentario.usuario.nombre + ' ' + comentario.usuario.apellido}} <span style="color: white !important; opacity: 0.6; font-size: 10pt; font-style: italic; float: right;" *ngIf="comentario.fecha">{{ comentario.fecha.getDate() + '-' + comentario.fecha.getMonth() + '-' +  comentario.fecha.getFullYear()}}</span></h6>
+                  <p>{{comentario.comentario}}</p>
+                </div>
+              </div>
+            </ng-container>
+
+          </div>
+          <form f="ngForm">
+            <div class="noticia-addon-content-insert-comment">
+              <textarea name="txt_comentario" #txt_comentario="ngModel" [(ngModel)]="comentario" placeholder="Inserte un comentario" id="txt_comentario" rows="4"></textarea>
+              <button type="submit" [disabled]="3 >= comentario.length"><i class="fas fa-paper-plane"></i></button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="!noticia">
+      <div class="w-100" style="height: 200px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+        <p style="font-weight: 600; color: #5b5b5b; margin-top: 15px; font-size: 11pt;">Cargando Noticia</p>
+      </div>
+    </ng-container>
+  </div>
+  <br>
+</div>
+<app-footer-s></app-footer-s>

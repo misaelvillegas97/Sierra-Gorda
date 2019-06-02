@@ -1,0 +1,44 @@
+<app-navbar-ext></app-navbar-ext>
+<br>
+<div style="height: 50px"></div>
+<app-links></app-links>
+<br>
+<div class="container">
+  <div class="noticias">
+    <div class="noticias-header">
+      <div class="row">
+        <div class="col-lg-8 col-md-8 col-sm-12">
+          <h1 class="noticias-header-title">Noticias</h1>
+          <span class="noticias-header-subtitle">Descubre todas las novedades que ocurren en Sierra Gorda SCM</span>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-12 noticias-sections">
+          <div class="noticias-sections-container">
+            <div class="noticias-sections-buttons" [routerLink]="['/noticias/todas']" routerLinkActive="noticias-sections-buttons-active" >
+              <!-- Todas -->
+              <span>TODAS</span>
+            </div>
+            <div class="noticias-sections-divider">
+              <i class="fas fa-ellipsis-v"></i>
+            </div>
+            <div class="noticias-sections-buttons" [routerLink]="['/noticias/destacadas']" routerLinkActive="noticias-sections-buttons-active">
+              <!-- Destacadas -->
+              <span><i class="fas fa-star"></i></span>
+            </div>
+            <div class="noticias-sections-divider">
+              <i class="fas fa-ellipsis-v"></i>
+            </div>
+            <div class="noticias-sections-buttons" [routerLink]="['/noticias/reportero-minero']" routerLinkActive="noticias-sections-buttons-active">
+              <!-- Reportero Minero -->
+              <span>REPORTERO MINERO</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br> <br>
+
+  <router-outlet></router-outlet>
+
+</div>
+<app-footer-s></app-footer-s>

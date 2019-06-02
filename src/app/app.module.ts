@@ -63,6 +63,22 @@ import { ProductEditComponent } from './views/sections/personas/persasg/my-produ
 import { AllProductsComponent } from './views/sections/personas/persasg/all-products/all-products.component';
 import { MyProductsComponent } from './views/sections/personas/persasg/my-products/my-products.component';
 import { GerenciaSuperintendenciasComponent } from './views/sections/nuestra-empresa/gerencia-superintendencias/gerencia-superintendencias.component';
+import { NoticiasComponent } from './views/noticias/noticias.component';
+import { DestacadasComponent } from './views/noticias/destacadas/destacadas.component';
+import { TodasComponent } from './views/noticias/todas/todas.component';
+import { ReporteroMineroComponent } from './views/noticias/reportero-minero/reportero-minero.component';
+import { VerNoticiaComponent } from './views/noticias/ver-noticia/ver-noticia.component';
+import { SafeStylePipe } from './pipes/safe-style.pipe';
+import { BeneficiosComponent } from './views/beneficios/beneficios.component';
+import { SaludComponent } from './views/beneficios/salud/salud.component';
+import { ConveniosComponent } from './views/beneficios/convenios/convenios.component';
+import { FormulariosComponent } from './views/beneficios/formularios/formularios.component';
+import { MenuBeneficiosComponent } from './views/beneficios/menu-beneficios/menu-beneficios.component';
+import { SaludDetalleComponent } from './views/beneficios/salud/salud-detalle/salud-detalle.component';
+import { ConvenioDetalleComponent } from './views/beneficios/convenios/convenio-detalle/convenio-detalle.component';
+import { ComunidadesComponent } from './views/sections/personas/comunidades/comunidades.component';
+import { SafeTextPipe } from './pipes/safe-text.pipe';
+import { GaleriaComponent } from './views/galeria/galeria.component';
 
 
 @NgModule({
@@ -106,7 +122,23 @@ import { GerenciaSuperintendenciasComponent } from './views/sections/nuestra-emp
     ProductEditComponent,
     AllProductsComponent,
     MyProductsComponent,
-    GerenciaSuperintendenciasComponent
+    GerenciaSuperintendenciasComponent,
+    NoticiasComponent,
+    DestacadasComponent,
+    TodasComponent,
+    ReporteroMineroComponent,
+    VerNoticiaComponent,
+    SafeStylePipe,
+    BeneficiosComponent,
+    SaludComponent,
+    ConveniosComponent,
+    FormulariosComponent,
+    MenuBeneficiosComponent,
+    SaludDetalleComponent,
+    ConvenioDetalleComponent,
+    ComunidadesComponent,
+    SafeTextPipe,
+    GaleriaComponent
   ],
   imports: [
     BrowserModule,

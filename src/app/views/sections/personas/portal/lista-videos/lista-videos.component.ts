@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PortalService } from 'src/app/providers/portal.service';
-import { Category, Video } from 'src/app/interface/portal-interface';
+import { Category, Video } from 'src/app/interface/portal';
 
 @Component({
   selector: 'app-lista-videos',
@@ -22,13 +22,13 @@ export class ListaVideosComponent implements OnInit, OnDestroy {
           () => {
             this.categoria = this.ps.getCategoryByName(this.titleCategoria);
             this.ps.getVideosByCategory(this.categoria.id);
-            console.log(this.categoria);
+            // console.log(this.categoria);
           }
         );
       } else {
         this.categoria = this.ps.getCategoryByName(this.titleCategoria);
         this.ps.getVideosByCategory(this.categoria.id);
-        console.log(this.categoria);
+        // console.log(this.categoria);
       }
     });
   }
@@ -40,7 +40,7 @@ export class ListaVideosComponent implements OnInit, OnDestroy {
   }
 
   emitVideo(_video: Video) {
-
+    this.ps.emitChange(_video);
   }
 
 }

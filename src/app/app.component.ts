@@ -38,4 +38,11 @@ export class AppComponent {
 
     return false;
   }
+
+  subirScroll() {
+    setTimeout(() => {
+      console.log('Subiendo Scroll');
+      window.scrollTo(0, 0);
+    }, 500);
+  }
 }

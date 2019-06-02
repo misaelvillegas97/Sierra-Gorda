@@ -1,7 +1,5 @@
-nav {
+.navbar {
   box-shadow: none !important;
-  background-color: red !important
-
 }
 
 .user-pic {
@@ -14,8 +12,7 @@ nav {
 }
 
 .theme-banner {
-  // background-image: url('https://c3devapp.cl/sg/assets/img/header.png') !important;
-  background-color: red !important
+  background-image: url('https://c3devapp.cl/sg/assets/img/header.png') !important;
 }
 
 .absolute {
@@ -44,11 +41,10 @@ nav {
 #user-hover-menu {
   // Posicionamiento
   position: absolute;
-  // float: left;
   right: 8%;
   top: 43%;
-  width: 27%;
-  height: 285%;
+  width: 18%;
+  height: 182%;
   border-radius: 10px;
   background-color: white;
   z-index: 111;
@@ -133,15 +129,46 @@ display: flex;
   }
 }
 
-@media only screen and (max-width: 1366px) {
+.btn-iniciar {
+  background-color: #FF6A02;
+  color: white;
+  border-radius: 20pt;
+  // width: 95%;
+  margin-left: 0;
+  margin-right: 0;
+  padding: 15px 36px 15px 36px;
+}
+
+@media only screen and (max-width: 1280px) {
   #user-hover-menu {
     right:  8% !important;
+    width: 21%;
+    div {
+      width: 100%;
+    }
+  }
+}
+
+@media only screen and (max-width: 1366px) and (min-width: 1281px) {
+  #user-hover-menu {
+    right:  8% !important;
+    width: 19%;
+    div {
+      width: 100%;
+    }
   }
 }
 
 @media only screen and (max-width: 1920px) and (min-width: 1367px) {
   #user-hover-menu {
-    right:  13% !important;
+    right:  20% !important;
+    div {
+      display: -ms-flexbox;
+display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
   }
 }
 

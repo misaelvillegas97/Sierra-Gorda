@@ -1,11 +1,21 @@
-<div class="animated fadeIn">
-  <div class="categorias-header"> <i class="fas fa-chevron-left text-white mr-2" style="cursor: pointer" routerLink="../"></i> {{ titleCategoria }}</div>
+<div class="">
+  <div class="categorias-header animated fadeIn"> <i class="fas fa-chevron-left text-white mr-2" style="cursor: pointer" routerLink="../"></i> {{ titleCategoria }}</div>
   <div class="categorias-body">
     <!-- Valida si hay videos -->
     <ng-container *ngIf="ps.videosList">
-      <!-- Iteración a la cantidad de videos -->
+
+      <!-- Validación a ver si existe videos en categoría -->
+      <ng-container *ngIf="ps.videosList.length === 0">
+        <div class="w-100 h-100" style="display: flex; justify-content: center; align-items: center;">
+          <h6 style="color: #8f8f8f; font-style: italic; font-size: 10pt; font-weight: 600;">
+            No hay videos para esta categoría.
+          </h6>
+        </div>
+      </ng-container>
+
+      <!-- #region Iteración a la cantidad de videos -->
       <ng-container *ngFor="let video of ps.videosList; let i=index">
-        <div class="animated wow fadeInRight">
+        <div class="animated fadeInRight faster">
           <div class="row video-container">
             <div class="col-lg-5 col-md-5 col-sm-4 p-0 video-img">
 
@@ -25,17 +35,12 @@
           <hr *ngIf="(i + 1) !== ps.videosList.length">
         </div>
       </ng-container>
+      <!-- #endregion -->
+
     </ng-container>
     <ng-container *ngIf="!ps.videosList">
       <div class="w-100 h-100" style="display: flex; justify-content: center; align-items: center;">
         <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-      </div>
-    </ng-container>
-    <ng-container *ngIf="ps.videosList.length === 0">
-      <div class="w-100 h-100" style="display: flex; justify-content: center; align-items: center;">
-        <h6 style="color: #8f8f8f; font-style: italic; font-size: 10pt; font-weight: 600;">
-          No hay videos para esta categoría.
-        </h6>
       </div>
     </ng-container>
 

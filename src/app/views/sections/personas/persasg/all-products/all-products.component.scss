@@ -1,3 +1,13 @@
+$orange: #ff5900;
+$orange-70: rgba(255, 89, 0, 0.863);
+$orange-50: rgba(255, 89, 0, 0.502);
+
+$blueSG: #3fbac5;
+$blueSG-80: rgba(62, 186, 197, 0.800);
+$blueSG-70: rgba(62, 186, 197, 0.700);
+$blueSG-40: rgba(62, 186, 197, 0.4);
+$blueSG-20: rgba(63, 186, 197, 0.2);
+
 .user-select {
   user-select: none;
   -moz-user-select: none;
@@ -7,7 +17,7 @@
 
 .search-bar {
   input {
-    background-color: var(--blueSG-20);
+    background-color: $blueSG-20;
     border-radius: 0px 10px 10px 0px;
     border: none;
     padding-left: 0;
@@ -21,14 +31,14 @@
   }
 
   div > span{
-    background-color: var(--blueSG-20);
+    background-color: $blueSG-20;
     border-radius: 10px 0px 0px 10px;
     border: none;
   }
 }
 
 .blue-overlay {
-  background-color: var(--blueSG-80);
+  background-color: $blueSG-80;
 }
 
 .text-overlay {
@@ -45,7 +55,7 @@
 .persa {
   &-title {
     @extend .user-select;
-    color: var(--blueSG);
+    color: $blueSG;
     font-weight: 800;
     font-size: 4rem;
   }
@@ -78,7 +88,7 @@
       display: -ms-flexbox;
       display: flex;
       flex-direction: column;
-      background-color: var(--blueSG);
+      background-color: $blueSG;
       margin: 10px 15px;
       border-radius: 15px;
       padding: 5%;
@@ -138,7 +148,7 @@
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: var(--orange);
+  background: $orange;
   margin: -3px 0 0 -3px;
 }
 .lds-roller div:nth-child(1) {
@@ -244,7 +254,7 @@ body:not(:-moz-handler-blocked) fieldset {
   box-sizing: border-box;
   font-size: 0;
   display: -ms-flexbox;
-display: flex;
+  display: flex;
   flex-flow: row nowrap;
   justify-content: flex-start;
   align-items: stretch;
@@ -261,7 +271,7 @@ display: flex;
     align-items: center;
     border-radius: 100px !important;
     box-sizing: border-box;
-    background-color: var(--blueSG);
+    background-color: $blueSG;
     line-height: 140%;
     text-align: center;
     // box-shadow: 0em 0rem 0.1rem rgba(0, 0, 0, 0.35);
@@ -269,7 +279,7 @@ display: flex;
 
     /* ADD THESE PROPERTIES TO SWITCH FROM AUTO WIDTH TO FULL WIDTH */
     // flex: 0 0 50%; display: -ms-flexbox;
-display: flex; justify-content: center; align-items: center;
+    display: flex; justify-content: center; align-items: center;
     /* ----- */
   }
 
@@ -278,7 +288,7 @@ display: flex; justify-content: center; align-items: center;
       padding: 0.75rem 0.25rem;
       flex: 0 0 50%;
       display: -ms-flexbox;
-display: flex;
+      display: flex;
       justify-content: center;
       align-items: center;
     }

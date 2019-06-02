@@ -1,0 +1,20 @@
+$orange: #ff5900;
+$blueSG: #3fbac5;
+
+.comunidades {
+  &-title {
+    user-select: none;
+    color: $blueSG;
+    font-weight: 800;
+    font-size: 4rem;
+  }
+}
+
+p {
+  line-height: 23pt;
+}
+
+.text-orange {
+  color: $orange !important;
+  font-weight: 500;
+}

@@ -1,3 +1,273 @@
-<div class="product-container">
+<!-- <div class="product-container"> -->
+  <form #fe="ngForm">
+    <div class="persa-options-add" id="insert-div">
+      <h6>Agregar Prublicación</h6>
+      <p>Selecciona la categoría de tu artículo</p>
+      <div class="persa-options-add-categories animated fadeIn">
+        <div class="toggle w-100 d-flex justify-content-center">
+          <div class="persa-options-add-categories-container">
+            <div class="persa-options-add-categories-circle">
+              <input
+                type="radio"
+                name="edit-product-category"
+                #default="ngModel"
+                ngModel
+                value="0"
+                id="edit-product-category-muebles"
+                checked
+                selected
+              />
+              <label
+                for="edit-product-category-muebles"
+                [ngClass]="{
+                  'persa-options-add-categories-active':
+                    fe.value['edit-product-category'] === '0'
+                }"
+                class=""
+              >
+                <i class="fas fa-home"></i>
+              </label>
+            </div>
+            <span>Muebles</span>
+          </div>
+          <div class="persa-options-add-categories-container">
+            <div class="persa-options-add-categories-circle">
+              <input
+                type="radio"
+                name="edit-product-category"
+                #default="ngModel"
+                ngModel
+                value="1"
+                id="edit-product-category-tecno"
+              />
+              <label
+                for="edit-product-category-tecno"
+                [ngClass]="{
+                  'persa-options-add-categories-active':
+                    fe.value['edit-product-category'] === '1'
+                }"
+                class="persa-options-add-categories"
+                ><i class="fas fa-mobile-alt"></i
+              ></label>
+            </div>
+            <span>Tecnología</span>
+          </div>
+          <div class="persa-options-add-categories-container">
+            <div class="persa-options-add-categories-circle">
+              <input
+                type="radio"
+                name="edit-product-category"
+                #default="ngModel"
+                ngModel
+                value="2"
+                id="edit-product-category-vestuario"
+              />
+              <label
+                for="edit-product-category-vestuario"
+                [ngClass]="{
+                  'persa-options-add-categories-active':
+                    fe.value['edit-product-category'] === '2'
+                }"
+                class=""
+                ><i class="fas fa-tshirt"></i
+              ></label>
+            </div>
+            <span>Vestuario</span>
+          </div>
+          <div class="persa-options-add-categories-container">
+            <div class="persa-options-add-categories-circle">
+              <input
+                type="radio"
+                name="edit-product-category"
+                #default="ngModel"
+                ngModel
+                value="3"
+                id="edit-product-category-musica"
+              />
+              <label
+                for="edit-product-category-musica"
+                [ngClass]="{
+                  'persa-options-add-categories-active':
+                    fe.value['edit-product-category'] === '3'
+                }"
+                class=""
+                ><i class="fas fa-headphones-alt"></i
+              ></label>
+            </div>
+            <span>Música</span>
+          </div>
+          <div class="persa-options-add-categories-container">
+            <div class="persa-options-add-categories-circle">
+              <input
+                type="radio"
+                name="edit-product-category"
+                #default="ngModel"
+                ngModel
+                value="4"
+                id="edit-product-category-deporte"
+              />
+              <label
+                for="edit-product-category-deporte"
+                [ngClass]="{
+                  'persa-options-add-categories-active':
+                    fe.value['edit-product-category'] === '4'
+                }"
+                class=""
+                ><i class="fas fa-bicycle"></i
+              ></label>
+            </div>
+            <span>Deporte</span>
+          </div>
+          <div class="persa-options-add-categories-container">
+            <div class="persa-options-add-categories-circle">
+              <input
+                type="radio"
+                name="edit-product-category"
+                #default="ngModel"
+                ngModel
+                value="5"
+                id="edit-product-category-otros"
+              />
+              <label
+                for="edit-product-category-otros"
+                [ngClass]="{
+                  'persa-options-add-categories-active':
+                    fe.value['edit-product-category'] === '5'
+                }"
+                class=""
+                ><i class="fas fa-boxes"></i
+              ></label>
+            </div>
+            <span>Otros</span>
+          </div>
+        </div>
+      </div>
+      <div class="persa-options-add-input mb-4">
+        <input
+          type="text"
+          placeholder="Nombre del producto"
+          name="edit_name"
+          id="edit_name"
+          maxlength="60"
+          #edit_name="ngModel"
+          ngModel
+        />
+        <small class="float-right">
+          {{
+            edit_name.value.length ? edit_name.value.length : 0
+          }}/60</small
+        >
+      </div>
+      <div class="persa-options-add-input mb-4">
+        <textarea
+          type="text"
+          placeholder="Detalle del producto"
+          name="edit_desc"
+          id="edit_desc"
+          rows="5"
+          maxlength="200"
+          #edit_desc="ngModel"
+          ngModel
+        >
+        </textarea>
+        <small class="float-right">
+          {{
+            edit_desc.value.length ? edit_desc.value.length : 0
+          }}/200</small
+        >
+      </div>
+      <div class="persa-options-add-input-quant mb-4">
+        <label for="edit_quantity">Productos disponibles</label>
+        <input
+          placeholder="0"
+          type="number"
+          name="edit_quantity"
+          id="edit_quantity"
+          #edit_quantity="ngModel"
+          ngModel
+        />
+      </div>
+      <div class="persa-options-add-input-quant mb-4">
+        <label for="edit_price">Valor del producto</label>
+        <div>
+          <span class="dolar">$</span>
+          <input
+            type="number"
+            placeholder="0"
+            name="edit_price"
+            id="edit_price"
+            maxlength="60"
+            #edit_price="ngModel"
+            ngModel
+          />
+        </div>
+      </div>
 
-</div>
+      <div class="persa-options-add-photos">
+        <h6>Agregar Fotos</h6>
+        <div class="input-group-container">
+          <label for="upload_5" class="first">
+            <img [src]="editProduct.upload_5_b64" *ngIf="editProduct.upload_5_b64" alt="" style="max-width: 66px !important; border-radius: 5px;" class="img-fluid">
+            <i class="fas fa-image text-white" *ngIf="!editProduct.upload_5_b64"></i> <br />
+            Subir Foto
+          </label>
+          <input type="hidden" hidden id="upload_5_b64" name="upload_5_b64" #upload_5_b64="ngModel" [(ngModel)]="editProduct.upload_5_b64"/>
+          <input type="file" hidden id="upload_5" name="upload_5" (change)="cropImage(1, $event)" #upload_5="ngModel" [(ngModel)]="editProduct.upload_5" />
+
+          <label for="upload_6">
+              <img [src]="editProduct.upload_6_b64" *ngIf="editProduct.upload_6_b64" alt="" style="max-width: 66px !important; border-radius: 5px;" class="img-fluid">
+              <i class="fas fa-image text-white" *ngIf="!editProduct.upload_6_b64"></i> <br />
+            Subir Foto
+          </label>
+          <input type="hidden" hidden id="upload_6_b64" name="upload_6_b64" #upload_6_b64="ngModel" [(ngModel)]="editProduct.upload_6_b64"/>
+          <input type="file" hidden id="upload_6" name="upload_6" (change)="cropImage(2, $event)" #upload_6="ngModel" [(ngModel)]="editProduct.upload_6" />
+
+          <label for="upload_7">
+              <img [src]="editProduct.upload_7_b64" *ngIf="editProduct.upload_7_b64" alt="" style="max-width: 66px !important; border-radius: 5px;" class="img-fluid">
+              <i class="fas fa-image text-white" *ngIf="!editProduct.upload_7_b64"></i> <br />
+            Subir Foto
+          </label>
+          <input type="hidden" hidden id="upload_7_b64" name="upload_7_b64" #upload_7_b64="ngModel" [(ngModel)]="editProduct.upload_7_b64"/>
+          <input type="file" hidden id="upload_7" name="upload_7" (change)="cropImage(3, $event)" #upload_7="ngModel" [(ngModel)]="editProduct.upload_7" />
+
+          <label for="upload_8" class="last">
+              <img [src]="editProduct.upload_8_b64" *ngIf="editProduct.upload_8_b64" alt="" style="max-width: 66px !important; border-radius: 5px;" class="img-fluid">
+              <i class="fas fa-image text-white" *ngIf="!editProduct.upload_8_b64"></i> <br />
+            Subir Foto
+          </label>
+          <input type="hidden" hidden id="upload_8_b64" name="upload_8_b64" #upload_8_b64="ngModel" [(ngModel)]="editProduct.upload_8_b64"/>
+          <input type="file" hidden id="upload_8" name="upload_8" (change)="cropImage(4, $event)" #upload_8="ngModel" [(ngModel)]="editProduct.upload_8" />
+        </div>
+      </div>
+      <div class="row mt-3 justify-content-between">
+        <button type="submit" class="persa-options-add-button cancel" routerLink="../../">Cancelar</button>
+        <button type="submit" class="persa-options-add-button">Guardar</button>
+      </div>
+    </div>
+  </form>
+<!-- </div> -->
+
+<div mdbModal #editModal="mdbModal" class="modal fade"  tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true" [config]="{ignoreBackdropClick: true, keyboard: false}">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <!-- <button type="button" class="close pull-right" aria-label="Close" (click)="editModal.hide()">
+            <span aria-hidden="true">×</span>
+          </button> -->
+          <h4 class="modal-title w-100" id="myModalLabel">Recortar Imagen ({{selectedInput}}/4)</h4>
+        </div>
+        <div class="modal-body">
+          <div id="croppie2">
+          </div>
+          <div class="preview-img">
+            <img [src]="myImage | safeHtml" alt="" *ngIf="myImage">
+            <!-- <img [src]="upload_5.value" alt="" *ngIf="myImage"> -->
+          </div>
+        </div>
+        <div class="modal-footer">
+          <!-- <button type="button" mdbBtn color="secondary" class="waves-light" aria-label="Close" (click)="basicModal.hide()" mdbWavesEffect>Close</button> -->
+          <button type="button" mdbBtn color="primary" (click)="seeResults()" class="relative waves-light" mdbWavesEffect>Editar</button>
+        </div>
+      </div>
+    </div>
+  </div>

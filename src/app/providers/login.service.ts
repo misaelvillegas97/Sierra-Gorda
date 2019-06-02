@@ -19,7 +19,7 @@ export class LoginService {
   userLogged: Usuario;
 
   constructor(public http: HttpClient, private snackbar: MatSnackBar, private route: Router) {
-    console.log('Servicio iniciado');
+    // console.log('Servicio iniciado');
     if (this.userLogged === null) { this.userLogged = undefined; }
     this.isLoggedIn();
     if (localStorage.getItem('sg-userID') && this.userLogged === undefined) {

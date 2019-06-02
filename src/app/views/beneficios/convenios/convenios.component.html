@@ -1,0 +1,29 @@
+<div class="beneficios-categorias-header">
+    <div class="beneficios-categorias-header-titulo">
+        <div class="beneficios-categorias-header-titulo-boton">
+            <i class="fas fa-chevron-circle-left" [routerLink]="['/beneficios']"></i>
+        </div>
+        <div class="beneficios-categorias-header-titulo-nombre">Convenios</div>
+    </div>
+</div>
+<div class="convenio">
+    <ng-container *ngIf="bs.listaBeneficiosCat">
+        <div class="convenio-container">
+            <div>
+                <ng-container *ngFor="let beneficio of bs.listaBeneficiosCat">
+                    <div class="convenio-container-boton shadow" routerLink="{{beneficio.id_beneficios}}">
+                        <div class="convenio-container-boton-flecha">
+                            <i class="fas fa-chevron-circle-right"></i>
+                        </div>
+                        <div class="convenio-container-boton-nombre">
+                            {{ beneficio.titulo_beneficio }}
+                        </div>
+                    </div>
+                </ng-container>
+            </div>
+            <div>
+                <img src="https://c3devapp.cl/sg/assets/img/Beneficios/.png" alt="">
+            </div>
+        </div>
+    </ng-container>
+</div>

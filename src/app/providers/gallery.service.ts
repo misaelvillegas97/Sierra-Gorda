@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Gallery, ResponseGallery } from '../interface/interface';
+import { GaleriaAnual, ArregloGaleriaAnual, Album } from '../interface/galeria';
 
 const URL = 'http://c3wsapi.cl:2200/sg/';
 
@@ -9,6 +10,9 @@ const URL = 'http://c3wsapi.cl:2200/sg/';
 })
 export class GalleryService {
   galleryList: Gallery[] = [];
+  albumList: Album[];
+
+  listaAnios: ArregloGaleriaAnual[];
 
   constructor(private http: HttpClient) { }
 
@@ -60,6 +64,40 @@ export class GalleryService {
         }
       );
     return respuesta;
+  }
+
+  getGalleryByYear( _year: number ) {
+    if (this.listaAnios) {
+      console.table(this.listaAnios);
+      if (this.listaAnios.find( anio => anio.anio === _year )) {
+        return;
+      }
+    }
+    this.http.get( URL + `galeria/getmesgaleria/${_year}/${atob(localStorage.getItem('sg-userID'))}` )
+      .toPromise()
+      .then(
+        res => {
+          if (!this.listaAnios) {
+            this.listaAnios = [];
+          }
+          this.listaAnios.push({
+            anio: _year,
+            // tslint:disable-next-line: no-string-literal
+            galeria: res['meses']
+          });
+        }
+      );
+  }
+
+  getGalleryByMonth(_month: number, _year: number ) {
+    this.http.get( URL + `galeria/getgaleria/${_year}/${_month}/${atob(localStorage.getItem('sg-userID'))}` )
+      .toPromise()
+      .then(
+        res => {
+          // tslint:disable-next-line: no-string-literal
+          this.albumList = res['galerias'];
+        }
+      );
   }
 
 }

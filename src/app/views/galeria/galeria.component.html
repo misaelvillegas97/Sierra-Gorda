@@ -1,0 +1,27 @@
+<app-navbar-ext></app-navbar-ext>
+<br>
+<div style="height: 50px"></div>
+<app-links></app-links>
+
+<div class="container h-50">
+  <div class="row m-0 p-0">
+    <div class="col-6 animated fadeInLeft">
+      <h1 class="galeria-title">
+        Galeria
+      </h1>
+    </div>
+    <div class="col-6 galeria-filter">
+      <div class="galeria-filter-content">
+        <label for="select_filter">AÑO <i class="fas fa-ellipsis-v"></i></label>
+        <select name="select_filter" id="select_filter" #filter (change)="getGalleryByYear(filter.value)" *ngIf="yearList">
+          <option [value]="year" *ngFor="let year of yearList" [selected]="year === thisYear">{{ year }}</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <div class="w-100 m-2 p-2"></div>
+<router-outlet></router-outlet>
+
+<app-footer-s></app-footer-s>

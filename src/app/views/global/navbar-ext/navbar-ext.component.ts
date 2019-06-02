@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { MDBModalService, MDBModalRef } from 'angular-bootstrap-md';
-import { ProfileService } from 'src/app/providers/profile.service';
 import { LoginService } from 'src/app/providers/login.service';
 import { LoginModalComponent } from 'src/app/modals/login-modal/login-modal.component';
+import { EditInfoModalComponent } from 'src/app/modals/edit-info-modal/edit-info-modal.component';
 
 declare var $: any;
 
@@ -20,7 +20,7 @@ export class NavbarExtComponent implements OnInit {
   modalRef: MDBModalRef;
   modalOptions = {};
 
-  constructor(public ls: LoginService, private ps: ProfileService, private modalService: MDBModalService) { }
+  constructor(public ls: LoginService, private modalService: MDBModalService) { }
 
   ngOnInit() {
   }
@@ -44,57 +44,23 @@ export class NavbarExtComponent implements OnInit {
     }
   }
 
-  async changeUserInfo(variable: number, value: any) {
-    let res: number;
-    switch (variable) {
-      // Teléfono
-      case 1:
-        if (value !== '' || value !== this.ls.userLogged.telefono_usuario) {
-          if (value.substring(0, 3) !== '+56') {
-            console.log(value.substring(0,3));
-            value = '+56' + value;
-          }
-          this.ls.userLogged.telefono_usuario = value;
-          res = await this.ps.changeUserInfo(this.ls.userLogged.telefono_usuario, 2);
-          console.log(res);
-          break;
-        }
-        res = 1;
-        break;
+  editInfo() {
+    this.modalOptions = {
+      backdrop: true,
+      keyboard: true,
+      focus: true,
+      show: false,
+      ignoreBackdropClick: false,
+      class: 'loginModal-container modal-dialog-centered',
+      containerClass: '',
+      animated: true
+    };
 
-      // Correo
-      case 2:
-        if (value !== '' || value !== this.ls.userLogged.telefono_usuario) {
-          this.ls.userLogged.correo_usuario = value;
-          res = await this.ps.changeUserInfo(this.ls.userLogged.correo_usuario, 3);
-          console.log(res);
-          break;
-        }
-        res = 1;
-        break;
-
-      // Contraseña
-      case 3:
-        if (value !== '') {
-          console.log(value);
-          value = btoa(value);
-          value = btoa(value);
-          value = btoa(value);
-          res = await this.ps.changeUserInfo(value, 4);
-          console.log(res);
-          break;
-        }
-        res = 1;
-        break;
-
-      default: console.log('Opción inválida');
-    }
-
-    return res;
+    this.modalRef = this.modalService.show(EditInfoModalComponent, this.modalOptions);
   }
 
   openModal( opt: number ) {
-    let data = {};
+    let data = {}
     switch (opt) {
       case 0:
         data = {
@@ -127,6 +93,4 @@ export class NavbarExtComponent implements OnInit {
     };
     this.modalRef = this.modalService.show(LoginModalComponent, this.modalOptions);
   }
-
-
 }

@@ -63,7 +63,11 @@ button:focus {
   margin-right: 0px !important;
 }
 
-html{ height:100%; max-width: 100%;}
+html{
+  height:100%;
+  max-width: 100%;
+  scroll-behavior: smooth;
+}
 body{ min-height:100%; padding:0; margin:0; position:relative; }
 
 // body::after{ content:''; display:block; height:100px; }
@@ -73,11 +77,17 @@ footer{
   bottom:0;
   right: 0;
   width:100%;
-  height:186px;
+  height:172px;
 }
 
 .orange-tooltip {
   background-color: #F27137;
+}
+
+.style-two {
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(to right, rgba(255, 89, 0, 0), rgba(255, 89, 0, 0.75), rgba(255, 89, 0, 0));
 }
 
 html.noscroll {

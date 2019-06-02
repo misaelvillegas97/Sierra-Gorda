@@ -1,0 +1,31 @@
+<!-- {{
+  beneficio | json
+}} -->
+
+<!-- <img [src]="beneficio.img_url_beneficio" alt=""> -->
+<ng-container *ngIf="beneficio">
+  <div class="salud-detalle-header animated fadeIn">
+    <div class="salud-detalle-header-titulo">
+      <div class="salud-detalle-header-titulo-flecha">
+        <i class="fas fa-chevron-circle-left" [routerLink]="['../']"></i>
+      </div>
+      <div class="salud-detalle-header-titulo-nombre">
+        {{ beneficio.titulo_beneficio }}
+      </div>
+    </div>
+  </div>
+  <div class="salud-detalle-container">
+    <div class="salud-detalle-container-body row">
+      <div class="salud-detalle-container-body-descripcion col-lg-8 col-md-6 col-sm-12">
+        <p [innerHTML]="beneficio.descripcion_beneficio"></p><br>
+          {{beneficio.mas_info}}<a href="{{beneficio.url}}" download target="_blank" class="salud-detalle-container-body-boton">HAZ CLIC AQUÍ</a>
+      </div>
+      <div class="salud-detalle-container-body-img col-lg-4 col-md-6 col-sm-12">
+        <img [src]="beneficio.img_url_beneficio" alt="">
+      </div>
+
+    </div>
+  </div>
+</ng-container>
+
+
