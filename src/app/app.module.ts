@@ -13,7 +13,11 @@ import * as Coppie from 'croppie';
 
 // Angular Material Imports
 import { CdkStepperModule } from '@angular/cdk/stepper';
-import { MatStepperModule, MatIconModule, MatButtonModule, MatFormFieldModule, MatSelectModule } from '@angular/material';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSelectModule } from '@angular/material/select';
+import { MatStepperModule } from '@angular/material/stepper';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatInputModule } from '@angular/material/input';
