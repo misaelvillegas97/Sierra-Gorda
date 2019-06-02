@@ -83,6 +83,9 @@ import { ConvenioDetalleComponent } from './views/beneficios/convenios/convenio-
 import { ComunidadesComponent } from './views/sections/personas/comunidades/comunidades.component';
 import { SafeTextPipe } from './pipes/safe-text.pipe';
 import { GaleriaComponent } from './views/galeria/galeria.component';
+import { GaleriaMesesComponent } from './views/galeria/galeria-meses/galeria-meses.component';
+import { GaleriaAlbumesComponent } from './views/galeria/galeria-albumes/galeria-albumes.component';
+import { GaleriaAlbumDetalleComponent } from './views/galeria/galeria-album-detalle/galeria-album-detalle.component';
 
 
 @NgModule({
@@ -142,7 +145,10 @@ import { GaleriaComponent } from './views/galeria/galeria.component';
     ConvenioDetalleComponent,
     ComunidadesComponent,
     SafeTextPipe,
-    GaleriaComponent
+    GaleriaComponent,
+    GaleriaMesesComponent,
+    GaleriaAlbumesComponent,
+    GaleriaAlbumDetalleComponent
   ],
   imports: [
     BrowserModule,

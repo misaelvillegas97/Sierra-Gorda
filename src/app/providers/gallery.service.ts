@@ -13,6 +13,7 @@ export class GalleryService {
   albumList: Album[];
 
   listaAnios: ArregloGaleriaAnual[];
+  listaMesesGaleria: GaleriaAnual[];
 
   constructor(private http: HttpClient) { }
 
@@ -68,8 +69,8 @@ export class GalleryService {
 
   getGalleryByYear( _year: number ) {
     if (this.listaAnios) {
-      console.table(this.listaAnios);
-      if (this.listaAnios.find( anio => anio.anio === _year )) {
+      if (this.listaAnios.find( lista => lista.anio === _year ) ) {
+        this.listaMesesGaleria = this.listaAnios.find( lista => lista.anio === _year ).galeria;
         return;
       }
     }
@@ -85,6 +86,7 @@ export class GalleryService {
             // tslint:disable-next-line: no-string-literal
             galeria: res['meses']
           });
+          this.listaMesesGaleria = res['meses'];
         }
       );
   }

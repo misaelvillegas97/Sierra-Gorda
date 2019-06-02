@@ -3,6 +3,8 @@ $orange-70: rgba(255, 89, 0, 0.863);
 $orange-50: rgba(255, 89, 0, 0.502);
 
 $blueSG: #3fbac5;
+$yellow: #ffc600;
+$yellow-light: #FFDC67;
 $blueSG-strong: #31a0aa;
 $blueSG-70: rgba(62, 186, 197, 0.702);
 $blueSG-40: rgba(62, 186, 197, 0.4);
@@ -20,7 +22,7 @@ $text-color: #5c5c5c;
   &-filter {
     display: flex;
     justify-content: flex-end;
-    align-items: flex-end;
+    align-items: center;
 
     &-content {
       padding: 3px 10px;
@@ -47,6 +49,54 @@ $text-color: #5c5c5c;
         color: white;
         font-weight: 500;
         padding-left: 15px;
+      }
+    }
+  }
+
+  &-album {
+    height: 100%;
+
+    &-container {
+      width: 100%;
+      height: 350px;
+      border-radius: 10px;
+      padding: 20px;
+      display: flex;
+      display: -ms-flexbox;
+      justify-content: space-around;
+    }
+
+    &-item {
+      width: 95px;
+      max-width: 95px;
+      height: 95px;
+      max-height: 95px;
+      // background-color: $yellow;
+      border-radius: 5px;
+      margin: 0px 10px;
+      padding: 5px;
+      display: -ms-flexbox;
+      display: flex;
+      align-items: flex-end;
+
+      background: linear-gradient(to top right, $yellow 0%, $yellow 80%, $yellow-light 80%, $yellow-light 100%);
+      background-color: $yellow;
+
+      transition: 0.5s;
+
+      &:hover {
+        box-shadow: none !important;
+      }
+
+      span {
+        color: white;
+        font-size: 10pt;
+        font-weight: 600;
+        user-select: none;
+      }
+
+      span.counter {
+        position: absolute;
       }
     }
   }

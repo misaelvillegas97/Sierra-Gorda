@@ -70,11 +70,12 @@ $nombre-color2: #5a6770;
     &-nombre {
       color: $nombre-color2;
       font-size: 35pt;
-      text-align: center;
+      text-align: left;
       margin-left: 22px;
       font-weight: 800;
       line-height: 1.2;
     }
+
   }
 }
 .salud {
@@ -153,6 +154,49 @@ $nombre-color2: #5a6770;
     }
   }
 }
+
+.formulario{
+  &-titulo{
+      color: $orange;
+      font-size: 16pt;
+      font-weight: 700;
+      margin-top: 20px;
+      margin-left: 5%;
+    }
+  &-container{
+    display: -ms-flexbox;
+    display: flex;
+    &-seleccion{
+        select{
+          font-size:16pt;
+          // border: none;
+          // padding: 20px 200px 20px 35px;
+          // font-weight: 600;
+          // font-size: 13pt;
+          // color: #5c5c5c;
+          // border-radius: 15px;
+}
+        }
+      &-botonbox{
+        display:flex;
+        display: -ms-flexbox;
+        &-boton{
+          background: $blueSG;
+          color:#fff;
+          font-weight: 600;
+          padding: 8px 20px;
+          border-radius: 25px;
+          font-size: 8pt;
+          margin-left: 2em;
+        }
+      }
+    }
+    &-img{
+
+    }
+  }
+}
+
 .salud-detalle-header {
   &-titulo {
     display: flex;
@@ -244,14 +288,13 @@ $nombre-color2: #5a6770;
         }
       }
       a{
-          height:40px;
-          background: $blueSG;
-          color:#fff;
-          font-weight: 600;
-          padding: 8px 20px;
-          border-radius: 25px;
-          font-size: 8pt;
-          margin-left: 2em;
+        background: $blueSG;
+        color:#fff;
+        font-weight: 600;
+        padding: 8px 20px;
+        border-radius: 25px;
+        font-size: 8pt;
+        margin-left: 2em;
       }
     }
     &-img {

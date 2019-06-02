@@ -34,6 +34,9 @@ import { SaludDetalleComponent } from './views/beneficios/salud/salud-detalle/sa
 import { ComunidadesComponent } from './views/sections/personas/comunidades/comunidades.component';
 import { GaleriaComponent } from './views/galeria/galeria.component';
 import { ConvenioDetalleComponent } from './views/beneficios/convenios/convenio-detalle/convenio-detalle.component';
+import { GaleriaMesesComponent } from './views/galeria/galeria-meses/galeria-meses.component';
+import { GaleriaAlbumesComponent } from './views/galeria/galeria-albumes/galeria-albumes.component';
+import { GaleriaAlbumDetalleComponent } from './views/galeria/galeria-album-detalle/galeria-album-detalle.component';
 
 const routes: Routes = [
   {
@@ -272,7 +275,21 @@ const routes: Routes = [
   },
   {
     path: 'galeria',
-    component: GaleriaComponent
+    component: GaleriaComponent,
+    children: [
+      {
+        path: '',
+        component: GaleriaMesesComponent
+      },
+      {
+        path: ':year/:month',
+        component: GaleriaAlbumesComponent
+      },
+      {
+        path: ':year/:month/:idGaleria',
+        component: GaleriaAlbumDetalleComponent
+      }
+    ]
   }
   // {
   //   path: 'chats',

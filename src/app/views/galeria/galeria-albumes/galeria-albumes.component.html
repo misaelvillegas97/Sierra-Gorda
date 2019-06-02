@@ -1,0 +1,57 @@
+<div class="row m-0 p-0"> <!-- Header -->
+  <div class="col-6">
+    <h1 class="galeria-title animated fadeIn faster">
+      Galeria
+    </h1>
+  </div>
+  <div class="col-6 galeria-actions">
+    <div class="galeria-actions-content">
+
+    </div>
+  </div>
+</div> <!-- Fin Header -->
+
+<div class="row galeria-album"> <!-- Content -->
+  <div class="col-lg-4 d-flex align-items-center">
+
+  </div>
+  <div class="col-lg-8 galeria-album-container shadow">
+    <div class="row">
+      <ng-container *ngIf="gs.albumList">
+        <ng-container *ngFor="let album of gs.albumList">
+          <div class="galeria-album-item col-lg-2 shadow">
+            <span>{{album.nombre}}</span>
+            <span class="counter">
+              {{album.cuenta}}
+            </span>
+          </div>
+        </ng-container>
+        <ng-container *ngFor="let album of gs.albumList">
+          <div class="galeria-album-item col-lg-2 shadow">
+            <span>{{album.nombre}}</span>
+            <span class="counter">
+              {{album.cuenta}}
+            </span>
+          </div>
+        </ng-container>
+        <ng-container *ngFor="let album of gs.albumList">
+          <div class="galeria-album-item col-lg-2 shadow">
+            <span>{{album.nombre}}</span>
+            <span class="counter">
+              {{album.cuenta}}
+            </span>
+          </div>
+        </ng-container>
+        <ng-container *ngFor="let album of gs.albumList">
+          <div class="galeria-album-item col-lg-2 shadow">
+            <span>{{album.nombre}}</span>
+            <span class="counter">
+              {{album.cuenta}}
+            </span>
+          </div>
+        </ng-container>
+      </ng-container>
+    </div>
+
+  </div>
+</div>
