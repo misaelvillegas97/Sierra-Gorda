@@ -1,0 +1,103 @@
+$pink: #F22435;
+$pink-70: rgba(242, 36, 53, 0.7);
+$orange: #ff5900;
+$orange-70: rgba(255, 89, 0, 0.863);
+$orange-50: rgba(255, 89, 0, 0.502);
+
+$blueSG: #3fbac5;
+$blueSG-70: rgba(62, 186, 197, 0.702);
+$blueSG-40: rgba(62, 186, 197, 0.4);
+$blueSG-20: rgba(63, 186, 197, 0.2);
+
+$green: #7fbb5a;
+
+h6 {
+  margin: 0;
+}
+
+.seguridad {
+  &-header {
+    display: flex;
+    display: -ms-flexbox;
+    justify-content: space-between;
+    &-title {
+      color: #ff5900;
+      h1 {
+        font-size: 28pt;
+        font-weight: 800;
+      }
+    }
+
+    &-addon {
+      span.info-text {
+        background-color: $pink;
+        color: white;
+        padding: 5px 13px;
+        border-radius: 13px;
+        font-size: 11pt;
+        strong {
+          font-weight: 600 !important;
+        }
+      }
+
+      span.info-text-addon {
+        i {
+          color: $pink-70
+        }
+        float: right;
+        margin-right: 20px;
+        border: 1px solid red;
+        padding: 3px 30px;
+        border-radius: 0px 0px 10px 10px;
+        font-size: 14pt;
+      }
+    }
+  }
+
+  &-content {
+    &-item {
+      &.izq {
+        padding-right: 8em !important;
+      }
+
+      &.der {
+        padding-left: 8em !important;
+      }
+
+      &-image {
+        position: absolute;
+      }
+
+      &-title {
+        margin-left: 4em;
+        padding-left: 4em;
+        margin-top: 1em;
+        height: 4em;
+        display: flex;
+        align-items: center;
+        border-radius: 0px 120px 120px 0px;
+
+        h6 {
+          font-weight: 600;
+          font-size: 14pt;
+        }
+
+        &.paritario {
+          color: $green;
+        }
+
+        &.campanias {
+          color: $pink;
+        }
+
+        &.incidentes {
+          color: $blueSG;
+        }
+
+        &.conducta {
+          color: $orange;
+        }
+      }
+    }
+  }
+}

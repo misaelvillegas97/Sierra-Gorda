@@ -37,6 +37,7 @@ import { ConvenioDetalleComponent } from './views/beneficios/convenios/convenio-
 import { GaleriaMesesComponent } from './views/galeria/galeria-meses/galeria-meses.component';
 import { GaleriaAlbumesComponent } from './views/galeria/galeria-albumes/galeria-albumes.component';
 import { GaleriaAlbumDetalleComponent } from './views/galeria/galeria-album-detalle/galeria-album-detalle.component';
+import { SeguridadComponent } from './views/seguridad/seguridad.component';
 
 const routes: Routes = [
   {
@@ -290,6 +291,10 @@ const routes: Routes = [
         component: GaleriaAlbumDetalleComponent
       }
     ]
+  },
+  {
+    path: 'seguridad',
+    component: SeguridadComponent
   }
   // {
   //   path: 'chats',

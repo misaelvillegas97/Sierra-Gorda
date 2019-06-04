@@ -14,3 +14,20 @@ export interface Album {
   cuenta: number;
   visto: boolean;
 }
+
+export interface AlbumItem {
+  id_imagen: number;
+  urloriginal: string;
+  urlminiatura: string;
+  cantidad_megusta: number;
+  megusta: boolean;
+}
+
+
+export interface ResponsePicturesByGallery {
+  err: number;
+  message: string;
+  galeria: {
+    listaimagenes: AlbumItem[];
+  }
+}

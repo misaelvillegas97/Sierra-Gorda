@@ -16,34 +16,10 @@
 
   </div>
   <div class="col-lg-8 galeria-album-container shadow">
-    <div class="row">
+    <div class="row h-50">
       <ng-container *ngIf="gs.albumList">
         <ng-container *ngFor="let album of gs.albumList">
-          <div class="galeria-album-item col-lg-2 shadow">
-            <span>{{album.nombre}}</span>
-            <span class="counter">
-              {{album.cuenta}}
-            </span>
-          </div>
-        </ng-container>
-        <ng-container *ngFor="let album of gs.albumList">
-          <div class="galeria-album-item col-lg-2 shadow">
-            <span>{{album.nombre}}</span>
-            <span class="counter">
-              {{album.cuenta}}
-            </span>
-          </div>
-        </ng-container>
-        <ng-container *ngFor="let album of gs.albumList">
-          <div class="galeria-album-item col-lg-2 shadow">
-            <span>{{album.nombre}}</span>
-            <span class="counter">
-              {{album.cuenta}}
-            </span>
-          </div>
-        </ng-container>
-        <ng-container *ngFor="let album of gs.albumList">
-          <div class="galeria-album-item col-lg-2 shadow">
+          <div class="galeria-album-item col-lg-2 shadow" [routerLink]="['./', album.id]">
             <span>{{album.nombre}}</span>
             <span class="counter">
               {{album.cuenta}}

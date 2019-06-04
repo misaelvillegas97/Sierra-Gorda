@@ -1,3 +1,67 @@
-<p>
-  galeria-album-detalle works!
-</p>
+<div class="row m-0 p-0"> <!-- Header -->
+  <div class="col-6">
+    <h1 class="galeria-title animated fadeIn faster">
+      Galeria
+    </h1>
+  </div>
+  <div class="col-6 galeria-actions">
+    <div class="galeria-actions-content">
+
+    </div>
+  </div>
+</div> <!-- Fin Header -->
+
+<div class="row galeria-picture"> <!-- Content -->
+  <div class="col-lg-4 d-flex align-items-center">
+
+  </div>
+  <div class="col-lg-8 galeria-picture-container shadow">
+    <div class="row h-100">
+      <ng-container *ngIf="gs.albumPhotos">
+        <ng-container *ngFor="let photo of gs.albumPhotos; let i=index">
+          <div class="col-lg-3">
+            <div class="galeria-picture-item shadow" (click)="openModal();currentSlide((i+1))" [style.backgroundImage]="'url('+ photo.urlminiatura +')'" style="background-size: cover; background-position: center; min-height: 90px;">
+            </div>
+          </div>
+        </ng-container>
+      </ng-container>
+    </div>
+
+  </div>
+</div>
+<ng-container *ngIf="gs.albumPhotos">
+  <div id="myModal" class="album-modal">
+    <span class="close cursor" (click)="closeModal()">&times;</span>
+    <div class="album-modal-content">
+
+      <ng-container *ngFor="let photo of gs.albumPhotos; let i=index">
+        <div class="mySlides">
+          <img [src]="photo.urloriginal" style="width:100%">
+          <a class="prev" (click)="plusSlides(-1)"><i class="fas fa-chevron-left"></i></a>
+          <a class="next" (click)="plusSlides(1)"><i class="fas fa-chevron-right"></i></a>
+          <!-- <a class="prev" (click)="plusSlides(-1)">&#10094;</a>
+          <a class="next" (click)="plusSlides(1)">&#10095;</a> -->
+          <div class="mySlides-like-counter">
+            <span>{{ photo.cantidad_megusta }}</span><i class="fas fa-thumbs-up pl-1 pr-1"></i>
+
+            <i class="fas fa-ellipsis-v slide-divider"></i>
+
+            <ng-container *ngIf="!photo.megusta">
+              <span (click)="setLike(photo, true)">Me gusta<i class="far fa-thumbs-up pl-1"></i></span>
+            </ng-container>
+            <ng-container *ngIf="photo.megusta">
+              <span (click)="setLike(photo, false)">Te gusta<i class="fas fa-thumbs-up pl-1"></i></span>
+            </ng-container>
+
+          </div>
+        </div>
+      </ng-container>
+
+      <div class="caption-container">
+        <p id="caption"></p>
+      </div>
+
+    </div>
+  </div>
+</ng-container>
+

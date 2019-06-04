@@ -86,6 +86,7 @@ import { GaleriaComponent } from './views/galeria/galeria.component';
 import { GaleriaMesesComponent } from './views/galeria/galeria-meses/galeria-meses.component';
 import { GaleriaAlbumesComponent } from './views/galeria/galeria-albumes/galeria-albumes.component';
 import { GaleriaAlbumDetalleComponent } from './views/galeria/galeria-album-detalle/galeria-album-detalle.component';
+import { SeguridadComponent } from './views/seguridad/seguridad.component';
 
 
 @NgModule({
@@ -148,7 +149,8 @@ import { GaleriaAlbumDetalleComponent } from './views/galeria/galeria-album-deta
     GaleriaComponent,
     GaleriaMesesComponent,
     GaleriaAlbumesComponent,
-    GaleriaAlbumDetalleComponent
+    GaleriaAlbumDetalleComponent,
+    SeguridadComponent
   ],
   imports: [
     BrowserModule,

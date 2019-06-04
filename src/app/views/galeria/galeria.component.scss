@@ -58,12 +58,12 @@ $text-color: #5c5c5c;
 
     &-container {
       width: 100%;
-      height: 350px;
+      min-height: 350px;
       border-radius: 10px;
       padding: 20px;
-      display: flex;
-      display: -ms-flexbox;
-      justify-content: space-around;
+      // display: flex;
+      // display: -ms-flexbox;
+      // justify-content: space-around;
     }
 
     &-item {
@@ -97,7 +97,142 @@ $text-color: #5c5c5c;
 
       span.counter {
         position: absolute;
+        top: 3px;
+        right: 7px;
       }
     }
   }
+
+  &-picture {
+    &-container {
+      width: 100%;
+      height: 350px;
+      max-height: 350px;
+      border-radius: 10px;
+      padding: 20px;
+
+      overflow-y: scroll;
+    }
+
+    &-item {
+      width: 100%;
+      height: 30%;
+      margin: 5px 0px;
+      border-radius: 5px;
+    }
+  }
+}
+
+.album-modal {
+  display: none;
+  position: fixed;
+  z-index: 113;
+  //padding-top: 100px;
+  align-items: center;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+/* Modal Content */
+.album-modal-content {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  padding: 0;
+  text-align: center;
+  width: 90%;
+  height: 100%;
+  max-width: 1200px;
+}
+
+/* The Close Button */
+.close {
+  color: white;
+  position: absolute;
+  top: 10px;
+  right: 25px;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #999;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.mySlides {
+  display: none;
+
+  &-like-counter {
+    display: -ms-flexbox;
+    display: flex;
+    align-items: center;
+    background: white;
+    position: fixed;
+    width: 235px;
+    right: 0;
+    bottom: 20%;
+    padding: 15px 20px 15px 30px;
+    border-radius: 50px 0px 0px 50px;
+    color: #ff5900;
+    font-size: 20pt;
+
+    span {
+      user-select: none;
+      font-size: 15pt;
+      font-weight: 600;
+    }
+
+    i.slide-divider {
+      font-size: 12pt;
+      margin: 0px 7px;
+    }
+
+    i {
+      user-select: none;
+      font-size: 16pt;
+    }
+  }
+
+  & img {
+    border-radius: 5px;
+    margin-bottom: -4px;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.45) !important;
+  }
+}
+
+.cursor {
+  cursor: pointer;
+}
+/* Next & previous buttons */
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 45%;
+  width: auto;
+  padding: 16px;
+
+  // color: $yellow !important;
+  color: white !important;
+  font-size: 45pt;
+  transition: 0.6s ease;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Position the "next button" to the right */
+.prev {
+  left: 0;
+}
+.next {
+  right: 0;
 }

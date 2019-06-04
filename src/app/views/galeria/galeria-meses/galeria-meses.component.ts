@@ -12,18 +12,18 @@ export class GaleriaMesesComponent implements OnInit {
   thisYear = new Date().getFullYear();
 
   monthShortM = [
-    'ENE',
-    'FEB',
-    'MAR',
-    'ABR',
-    'MAY',
-    'JUN',
-    'JUL',
-    'AGO',
-    'SEP',
-    'OCT',
-    'NOV',
-    'DIC'
+    'enero',
+    'febrero',
+    'marzo',
+    'abril',
+    'mayo',
+    'junio',
+    'julio',
+    'agosto',
+    'septiembre',
+    'octubre',
+    'noviembre',
+    'diciembre'
   ];
 
   constructor( public gs: GalleryService ) {

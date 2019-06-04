@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Gallery, ResponseGallery } from '../interface/interface';
-import { GaleriaAnual, ArregloGaleriaAnual, Album } from '../interface/galeria';
+import { GaleriaAnual, ArregloGaleriaAnual, Album, AlbumItem, ResponsePicturesByGallery } from '../interface/galeria';
 
 const URL = 'http://c3wsapi.cl:2200/sg/';
 
@@ -11,6 +11,7 @@ const URL = 'http://c3wsapi.cl:2200/sg/';
 export class GalleryService {
   galleryList: Gallery[] = [];
   albumList: Album[];
+  albumPhotos: AlbumItem[];
 
   listaAnios: ArregloGaleriaAnual[];
   listaMesesGaleria: GaleriaAnual[];
@@ -67,6 +68,20 @@ export class GalleryService {
     return respuesta;
   }
 
+  async getGalleryById(_id: number) {
+    let data: Album;
+    await this.http.get( URL + '' )
+      .toPromise()
+      .then(
+        res => {
+          // tslint:disable-next-line: no-string-literal
+          data = res['galeria'];
+        }
+      );
+
+    return data;
+  }
+
   getGalleryByYear( _year: number ) {
     if (this.listaAnios) {
       if (this.listaAnios.find( lista => lista.anio === _year ) ) {
@@ -92,6 +107,7 @@ export class GalleryService {
   }
 
   getGalleryByMonth(_month: number, _year: number ) {
+    this.albumList = undefined;
     this.http.get( URL + `galeria/getgaleria/${_year}/${_month}/${atob(localStorage.getItem('sg-userID'))}` )
       .toPromise()
       .then(
@@ -100,6 +116,48 @@ export class GalleryService {
           this.albumList = res['galerias'];
         }
       );
+  }
+
+  getPhotosByGallery(_id: number) {
+    this.albumPhotos = undefined;
+    this.http.get( URL + `galeria/getimagenesgaleria/${_id}/${atob(localStorage.getItem('sg-userID'))}` )
+      .toPromise()
+      .then(
+        (res: ResponsePicturesByGallery) => {
+          // tslint:disable-next-line: no-string-literal
+          this.albumPhotos = res.galeria.listaimagenes;
+          console.table(this.albumPhotos);
+        }
+      );
+  }
+
+  async filterOrGetGalleryById(_id: number) {
+    let data: Album;
+
+    if (this.albumList) {
+      data = this.albumList.find(
+        album => album.id === _id
+      );
+
+      if (data) {
+        return data;
+      } else{
+        await this.getGalleryById(_id)
+          .then(
+            res => {
+              res = data;
+            }
+          );
+      }
+    } else {
+      await this.getGalleryById(_id)
+        .then(
+          res => {
+            res = data;
+          }
+        );
+    }
+    return data;
   }
 
 }
