@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Gallery, ResponseGallery } from '../interface/interface';
 import { GaleriaAnual, ArregloGaleriaAnual, Album, AlbumItem, ResponsePicturesByGallery } from '../interface/galeria';
 
-const URL = 'http://c3wsapi.cl:2200/sg/';
+const URL = 'https://c3wsapi.cl/sg/';
 
 @Injectable({
   providedIn: 'root'
@@ -126,7 +126,6 @@ export class GalleryService {
         (res: ResponsePicturesByGallery) => {
           // tslint:disable-next-line: no-string-literal
           this.albumPhotos = res.galeria.listaimagenes;
-          console.table(this.albumPhotos);
         }
       );
   }
@@ -158,6 +157,20 @@ export class GalleryService {
         );
     }
     return data;
+  }
+
+  setLike(_photo: AlbumItem) {
+    const data = {
+      id_usuario: atob(localStorage.getItem('sg-userID')),
+      id_imagen: _photo.id_imagen
+    };
+    this.http.post( URL + 'galeria/megusta/', data )
+      .toPromise()
+      .then(
+        res => {
+          console.log(res);
+        }
+      );
   }
 
 }

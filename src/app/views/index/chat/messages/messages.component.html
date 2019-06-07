@@ -5,13 +5,13 @@
       {{ categoryText }}
     </span>
     <div class="select-category">
-        <div [ngClass]="{'select-category-active': isFavorites}" (click)="setFavorites()" style="cursor: pointer;">
-            <i class="fas fa-star"></i>
-        </div>
-        <div [ngClass]="{'select-category-active': isRecent}" (click)="setRecent()" style="cursor: pointer;">
-            <i class="fas fa-history"></i>
-        </div>
+      <div [ngClass]="{'select-category-active': isFavorites}" (click)="setFavorites()" style="cursor: pointer;">
+          <i class="fas fa-star"></i>
       </div>
+      <div [ngClass]="{'select-category-active': isRecent}" (click)="setRecent()" style="cursor: pointer;">
+          <i class="fas fa-history"></i>
+      </div>
+    </div>
   </div>
 </div>
 <br />

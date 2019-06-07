@@ -11,15 +11,32 @@ import { Album } from 'src/app/interface/galeria';
 })
 export class GaleriaAlbumesComponent implements OnInit, AfterViewInit {
 
+  monthShortM = [
+    'enero',
+    'febrero',
+    'marzo',
+    'abril',
+    'mayo',
+    'junio',
+    'julio',
+    'agosto',
+    'septiembre',
+    'octubre',
+    'noviembre',
+    'diciembre'
+  ];
+
+  _month = 1;
+
   gallery: Album[] = undefined;
   private sub: any;
 
   constructor( public gs: GalleryService, private route: ActivatedRoute ) {
     this.sub = this.route.params.subscribe( params => {
       const _year = parseInt(params.year, 0);
-      const _month = parseInt(params.month, 0);
+      this._month = parseInt(params.month, 0);
       this.gs.albumList = undefined;
-      this.gs.getGalleryByMonth(_month, _year);
+      this.gs.getGalleryByMonth(this._month, _year);
     });
   }
 

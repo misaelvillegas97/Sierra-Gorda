@@ -166,10 +166,10 @@ export class SinglechatComponent implements OnInit, OnDestroy {
     return returnedValue;
   }
 
-  updateScroll(){
+  updateScroll() {
     // tslint:disable-next-line: prefer-const
     let element = document.getElementById('messagesDiv');
     element.scrollTop = element.scrollHeight;
-}
+  }
 
 }

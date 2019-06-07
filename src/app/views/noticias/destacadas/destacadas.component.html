@@ -1,3 +1,57 @@
-<p>
-  destacadas works!
-</p>
+<div class="row">
+
+  <ng-container *ngIf="ns.listaNoticiasDestacadas">
+
+    <!-- En caso que no encuentre resultados -->
+    <ng-container *ngIf="ns.listaNoticiasDestacadas.length === 0">
+
+    </ng-container>
+
+    <!-- En caso de existir noticias -->
+    <ng-container *ngIf="ns.listaNoticiasDestacadas.length !== 0">
+      <!-- Despliega lista de noticias -->
+      <ng-container *ngFor="let noticia of ns.listaNoticiasDestacadas; let i=index">
+        <div class="col-lg-3 col-md-4 col-sm-12">
+          <div class="noticias-card shadow">
+            <div class="noticias-card-flag" [ngClass]="{'destacada': noticia.id_tipo_noticia_fk === 2}">
+              <div class="noticias-card-flag-img p-0">
+                <img src="https://c3devapp.cl/sg/assets/img/Noticias/2.png" *ngIf="noticia.id_tipo_noticia_fk === 1" alt="">
+                <img src="https://c3devapp.cl/sg/assets/img/Noticias/2.png" *ngIf="noticia.id_tipo_noticia_fk === 2" alt="">
+                <img src="https://c3devapp.cl/sg/assets/img/Noticias/4.png" *ngIf="noticia.id_tipo_noticia_fk === 3" alt="">
+              </div>
+
+              <div class="noticias-card-flag-fecha">
+                <span class="day">15</span> <br>
+                <span class="month">NOV</span>
+              </div>
+            </div>
+
+            <!-- <div class="noticias-card-header" style="background-image: url(http://danalarcon.com/wp-content/uploads/2016/01/Plantilla-%E2%80%93-Acta-de-reuni%C3%B3n-para-Trabajo-Social.png); background-size: cover; background-position: center;"> -->
+            <div class="noticias-card-header" [style.backgroundImage]="'url('+ noticia.imagen.imagen_cuerpo_1 +')'" style="background-size: cover; background-position: center;">
+            </div>
+            <div class="noticias-card-body">
+              <p>
+                {{ noticia.titulo_noticia }}
+              </p>
+            </div>
+            <div class="noticias-card-footer">
+              <div>
+                <i class="fas fa-star" *ngIf="noticia.id_tipo_noticia_fk === 2"></i>
+                <span class="pl-2">+{{noticia.cantidad_megusta}} <i class="far fa-thumbs-up pl-1"></i></span>
+              </div>
+              <div>
+                <!-- <span>Ver más <i class="fas fa-eye"></i></span> -->
+                <a>Ver más</a>
+              </div>
+            </div>
+
+            <div class="fav-bar" [ngClass]="{'destacada': noticia.id_tipo_noticia_fk === 2}">
+              <a routerLink="/noticia/{{noticia.id}}"><i class="far fa-newspaper"></i><br/>Ir a la noticia</a>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </ng-container>
+
+  </ng-container>
+</div>

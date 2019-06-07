@@ -36,7 +36,7 @@ export class LoginService {
         dv,
         pass
     }
-    await this.http.post('http://c3wsapi.cl:2200/sg/usuario/login', data, httpOptions)
+    await this.http.post('https://c3wsapi.cl/sg/sg/usuario/login', data, httpOptions)
       .toPromise()
       .then( (res: RespuestaLogin) => {
         if (res.err) {
@@ -127,7 +127,7 @@ export class LoginService {
   }
 
   async getUserLogged(id: number) {
-    this.http.get('http://c3wsapi.cl:2200/sg/usuario/getusuarioconid/' + id)
+    this.http.get('https://c3wsapi.cl/sg/usuario/getusuarioconid/' + id)
       .toPromise()
       .then(
         (res: RespuestaStatus) => {

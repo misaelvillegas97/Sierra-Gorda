@@ -38,7 +38,7 @@
     <div class="row h-100">
       <div class="col-md-12">
         <h6 class="visto-title">
-            <i class="fas fa-heart pr-2" style="color: var(--orange)"></i>LO MÁS VISTO
+            <i class="fas fa-heart pr-2" style="color: #ff5900"></i>LO MÁS VISTO
         </h6>
       </div>
 
@@ -54,7 +54,7 @@
         <div class="col-lg-6 col-md-6 col-sm-12 d-flex mt-4 animated wow fadeInUp" *ngFor="let video of ps.moreSeenList">
           <!-- <div class="row m-0 p-0"> -->
             <div class="col-lg-5 col-md-5 col-sm-5 visto-img">
-            <div class="view overlay zoom" style="border-radius: 10px;">
+            <div class="view overlay zoom shadow-sm" style="border-radius: 10px;">
                 <img [src]="video.url_img" alt="contenido-de-prueba" class="img-fluid">
                 <div class="mask flex-center waves-effect overlay-color waves-light bg-blue" (click)="emitVideo(video)">
                   <p class="text-overlay"><i class="fas fa-play"></i></p>

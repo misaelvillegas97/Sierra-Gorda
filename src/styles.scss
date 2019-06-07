@@ -38,6 +38,14 @@ button:focus {
   outline: none;
 }
 
+.cursor {
+  cursor: pointer;
+
+  &:focus {
+    outline: none;
+  }
+}
+
 
 // Scroll Bar
 ::-webkit-scrollbar {
@@ -98,6 +106,26 @@ html.noscroll {
 
 video:focus {
     outline: none !important;
+}
+
+h6 {
+  user-select: none;
+}
+
+p {
+  user-select: none;
+}
+
+span {
+  user-select: none;
+}
+
+li {
+  user-select: none;
+}
+
+small {
+  user-select: none;
 }
 
 #masterslider2 .ms-container .ms-inner-controls-cont .ms-view {
@@ -221,6 +249,16 @@ input:focus{
     background-color: #00c0cb;
     border-radius: 15px !important;
   }
+}
+
+.incidente-modal-container {
+  overflow-y: scroll !important;
+}
+
+.incidente-modal.modal-dialog .modal-content {
+  box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+  border: 0;
+  border-radius: 1.125rem;
 }
 
 .persaModal-container {

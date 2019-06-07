@@ -3,7 +3,7 @@ $orange-70: rgba(255, 89, 0, 0.863);
 $orange-50: rgba(255, 89, 0, 0.502);
 
 $blueSG: #3fbac5;
-$yellow: #ffc600;
+$yellow: #FFAB00;
 $yellow-light: #FFDC67;
 $blueSG-strong: #31a0aa;
 $blueSG-70: rgba(62, 186, 197, 0.702);
@@ -119,6 +119,12 @@ $text-color: #5c5c5c;
       height: 30%;
       margin: 5px 0px;
       border-radius: 5px;
+
+      transition: 0.3s;
+
+      &:hover {
+        box-shadow: none !important;
+      }
     }
   }
 }
@@ -166,6 +172,17 @@ $text-color: #5c5c5c;
   color: #999;
   text-decoration: none;
   cursor: pointer;
+}
+
+.like-infos {
+  position: absolute;
+  margin-top: 55px;
+  background-color: $yellow;
+  padding: 2px 11px 2px 5px;
+  border-radius: 0px 15px 15px 0px;
+  color: white;
+  font-weight: 700;
+  font-size: 11pt
 }
 
 .mySlides {

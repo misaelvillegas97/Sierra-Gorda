@@ -180,6 +180,10 @@ export interface Chat {
   cont_novisto: number;
   favorito: boolean;
   fecha_ult_mensaje: Date;
+  ultimomensaje: {
+    id_remitente: number;
+    mensaje: string;
+  };
 }
 
 export interface Receiver {
@@ -195,6 +199,7 @@ export interface Receiver {
     apellido_mat_usuario?: string;
     img_perfil_usuario?: string;
     gerencia?: string;
+    correo_usuario?: string;
     fecha_nacimiento: string;
 }
 

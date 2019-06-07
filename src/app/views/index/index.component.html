@@ -42,7 +42,7 @@
           <span>Equipo Ejecutivo</span><i class="fas fa-chevron-right"></i>
         </li>
         <li routerLink="/nuestra-empresa/gerencia-superintendencias" style="cursor: pointer;">
-          <span>Gerencia / Superintendencias</span
+          <div>Gerencia / Superintendencias</span
           ><i class="fas fa-chevron-right"></i>
         </li>
         <li routerLink="/nuestra-empresa/proceso-productivo" style="cursor: pointer;">
@@ -259,7 +259,7 @@
     <div
       class="col-xs-12 col-sm-6 col-md-2 col-lg-2 p-0 text-center wow fadeInUp"
     >
-      <a routerLink="/">
+      <a routerLink="/te-reconozco">
         <img
           id="icon-reconozco"
           draggable="false"
@@ -406,117 +406,81 @@
   </div>
 
   <!-- Filtro UV semanal -->
-  <div
-    class="filtro-uv pt-3 shadow-lg m-0 border-top border-right"
-    (mouseover)="toggle_filtro_uv(true)"
-    (mouseleave)="toggle_filtro_uv(false)"
-    id="filter-button"
-  >
-    <p class="text-center" *ngIf="!title_hovered">
-      <span class="text-1 s-bold text-center mx-auto"
-        >ÍNDICE UV DE LA SEMANA</span
-      >
-    </p>
-    <p *ngIf="title_hovered" class="w-100 pl-2">
-      <span class="text-1 pl-4 ml-4 s-bold">
-        ÍNDICE UV
-      </span>
-      <span
-        class="filter-circle ml-2"
-        [style.background-color]="getUVColor(uvactual)"
-        >{{ uvactual }}</span
-      >
-      <span class="text-muted bold ml-2">Moderado </span>
-      <a
-        class="float-right mr-2 text-3"
-        style="text-decoration: underline #00A9B7 !important; color: #00A9B7"
-      >
-        Ver más
-        <i class="fas fa-chevron-circle-up ml-2" aria-hidden="true"></i>
-      </a>
-    </p>
-    <div
-      class="filter-content mt-3 m-2"
-      id="filter-content"
-      style="visibility: collapse"
-    >
-      <div
-        class="w-100 p-3"
-        [style.background-color]="3 % 2 != 0 ? '#F3F3F3' : '#fff'"
-      >
-        <div class="row">
-          <div class="col-lg-5 col-md-5 col-sm-5">
-            <!-- Día -->
-            <span style="font-style: italic; font-size: 9pt;" class="text-muted"
-              >Hoy</span
-            >
-            <br />
-            <span class="bold text-dark mr-2">Índice UV</span>
-            <span
-              class="filter-circle"
-              [style.background-color]="getUVColor(uvactual)"
-              >{{ uvactual }}</span
-            >
+  <div class="filtro-uv pt-3 shadow-lg m-0 border-top border-right" (mouseover)="toggle_filtro_uv(true)" (mouseleave)="toggle_filtro_uv(false)" id="filter-button">
+    <!-- Valida si hay contenido de UV -->
+    <ng-container *ngIf="this.is.infoUV">
+      <p class="text-center" *ngIf="title_hovered">
+        <span class="text-1 s-bold text-center mx-auto">
+          ÍNDICE UV DE LA SEMANA
+        </span>
+      </p>
+      <p *ngIf="!title_hovered" class="w-100 pl-2">
+        <span class="text-1 pl-4 ml-4 s-bold">
+          ÍNDICE UV
+        </span>
+        <span class="filter-circle ml-2" [style.background-color]="getUVColor(is.infoUV.currently.uvIndex)">{{ is.infoUV.currently.uvIndex }}</span
+        >
+        <span class="text-muted bold ml-2">{{uvLevel(is.infoUV.currently.uvIndex)}} </span>
+        <a
+          class="float-right mr-2 text-3"
+          style="text-decoration: underline #00A9B7 !important; color: #00A9B7"
+        >
+          Ver más
+          <i class="fas fa-chevron-circle-up ml-2" aria-hidden="true"></i>
+        </a>
+      </p>
+    </ng-container>
+
+    <!-- Valida si hay mensaje de error -->
+    <ng-container *ngIf="is.infoUVMessage">
+      <p class="text-center">
+        <span class="text-1 s-bold text-center mx-auto">
+          {{is.infoUVMessage}}
+        </span>
+      </p>
+    </ng-container>
+
+    <ng-container *ngIf="!is.infoUV && !is.infoUVMessage">
+      <p class="text-center">
+        <span class="text-1 s-bold text-center mx-auto">
+          Esperando permisos...
+        </span>
+      </p>
+    </ng-container>
+
+
+    <!-- Valida si hay contenido de UV para desplegar -->
+    <ng-container *ngIf="is.infoUV">
+      <div class="filter-content mt-3 m-2" id="filter-content" style="visibility: collapse">
+        <ng-container *ngFor="let dia of is.infoUV.daily.data; let i = index ">
+          <div class="w-100 p-3" *ngIf="7 > i" [style.background-color]="i % 2 != 0 ? '#F3F3F3' : '#fff'">
+            <div class="row">
+              <div class="col-lg-5 col-md-5 col-sm-5">
+                <!-- Día -->
+                <span style="font-style: italic; font-size: 9pt;" class="text-muted">{{getDayofWeek(dia.time)}}</span>
+                <br />
+                <span class="bold text-dark mr-2">Índice UV</span>
+                <span class="filter-circle" [style.background-color]="getUVColor(dia.uvIndex)">{{dia.uvIndex}}</span>
+              </div>
+              <div class="col-lg-7 col-md-7 col-sm-12">
+                <span style="font-size: 10pt;" class="text-muted">Máxima: </span>
+                <i class="fas fa-circle" [style.color]="getUVColor(dia.uvIndex)" style="font-size: 10pt"></i>
+                <span style="font-size: 10pt;" class="text-muted bold pl-2">
+                  {{uvLevel(dia.uvIndex)}}
+                </span>
+                <br />
+                <span style="font-size: 10pt;" class="text-muted">
+                  Temperatura:
+                </span>
+                <span style="font-size: 10pt;" class="text-muted bold pl-2">
+                  {{roundUVIndex(dia.temperatureMin)}}° Min / {{roundUVIndex(dia.temperatureMax)}}° Máx
+                </span>
+              </div>
+            </div>
           </div>
-          <div class="col-lg-7 col-md-7 col-sm-12">
-            <span style="font-size: 10pt;" class="text-muted">Máxima: </span>
-            <i
-              class="fas fa-circle"
-              [style.color]="getUVColor(uvactual)"
-              style="font-size: 10pt"
-            ></i>
-            <span style="font-size: 10pt;" class="text-muted bold pl-2"
-              >Moderado</span
-            >
-            <br />
-            <span style="font-size: 10pt;" class="text-muted"
-              >Temperatura:
-            </span>
-            <span style="font-size: 10pt;" class="text-muted bold pl-2"
-              >15° Min / 28° Máx</span
-            >
-          </div>
-        </div>
+        </ng-container>
       </div>
-      <div
-        class="w-100 p-3"
-        [style.background-color]="2 % 2 != 0 ? '#F3F3F3' : '#fff'"
-      >
-        <div class="row">
-          <div class="col-lg-5 col-md-5 col-sm-12">
-            <!-- Día -->
-            <span style="font-style: italic; font-size: 9pt;" class="text-muted"
-              >Martes, 02 Abril</span
-            >
-            <br />
-            <span class="bold text-dark mr-2">Índice UV</span>
-            <span
-              class="filter-circle"
-              [style.background-color]="getUVColor(uvactual)"
-              >{{ uvactual }}</span
-            >
-          </div>
-          <div class="col-lg-7 col-md-7 col-sm-7">
-            <span style="font-size: 10pt;" class="text-muted">Máxima: </span>
-            <i
-              class="fas fa-circle"
-              [style.color]="getUVColor(uvactual)"
-              style="font-size: 10pt"
-            ></i>
-            <span style="font-size: 10pt;" class="text-muted bold pl-2"
-              >Moderado</span
-            >
-            <br />
-            <span style="font-size: 10pt;" class="text-muted"
-              >Temperatura:
-            </span>
-            <span style="font-size: 10pt;" class="text-muted bold pl-2"
-              >15° Min / 28° Máx</span
-            >
-          </div>
-        </div>
-      </div>
-    </div>
+    </ng-container>
   </div>
 </div>
 

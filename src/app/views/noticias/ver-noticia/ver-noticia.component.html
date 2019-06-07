@@ -7,10 +7,10 @@
   <div class="noticia">
     <div class="noticia-header mb-2">
       <div class="row mb-4">
-        <div class="col-lg-8 col-md-8 col-sm-12 d-flex">
+        <div class="col-lg-8 col-md-8 col-sm-12 d-flex align-items-center">
           <span class="noticia-header-subtitle">Descubre todas las novedades que ocurren en Sierra Gorda SCM</span>
         </div>
-        <div class="col-lg-4 col-md-4 col-sm-12 noticia-sections">
+        <div class="col-lg-4 col-md-4 col-sm-12 noticia-sections pr-0">
           <div class="noticia-sections-container">
 
             <div class="noticia-sections-buttons">
@@ -18,19 +18,19 @@
               <div class="volver-noticias" routerLink="/noticias/todas">
                 <img src="https://c3devapp.cl/sg/assets/img/Noticias/cuadritos_noticias.png" alt="a">
               </div>
-              <p>Volver a noticia</p>
+              <p>Volver<br/>a noticias</p>
             </div>
 
             <div class="noticia-sections-buttons">
               <!-- Destacadas -->
               <i class="fas fa-chevron-circle-left"></i>
-              <p>Noticia Anterior</p>
+              <p>Noticia<br/>Anterior</p>
             </div>
 
-            <div class="noticia-sections-buttons">
+            <div class="noticia-sections-buttons" style="margin-right: 0 !important;">
               <!-- Reportero Minero -->
               <i class="fas fa-chevron-circle-right"></i>
-              <p>Noticia Siguiente</p>
+              <p>Noticia<br/>Siguiente</p>
             </div>
           </div>
         </div>
@@ -72,7 +72,8 @@
         </div>
         <!-- Botón me gusta -->
         <div class="w-100 mt-4 d-flex justify-content-center">
-          <button class="like shadow">Dar ¡Me Gusta! <i class="fas fa-thumbs-up text-white"></i></button>
+          <button class="like shadow" *ngIf="!megusta" (click)="sendLike()">Dar ¡Me Gusta! <i class="fas fa-thumbs-up text-white"></i></button>
+          <button class="like shadow" *ngIf="megusta">¡Te Gusta! <i class="fas fa-thumbs-up text-white"></i></button>
         </div>
       </div>
       <div class="noticia-addon">
@@ -105,7 +106,7 @@
         </ng-container>
         <!-- </div> -->
 
-        <form #f="ngForm">
+        <form #f="ngForm" (ngSubmit)="sendComment(f.value.txt_comentario)" autocomplete="off">
           <div class="noticia-addon-content-input">
             <div class="noticia-addon-content-input-picture">
               <!-- <img src=""> -->
@@ -115,7 +116,6 @@
               <input type="text" maxlength="200" #textInput="ngModel" name="txt_comentario" [(ngModel)]="comentario" placeholder="Escribe un comentario...">
               <button type="submit" [disabled]="3 >= comentario.length"><i class="fas fa-paper-plane"></i></button>
             </div>
-
           </div>
         </form>
       </div>

@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Poll, ResponsePolls } from '../interface/interface';
 import { LoginService } from './login.service';
 
-const URL = 'http://c3wsapi.cl:2200/sg/';
+const URL = 'https://c3wsapi.cl/sg/';
 
 @Injectable({
   providedIn: 'root'

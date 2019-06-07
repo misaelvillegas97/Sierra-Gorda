@@ -1,3 +1,13 @@
+$orange: #ff5900;
+$orange-strong: rgb(202, 71, 0);
+$blueSG: #3fbac5;
+$blueSG-80: rgba(62, 186, 197, 0.8);
+$blueSG-40: rgba(62, 186, 197, 0.4);
+$blueSG-light: #72ccd4;
+$blueSG-strong: #4eaab3;
+$blueSG-20: rgba(63, 186, 197, 0.2);
+$darkCalipso: #3a9e91;
+
 .user-select {
   user-select: none;
   -moz-user-select: none;
@@ -9,7 +19,7 @@
 .persa {
   &-title {
     @extend .user-select;
-    color: var(--blueSG);
+    color: $blueSG;
     font-weight: 800;
     font-size: 4rem;
   }
@@ -25,7 +35,7 @@
 .select-category {
   display: -ms-flexbox;
   display: flex;
-  background: var(--blueSG-80);
+  background: $blueSG-80;
   border-radius: 50px;
   padding: 3px;
   width: max-content;
@@ -43,7 +53,7 @@
     font-size: 16pt;
     border-radius: 50px;
     margin: 3px;
-    color: var(--darkCalipso);
+    color: $darkCalipso;
     &:hover {
       background-color: rgba(255, 255, 255, 0.7);
     }

@@ -29,6 +29,7 @@ $text-color: #5c5c5c;
     }
 
     &-subtitle {
+      font-family: Calibri;
       margin-top: 1em;
       font-weight: 800;
       font-size: 14pt;
@@ -44,9 +45,10 @@ $text-color: #5c5c5c;
     &-container {
       display: -ms-flexbox;
       display: flex;
-      justify-content: center;
+      justify-content: flex-end;
       align-items: flex-end;
       padding: 5px 25px;
+      padding-right: 0 !important;
       border-radius: 15px;
     }
 
@@ -56,7 +58,12 @@ $text-color: #5c5c5c;
       display: flex;
       flex-direction: column;
       align-items: center;
+      margin: 0px 10px;
       cursor: pointer;
+      p {
+        font-family: Calibri;
+        font-size: 12pt;
+      }
 
       .volver-noticias {
         display: -ms-flexbox;
@@ -100,6 +107,8 @@ $text-color: #5c5c5c;
 
     &-text {
       color: $text-color;
+      font-size: 13pt;
+      font-family: Calibri;
       b {
         font-weight: 600 !important;
       }
@@ -110,7 +119,7 @@ $text-color: #5c5c5c;
       height: 250px;
       border-radius: 15px;
       position: absolute;
-      top: -75px;
+      top: -61px;
       left: -6px;
     }
 
@@ -184,13 +193,15 @@ $text-color: #5c5c5c;
         &-text {
           background-color: white;
           color: #5b5b5b;
+
           border-radius: 5px;
           width: 95%;
           width: -webkit-fill-available;
           padding: 10px;
           margin: 5px;
           p {
-            font-size: 11pt;
+            font-size: 13pt;
+            font-family: Calibri;
             font-weight: 400;
             strong {
               font-weight: 600 !important;

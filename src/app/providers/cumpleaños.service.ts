@@ -14,7 +14,7 @@ export class CumpleañosService {
 
   getAllBirth() {
     // this.http.get('http://c3wsapi.cl:2200/sg/usuario/usuario_mesdia/' + new Date().getMonth() + '/' + new Date().getDate())
-    this.http.get('http://c3wsapi.cl:2200/sg/usuario/usuario_mesdia/04/18')
+    this.http.get('https://c3wsapi.cl/sg/usuario/usuario_mesdia/04/18')
       .toPromise()
       .then(
         (res: ResponseBirthday) => {

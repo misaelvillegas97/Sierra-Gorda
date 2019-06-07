@@ -10,6 +10,7 @@ export interface ResponseNews {
   noticia: NoticiaDetalle;
 }
 
+
 export interface Noticia {
   cantidad_megusta: number;
   comentario: Comentario[];

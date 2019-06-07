@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Categoria, Beneficio, ResponseCategoria, ResponseBeneficios, BeneficioDetalle } from '../interface/beneficios';
 
-const URL = 'http://c3wsapi.cl:2200/sg/';
+const URL = 'https://c3wsapi.cl/sg/';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +19,6 @@ export class BeneficiosService {
       .then(
         (res: ResponseCategoria) => {
           this.listaCategorias = res.categorias;
-          console.table(res.categorias);
         }
       );
   }
@@ -32,7 +31,6 @@ export class BeneficiosService {
       .then(
         (res: ResponseBeneficios) => {
           this.listaBeneficiosCat = res.beneficios;
-          console.table(res.beneficios);
         }
       );
   }

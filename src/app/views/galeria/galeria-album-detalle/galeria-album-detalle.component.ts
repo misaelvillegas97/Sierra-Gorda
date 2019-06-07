@@ -11,6 +11,23 @@ import { parseHttpResponse } from 'selenium-webdriver/http';
 })
 export class GaleriaAlbumDetalleComponent implements OnInit, OnDestroy {
 
+  monthShortM = [
+    'enero',
+    'febrero',
+    'marzo',
+    'abril',
+    'mayo',
+    'junio',
+    'julio',
+    'agosto',
+    'septiembre',
+    'octubre',
+    'noviembre',
+    'diciembre'
+  ];
+
+  _month = 1;
+
   album: Album;
   private sub: any;
   slideIndex = 1;
@@ -18,6 +35,7 @@ export class GaleriaAlbumDetalleComponent implements OnInit, OnDestroy {
   constructor( public gs: GalleryService, private route: ActivatedRoute ) {
     this.sub = this.route.params.subscribe( params => {
       const _id = parseInt(params.idGaleria, 0);
+      this._month = parseInt(params.month, 0);
       this.gs.getPhotosByGallery(_id);
       this.gs.filterOrGetGalleryById(_id)
         .then(
@@ -38,6 +56,8 @@ export class GaleriaAlbumDetalleComponent implements OnInit, OnDestroy {
 
   setLike(photo: AlbumItem, state: boolean) {
     photo.megusta = state;
+    photo.cantidad_megusta++;
+    this.gs.setLike(photo);
   }
 
 

@@ -9,12 +9,12 @@ $gradient: linear-gradient(
 );
 
 $orange: #ff5900;
-$orange-50: #ff590080;
+$orange-50: rgba(255, 89, 0, 0.502);
 
 $blueSG: #3fbac5;
-$blueSG-70: #3ebac5b3;
-$blueSG-40: #3ebac566;
-$blueSG-20: #3fbac533;
+$blueSG-70: rgba(62, 186, 197, 0.702);
+$blueSG-40: rgba(62, 186, 197, 0.4);
+$blueSG-20: rgba(63, 186, 197, 0.2);
 
 // hr {
 //   background-color: red;
@@ -62,6 +62,7 @@ hr.style-two {
 
   &-subtext {
     color: #8b8b8b;
+    font-family: Calibri;
     font-size: 12pt;
     font-weight: 400;
     user-select: none;

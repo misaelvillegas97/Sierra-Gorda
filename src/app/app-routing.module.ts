@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { IndexComponent } from './views/index/index.component';
 import { SlayerComponent } from './views/test/slayer/slayer.component';
-import { MessagesComponent } from './views/chat/messages/messages.component';
 import { QuienessomosComponent } from './views/sections/nuestra-empresa/quienessomos/quienessomos.component';
 import { RefreshComponent } from './views/global/refresh/refresh.component';
 import { PropiedadComponent } from './views/sections/nuestra-empresa/propiedad/propiedad.component';
@@ -38,6 +37,14 @@ import { GaleriaMesesComponent } from './views/galeria/galeria-meses/galeria-mes
 import { GaleriaAlbumesComponent } from './views/galeria/galeria-albumes/galeria-albumes.component';
 import { GaleriaAlbumDetalleComponent } from './views/galeria/galeria-album-detalle/galeria-album-detalle.component';
 import { SeguridadComponent } from './views/seguridad/seguridad.component';
+import { TereconozcoComponent } from './views/tereconozco/tereconozco.component';
+import { ObservadoresConductasComponent } from './views/seguridad/observadores-conductas/observadores-conductas.component';
+import { MenuComponent } from './views/seguridad/menu/menu.component';
+import { ComiteparitarioComponent } from './views/seguridad/comiteparitario/comiteparitario.component';
+import { IncidentesComponent } from './views/seguridad/incidentes/incidentes.component';
+import { CumpleaniosComponent } from './views/sections/personas/cumpleanios/cumpleanios.component';
+import { CampaniaComponent } from './views/seguridad/campania/campania.component';
+import { ChatViewComponent } from './views/chat-view/chat-view.component';
 
 const routes: Routes = [
   {
@@ -49,8 +56,8 @@ const routes: Routes = [
     component: SlayerComponent
   },
   {
-    path: 'chats',
-    component: MessagesComponent
+    path: 'chat',
+    component: ChatViewComponent
   },
   {
     path: 'refresh',
@@ -136,6 +143,10 @@ const routes: Routes = [
       {
         path: 'cultura',
         component: CulturaComponent
+      },
+      {
+        path: 'cumpleanios',
+        component: CumpleaniosComponent
       },
       {
         path: 'portal',
@@ -294,7 +305,38 @@ const routes: Routes = [
   },
   {
     path: 'seguridad',
-    component: SeguridadComponent
+    component: SeguridadComponent,
+    children: [
+      {
+        path: '',
+        component: MenuComponent
+      },
+      {
+        path: 'observadores-conducta',
+        component: ObservadoresConductasComponent
+      },
+      {
+        path: 'comite-paritario',
+        component: ComiteparitarioComponent
+      },
+      {
+        path: 'incidentes-y-lecciones',
+        component: IncidentesComponent
+      },
+      {
+        path: 'campanias',
+        component: CampaniaComponent
+      },
+      {
+        path: '**',
+        redirectTo: '',
+        pathMatch: 'full'
+      }
+    ]
+  },
+  {
+    path: 'te-reconozco',
+    component: TereconozcoComponent
   }
   // {
   //   path: 'chats',

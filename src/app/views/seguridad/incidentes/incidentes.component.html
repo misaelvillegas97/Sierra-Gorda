@@ -1,0 +1,36 @@
+<div class="content">
+  <div class="content-header">
+    <i class="fas fa-chevron-circle-left cursor" routerLink="../"></i>
+    <img src="https://c3devapp.cl/sg/assets/img/seguridad/Incidentes.png" alt="">
+    <h6 class="incidentes">Incidentes /<br><span>Lecciones Aprendidas</span></h6>
+  </div>
+
+  <div class="content-body body-incidentes">
+    <div class="row">
+
+      <ng-container *ngIf="ss.listaIncidentes">
+
+        <ng-container *ngFor="let incidente of ss.listaIncidentes">
+          <!-- <pre>
+            {{ incidente | json }}
+          </pre> -->
+          <div class="col-lg-4 col-md-6 col-sm-12 p-0">
+            <div class="body-card shadow">
+              <div class="body-card-content">
+                {{incidente.titulo_incidente}}
+              </div>
+              <div class="body-card-action">
+                <button class="cursor" (click)="openModal(incidente)">Ver más <i class="fas fa-chevron-circle-right"></i></button>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+
+
+      </ng-container>
+
+
+    </div>
+  </div>
+
+</div>

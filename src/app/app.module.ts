@@ -39,9 +39,9 @@ import { ContactComponent } from './views/index/contact/contact.component';
 import { SliderCumpleaniosComponent } from './views/index/slider-cumpleanios/slider-cumpleanios.component';
 import { ActivitiesComponent } from './views/index/activities/activities.component';
 import { SlayerComponent } from './views/test/slayer/slayer.component';
-import { MessagesComponent } from './views/chat/messages/messages.component';
-import { CardComponent } from './views/chat/messages/card/card.component';
-import { SinglechatComponent } from './views/chat/messages/singlechat/singlechat.component';
+import { MessagesComponent } from './views/index/chat/messages/messages.component';
+import { CardComponent } from './views/index/chat/messages/card/card.component';
+import { SinglechatComponent } from './views/index/chat/messages/singlechat/singlechat.component';
 import { LoginModalComponent } from './modals/login-modal/login-modal.component';
 import { PollModalComponent } from './modals/poll-modal/poll-modal.component';
 import { LinksComponent } from './views/sections/links/links.component';
@@ -87,6 +87,16 @@ import { GaleriaMesesComponent } from './views/galeria/galeria-meses/galeria-mes
 import { GaleriaAlbumesComponent } from './views/galeria/galeria-albumes/galeria-albumes.component';
 import { GaleriaAlbumDetalleComponent } from './views/galeria/galeria-album-detalle/galeria-album-detalle.component';
 import { SeguridadComponent } from './views/seguridad/seguridad.component';
+import { TereconozcoComponent } from './views/tereconozco/tereconozco.component';
+import { ObservadoresConductasComponent } from './views/seguridad/observadores-conductas/observadores-conductas.component';
+import { ComiteparitarioComponent } from './views/seguridad/comiteparitario/comiteparitario.component';
+import { MenuComponent } from './views/seguridad/menu/menu.component';
+import { IncidentesComponent } from './views/seguridad/incidentes/incidentes.component';
+import { IncidenteDetalleModalComponent } from './modals/incidente-detalle-modal/incidente-detalle-modal.component';
+import { CumpleaniosComponent } from './views/sections/personas/cumpleanios/cumpleanios.component';
+import { CampaniaComponent } from './views/seguridad/campania/campania.component';
+import { ChatViewComponent } from './views/chat-view/chat-view.component';
+import { ChatListComponent } from './views/chat-view/chat-list/chat-list.component';
 
 
 @NgModule({
@@ -150,7 +160,17 @@ import { SeguridadComponent } from './views/seguridad/seguridad.component';
     GaleriaMesesComponent,
     GaleriaAlbumesComponent,
     GaleriaAlbumDetalleComponent,
-    SeguridadComponent
+    SeguridadComponent,
+    TereconozcoComponent,
+    ObservadoresConductasComponent,
+    ComiteparitarioComponent,
+    MenuComponent,
+    IncidentesComponent,
+    IncidenteDetalleModalComponent,
+    CumpleaniosComponent,
+    CampaniaComponent,
+    ChatViewComponent,
+    ChatListComponent
   ],
   imports: [
     BrowserModule,
@@ -177,7 +197,7 @@ import { SeguridadComponent } from './views/seguridad/seguridad.component';
 
   ],
   providers: [],
-  entryComponents: [LoginModalComponent, PollModalComponent, PersaModalComponent, EditInfoModalComponent],
+  entryComponents: [LoginModalComponent, PollModalComponent, PersaModalComponent, EditInfoModalComponent, IncidenteDetalleModalComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

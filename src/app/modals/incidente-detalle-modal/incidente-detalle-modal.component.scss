@@ -1,0 +1,131 @@
+$orange: #ff5900;
+$text-color: #5c5c5c;
+$bg-1: #00BDC8;
+$bg-2: #00ADBA;
+$blueSG: #3fbac5;
+
+.modal-body {
+  padding: 10px 25px !important;
+}
+
+.content {
+  &-title {
+    color: #3fbac5;
+    font-weight: 700;
+    font-size: 22pt;
+    margin-top: 1em;
+    max-width: 65%;
+  }
+
+  &-info {
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &-box {
+      background-color: #ff5900;
+      border-radius: 10px;
+      padding: 30px 10px;
+      color: white;
+
+      &-title {
+        font-weight: 600;
+        font-size: 11pt;
+      }
+
+      &-text {
+        font-weight: 400;
+        font-size: 10pt;
+        margin: 5px 0px;
+        li {
+          font-weight: 500;
+
+          span {
+            font-weight: 400 !important;
+          }
+        }
+      }
+    }
+  }
+
+  &-resumen {
+    font-size: 11pt;
+    font-family: Calibri;
+    font-weight: 500;
+    color: $text-color;
+    margin-top: 20px;
+  }
+
+  &-subtitle {
+    font-size: 11pt;
+    font-weight: 600;
+    color: $text-color;
+  }
+
+  &-accionesinmediatas {
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: center;
+
+    &-container {
+      width: 85%;
+    }
+
+    &-list {
+      color: $text-color;
+      font-size: 11pt;
+      font-family: Calibri;
+      span {
+        color: $orange;
+        margin-right: 5px;
+        font-weight: 900;
+      }
+    }
+  }
+
+  &-posterior {
+    &-box-left {
+      background-color: $bg-1;
+      padding: 15px !important;
+      border-radius: 10px 0px 0px 10px;
+    }
+
+    &-box-right {
+      background-color: $bg-2;
+      padding: 15px !important;
+      border-radius: 0px 10px 10px 0px;
+    }
+    &-list {
+      color: white;
+      font-size: 11pt;
+      font-family: Calibri;
+      span {
+        color: white;
+        margin-right: 5px;
+        font-weight: 900;
+      }
+    }
+  }
+
+  &-aprendizaje {
+    margin-top: 20px;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: center;
+
+    &-container {
+      width: 85%;
+    }
+
+    &-list {
+      color: $text-color;
+      font-size: 11pt;
+      font-family: Calibri;
+      span {
+        color: $blueSG;
+        margin-right: 5px;
+        font-weight: 900;
+      }
+    }
+  }
+}

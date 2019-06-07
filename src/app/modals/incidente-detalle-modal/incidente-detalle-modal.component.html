@@ -1,0 +1,99 @@
+<i class="fas fa-times-circle cursor" style="color: #5c5c5c; position: absolute;z-index: 2;right: 20px;top: 15px;font-size: 15pt;" (click)="modalRef.hide()"></i>
+<div class="modal-content">
+  <div class="modal-body">
+    <h1 class="content-title">
+      {{ incidente.titulo_incidente }}
+    </h1>
+    <br>
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-sm-12 p-0 pr-4">
+        <img [src]="incidente.img_url_incidente" alt="imagen accidente" class="img-fluid">
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-12 p-0 content-info">
+        <div class="content-info-box">
+          <h6 class="content-info-box-title">Contexto Incidente</h6>
+          <div class="row">
+            <div class="col-8 p-0 content-info-box-text"><i class="fas fa-hard-hat mr-1"></i> {{ incidente.contexto.nombre_incidente }}</div>
+            <div class="col-4 p-0 content-info-box-text"><i class="fas fa-building mr-1"></i>{{ incidente.contexto.edificio_incidente }}</div>
+            <div class="col-8 p-0 content-info-box-text"><i class="fas fa-calendar-day mr-1"></i>{{ incidente.contexto.fecha_incidente }}</div>
+            <div class="col-4 p-0 content-info-box-text"><i class="fas fa-clock mr-1"></i>{{ incidente.contexto.hora_incidente }}</div>
+            <div class="col-12 p-0 content-info-box-text"><i class="fas fa-map-marker-alt mr-1"></i>{{ incidente.contexto.posicion }}</div>
+          </div>
+          <br>
+          <h6 class="content-info-box-title">Información Incidente</h6>
+          <div class="row">
+            <div class="col-5 p-0 content-info-box-text">
+              <li>Nº Anfitrión
+              <br>
+              <span class="ml-2">{{ incidente.info.numero_incidente }}</span></li>
+            </div>
+            <div class="col-7 p-0 content-info-box-text">
+              <li>Nivel de Impacto
+              <br>
+              <span class="ml-2">{{ incidente.info.nivel_incidente }}</span></li>
+            </div>
+            <div class="col-5 p-0 content-info-box-text">
+              <li>Área de Impacto
+              <br>
+              <span class="ml-2">{{ incidente.info.area_incidente }}</span></li>
+            </div>
+            <div class="col-7 p-0 content-info-box-text">
+              <li>Des. Impacto de Seguridad
+              <br>
+              <span class="ml-2">{{ incidente.info.descripcion_incidente }}</span></li>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="content-resumen"> {{ incidente.resumen }} </p>
+    <div class="content-accionesinmediatas">
+      <div class="content-accionesinmediatas-container">
+        <h6 class="content-subtitle">
+          Acciones Inmediatas y Recomendación
+        </h6>
+
+        <ng-container *ngFor="let accion of incidente.acciones">
+          <p class="content-accionesinmediatas-list"><span>•</span>{{ accion.descripcion_accion }}</p>
+        </ng-container>
+      </div>
+    </div>
+    <h6 class="content-subtitle">
+      Posterior a la investigación
+    </h6>
+    <div class="content-posterior">
+      <div class="content-posterior-box">
+        <div class="row">
+          <div class="col-6 p-0 content-posterior-box-left">
+            <h6 class="content-subtitle text-white">
+              Causas
+            </h6>
+            <ng-container *ngFor="let causa of incidente.posterior_causas">
+              <p class="content-posterior-list"><span>•</span>{{ causa.descripcion_causa }}</p>
+            </ng-container>
+
+          </div>
+          <div class="col-6 p-0 content-posterior-box-right">
+            <h6 class="content-subtitle text-white">
+              Acciones Correctivas o Preventivas
+            </h6>
+            <ng-container *ngFor="let acciones of incidente.posterior_acciones">
+              <p class="content-posterior-list"><span>•</span>{{ acciones.descripcion_accion }}</p>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="content-aprendizaje">
+      <div class="content-aprendizaje-container">
+        <h6 class="content-subtitle">
+          Aprendizaje
+        </h6>
+
+        <ng-container *ngFor="let aprendizaje of incidente.aprendizaje">
+          <p class="content-aprendizaje-list"><span>•</span>{{ aprendizaje.descripcion_aprendizaje }}</p>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</div>

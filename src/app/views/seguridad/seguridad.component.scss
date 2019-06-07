@@ -9,7 +9,10 @@ $blueSG-70: rgba(62, 186, 197, 0.702);
 $blueSG-40: rgba(62, 186, 197, 0.4);
 $blueSG-20: rgba(63, 186, 197, 0.2);
 
-$green: #7fbb5a;
+$green: #00AE41;
+
+
+$text-color: #5c5c5c;
 
 h6 {
   margin: 0;
@@ -81,23 +84,191 @@ h6 {
           font-weight: 600;
           font-size: 14pt;
         }
+      }
+    }
+  }
+}
 
-        &.paritario {
-          color: $green;
+.content {
+  &-header {
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    & > i {
+      color: $blueSG;
+      font-size: 20pt;
+    }
+
+    img {
+      margin-left: 20px;
+
+      max-width: 65px;
+      max-height: 65px;
+    }
+
+    h6 {
+      margin-left: 12px;
+
+      font-weight: 800;
+      font-size: 27pt;
+      line-height: 19pt;
+      span {
+        font-size: 18pt;
+        font-weight: 500;
+      }
+    }
+  }
+
+  &-body {
+    &.body-conducta {
+      & .body-leftside {
+        font-family: Calibri;
+        font-size: 14pt;
+        // font-weight: 400;
+        color: $text-color;
+        strong {
+          font-weight: 600 !important;
+        }
+      }
+
+      & .body-rightbox {
+        background-color: $orange;
+        padding: 1em;
+        border-radius: 15px;
+        width: 75%;
+
+        ul {
+          margin: 0;
         }
 
-        &.campanias {
-          color: $pink;
+        li {
+          color: white;
+          font-size: 11pt;
+          margin-bottom: 15px;
+          strong {
+            font-weight: 600 !important;
+            font-size: 12pt;
+          }
+        }
+      }
+    }
+    &.body-paritario {
+      & .body-text {
+        font-family: Calibri;
+        font-size: 14pt;
+        color: $text-color;
+        margin-top: 20px;
+        strong {
+          font-weight: 600 !important;
+        }
+      }
+      & .body-box {
+        display: flex;
+        display: -ms-flexbox;
+        justify-content: center;
+
+        &-container {
+          width: 70%;
+          margin: 20px;
+          border-radius: 15px;
         }
 
-        &.incidentes {
-          color: $blueSG;
+        &-header {
+          background-color: $green;
+          padding: 5px;
+          border-radius: 15px 15px 0px 0px;
+          color: white;
+          font-weight: 600;
         }
 
-        &.conducta {
-          color: $orange;
+        &-list {
+          padding: 5px;
+          padding-top: 10px;
+          padding-bottom: 10px;
+          border-radius: 15px 15px 0px 0px;
+
+          color: $text-color;
+          font-size: 11pt;
+          font-weight: 400;
+          .list-dot {
+            font-weight: 900;
+            color: $green;
+            margin-right: 5px;
+          }
+        }
+      }
+
+      & .body-footer {
+        font-family: Calibri;
+        font-size: 14pt;
+        color: $text-color;
+        text-align: center;
+        margin-top: 20px;
+      }
+    }
+    &.body-incidentes {
+      padding-top: 50px;
+
+      & .body-card {
+        padding: 30px 25px 30px 25px;
+        border-radius: 20px;
+        margin: 20px;
+
+        &-content {
+          font-weight: 700;
+          color: #5c5c5c;
+          text-align: center;
+          min-height: 50px;
+        }
+
+        &-action {
+          text-align: center;
+          padding-top: 15px;
+          button {
+            background-color: $blueSG;
+            border: none;
+            padding: 7px 20px 7px 20px;
+            border-radius: 50px;
+            color: white;
+            font-weight: 600;
+            font-size: 11pt;
+            i {
+              margin-left: 5px;
+            }
+          }
+
+          a {
+            background-color: #FA5650;
+            border: none;
+            padding: 7px 20px 7px 20px;
+            border-radius: 50px;
+            color: white;
+            font-weight: 600;
+            font-size: 11pt;
+            i {
+              margin-left: 5px;
+            }
+          }
         }
       }
     }
   }
+
+}
+
+.paritario {
+  color: $green;
+}
+
+.campanias {
+  color: $pink;
+}
+
+.incidentes {
+  color: $blueSG;
+}
+
+.conducta {
+  color: $orange;
 }

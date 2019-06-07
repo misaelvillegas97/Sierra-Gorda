@@ -1,11 +1,11 @@
 $orange: #ff5900;
-$orange-strong: #ca4700;
+$orange-strong: rgb(202, 71, 0);
 $blueSG: #3fbac5;
-$blueSG-80: #3ebac5cc;
-$blueSG-40: #3ebac566;
+$blueSG-80: rgba(62, 186, 197, 0.8);
+$blueSG-40: rgba(62, 186, 197, 0.4);
 $blueSG-light: #72ccd4;
 $blueSG-strong: #4eaab3;
-$blueSG-20: #3fbac533;
+$blueSG-20: rgba(63, 186, 197, 0.2);
 
 .scroll-setting {
   overflow-y: scroll !important;

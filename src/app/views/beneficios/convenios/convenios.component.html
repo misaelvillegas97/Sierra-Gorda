@@ -9,7 +9,7 @@
 <div class="convenio">
     <ng-container *ngIf="bs.listaBeneficiosCat">
         <div class="convenio-container">
-            <div>
+            <div class="convenio-container-left">
                 <ng-container *ngFor="let beneficio of bs.listaBeneficiosCat">
                     <div class="convenio-container-boton shadow" routerLink="{{beneficio.id_beneficios}}">
                         <div class="convenio-container-boton-flecha">
@@ -21,7 +21,7 @@
                     </div>
                 </ng-container>
             </div>
-            <div>
+            <div class="convenio-container-right">
                 <img src="https://c3devapp.cl/sg/assets/img/Beneficios/Convenio_Lista.png" alt="">
             </div>
         </div>

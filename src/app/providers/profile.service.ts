@@ -4,7 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { RespuestaBuscar, ResponsePosition, ResponseGerency, ResponsePlaces, Gerencies, Places } from '../interface/interface';
 import { UsuarioBuscar, Positions } from '../interface/interface';
 
-const URL = 'http://c3wsapi.cl:2200/sg/';
+const URL = 'https://c3wsapi.cl/sg/';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -88,7 +88,6 @@ export class ProfileService {
             return [];
           }
           respuesta = res.usuarios;
-          console.table(res.usuarios);
           return respuesta;
         }
       ).catch(
@@ -108,7 +107,6 @@ export class ProfileService {
         (res: ResponsePosition) => {
           if (res.cargo.length !== 0) {
             this.positions = res.cargo;
-            // console.table(this.positions);
           }
           return;
         }
@@ -155,7 +153,6 @@ export class ProfileService {
         (res: ResponseGerency) => {
           if (res.gerencias.length !== 0) {
             this.gerencies = res.gerencias;
-            // console.table(this.gerencies);
           }
           return;
         }
@@ -174,7 +171,6 @@ export class ProfileService {
         (res: ResponsePlaces) => {
           if (res.lugar_trabajo.length !== 0) {
             this.places = res.lugar_trabajo;
-            // console.table(this.places);
           }
           return;
         }

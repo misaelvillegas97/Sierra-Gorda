@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { ResponseCategories, ResponseVideos, Category, Video } from '../interface/portal';
 import { Subject } from 'rxjs';
 
-const URL_SG = 'http://c3wsapi.cl:2200/sg/';
+const URL_SG = 'https://c3wsapi.cl/sg/';
 
 @Injectable({
   providedIn: 'root'

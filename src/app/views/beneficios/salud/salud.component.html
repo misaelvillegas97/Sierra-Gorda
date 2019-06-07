@@ -9,19 +9,19 @@
 <div class="salud">
     <ng-container *ngIf="bs.listaBeneficiosCat">
       <div class="salud-container">
-          <div>
+          <div class="salud-container-left">
             <ng-container *ngFor="let beneficio of bs.listaBeneficiosCat">
-              <div class="salud-container-boton shadow" routerLink="{{beneficio.id_beneficios}}">
-                <div class="salud-container-boton-flecha">
+              <div class="salud-container-left-boton shadow" routerLink="{{beneficio.id_beneficios}}">
+                <div class="salud-container-left-boton-flecha">
                     <i class="fas fa-chevron-circle-right"></i>
                 </div>
-                <div class="salud-container-boton-nombre">
+                <div class="salud-container-left-boton-nombre">
                     {{ beneficio.titulo_beneficio }}
                 </div>
               </div>
             </ng-container>
           </div>
-          <div>
+          <div class="salud-container-right">
               <img src="https://c3devapp.cl/sg/assets/img/Beneficios/Salud_Lista.png" alt="">
           </div>
       </div>

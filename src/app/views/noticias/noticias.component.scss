@@ -50,11 +50,21 @@ $text-color: #5c5c5c;
 
     &-buttons {
       // margin: 0px 15px;
+      &:focus {
+        outline: none;
+      }
 
       span {
         font-weight: 700;
         color: white;
         font-size: 10pt;
+        opacity: 0.7;
+      }
+
+      &-active {
+        span {
+          opacity: 1;
+        }
       }
     }
   }

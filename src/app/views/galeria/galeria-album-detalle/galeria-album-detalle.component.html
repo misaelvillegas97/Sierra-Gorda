@@ -13,14 +13,17 @@
 
 <div class="row galeria-picture"> <!-- Content -->
   <div class="col-lg-4 d-flex align-items-center">
-
+    <img src="https://c3devapp.cl/sg/assets/img/meses/grandes/{{monthShortM[_month-1]}}-grande.png" style="width: 100%" alt="mes">
   </div>
   <div class="col-lg-8 galeria-picture-container shadow">
     <div class="row h-100">
       <ng-container *ngIf="gs.albumPhotos">
         <ng-container *ngFor="let photo of gs.albumPhotos; let i=index">
           <div class="col-lg-3">
-            <div class="galeria-picture-item shadow" (click)="openModal();currentSlide((i+1))" [style.backgroundImage]="'url('+ photo.urlminiatura +')'" style="background-size: cover; background-position: center; min-height: 90px;">
+            <div class="galeria-picture-item shadow cursor" (click)="openModal();currentSlide((i+1))" [style.backgroundImage]="'url('+ photo.urlminiatura +')'" style="background-size: cover; background-position: center; min-height: 90px;">
+              <div class="like-infos" *ngIf="photo.cantidad_megusta !== 0">
+                {{ photo.cantidad_megusta }} <i class="fas fa-thumbs-up"></i>
+              </div>
             </div>
           </div>
         </ng-container>
@@ -39,18 +42,16 @@
           <img [src]="photo.urloriginal" style="width:100%">
           <a class="prev" (click)="plusSlides(-1)"><i class="fas fa-chevron-left"></i></a>
           <a class="next" (click)="plusSlides(1)"><i class="fas fa-chevron-right"></i></a>
-          <!-- <a class="prev" (click)="plusSlides(-1)">&#10094;</a>
-          <a class="next" (click)="plusSlides(1)">&#10095;</a> -->
-          <div class="mySlides-like-counter">
+          <div class="mySlides-like-counter animated fadeInRight faster">
             <span>{{ photo.cantidad_megusta }}</span><i class="fas fa-thumbs-up pl-1 pr-1"></i>
 
             <i class="fas fa-ellipsis-v slide-divider"></i>
 
             <ng-container *ngIf="!photo.megusta">
-              <span (click)="setLike(photo, true)">Me gusta<i class="far fa-thumbs-up pl-1"></i></span>
+              <span (click)="setLike(photo, true)" class="cursor">Me gusta<i class="far fa-thumbs-up pl-1"></i></span>
             </ng-container>
             <ng-container *ngIf="photo.megusta">
-              <span (click)="setLike(photo, false)">Te gusta<i class="fas fa-thumbs-up pl-1"></i></span>
+              <span class="cursor disabled">Te gusta<i class="fas fa-thumbs-up pl-1"></i></span>
             </ng-container>
 
           </div>

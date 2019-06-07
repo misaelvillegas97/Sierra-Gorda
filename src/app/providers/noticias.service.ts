@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Noticia, ResponseNews, NoticiaDetalle } from '../interface/noticia';
+import { Noticia, ResponseNews, NoticiaDetalle, Comentario } from '../interface/noticia';
 
-const URL_SG = 'http://c3wsapi.cl:2200/sg/';
+const URL_SG = 'https://c3wsapi.cl/sg/';
 
 @Injectable({
   providedIn: 'root'
@@ -50,7 +50,7 @@ export class NoticiasService {
               this.listaNoticiasDestacadas = res.noticias;
               break;
             // Reportero Minero
-            case 2:
+            case 3:
               res.noticias.forEach(noticia => {
                 noticia.fecha = new Date(noticia.fecha);
               });
@@ -83,6 +83,14 @@ export class NoticiasService {
     return noticia;
   }
 
+  /**
+   *
+   *
+   * @param {number} _id Id de la noticia
+   * @param {number} _type 1: Todas | 2: Destacadas | 3: Reportero Minero
+   * @returns {Noticia} Retorna la noticia encontrada, en caso de no encontrar retornará una noticia con valor 'undefined'
+   * @memberof NoticiasService
+   */
   filterNoticiaById(_id: number, _type: number): Noticia {
     let noticiaSeleccionada: Noticia;
 
@@ -107,6 +115,45 @@ export class NoticiasService {
     }
 
     return noticiaSeleccionada;
+  }
+
+  sendComment(_comment: Comentario, _idNoticia: number): void {
+    const DATA = {
+      id_usuario: atob(localStorage.getItem('sg-userID')),
+      id_noticia: _idNoticia,
+      comentario: _comment.comentario
+    };
+    this.http.post( URL_SG + 'noticia/enviarcomentario', DATA)
+      .toPromise()
+      .then(
+        (res) => {
+        }
+      );
+  }
+
+  sendLike(_idNoticia: number): void {
+    const DATA = {
+      id_usuario: atob(localStorage.getItem('sg-userID')),
+      id_noticia: _idNoticia
+    };
+    this.http.post( URL_SG + 'noticia/enviarmegusta', DATA)
+      .toPromise()
+      .then(
+        (res) => {
+        }
+      );
+  }
+
+  async getLike(_idNoticia: number) {
+    let response = false;
+    await this.http.get( URL_SG + `noticias/megusta/${atob(localStorage.getItem('sg-userID'))}/${_idNoticia}` )
+      .toPromise()
+      .then(
+        (res) => {
+          response = res['noticias'];
+        }
+      );
+    return response;
   }
 
   validateArray(_type: number): boolean {

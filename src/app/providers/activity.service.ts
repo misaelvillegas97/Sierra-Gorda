@@ -3,7 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { ResponseNumberActivityByMonth, Activity, ResponseInterestAssistance } from '../interface/interface';
 import { LoginService } from './login.service';
 
-const URL = 'http://c3wsapi.cl:2200/sg/actividades/';
+// const URL = 'http://c3wsapi.cl:2200/sg/actividades/';
+const URL = 'https://c3wsapi.cl/sg/actividades/';
 
 @Injectable({
   providedIn: 'root'

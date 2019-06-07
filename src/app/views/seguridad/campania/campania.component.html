@@ -1,0 +1,36 @@
+<div class="content">
+    <div class="content-header">
+      <i class="fas fa-chevron-circle-left cursor" routerLink="../"></i>
+      <img src="https://c3devapp.cl/sg/assets/img/seguridad/Campanas.png" alt="">
+      <h6 class="campanias">Campañas</h6>
+    </div>
+
+    <div class="content-body body-incidentes">
+      <div class="row">
+
+        <ng-container *ngIf="ss.listaCampanias">
+
+          <ng-container *ngFor="let campania of ss.listaCampanias">
+            <!-- <pre>
+              {{ incidente | json }}
+            </pre> -->
+            <div class="col-lg-4 col-md-6 col-sm-12 p-0">
+              <div class="body-card shadow">
+                <div class="body-card-content">
+                  {{campania.titulo_campania}}
+                </div>
+                <div class="body-card-action">
+                  <a class="cursor" [href]="campania.url" target="_black">Ver más <i class="fas fa-chevron-circle-right"></i></a>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+
+
+        </ng-container>
+
+
+      </div>
+    </div>
+
+  </div>

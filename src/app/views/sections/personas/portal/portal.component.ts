@@ -16,7 +16,6 @@ export class PortalComponent implements OnInit, OnDestroy {
   constructor( public ps: PortalService ) {
     this.ps.getMoreSeen().finally(
       () => {
-        console.table(this.ps.moreSeenList);
       });
   }
 
@@ -24,7 +23,6 @@ export class PortalComponent implements OnInit, OnDestroy {
     this.$actualVideoSub = this.ps.actualVideo$.subscribe(
       (res: Video) => {
         this.$actualVideo = undefined;
-        // console.table(res);
         setTimeout(() => {
           this.$actualVideo = res;
         }, 100);

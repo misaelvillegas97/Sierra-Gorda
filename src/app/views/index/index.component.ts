@@ -4,8 +4,9 @@ import { MDBModalService, MDBModalRef } from 'angular-bootstrap-md';
 import { LoginModalComponent } from 'src/app/modals/login-modal/login-modal.component';
 import { Poll, Chat } from 'src/app/interface/interface';
 import { PollModalComponent } from 'src/app/modals/poll-modal/poll-modal.component';
-import { SinglechatComponent } from '../chat/messages/singlechat/singlechat.component';
+import { SinglechatComponent } from './chat/messages/singlechat/singlechat.component';
 import { ChatService } from 'src/app/providers/chat.service';
+import { IndexService } from 'src/app/providers/index.service';
 
 declare let $: any;
 
@@ -25,7 +26,7 @@ export class IndexComponent implements OnInit, AfterViewInit {
   uvactual = 3;
   uv_actual: any;
   filtermain: string;
-  title_hovered = true;
+  title_hovered = false;
 
   // Estado de usuario
   logged = true;
@@ -35,7 +36,7 @@ export class IndexComponent implements OnInit, AfterViewInit {
   userID: number = undefined;
   chat: Chat = undefined;
 
-  constructor(public ls: LoginService, private modalService: MDBModalService, private cs: ChatService) {}
+  constructor(public ls: LoginService, private modalService: MDBModalService, private cs: ChatService, public is: IndexService) {}
 
   ngOnInit() {
   }
@@ -46,35 +47,76 @@ export class IndexComponent implements OnInit, AfterViewInit {
 
 
   //#region UV filter module
+  uvLevel(uvI: number){
+    let level = '';
+    if(uvI < 3){
+      level = 'Bajo';
+    }
+    if(uvI > 2 && uvI < 6){
+      level = 'Moderado';
+    }
+    if(uvI >5 && uvI < 8){
+      level = 'Alto';
+    }
+    if(uvI > 7 && uvI < 11) {
+      level = 'Muy Alto';
+    }
+    if(uvI > 10) {
+      level = 'Extremo';
+    }
+    return level;
+  }
+
+  roundUVIndex(uvI: number){
+    let uvRounded = 0;
+    uvRounded = Math.round(uvI);
+    return uvRounded;
+  }
+  getDayofWeek(unixtime: number){
+    const today = new Date().getDay();
+    const days = ['Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'];
+    const day = new Date(unixtime * 1000).getDay();
+    return day === today ? 'Hoy' : days[day];
+  }
   // Toggle Hidden Filter Box
+
   toggle_filtro_uv(state: boolean) {
-    if (state) {
-      this.title_hovered = false;
-      document.getElementById('filter-button').style.height = '500px';
-      document.getElementById('filter-content').style.visibility = 'visible';
+    if (this.is.infoUV) {
+      if (state) {
+        this.title_hovered = state;
+        document.getElementById('filter-button').style.height = '500px';
+        document.getElementById('filter-content').style.visibility = 'visible';
+        document.getElementById('filter-content').style.overflowY = 'scroll';
+
+      } else {
+        document.getElementById('filter-button').style.height = '50px';
+        document.getElementById('filter-content').style.visibility = 'collapse';
+        document.getElementById('filter-content').style.overflowY = 'hidden';
+        this.title_hovered = state;
+      }
     } else {
-      document.getElementById('filter-button').style.height = '50px';
-      document.getElementById('filter-content').style.visibility = 'collapse';
-      this.title_hovered = true;
+
     }
   }
 
-  getUVColor(value: number): string {
-    if (value === 1) {
-      return '#6BC04A';
+  getUVColor(uvI: number): string {
+    let color = '';
+    if (uvI < 3) {
+      color = '#6BC04A';
     }
-    if (value === 2) {
-      return '#6BC04A';
+    if (uvI > 2 && uvI < 6) {
+      color = '#FEC700';
     }
-    if (value === 3) {
-      return '#FEC700';
+    if (uvI > 5 && uvI < 8) {
+      color = '#F85A01';
     }
-    if (value === 4) {
-      return '#F32634';
+    if (uvI > 7 && uvI < 11) {
+      color = '#F32634';
     }
-    if (value === 5) {
-      return '#9F28B5';
+    if (uvI > 10) {
+      color = '#9F28B5';
     }
+    return color;
   }
   //#endregion UV filter module
 

@@ -1,0 +1,183 @@
+<app-navbar-ext></app-navbar-ext>
+<br>
+<div style="height: 50px"></div>
+<app-links></app-links>
+<br>
+<div class="container">
+  <div class="row m-0 p-0"> <!-- Header -->
+    <div class="col-6 animated fadeInLeft">
+      <h1 class="chat-title">
+        Chat
+      </h1>
+    </div>
+  </div>
+  <div class="row mb-4 chat-actions justify-content-between">
+    <div class="col-4 chat-action-buscar">
+      <div class="input-group search-bar">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="txt_buscar"
+            ><i class="fas fa-search"></i
+          ></span>
+        </div>
+        <input
+          type="text"
+          #buscar
+          class="form-control"
+          placeholder="Buscar"
+          aria-label="buscar"
+          aria-describedby="txt_buscar"
+        />
+      </div>
+    </div>
+    <div class="col-4 chat-action-toggle">
+      <div class="select-category">
+        <div [ngClass]="{'select-category-active': isFavorites}" (click)="setFavorites()" style="cursor: pointer;">
+            <i class="fas fa-star"></i>
+        </div>
+        <div [ngClass]="{'select-category-active': isRecent}" (click)="setRecent()" style="cursor: pointer;">
+            <i class="fas fa-history"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="chat-container">
+   <div class="row">
+     <div class="col-lg-4 col-md-5 col-sm-12">
+      <ng-container *ngIf="cs.chatList && isRecent">
+        <ng-container *ngFor="let chat of cs.chatList">
+          <app-chat-list [list]="chat" (onChatSelected)="loadChat($event)"></app-chat-list>
+        </ng-container>
+      </ng-container>
+      <ng-container *ngIf="cs.chatList && isFavorites">
+        <ng-container *ngFor="let chat of cs.chatList">
+          <app-chat-list [list]="chat" *ngIf="chat.favorito" (onChatSelected)="loadChat($event)"></app-chat-list>
+        </ng-container>
+      </ng-container>
+
+     </div>
+     <div class="col-lg-8 col-md-7 col-sm-12">
+      <!-- Ventana de chat -->
+      <div class="chat-box shadow">
+        <ng-container *ngIf="chat">
+          <!-- Valida si hay un chat seleccionado -->
+          <div class="chat-box-header shadow" [ngClass]="{'expanded': displayInfo}">
+            <div class="chat-box-header-top">
+              <div class="chat-box-header-info">
+                <img [src]="chat.destinatario.img_perfil_usuario" class="pr-2 pl-2" *ngIf="chat.destinatario.img_perfil_usuario" alt="user-image">
+                <i class="fas fa-user-circle pl-2 pr-2" style="color: #BDE1AE; font-size: 50px" *ngIf="!chat.destinatario.img_perfil_usuario"></i>
+                <div class="chat-box-header-info-desc">
+                  <span class="chat-box-header-info-desc-name">
+                    {{ chat.destinatario.primer_nombre_usuario + ' ' + chat.destinatario.apellido_pat_usuario }}
+                  </span>
+                  <div class="chat-box-header-info-desc-empresa">
+                    Sierra Gorda
+                  </div>
+                </div>
+              </div>
+              <div class="chat-box-header-action">
+                <i class="fas fa-info-circle cursor mr-2" (click)="displayInfo = !displayInfo" style="color: #3fbac5; font-size: 22pt; margin-top: 10px;"></i>
+              </div>
+            </div>
+            <div class="chat-box-header-bottom">
+              <div style="width: 81%;">
+                <span>
+                  Cargo: {{chat.destinatario.cargo ? chat.destinatario.cargo : 'No definido'}}
+                </span>
+                <span>
+                  Correo: {{chat.destinatario.correo_usuario ? chat.destinatario.correo_usuario : 'No definido'}}
+                </span>
+              </div>
+              <div style="width: 81%;">
+                <span>
+                  Teléfono: {{ chat.destinatario.telefono ? chat.destinatario.telefono : 'No definido' }}
+                </span>
+              </div>
+              <button>Vaciar Chat <i class="fas fa-trash-alt"></i></button>
+            </div>
+          </div>
+        </ng-container>
+          <ng-container *ngIf="!chat">
+            <!-- Valida si hay un chat seleccionado -->
+            <div class="chat-box-header shadow">
+
+              <div class="chat-box-header-top">
+                <div class="chat-box-header-info">
+                  <i class="fas fa-user-circle pl-2 pr-2" style="color: #BDE1AE; font-size: 50px"></i>
+                  <div class="chat-box-header-info-desc">
+                    <span class="chat-box-header-info-desc-name">
+                      Sin usuario seleccionado
+                    </span>
+                    <div class="chat-box-header-info-desc-empresa">
+                      --
+                    </div>
+                  </div>
+                </div>
+                <div class="chat-box-header-action">
+                  <i class="fas fa-info-circle cursor mr-2 disabled" style="color: #3fbac5; font-size: 22pt; margin-top: 10px;"></i>
+                </div>
+              </div>
+              <div class="chat-box-header-bottom">
+
+              </div>
+            </div>
+          </ng-container>
+
+
+        <div style="width: 100%; height: 70px;"></div>
+        <div class="chat-box-body" id="content-box">
+          <!-- Si es que hay chat y mensajes en el -->
+          <ng-container *ngIf="cs.messagesList && cs.messagesList.length > 0">
+            <ng-container *ngFor="let message of cs.messagesList">
+              <div class="chat-box-body-item" [ngClass]="{'autor': message.id_remitente === userid}">
+                {{ decodeMessage(message.texto) }}
+              </div>
+            </ng-container>
+          </ng-container>
+
+          <!-- TODO: En caso que hay chat pero no contiene mensajes -->
+          <ng-container *ngIf="cs.messagesList && cs.messagesList.length === 0">
+              <div class="center-message">
+                  <img src="https://c3devapp.cl/sg/assets/img/chat/Icono_Enviar_Mensaje.png" alt="">
+                  <p>Envíe un mensaje para comenzar una conversación</p>
+              </div>
+          </ng-container>
+
+          <!-- TODO: Loading -->
+          <ng-container *ngIf="chat && !cs.messagesList">
+            <div class="w-100 h-100" style="display: flex; justify-content: center; align-items: center;">
+              <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+            </div>
+          </ng-container>
+
+          <!-- TODO: No hay chat seleccionado -->
+          <ng-container *ngIf="!chat">
+            <div class="center-message">
+                <img src="https://c3devapp.cl/sg/assets/img/chat/Icono_Enviar_Mensaje.png" alt="">
+                <p>Seleccione una conversación para comenzar</p>
+            </div>
+          </ng-container>
+        </div>
+        <!-- Input section -->
+        <form #f="ngForm" (ngSubmit)="sendMessage(f)">
+          <div class="chat-box-footer shadow">
+            <input [disabled]="!chat" type="text" #txt_message="ngModel" name="txt_message" [(ngModel)]="mensaje">
+            <img src="https://c3devapp.cl/sg/assets/img/navbar-home/14.png" alt="" style="margin-left: 5px; width: 5.7%; margin-top: -2px; cursor: pointer;" (click)="toggle_emoji = !toggle_emoji">
+            <emoji-mart
+              *ngIf="toggle_emoji"
+              [style]="{ position: 'absolute', bottom: '40px', right: '15px' }"
+              sheetSize="32"
+              (emojiClick)="addEmoji($event)"
+              showPreview="false"
+              title="Selecciona un emoji"
+              [i18n]="I18n"
+              [isNative]="true"
+            ></emoji-mart>
+            <button type="submit" [disabled]="3 >= mensaje.length" style="border: none; background: none; border-radius: 50%; width: 7.3%;"><img src="https://c3devapp.cl/sg/assets/img/navbar-home/15.png" alt="" style="width: 100%; margin-top: -2px; cursor: pointer;"></button>
+          </div>
+        </form>
+      </div>
+     </div>
+   </div>
+  </div>
+</div>
+<app-footer-s></app-footer-s>

@@ -14,7 +14,6 @@ export class PollModalComponent implements OnInit {
   constructor( public modalRef: MDBModalRef ) { }
 
   ngOnInit() {
-    console.table(this.poll);
   }
 
 }
