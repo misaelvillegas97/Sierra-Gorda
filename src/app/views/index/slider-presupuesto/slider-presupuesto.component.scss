@@ -1,3 +1,7 @@
+$verde-positivo:#3EBB04;
+$rojo-negativo:#FF1E30;
+$azul-real:#00329A;
+$celeste-presupuesto:#00DFD3;
 .ms-caption {
   transition: 0.3s !important;
 }
@@ -9,7 +13,7 @@
   position: absolute;
   height: 42px;
   width: 80px;
-  background-color: #00a8b7d3;
+  background-color: rgba(0, 168, 183, 0.827);
 }
 
 .ms-caption > p > span > small {
@@ -259,14 +263,14 @@ display: flex;
   width: 140px;
 }
 
-.result-box {
-  color: white;
-  border-radius: 40px !important;
-  font-size: 22pt;
-  background-color: #7fbb5a;
-  padding-top: 0.35em;
-  padding-bottom: 0.35em;
-}
+// .result-box {
+//   color: white;
+//   border-radius: 40px !important;
+//   font-size: 22pt;
+//   background-color: $celeste-presupuesto;
+//   padding-top: 0.35em;
+//   padding-bottom: 0.35em;
+// }
 //#endregion
 
 //#region CONTENT KPI MEDIO AMBIENTE
@@ -298,15 +302,15 @@ display: flex;
   width: 140px;
 }
 
-.result-box {
-  color: white;
-  border-radius: 40px !important;
-  font-weight: 500;
-  font-size: 22pt;
-  background-color: #7fbb5a;
-  padding-top: 0.35em;
-  padding-bottom: 0.35em;
-}
+// .result-box {
+//   color: white;
+//   border-radius: 40px !important;
+//   font-weight: 500;
+//   font-size: 22pt;
+//   background-color: $celeste-presupuesto;
+//   padding-top: 0.35em;
+//   padding-bottom: 0.35em;
+// }
 
 // footer
 .footer-msg {
@@ -352,14 +356,35 @@ display: flex;
   width: 140px;
 }
 
-.right-side-content-3 .acumulado .result-box {
+.result-box-real {
   color: white;
   border-radius: 40px !important;
   font-weight: 500;
   font-size: 22pt;
-  background-color: #7fbb5a;
+  background-color: $azul-real;
   padding-top: 0.35em;
   padding-bottom: 0.35em;
+}
+.result-box-presupuesto {
+  color: white;
+  border-radius: 40px !important;
+  font-weight: 500;
+  font-size: 22pt;
+  background-color: $celeste-presupuesto;
+  padding-top: 0.35em;
+  padding-bottom: 0.35em;
+}
+.resultado-positivo{
+  background:$verde-positivo !important;
+}
+.resultado-negativo{
+  background:$rojo-negativo !important;
+}
+.color-positivo{
+  color:$verde-positivo !important;
+}
+.color-negativo{
+  color:$rojo-negativo !important;
 }
 //#endregion
 

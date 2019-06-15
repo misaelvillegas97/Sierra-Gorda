@@ -15,29 +15,34 @@
   </div>
   <div class="formulario-container row">
     <div class="formulario-container-seleccion col-lg-8 col-md-6 col-sm-12">
-      <select class ="" name="" id="">
-        <option value="">Antecedentes Personales</option>
-        <option value="">Anticipo de Sueldo</option>
-        <option value="">Actualización Email</option>
-        <option value="">Contingencias eventos</option>
-        <option value="">Beca Escolar</option>
-        <option value="">Reembolsos Médico</option>
-        <option value="">Bono Flex</option>
-        <option value="">Antecedentes Personales</option>
-        <option value="">Reembolsos Dentales</option>
-        <option value="">Formulario de Vacaciones</option>
-      </select>
-      <div class="formulario-container-seleccion-botonbox">
-        <div class="formulario-container-seleccion-botonbox-boton">
-          Descargar
-        </div>
-        <div class="formulario-container-seleccion-botonbox-boton">
-          Enviar
+      <div>
+        <select class="" name="" id="" #selectForm *ngIf="bs.listaBeneficiosCat" (change)="selectLink = selectForm.value">
+          <option [value]="link.url_formulario" *ngFor="let link of bs.listaBeneficiosCat">{{ link.titulo_beneficio }} </option>
+          <!-- <option value="">Antecedentes Personales</option>
+                <option value="">Anticipo de Sueldo</option>
+                <option value="">Actualización Email</option>
+                <option value="">Contingencias eventos</option>
+                <option value="">Beca Escolar</option>
+                <option value="">Reembolsos Médico</option>
+                <option value="">Bono Flex</option>
+                <option value="">Antecedentes Personales</option>
+                <option value="">Reembolsos Dentales</option>
+                <option value="">Formulario de Vacaciones</option> -->
+        </select>
+        <div class="formulario-container-seleccion-botonbox" *ngIf="bs.listaBeneficiosCat">
+          <a [href]=" selectLink " download target="_blank" class="formulario-container-seleccion-botonbox-boton">
+            Descargar
+            <i class="fas fa-chevron-circle-down"></i>
+          </a>
+          <div class="formulario-container-seleccion-botonbox-boton">
+            Enviar
+            <i class="fas fa-chevron-circle-right"></i>
+          </div>
         </div>
       </div>
     </div>
     <div class="formulario-container-img col-lg-4 col-md-6 col-sm-12">
-      <img src="https://c3devapp.cl/sg/assets/img/Beneficios/Convenio_Lista.png" alt="">
+      <img src="https://c3devapp.cl/sg/assets/img/Beneficios/Formulario_Lista.png" alt="">
     </div>
   </div>
 </div>

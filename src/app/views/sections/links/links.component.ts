@@ -85,9 +85,9 @@ export class LinksComponent implements OnInit {
             $('#aplicaciones-1').css('background-color', '#00BDC8');
             $('#aplicaciones-2').css('background-color', '#00BDC8');
             $('#aplicaciones-3').css('color', 'white');
-            $('#aplicaciones-options').addClass('animated');
-            $('#aplicaciones-options').addClass('fadeIn');
-            $('#aplicaciones-options').addClass('faster');
+            // $('#aplicaciones-options').addClass('animated');
+            // $('#aplicaciones-options').addClass('fadeIn');
+            // $('#aplicaciones-options').addClass('faster');
             $('#aplicaciones-options').css('visibility', 'visible');
           } else {
             // this.aplicaciones = false;
@@ -95,9 +95,9 @@ export class LinksComponent implements OnInit {
             $('#aplicaciones-1').removeAttr('style');
             $('#aplicaciones-2').removeAttr('style');
             $('#aplicaciones-3').removeAttr('style');
-            $('#aplicaciones-options').removeClass('animated');
-            $('#aplicaciones-options').removeClass('fadeIn');
-            $('#aplicaciones-options').removeClass('faster');
+            // $('#aplicaciones-options').removeClass('animated');
+            // $('#aplicaciones-options').removeClass('fadeIn');
+            // $('#aplicaciones-options').removeClass('faster');
             $('#aplicaciones-options').removeAttr('style');
           }
           break;

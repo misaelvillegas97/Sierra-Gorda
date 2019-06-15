@@ -1,0 +1,439 @@
+<div class="container">
+  <div class="row m-0 p-0">
+    <!-- Header -->
+    <div class="col-12 p-0 animated fadeInLeft">
+      <h1 class="desafio-title">
+        Desafío Austeridad
+      </h1>
+    </div>
+  </div>
+  <br />
+
+  <form #form="ngForm">
+    <div class="desafio-secciones-container animated fadeInLeft">
+      <ng-container *ngFor="let button of buttons; let i = index">
+        <button
+          class="desafio-secciones-button"
+          [ngClass]="[
+            button.completed ? 'desafio-secciones-button-completed' : '',
+            button.actual ? 'desafio-secciones-button-actual' : ''
+          ]"
+          (click)="setRespuesta(button, i)"
+          [disabled]="
+            i === 0
+              ? button.completed
+                ? true
+                : validateNext(i)
+              : !buttons[i - 1].actual
+              ? true
+              : button.completed
+              ? true
+              : validateNext(i - 1)
+          "
+        >
+          {{ button.number }}
+        </button>
+      </ng-container>
+    </div>
+    <!-- <ng-container *ngIf=""> -->
+      <div [hidden]="!buttons[0].actual" class="desafio-content-container animated fadeInRight shadow-sm">
+        <div class="desafio-content-item">
+          <div class="desafio-content-item-title">
+            <h6>1. Ingresa el título de tu iniciativa:</h6>
+          </div>
+          <div class="desafio-content-item-input">
+            <input
+              type="text"
+              name="resp_1_1"
+              id=""
+              #r_1_1="ngModel"
+              [(ngModel)]="respuestas.titulo"
+              placeholder="Ingresa el título de tu iniciativa..."
+              required
+            />
+          </div>
+        </div>
+        <div class="desafio-content-item">
+          <div class="desafio-content-item-title">
+            <h6>Ingresa una breve descripción de tu iniciativa</h6>
+          </div>
+          <div class="desafio-content-item-input">
+            <textarea
+              name="resp_1_2"
+              id=""
+              #r_1_2="ngModel"
+              [(ngModel)]="respuestas.desc"
+              rows="10"
+              placeholder="Ingresa una breve descripción de la situación actual y de tu propuesta..."
+              required
+            ></textarea>
+          </div>
+        </div>
+      </div>
+    <!-- </ng-container> -->
+
+    <!-- <ng-container *ngIf="buttons[1].actual"> -->
+      <div [hidden]="!buttons[1].actual" class="desafio-content-container animated fadeInRight shadow-sm">
+        <div class="desafio-content-item">
+          <div class="desafio-content-item-title">
+            <h6>2. Selecciona un área</h6>
+          </div>
+          <div class="desafio-content-item-input">
+            <ng-container *ngIf="ds.listAreas">
+              <select
+                name="r_2_1"
+                id=""
+                #r_2_1="ngModel"
+                [(ngModel)]="respuestas.id_area"
+                required
+              >
+                <option value="0" selected>Listado de gerencias</option>
+                <ng-container *ngFor="let area of ds.listAreas">
+                  <option [value]="area.id">{{ area.nombre_gerencia }}</option>
+                </ng-container>
+              </select>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+    <!-- </ng-container> -->
+
+    <!-- <ng-container *ngIf="buttons[2].actual"> -->
+      <div [hidden]="!buttons[2].actual" class="desafio-content-container animated fadeInRight shadow-sm">
+        <div class="desafio-content-item">
+          <div class="desafio-content-item-title">
+            <h6>3. ¿Cómo podemos crear valor?</h6>
+          </div>
+          <div class="desafio-content-item-input">
+            <ng-container *ngIf="ds.listValores">
+              <select
+                name="resp_3_1"
+                id=""
+                #r_3_1="ngModel"
+                [(ngModel)]="respuestas.id_valor"
+                required
+              >
+                <option value="0" selected>Opciones de valor</option>
+                <ng-container *ngFor="let valor of ds.listValores">
+                  <option [value]="valor.id">{{ valor.titulo_valor }}</option>
+                </ng-container>
+              </select>
+            </ng-container>
+          </div>
+        </div>
+        <div class="desafio-content-item">
+          <div class="desafio-content-item-title">
+            <h6>Ingresa una breve justificación del cambio</h6>
+          </div>
+          <div class="desafio-content-item-input">
+            <textarea
+              name="resp_3_2"
+              id=""
+              rows="10"
+              maxlength="150"
+              #r_3_2="ngModel"
+              [(ngModel)]="respuestas.justificacion"
+              placeholder="Máximo 150 caracteres..."
+              required
+            ></textarea>
+          </div>
+        </div>
+      </div>
+    <!-- </ng-container> -->
+
+    <!-- <ng-container *ngIf="buttons[3].actual"> -->
+      <div [hidden]="!buttons[3].actual" class="desafio-content-container animated fadeInRight shadow-sm">
+        <div class="desafio-content-item">
+          <div class="desafio-content-item-title">
+            <h6>
+              4. Cuéntanos ¿ Qué impacto podría llegar a tener el cambio
+              propuesto? y ¿Cómo creamos valor a partir del mismo? Indícanos la
+              o las áreas de impacto:
+            </h6>
+          </div>
+          <div class="desafio-content-item-input">
+            <textarea
+              name="resp_4_1"
+              id=""
+              rows="12"
+              maxlength="300"
+              placeholder="Máximo 300 caracteres..."
+              #r_4_1="ngModel"
+              [(ngModel)]="respuestas.impacto"
+              required
+            ></textarea>
+          </div>
+        </div>
+      </div>
+    <!-- </ng-container> -->
+
+    <!-- <ng-container *ngIf="buttons[4].actual"> -->
+      <div [hidden]="!buttons[4].actual" class="desafio-content-container animated fadeInRight shadow-sm">
+        <div class="desafio-content-item">
+          <div class="desafio-content-item-title">
+            <h6>5. Impacto de la iniciativa</h6>
+          </div>
+          <div class="desafio-content-item-input">
+            <div class="row">
+              <div class="col-6 p-0">
+                <div class="desafio-content-item-input-card">
+                  <label class="container-r"
+                    >Muy Alto
+                    <input
+                      type="radio"
+                      checked
+                      name="r_5_1"
+                      value="5"
+                      #r_5_1_1="ngModel"
+                      ngModel
+                      required
+                    />
+                    <span class="checkmark"></span>
+                  </label>
+                  <p>
+                    Su implementación podría aumentar la productividad o reducir
+                    los costos en forma muy significativa (5M USD/año),con
+                    impato en la gestión global.
+                  </p>
+                </div>
+              </div>
+              <div class="col-6 p-0">
+                <div class="desafio-content-item-input-card">
+                  <label class="container-r"
+                    >Alto
+                    <input
+                      type="radio"
+                      name="r_5_1"
+                      value="4"
+                      #r_5_1_2="ngModel"
+                      ngModel
+                      required
+                    />
+                    <span class="checkmark"></span>
+                  </label>
+                  <p>
+                    Su implementación podría aumentar la productividad o reducir
+                    los costos en forma significativa (1-5M USD/año), con
+                    impacto en la gestión de área o multiproceso.
+                  </p>
+                </div>
+              </div>
+              <div class="col-6 p-0">
+                <div class="desafio-content-item-input-card">
+                  <label class="container-r"
+                    >Medio
+                    <input
+                      type="radio"
+                      name="r_5_1"
+                      value="3"
+                      #r_5_1_3="ngModel"
+                      ngModel
+                      required
+                    />
+                    <span class="checkmark"></span>
+                  </label>
+                  <p>
+                    Su implementación podría aumentar la productividad o reducir
+                    los costos en forma significativa pero visible (0,1-1M
+                    USD/año), con impacto en la gestión de proceso.
+                  </p>
+                </div>
+              </div>
+              <div class="col-6 p-0">
+                <div class="desafio-content-item-input-card">
+                  <label class="container-r"
+                    >Bajo
+                    <input
+                      type="radio"
+                      name="r_5_1"
+                      value="2"
+                      #r_5_1_4="ngModel"
+                      ngModel
+                      required
+                    />
+                    <span class="checkmark"></span>
+                  </label>
+                  <p>
+                    Su implementación podría aumentar la productividad o reducir
+                    los costos en menor manera, con impacto en la gestión de
+                    actividad o proceso.
+                  </p>
+                </div>
+              </div>
+              <div class="col-6 p-0">
+                <div class="desafio-content-item-input-card">
+                  <label class="container-r"
+                    >Muy Bajo
+                    <input
+                      type="radio"
+                      name="r_5_1"
+                      value="1"
+                      #r_5_1_5="ngModel"
+                      ngModel
+                      required
+                    />
+                    <span class="checkmark"></span>
+                  </label>
+                  <p>
+                    Su implementación casi no afectaría la productividad o
+                    costo.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <!-- </ng-container> -->
+
+    <!-- <ng-container *ngIf="buttons[5].actual"> -->
+      <div [hidden]="!buttons[5].actual" class="desafio-content-container animated fadeInRight shadow-sm">
+        <div class="desafio-content-item">
+          <div class="desafio-content-item-title">
+            <h6>6. Dificultad de la implementación</h6>
+          </div>
+          <div class="desafio-content-item-input">
+            <div class="row">
+              <div class="col-6 p-0">
+                <div class="desafio-content-item-input-card">
+                  <label class="container-r"
+                    >Muy Alto
+                    <input
+                      type="radio"
+                      checked
+                      name="r_6_1"
+                      value="5"
+                      #r_6_1_1="ngModel"
+                      ngModel
+                      required
+                    />
+                    <span class="checkmark"></span>
+                  </label>
+                  <p>
+                    Iniciativa muy compleja. Necesita muchos recursos y tiemspo.
+                    Necesita Capesx (Más que 2M USD). Tiempo de implementación
+                    más de 6 meses).
+                  </p>
+                </div>
+              </div>
+              <div class="col-6 p-0">
+                <div class="desafio-content-item-input-card">
+                  <label class="container-r"
+                    >Alto
+                    <input
+                      type="radio"
+                      name="r_6_1"
+                      value="4"
+                      #r_6_1_2="ngModel"
+                      ngModel
+                      required
+                    />
+                    <span class="checkmark"></span>
+                  </label>
+                  <p>
+                    Iniciativa compleja. Necesita muchos recursos y tiempo.
+                    Necesita Capex (entre 1 a 2M USD). Tiempo de implementación
+                    entre 90días y 6 meses.
+                  </p>
+                </div>
+              </div>
+              <div class="col-6 p-0">
+                <div class="desafio-content-item-input-card">
+                  <label class="container-r"
+                    >Medio
+                    <input
+                      type="radio"
+                      name="r_6_1"
+                      value="3"
+                      #r_6_1_3="ngModel"
+                      ngModel
+                      required
+                    />
+                    <span class="checkmark"></span>
+                  </label>
+                  <p>
+                    Iniciativa puede estar implemmentada con menor Capex y con
+                    uso de recusos itnernos. Tiempos e implementación en menos
+                    de 90 días.
+                  </p>
+                </div>
+              </div>
+              <div class="col-6 p-0">
+                <div class="desafio-content-item-input-card">
+                  <label class="container-r"
+                    >Bajo
+                    <input
+                      type="radio"
+                      name="r_6_1"
+                      value="2"
+                      #r_6_1_4="ngModel"
+                      ngModel
+                      required
+                    />
+                    <span class="checkmark"></span>
+                  </label>
+                  <p>
+                    Iniciativa más fácil. Necesita implementación y plan de
+                    trabajo, pero no se puede implementar sin Capex (o con Capex
+                    muy bajo). No necesita un equipo grande.
+                  </p>
+                </div>
+              </div>
+              <div class="col-6 p-0">
+                <div class="desafio-content-item-input-card">
+                  <label class="container-r"
+                    >Muy Bajo
+                    <input
+                      type="radio"
+                      name="r_6_1"
+                      value="1"
+                      #r_6_1_5="ngModel"
+                      ngModel
+                      required
+                    />
+                    <span class="checkmark"></span>
+                  </label>
+                  <p>
+                    Iniciativa muy fácil de implementar. Sólo necesita decisión.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <!-- </ng-container> -->
+
+    <!-- <ng-container *ngIf="buttons[6].actual"> -->
+      <div [hidden]="!buttons[6].actual" class="desafio-content-container animated fadeInRight shadow-sm">
+        <div class="desafio-content-item">
+          <div class="desafio-content-item-title">
+            <h6>
+              7. Ingresa información adicional que consideres necesaria tener en
+              cuenta:
+            </h6>
+          </div>
+          <div class="desafio-content-item-input">
+            <textarea
+              id=""
+              rows="12"
+              maxlength="150"
+              placeholder="Máximo 150 caracteres..."
+              name="r_7_1"
+              #r_7_1="ngModel"
+              [(ngModel)]="respuestas.info_adicional"
+              required
+            ></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="desafio-content-finish" *ngIf="form.valid">
+        <p>
+          Haz finalizado el formulario con éxito ¿Deseas enviarla información?
+        </p>
+        <button class="shadow-sm" (click)="insert(form.value)">Enviar Formulario</button>
+      </div>
+    <!-- </ng-container> -->
+  </form>
+</div>

@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row m-0 p-0"> <!-- Header -->
+    <div class="col-6 animated fadeInLeft">
+      <h1 class="revista-title">
+        Revista
+      </h1>
+    </div>
+    <div class="col-6 revista-filter">
+      <div class="revista-filter-content">
+        <label for="select_filter">AÑO <i class="fas fa-ellipsis-v"></i></label>
+        <select name="select_filter" id="select_filter" #filter (change)="getRevistaByYear(filter.value)" *ngIf="yearList">
+          <option [value]="year" *ngFor="let year of yearList" [selected]="year === thisYear">{{ year }}</option>
+        </select>
+      </div>
+    </div>
+  </div> <!-- Fin Header -->
+
+  <div class="row">
+    <ng-container *ngIf="rs.listRevistas">
+      <ng-container *ngFor="let revista of rs.listRevistas">
+        <div class="col-lg-2 col-md-3 col-sm-4">
+          <a class="revista-item shadow" download target="_blank" [href]="revista.url_item">
+            <span class="special">{{revista.titulo_item}}</span>
+            <span class="year">{{ revista.fecha_publicacion_item.getFullYear() }}</span>
+          </a>
+        </div>
+      </ng-container>
+
+    </ng-container>
+
+  </div>
+</div>

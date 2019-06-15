@@ -36,7 +36,9 @@ export class IndexComponent implements OnInit, AfterViewInit {
   userID: number = undefined;
   chat: Chat = undefined;
 
-  constructor(public ls: LoginService, private modalService: MDBModalService, private cs: ChatService, public is: IndexService) {}
+  constructor(public ls: LoginService, private modalService: MDBModalService, private cs: ChatService, public is: IndexService) {
+    this.is.getAllResultados();
+  }
 
   ngOnInit() {
   }

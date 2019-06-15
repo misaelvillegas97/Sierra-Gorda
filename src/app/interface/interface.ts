@@ -31,6 +31,7 @@ export interface UsuarioBuscar {
   nombre_cargo?: string;
   nombre_gerencia?: string;
   nombre_lugar_trabajo?: string;
+  nombre_superintendencia?: string;
   pass_usuario?: string;
   primer_nombre_usuario?: string;
   rut_usuario?: string;
@@ -175,21 +176,21 @@ export interface ResponseAllChats {
 }
 
 export interface Chat {
-  id: number;
+  id?: number;
   destinatario: Receiver;
   cont_novisto: number;
   favorito: boolean;
-  fecha_ult_mensaje: Date;
-  ultimomensaje: {
+  fecha_ult_mensaje?: Date;
+  ultimomensaje?: {
     id_remitente: number;
     mensaje: string;
   };
 }
 
 export interface Receiver {
-    telefono: string;
-    cargo: string;
-    lugar_trabajo: string;
+    telefono_usuario?: string;
+    nombre_cargo?: string;
+    nombre_lugar_trabajo: string;
     token: string;
     id_usuario: number;
     primer_nombre_usuario: string;

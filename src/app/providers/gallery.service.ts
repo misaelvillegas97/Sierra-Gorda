@@ -37,10 +37,10 @@ export class GalleryService {
             news.fecha_creacion_noticia = new Date(news.fecha_creacion_noticia);
 
             // Formatting Title
-            const titulo = ( (news.titulo_noticia).length >= 65 ? (news.titulo_noticia).substring(0, 65) + '...' : news.titulo_noticia  );
-            const tituloPalabras = titulo.split(' ');
+            let titulo = ( (news.titulo_noticia).length >= 65 ? (news.titulo_noticia).substring(0, 65) + '...' : news.titulo_noticia  );
+            let tituloPalabras = titulo.split(' ');
 
-            const tituloDivision = ( tituloPalabras.length / 2);
+            let tituloDivision = Math.round(( tituloPalabras.length / 2));
 
             let concat = '';
             const cantPalabras = tituloPalabras.length * 10 * 5;

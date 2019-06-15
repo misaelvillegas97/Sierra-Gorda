@@ -45,6 +45,14 @@ import { IncidentesComponent } from './views/seguridad/incidentes/incidentes.com
 import { CumpleaniosComponent } from './views/sections/personas/cumpleanios/cumpleanios.component';
 import { CampaniaComponent } from './views/seguridad/campania/campania.component';
 import { ChatViewComponent } from './views/chat-view/chat-view.component';
+import { BrandingComponent } from './views/branding/branding.component';
+import { EquipoEjecutivoComponent } from './views/sections/nuestra-empresa/equipo-ejecutivo/equipo-ejecutivo.component';
+import { DesafioAusteridadComponent } from './views/desafio-austeridad/desafio-austeridad.component';
+import { InfoComponent } from './views/desafio-austeridad/info/info.component';
+import { RevistaComponent } from './views/sections/personas/revista/revista.component';
+import { FormularioDAComponent } from './views/desafio-austeridad/formulario-d-a/formulario-d-a.component';
+import { TodosReconocidosComponent } from './views/tereconozco/todos-reconocidos/todos-reconocidos.component';
+import { ReconocerComponent } from './views/tereconozco/reconocer/reconocer.component';
 
 const routes: Routes = [
   {
@@ -128,6 +136,10 @@ const routes: Routes = [
       {
         path: 'historia',
         component: HistoriaComponent
+      },
+      {
+        path: 'equipo-ejecutivo',
+        component: EquipoEjecutivoComponent
       }
     ]
   },
@@ -147,6 +159,10 @@ const routes: Routes = [
       {
         path: 'cumpleanios',
         component: CumpleaniosComponent
+      },
+      {
+        path: 'revista',
+        component: RevistaComponent
       },
       {
         path: 'portal',
@@ -336,7 +352,35 @@ const routes: Routes = [
   },
   {
     path: 'te-reconozco',
-    component: TereconozcoComponent
+    component: TereconozcoComponent,
+    children: [
+      {
+        path: '',
+        component: TodosReconocidosComponent
+      },
+      {
+        path: 'reconocer',
+        component: ReconocerComponent
+      }
+    ]
+  },
+  {
+    path: 'branding-formatos',
+    component: BrandingComponent
+  },
+  {
+    path: 'desafio-austeridad',
+    component: DesafioAusteridadComponent,
+    children: [
+      {
+        path: '',
+        component: InfoComponent
+      },
+      {
+        path: 'formulario',
+        component: FormularioDAComponent
+      }
+    ]
   }
   // {
   //   path: 'chats',

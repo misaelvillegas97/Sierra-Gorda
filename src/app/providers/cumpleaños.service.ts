@@ -6,36 +6,51 @@ import { ResponseBirthday, Usuario } from '../interface/interface';
   providedIn: 'root'
 })
 export class CumpleañosService {
-  birthList: Usuario[][] = [];
+  birthList: Usuario[][];
 
   constructor(private http: HttpClient) {
-    this.getAllBirth();
   }
 
-  getAllBirth() {
+  async getAllBirth(_count: number, _date?: Date) {
+    if (!_date) {
+      _date = new Date();
+    }
+    this.birthList = undefined;
     // this.http.get('http://c3wsapi.cl:2200/sg/usuario/usuario_mesdia/' + new Date().getMonth() + '/' + new Date().getDate())
-    this.http.get('https://c3wsapi.cl/sg/usuario/usuario_mesdia/04/18')
+    this.http.get(`https://c3wsapi.cl/sg/usuario/usuario_mesdia/${(_date.getMonth() + 1)}/${_date.getDate()}`)
       .toPromise()
       .then(
         (res: ResponseBirthday) => {
           if (res.err) {
+            this.birthList = [];
             return;
           }
 
-          if (res.usuarios.length > 4) {
+          if (!this.birthList) {
+            this.birthList = [];
+          }
+
+          let array: Usuario[] = [];
+          if (res.usuarios.length > _count) {
             let contador = 0;
             for (let i = 0; i < res.usuarios.length; i++) {
-              if ( contador % 4 === 0 && contador !== 0) {
+              if ( i % _count === 0 && i !== 0) {
+                this.birthList[contador] = array;
+                array = [];
                 contador ++;
               }
               const usuario = res.usuarios[i];
-              this.birthList[contador].push(usuario);
-              contador ++;
+              array.push(usuario);
+
+              if (i === (res.usuarios.length - 1)) {
+                this.birthList[contador] = array;
+              }
+              // console.log(array);
             }
           } else {
             this.birthList[0] = res.usuarios;
           }
-          console.log(this.birthList);
+          // console.log(this.birthList);
           return;
         }
       )
@@ -44,5 +59,26 @@ export class CumpleañosService {
           //alert('No hay conexión con el servidor');
         }
       );
+  }
+
+  async getCumpleDays(_month?: number) {
+    if (!_month) { _month = (new Date().getMonth() + 1); }
+    let array: number[];
+
+    interface Resp {
+      err: number;
+      message: string;
+      dias: number[];
+    }
+
+    await this.http.get(`https://c3wsapi.cl/sg/usuario/dias_nacimiento/${_month}`)
+      .toPromise()
+      .then(
+        (res: Resp) => {
+          array = res.dias;
+        }
+      );
+
+    return array;
   }
 }

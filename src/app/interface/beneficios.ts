@@ -24,6 +24,7 @@ export interface ResponseBeneficios {
 export interface Beneficio {
   id_beneficios: number;
   titulo_beneficio: string;
+  url_formulario?: string;
 }
 
 export interface BeneficioDetalle {
@@ -36,3 +37,4 @@ export interface BeneficioDetalle {
   url?: string;
 
 }
+

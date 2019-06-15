@@ -18,6 +18,24 @@
   --redestar: #DE1E26;
 }
 
+$orange: #ff5900;
+$orange-50: #ff590080;
+$strongOrange: #de481e;
+$lightBlue: #4ba6de;
+$darkBlueSG: #00A5B6;
+$blueSG: #3fbac5;
+$blueSG-80: #3ebac5cc;
+$blueSG-40: #3ebac566;
+$blueSG-20: #3fbac533;
+$calipso: #4dc2b3;
+$calipso-80: #4dc2b3cc;
+$darkCalipso: #3a9e91;
+$darkblue: #214083;
+$green: #109147;
+$yellow: #FCD902;
+$orangestar: #ED5624;
+$redestar: #DE1E26;
+
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,500,500i,600,700,800,900');
 @import "~@ctrl/ngx-emoji-mart/picker";
@@ -43,6 +61,47 @@ button:focus {
 
   &:focus {
     outline: none;
+  }
+}
+
+.bg-blue {
+  // background-color: $blueSG;
+  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#51d0e0+0,82d4dd+13,04bdd3+100 */
+  background: rgb(81,208,224); /* Old browsers */
+  background: -moz-linear-gradient(-45deg, rgba(81,208,224,1) 0%, rgba(130,212,221,1) 13%, rgba(4,189,211,1) 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(-45deg, rgba(81,208,224,1) 0%,rgba(130,212,221,1) 13%,rgba(4,189,211,1) 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(135deg, rgba(81,208,224,1) 0%,rgba(130,212,221,1) 13%,rgba(4,189,211,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#51d0e0', endColorstr='#04bdd3',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+  color: white;
+}
+
+.sg-blue {
+  .modal-content {
+    background-color: #045DB5;
+  }
+}
+
+.sg-green {
+  .modal-content {
+    background-color: #109147;
+  }
+}
+
+.sg-yellow {
+  .modal-content {
+    background-color: #fcd902;
+  }
+}
+
+.sg-orange {
+  .modal-content {
+    background-color: #ff5900;
+  }
+}
+
+.sg-red {
+  .modal-content {
+    background-color: #de1e26;
   }
 }
 
@@ -216,11 +275,24 @@ input:focus{
   background-color: #ffab77;
   border-color: #ffab77;
 	color: #fff !important;
-	border:none;
+	// border:none;
 }
 
 .snackbar-login {
   background-color: #F27137;
+  color: white;
+  font-weight: 500;
+  margin: 35px !important;
+  padding: 16px 17px !important;
+  border-radius: 5px;
+  z-index: 1051 !important;
+  &-err {
+    background-color: rgb(204, 65, 0)
+  }
+}
+
+.snackbar-success {
+  background-color: #46CADB;
   color: white;
   font-weight: 500;
   margin: 35px !important;
@@ -268,14 +340,47 @@ input:focus{
   .modal-content {
     max-width: 100% !important;
     padding: 15px;
-    background-color: var(--blueSG);
+    background-color: $blueSG;
     border-radius: 10px !important
+  }
+}
+
+.reconocerModal-container {
+  justify-content: center;
+  max-width: 500px !important;
+
+  .modal-content {
+    max-width: 100% !important;
+    padding: 0px;
+    border-radius: 10px !important;
+    color: white;
   }
 }
 
 @media only screen and (max-width: 420px) and (min-width: 320px) {
   .persaModal-container {
     margin-right: 20px;
-
   }
+
+  .reconocerModal-container {
+    margin-right: 20px;
+  }
+}
+
+
+// Cumpleaños calendar
+
+#cumple-calendar thead .jsCalendar-title-right {
+  float: right;
+  margin-top: -40px;
+}
+
+
+#cumple-calendar tbody td.jsCalendar-colorful-yellow {
+  background-color: #FFC600;
+  border-color: #FFC600;
+  color: #fff !important;
+  width: 36px;
+  height: 36px;
+	// border:none;
 }

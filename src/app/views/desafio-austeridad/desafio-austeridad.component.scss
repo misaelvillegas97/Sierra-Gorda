@@ -1,0 +1,124 @@
+$orange: #ff5900;
+$orange-70: rgba(255, 89, 0, 0.863);
+$orange-50: rgba(255, 89, 0, 0.502);
+
+$blueSG: #3fbac5;
+$yellow: #FFAB00;
+$yellow-light: #FFDC67;
+$blueSG-strong: #31a0aa;
+$blueSG-70: rgba(62, 186, 197, 0.702);
+$blueSG-40: rgba(62, 186, 197, 0.4);
+$blueSG-20: rgba(63, 186, 197, 0.2);
+$green: #7fbb5a;
+$green-window: #78ce47;
+$dark-green-window: #00AE41;
+$lightBlue: #00A9B7;
+
+$text-color: #5c5c5c;
+
+.desafio {
+  &-title {
+    user-select: none;
+    color: $blueSG;
+    font-weight: 800;
+    font-size: 4rem;
+  }
+
+  &-info {
+
+    &-subtitle {
+      color: $blueSG;
+      font-weight: 700;
+      font-size: 20pt;
+    }
+
+    &-text {
+      font-family: Calibri;
+      font-weight: 500;
+      color: #5c5c5c;
+    }
+  }
+}
+
+.mesa {
+  &-container {
+    background-color: #eee;
+    border-radius: 20px;
+    padding: 15px 20px;
+  }
+
+  &-header {
+    h6 {
+      color: $blueSG;
+      font-weight: 700;
+      font-size: 14pt;
+    }
+
+    p {
+      font-family: Calibri;
+      font-size: 12pt;
+      font-weight: 400;
+      color: $text-color;
+    }
+  }
+
+  &-item {
+    display: flex;
+    line-height: 19pt;
+
+    &-img {
+      img {
+        border-radius: 50%;
+        width: 100px;
+        height: 100px;
+        margin-right: 20px;
+      }
+    }
+
+    &-data {
+      display: flex;
+      flex-direction: column;
+
+      &-name {
+        font-weight: 700;
+        font-size: 11pt;
+        color: $text-color;
+      }
+
+      &-desc {
+        font-family: Calibri;
+        font-weight: 400;
+        font-size: 11pt;
+        color: #999999;
+
+        i {
+          color: $orange;
+          font-size: 16pt;
+        }
+      }
+    }
+  }
+}
+
+.start {
+  text-align: center;
+
+  p {
+    text-align: center;
+    font-weight: 600;
+    font-family: Calibri;
+    font-size: 15pt;
+    color: $text-color;
+  }
+
+  button {
+    background-color: #ff5900;
+    color: white;
+    font-weight: 400;
+    font-size: 23pt;
+    height: 50px;
+    padding: 0px 20px;
+    border: none;
+    border-radius: 15px;
+  }
+}

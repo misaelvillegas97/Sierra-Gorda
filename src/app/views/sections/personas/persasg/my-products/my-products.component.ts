@@ -1,5 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ModalDirective } from 'angular-bootstrap-md';
+import { LoginService } from 'src/app/providers/login.service';
+import { UploadStructure } from 'src/app/interface/persa';
+import { PersaService } from 'src/app/providers/persa.service';
 
 declare var Croppie: any;
 declare var $: any;
@@ -32,12 +35,12 @@ export class MyProductsComponent implements OnInit {
     upload_4_b64: '',
   };
 
-  constructor() { }
+  constructor(private ls: LoginService, private ps: PersaService) { }
 
   ngOnInit() {
     this.croppie = document.getElementById('croppie');
     this.uploadCrop = new Croppie(this.croppie, {
-      // enableExif: true,
+      enableExif: true,
       viewport: {
           width: 325,
           height: 208,
@@ -70,7 +73,7 @@ export class MyProductsComponent implements OnInit {
   }
 
   seeResults() {
-    this.uploadCrop.result('base64').then( (blob) => {
+    this.uploadCrop.result('base64', 'viewport', 'png').then( (blob) => {
       // this.myImage = blob;
       switch (this.selectedInput) {
         case 1: this.newProduct.upload_1_b64 = blob;
@@ -90,4 +93,41 @@ export class MyProductsComponent implements OnInit {
     return x.length ? x.length : 0;
   }
 
+  publicar( f: Formulario ) {
+    console.table(f);
+    const ARTICLE: UploadStructure = {
+      id_usuario: this.ls.userLogged.id_usuario,
+      id_categoria: parseInt(f.new_product_category, 0),
+      nombre: f.txt_name,
+      descripcion: f.txt_desc,
+      valor: f.txt_price,
+      image1: f.upload_1_b64.substr(22),
+      image2: f.upload_2_b64.substr(22),
+      image3: f.upload_3_b64.substr(22),
+      image4: f.upload_4_b64.substr(22),
+      cantidad: f.txt_quantity,
+      formato: 'png'
+    };
+
+    this.ps.publicar(ARTICLE).subscribe(
+      (res) => console.log(res),
+      (err) => console.log(err)
+    );
+  }
+}
+
+interface Formulario {
+  new_product_category: string;
+  txt_name: string;
+  txt_desc: string;
+  txt_quantity: number;
+  txt_price: number;
+  upload_1_b64: string;
+  upload_1: string;
+  upload_2_b64: string;
+  upload_2: string;
+  upload_3_b64: string;
+  upload_3: string;
+  upload_4_b64: string;
+  upload_4: string;
 }

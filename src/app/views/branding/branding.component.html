@@ -1,0 +1,81 @@
+<app-navbar-ext></app-navbar-ext>
+<br>
+<div style="height: 50px"></div>
+<app-links></app-links>
+<br>
+<div class="container">
+  <div class="row m-0 p-0"> <!-- Header -->
+    <div class="col-12 animated fadeInLeft">
+      <h1 class="branding-title">
+        Branding y Formatos
+      </h1>
+      <p class="branding-subtitle">
+        Si necesitas algún documento, puedes buscarlo y descargarlo aquí.
+      </p>
+    </div>
+  </div>
+
+  <div class="branding-categoria">
+    <div class="branding-categoria-container">
+      <ng-container *ngIf="fs.listCategorias">
+        <div class="branding-categoria-item" (click)="fs.getAllBranding()">
+          Todas
+        </div>
+        <ng-container *ngFor="let categoria of fs.listCategorias">
+          <div class="branding-categoria-item" (click)="fs.getBrandingByCategory(categoria)">
+            {{ categoria.categoria }}
+          </div>
+        </ng-container>
+
+      </ng-container>
+
+    </div>
+  </div>
+
+  <div class="branding-data">
+    <div class="branding-data-container">
+      <div class="branding-data-header">
+        <div class="row justify-content-between">
+          <div class="col branding-data-header-item" style="max-width: 64px;">
+
+          </div>
+          <div class="col branding-data-header-item">
+            Nombre
+          </div>
+          <div class="col branding-data-header-item text-center" style="max-width: 300px;">
+            Formatos
+          </div>
+          <div class="col branding-data-header-item" style="max-width: 200px;">
+            Descargar
+          </div>
+        </div>
+      </div>
+      <div class="branding-data-content">
+        <ng-container *ngFor="let el of fs.listBrandings; let i=index">
+          <div class="branding-data-content-item" [style.borderRadius]="i === 0 && i === (fs.listBrandings.length - 1) ? '20px' : i === 0? '20px 20px 0px 0px' : i === (fs.listBrandings.length - 1) ? '0px 0px 20px 20px': ''" [style.backgroundColor]="i % 2 === 0 ? 'rgba(62, 186, 197, 0.4)' : 'rgba(62, 186, 197, 0.2)'">
+            <div class="row">
+              <div class="col branding-data-content-item-column text-center" style="max-width: 64px;">
+                <i class="fas fa-file-powerpoint" style="color: orange" *ngIf="el.tipo === 4"></i>
+                <i class="fas fa-file-excel" style="color: green" *ngIf="el.tipo === 3"></i>
+                <i class="fas fa-file-pdf" style="color: red" *ngIf="el.tipo === 1"></i>
+                <i class="fas fa-file-image" style="color: yellow" *ngIf="el.tipo === 5"></i>
+                <i class="fas fa-file-word" style="color: royalblue" *ngIf="el.tipo === 2"></i>
+              </div>
+              <div class="col branding-data-content-item-column">
+                {{ el.nombre }}
+              </div>
+              <div class="col branding-data-content-item-column text-center" style="max-width: 300px;">
+                {{ el.categoria }}
+              </div>
+              <div class="col branding-data-content-item-column" style="max-width: 200px; padding-left: 45px;">
+                <a [href]="el.url" download target="_blank"><i class="fas fa-arrow-alt-circle-down"></i></a>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+
+      </div>
+    </div>
+  </div>
+
+</div>

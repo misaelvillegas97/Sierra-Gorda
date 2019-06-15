@@ -1,0 +1,44 @@
+<div class="header">
+  <div class="header-userinfo">
+    <div class="header-userinfo-img">
+
+    </div>
+    <div class="header-userinfo-desc">
+      <ng-container *ngIf="reconocimiento.nombre_gerencia">
+        <ul>
+          <li *ngFor="let user of reconocimiento.reconocido">{{ user.primer_nombre_usuario + ' ' + user.apellido_pat_usuario + ' ' + user.apellido_mat_usuario }}</li>
+        </ul>
+      </ng-container>
+      <ng-container *ngIf="!reconocimiento.nombre_gerencia">
+        <h6>{{reconocimiento.reconocido[0].primer_nombre_usuario + ' ' + reconocimiento.reconocido[0].apellido_pat_usuario + ' ' + reconocimiento.reconocido[0].apellido_mat_usuario}}</h6>
+        <p>{{reconocimiento.reconocido[0].nombre_cargo ? (reconocimiento.reconocido[0].nombre_cargo | uppercase) : 'Sin cargo'}}</p>
+        <p>{{reconocimiento.reconocido[0].nombre_lugar_trabajo ? (reconocimiento.reconocido[0].nombre_lugar_trabajo | uppercase) : 'Sin lugar de trabajo'}}</p>
+      </ng-container>
+
+    </div>
+  </div>
+  <p>Reconocimiento al valor ESTAR</p>
+  <h6>{{ reconocimiento.nombre_valor }}</h6>
+</div>
+<div class="descripcion pt-4">
+  <div class="descripcion-item">
+    <h6>CONDUCTA</h6>
+    <p>{{ reconocimiento.nombre_comportamiento ? reconocimiento.nombre_comportamiento : 'Sin comentario de conducta'}}</p>
+  </div>
+  <div class="descripcion-item">
+    <h6>OTORGADO POR</h6>
+    <p>{{ (reconocimiento.reconocedor.primer_nombre ? reconocimiento.reconocedor.primer_nombre : '') + ' ' + (reconocimiento.reconocedor.apellido_paterno ? reconocimiento.reconocedor.apellido_paterno : '')}}</p>
+  </div>
+  <div class="descripcion-item">
+    <h6>ARGUMENTO</h6>
+    <p>{{reconocimiento.comentario ? reconocimiento.comentario : 'Sin argumentos'}}</p>
+  </div>
+</div>
+<div class="container">
+  <img [src]="reconocimiento.url_img" *ngIf="reconocimiento.url_img" alt="">
+</div>
+
+<div class="footer cursor">
+  <p *ngIf="!reconocimiento.megusta">Dar ¡Me Gusta! <i class="far fa-thumbs-up"></i></p>
+  <p *ngIf="reconocimiento.megusta">¡Te Gusta! <i class="far fa-thumbs-up"></i></p>
+</div>

@@ -152,4 +152,14 @@ export class ChatModuleService {
     }
 
   }
+
+  buscar(_text: string) {
+    this.http.get( URL + 'chat/getlistachatfind/' + _text).toPromise()
+      .then(
+        res => {
+          // console.log(res)
+          this.chatList = res['chats'];
+        }
+      );
+  }
 }

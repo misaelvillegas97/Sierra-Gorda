@@ -1,3 +1,62 @@
-<p>
-  cumpleanios works!
-</p>
+<div class="container">
+  <div class="row m-0 p-0"> <!-- Header -->
+    <div class="col-12 animated fadeInLeft">
+      <h1 class="cumple-title">
+        Cumpleaños
+      </h1>
+    </div>
+  </div>
+  <br><br>
+  <div class="row cumple-content">
+    <div class="col-4">
+      <div class="cumple-content-calendar">
+        <div class="jsCalendar w-100" id="cumple-calendar"></div>
+        <img src="https://c3devapp.cl/sg/assets/img/Globos.png" alt="">
+      </div>
+    </div>
+    <div class="col-8">
+      <div class="cumple-content-slider">
+        <div class="cumple-content-slider-flag">
+          <span>{{ dayselected }}<br/>{{monthselected}}</span>
+        </div>
+        <ng-container *ngIf="cs.birthList">
+          <ng-container *ngIf="cs.birthList.length !== 0">
+            <mdb-carousel class="carousel slide p-0 pt-1 mt-0 w-100 h-100" [animation]="'slide'" [isControls]="true" [interval]="0" id="cumple-carousel">
+              <ng-container *ngFor="let pack of cs.birthList">
+                <mdb-carousel-item>
+                  <div class="h-100 w-100 pl-2 pr-2">
+                    <ng-container *ngFor="let usuario of pack">
+                      <div class="cumple-content-slider-item">
+                        <img *ngIf="usuario.img_perfil_usuario" [src]="usuario.img_perfil_usuario" alt="">
+                        <!-- <i class="fas fa-user-circle" *ngIf="!usuario.img_perfil_usuario"></i> -->
+                        <img *ngIf="!usuario.img_perfil_usuario" src="https://c3devapp.cl/sg/assets/img/reconozco/cara.png" alt="">
+                        <div class="cumple-content-slider-item-data">
+                          <span class="cumple-content-slider-item-data-name">{{ (usuario.primer_nombre_usuario + ' ' + usuario.apellido_pat_usuario) | titlecase }}</span>
+                          <span class="cumple-content-slider-item-data-desc">{{ usuario.nombre_cargo ? (usuario.nombre_cargo | titlecase) : 'No definido' }}</span>
+                          <span class="cumple-content-slider-item-data-desc">{{ usuario.nombre_lugar_trabajo ? (usuario.nombre_lugar_trabajo | titlecase) : 'No definido' }}</span>
+                        </div>
+                      </div>
+                    </ng-container>
+
+                    <pre>
+                    </pre>
+                  </div>
+                </mdb-carousel-item>
+              </ng-container>
+            </mdb-carousel>
+          </ng-container>
+
+          <ng-container *ngIf="cs.birthList.length === 0">
+            <div class="w-100 h-100 d-flex justify-content-center align-items-center">
+              <p style="color: #5c5c5c; font-style: italic; font-size: 10pt;">
+                No hay cumpleaños
+              </p>
+            </div>
+          </ng-container>
+
+        </ng-container>
+
+      </div>
+    </div>
+  </div>
+</div>

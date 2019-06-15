@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { IndexService } from 'src/app/providers/index.service';
+import { ResultadoItem } from 'src/app/interface';
 
 declare var MasterSlider: any;
 
@@ -8,8 +10,23 @@ declare var MasterSlider: any;
   styleUrls: ['./slider-presupuesto.component.scss']
 })
 export class SliderPresupuestoComponent implements OnInit {
-
-  constructor() { }
+  meses = [
+    'ENERO',
+    'FEBRERO',
+    'MARZO',
+    'ABRIL',
+    'MAYO',
+    'JUNIO',
+    'JULIO',
+    'AGOSTO',
+    'SEPTIEMBRE',
+    'OCTUBRE',
+    'NOVIEMBRE',
+    'DICIEMBRE'
+  ];
+  constructor(public is: IndexService) {
+    // this.is.getAllResultados();
+  }
 
   ngOnInit() {
     this.createSlayer();
@@ -17,7 +34,6 @@ export class SliderPresupuestoComponent implements OnInit {
 
   createSlayer() {
     const slider = new MasterSlider();
-
 
     slider.control('arrows', {
       autohide: false
@@ -43,4 +59,19 @@ export class SliderPresupuestoComponent implements OnInit {
     });
   }
 
+  getResultClass(_result: ResultadoItem): string {
+    if (_result.real_resultado >= _result.presupuesto_resultado) {
+      return 'resultado-positivo';
+    } else {
+      return 'resultado-negativo';
+    }
+  }
+
+  getResultColor(_result: ResultadoItem): string {
+    if (_result.real_resultado >= _result.presupuesto_resultado) {
+      return 'color-positivo';
+    } else {
+      return 'color-negativo';
+    }
+  }
 }

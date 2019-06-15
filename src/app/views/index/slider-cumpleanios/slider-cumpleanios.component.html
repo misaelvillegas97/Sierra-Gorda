@@ -1,12 +1,13 @@
-<mdb-carousel class="carousel carousel-fade pl-2 pr-2" [animation]="'fade'" [isControls]="true" *ngIf="bs.birthList.length !== 0">
+<mdb-carousel class="carousel carousel-fade pl-2 pr-2" [animation]="'fade'" [isControls]="true" *ngIf="bs.birthList">
   <mdb-carousel-item *ngFor="let listaUsuarios of bs.birthList">
     <div class="row w-100 m-0 p-0">
       <div class="card-birthday col-lg-6 col-md-6 col-sm-12" *ngFor="let usuario of listaUsuarios">
         <div class="row pb-2">
           <div class="col-md-3 col-sm-3 pl-0 pr-0">
-            <img class="img-fluid" src="https://c3devapp.cl/sg/assets/img/img-02.png" style="width: 80px;"/>
+            <img class="img-fluid" [src]="usuario.img_perfil_usuario" *ngIf="usuario.img_perfil_usuario" class="img-fluid" style="border-radius: 50%;"/>
+            <img *ngIf="!usuario.img_perfil_usuario" src="https://c3devapp.cl/sg/assets/img/reconozco/cara.png" class="img-fluid" style="border-radius: 50%;" alt="">
           </div>
-          <div class="col-md-9 col-sm-9 pr-0">
+          <div class="col-md-9 col-sm-9 pr-0 pl-2">
             <h5 class="name-card">{{usuario.primer_nombre_usuario + ' ' + usuario.segundo_nombre_usuario? usuario.segundo_nombre_usuario: ''}}<br>{{ usuario.apellido_pat_usuario + ' ' + usuario.apellido_mat_usuario?usuario.apellido_mat_usuario: '' }}</h5>
             <h6 class="desc-card">{{usuario.nombre_cargo? usuario.nombre_cargo: 'Sin cargo definido'}}</h6>
             <h6 class="desc-card">Sierra Gorda</h6>

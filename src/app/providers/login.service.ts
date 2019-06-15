@@ -3,7 +3,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { RespuestaStatus, RespuestaLogin, Usuario } from '../interface/interface';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { ActivitiesComponent } from '../views/index/activities/activities.component';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -18,7 +17,7 @@ export class LoginService {
 
   userLogged: Usuario;
 
-  constructor(public http: HttpClient, private snackbar: MatSnackBar, private route: Router) {
+  constructor(private http: HttpClient, private snackbar: MatSnackBar, private route: Router) {
     // console.log('Servicio iniciado');
     if (this.userLogged === null) { this.userLogged = undefined; }
     this.isLoggedIn();
@@ -35,8 +34,8 @@ export class LoginService {
         rut,
         dv,
         pass
-    }
-    await this.http.post('https://c3wsapi.cl/sg/sg/usuario/login', data, httpOptions)
+    };
+    await this.http.post('https://c3wsapi.cl/sg/usuario/login', data, httpOptions)
       .toPromise()
       .then( (res: RespuestaLogin) => {
         if (res.err) {

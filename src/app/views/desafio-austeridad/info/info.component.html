@@ -1,0 +1,77 @@
+<div class="container">
+  <div class="row m-0 p-0"> <!-- Header -->
+    <div class="col-12 p-0 animated fadeInLeft">
+      <h1 class="desafio-title">
+        Desafío Austeridad
+      </h1>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-lg-8 p-0 animated fadeInLeft">
+      <div class="desafio-info">
+        <h6 class="desafio-info-subtitle">
+          Programa de Creación de Valor VCP
+        </h6>
+
+        <p class="desafio-info-text">
+          En el marco de nuestro <strong>Valor de Austeridad</strong>, en SG SCM hemos desarrollado el programa de iniciativas VCP, que nos permite con el apoyo de cada uno de ustedesm continuar buscando <strong>alternativas para optimizar nuestros recursos.</strong> <br><br>
+          Este espacio estádiseñado para que se compartan con el equipo VCP todas aquellas ideas que nos ayuden a maximizar el valor de la compañía y que nos permitan crear ahorros. <br><br>
+          <strong>¡Las mejores ideas serán reconocidas!</strong> Participa y apoya esta iniciativa para continuar mejorando nuestros procesos.
+        </p>
+      </div>
+    </div>
+    <div class="col-lg-4 d-flex align-items-center justify-content-center">
+      <img src="https://c3devapp.cl/sg/assets/img/desafio-austeridad/Casco.png" alt="" style="width: 200px">
+    </div>
+  </div>
+
+  <!-- Información mesa de ayuda -->
+  <div class="mesa-container animated fadeInUp">
+    <div class="mesa-header">
+      <h6>Mesa de ayuda</h6>
+      <p>Si tienes alguna duda o consulta puedes contactar a las siguientes personas:</p>
+      <br>
+      <div class="container">
+        <div class="row">
+
+          <ng-container *ngIf="ds.listEncargados">
+            <ng-container *ngFor="let encargado of ds.listEncargados">
+              <div class="col-lg-6 col-md-6 col-sm-12">
+                <div class="mesa-item">
+                  <div class="mesa-item-img">
+                    <img src="" *ngIf="encargado.img_perfil_usuario" alt="">
+                    <img src="https://c3devapp.cl/sg/assets/img/reconozco/cara.png" *ngIf="!encargado.img_perfil_usuario" alt="">
+                  </div>
+                  <div class="mesa-item-data">
+                    <span class="mesa-item-data-name">
+                      {{ encargado.primer_nombre_usuario + ' ' + encargado.apellido_pat_usuario }}
+                    </span>
+                    <span class="mesa-item-data-desc">
+                      {{ encargado.nombre_cargo ? encargado.nombre_cargo : 'Cargo no definido' }}
+                    </span>
+                    <span class="mesa-item-data-desc">
+                      <i class="fas fa-mobile-alt pr-3"></i> {{ encargado.telefono_usuario ? encargado.telefono_usuario : 'Teléfono no definido' }}
+                    </span>
+                    <span class="mesa-item-data-desc">
+                      <i class="fas fa-envelope pr-2"></i> {{ encargado.correo_usuario ? encargado.correo_usuario : 'Correo no definido' }}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+          </ng-container>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <br><br>
+  <div class="start animated fadeInUp">
+    <p>Haz clic en el botón para ingresar tu iniciativa</p>
+    <button class="shadow-sm" routerLink="./formulario">
+      Comenzar
+    </button>
+  </div>
+</div>

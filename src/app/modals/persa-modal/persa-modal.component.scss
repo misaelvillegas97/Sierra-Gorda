@@ -1,3 +1,5 @@
+$darkBlueSG: #00A5B6;
+
 .persa {
   &-title {
     font-weight: 600;
@@ -35,7 +37,7 @@
 }
 
 .user-info {
-  background-color: var(--darkBlueSG);
+  background-color: $darkBlueSG;
   padding: 20px 5px;
   border-radius: 10px;
   &-name {
@@ -52,14 +54,39 @@
 .buy {
   display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-end;
+  // flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  &-quant {
+    display: flex;
 
-  div {
+    .plus {
+      border-radius: 50%;
+      background-color: #ff5900;
+      color: white;
+      width: 26px;
+      height: 26px;
+      text-align: center;
+      font-size: 20pt;
+      line-height: 20pt;
+      font-weight: 600;
+      user-select: none;
+    }
+    input {
+      border: none;
+      border-radius: 50px;
+      width: 50px;
+      background-color: white;
+      margin: 0px 5px;
+      text-align: center;
+      width: 40px;
+    }
+  }
+
+  div.b-div {
     padding: 5px 15px;
     margin: 15px 0px;
-    background-color: var(--orange);
+    background-color: #ff5900;
     border-radius: 20px;
     span {
       color: white;

@@ -1,0 +1,47 @@
+<div class="reconozco container">
+  <div class="d-flex justify-content-between">
+    <h1 class="reconozco-title animated fadeInLeft">
+      Te Reconozco por ESTAR
+    </h1>
+    <div class="animated fadeInRight">
+      <img routerLink="/te-reconozco/mis-reconocimientos" src="https://c3devapp.cl/sg/assets/img/reconozco/Reconocimiento_1.png" matTooltip="Reconocidos" matTooltipClass="bg-blue" alt="" style="width: 70px;" class="mr-2 cursor">
+      <img routerLink="/te-reconozco/reconocer" src="https://c3devapp.cl/sg/assets/img/reconozco/Reconocimiento_2.png" matTooltip="Reconocer" matTooltipClass="bg-blue" class="cursor" alt="" style="width: 70px;">
+    </div>
+  </div>
+</div>
+
+<div class="reconozco-body">
+  <div class="container">
+    <div class="row">
+      <ng-container *ngIf="rs.listReconocimientos">
+        <ng-container *ngFor="let reconocimiento of rs.listReconocimientos">
+          <div class="col-lg-4 col-md-6 col-sm-12">
+            <div class="reconozco-card" [ngClass]="{'liked': reconocimiento.megusta}">
+              <div class="reconozco-card-header cursor" (click)="openModal(reconocimiento)">
+                <img src="https://c3devapp.cl/sg/assets/img/reconozco/cara.png" alt="">
+                <h6 [ngStyle]="{'color': reconocimiento.megusta ? 'white' : '#5c5c5c'}">
+                  {{ reconocimiento.nombre_gerencia ? reconocimiento.nombre_gerencia[0].nombre_grupo : (reconocimiento.reconocido[0].primer_nombre_usuario) }} <br>
+                  {{ !reconocimiento.nombre_gerencia ? (reconocimiento.reconocido[0].apellido_pat_usuario + ' ' + reconocimiento.reconocido[0].apellido_mat_usuario) : '' }} <br>
+                </h6>
+              </div>
+              <div class="reconozco-card-body cursor" (click)="openModal(reconocimiento)">
+                <p [ngStyle]="{'color': reconocimiento.megusta ? 'white' : '#5c5c5c'}">Ha sido <img src="https://c3devapp.cl/sg/assets/img/reconozco/medalla.png" alt=""> por <strong>{{reconocimiento.nombre_valor}}</strong></p>
+                <div>
+                  <span [ngStyle]="{'color': reconocimiento.megusta ? 'white' : '#5c5c5c'}">{{reconocimiento.cantidad_likes}} <i class="fas fa-thumbs-up" [ngStyle]="{'color': reconocimiento.megusta ? 'white' : 'rgb(0, 190, 212)'}"></i></span>
+                  <span [ngStyle]="{'color': reconocimiento.megusta ? 'white' : '#5c5c5c'}">{{reconocimiento.fecha ? (reconocimiento.fecha | date:'fullDate') : 'Fecha no definida'}}</span>
+                </div>
+              </div>
+              <div (click)="setLike(reconocimiento)" *ngIf="!reconocimiento.megusta" class="cursor reconozco-card-actions">
+                <span (click)="setLike(reconocimiento)">Dar ¡Me Gusta! <i class="far fa-thumbs-up"></i></span>
+              </div>
+              <div *ngIf="reconocimiento.megusta" class="reconozco-card-actions cursor liked-footer">
+                <span class="text-white">¡Te Gusta! <i class="far fa-thumbs-up"></i></span>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+      </ng-container>
+    </div>
+  </div>
+</div>
+

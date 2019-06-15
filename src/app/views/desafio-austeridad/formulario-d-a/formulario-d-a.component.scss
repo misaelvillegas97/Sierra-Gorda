@@ -1,0 +1,258 @@
+$orange: #ff5900;
+$orange-70: rgba(255, 89, 0, 0.863);
+$orange-50: rgba(255, 89, 0, 0.502);
+
+$blueSG: #3fbac5;
+$yellow: #FFAB00;
+$yellow-light: #FFDC67;
+$blueSG-strong: #31a0aa;
+$blueSG-70: rgba(62, 186, 197, 0.702);
+$blueSG-40: rgba(62, 186, 197, 0.4);
+$blueSG-20: rgba(63, 186, 197, 0.2);
+$green: #7fbb5a;
+$green-window: #78ce47;
+$dark-green-window: #00AE41;
+$lightBlue: #00A9B7;
+
+$text-color: #5c5c5c;
+
+.desafio {
+  &-title {
+    user-select: none;
+    color: $blueSG;
+    font-weight: 800;
+    font-size: 4rem;
+  }
+
+  &-info {
+
+    &-subtitle {
+      color: $blueSG;
+      font-weight: 700;
+      font-size: 20pt;
+    }
+
+    &-text {
+      font-family: Calibri;
+      font-weight: 500;
+      color: #5c5c5c;
+    }
+  }
+
+  &-secciones {
+    &-container {
+      display: flex;
+    }
+
+    &-button {
+      background-color: $orange;
+      height: 50px;
+      width: 50px;
+      border-radius: 50%;
+      border: none;
+      text-align: center;
+      margin-right: 15px;
+
+      color: rgba(255, 255, 255, 0.5);
+      font-weight: 800;
+      font-size: 18pt;
+
+      transition: 0.3s;
+
+      &:hover {
+        color: white !important;
+      }
+
+      &-actual {
+        border: 3px solid $yellow;
+        color: white;
+      }
+
+      &-completed {
+        color: white;
+        background-color: $blueSG;
+      }
+    }
+  }
+
+  &-content {
+    &-container {
+      background-color: $blueSG-40;
+      margin-top: 30px;
+      padding: 20px 25px;
+      border-radius: 20px;
+      min-height: 437px;
+    }
+
+    &-item {
+      margin-bottom: 20px;
+      &-title {
+        h6 {
+          color: $blueSG-strong;
+          font-weight: 600;
+          font-size: 14pt;
+        }
+      }
+
+      &-input {
+        input[type=text] {
+          border: none;
+          background-color: white;
+          width: 100%;
+          border-radius: 120px;
+          margin-top: 10px;
+          padding-left: 20px;
+          color: #777777;
+
+          &:focus {
+            outline: none;
+          }
+        }
+
+        textarea {
+          border: none;
+          background-color: white;
+          width: 100%;
+          border-radius: 20px;
+          margin-top: 10px;
+          padding-left: 20px;
+          color: #777777;
+
+          resize: none;
+
+          &:focus {
+            outline: none;
+          }
+        }
+
+        select {
+          border: none;
+          height: 30px;
+          padding-left: 10px;
+          border-radius: 50px;
+          background-color: $blueSG;
+          color: white;
+          font-weight: 500;
+          font-size: 11pt;
+          width: 50%;
+        }
+
+        option {
+          font-size: 10pt;
+          padding: 0;
+          font-weight: 500;
+          text-transform: capitalize;
+        }
+
+        &-card {
+          background-color: white;
+          border-radius: 10px;
+          padding: 5px 15px;
+          margin: 5px;
+
+          min-height: 134px;
+
+          p {
+            font-weight: 400;
+            font-size: 11pt;
+            font-family: Calibri;
+            color: #777777;
+            padding-bottom: 0;
+            padding-left: 35px;
+            padding-right: 20px;
+          }
+        }
+      }
+    }
+
+    &-finish {
+      margin-top: 15px;
+
+      p {
+        font-weight: 600;
+        font-size: 11pt;
+        color: $text-color;
+      }
+
+      button {
+        border: none;
+        border-radius: 50px;
+        color: white;
+        font-size: 12pt;
+        font-weight: 500;
+        padding: 3px 20px;
+        background-color: $orange;
+      }
+    }
+  }
+}
+
+/* The container */
+.container-r {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  // font
+  font-size: 17pt;
+  font-weight: 500;
+  font-family: Calibri;
+  color: $blueSG-strong;
+}
+
+/* Hide the browser's default radio button */
+.container-r input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Create a custom radio button */
+.checkmark {
+  position: absolute;
+  top: 5px;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color: #eee;
+  border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.container-r:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.container-r input:checked ~ .checkmark {
+  background-color: $blueSG;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.container-r input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.container-r .checkmark:after {
+ 	top: 6px;
+	left: 6px;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: white;
+}

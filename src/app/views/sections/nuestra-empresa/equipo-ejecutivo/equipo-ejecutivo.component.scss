@@ -1,0 +1,131 @@
+
+$text-color: #5c5c5c;
+.equipo-ejecutivo {
+    &-titulo{
+        color: $text-color;
+        font-size:24pt;
+        font-weight: 800;
+    }
+    &-container{
+        display: flex;
+        display: -ms-flexbox;
+        align-items: center;
+        justify-content: space-between;
+        &-box{
+            width: 150px;
+            height: 150px;
+            margin: 20px;
+            border-radius: 10px;
+            position: relative;
+            text-align: left;
+            color: #fff;
+            font-weight: 600;
+            padding-top: 15px;
+            cursor:pointer;
+            img {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                width: 100%;
+                border-radius: 0 0 10px 10px;
+            }
+            span {
+                    position: absolute;
+                    left: 15px;
+                    z-index: 2;
+                    margin-right:10px;
+            }
+        }
+    }
+}
+.color-box1{
+    background:#00329A;
+}
+.color-box2{
+    background:#7fbb5a;
+}
+.color-box3{
+    background:#f9c836;
+}
+.color-box4{
+    background:#00a9b7;
+}
+.color-box5{
+    background:#ff671b;
+}
+
+.color-sub1{
+    color:#00329A;
+}
+.color-sub2{
+    color:#7fbb5a;
+}
+.color-sub3{
+    color:#f9c836;
+}
+.color-sub4{
+    color:#00a9b7;
+}
+.color-sub5{
+    color:#ff671b;
+}
+
+.equipo-ejecutivo-modal-container{
+    height: 425px;
+    width: 645px;
+    background: white;
+    position: relative;
+    border-radius:10px;
+    &-header{
+        padding-bottom: 15px;
+        padding-top: 10px;
+        margin-left:50px;
+        position:relative;
+
+        &-titulo{
+            font-size: 16pt;
+            font-weight: 700;
+        }
+        &-subtitulo{
+            font-size: 13pt;
+            font-weight: 600;
+        }
+        i{
+            font-size:12pt;
+            color:$text-color;
+            position:absolute;
+            top:10px;
+            right:15px;
+            cursor:pointer;
+
+            &:hover{
+                color: #747474 !important;
+            }
+        }
+
+    }
+    &-body{
+        position: relative;
+        background: #eee;
+        border-radius: 5px;
+        max-width: 77%;
+        margin-left:25px;
+        &-texto{
+            max-width: 60%;
+            margin-left: 25px;
+            padding-top: 15px;
+            padding-bottom: 15px;
+            text-align: left;
+            font-size: 10pt;
+            line-height: 16pt;
+        }
+    }
+    img{
+    position: absolute;
+    bottom: 0px;
+    right: 15px;
+    z-index: 10;
+    width: 42%;
+    }
+}

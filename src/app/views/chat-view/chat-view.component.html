@@ -26,6 +26,7 @@
           placeholder="Buscar"
           aria-label="buscar"
           aria-describedby="txt_buscar"
+          (keyup.enter)="buscarChat(buscar.value)"
         />
       </div>
     </div>
@@ -42,7 +43,7 @@
   </div>
   <div class="chat-container">
    <div class="row">
-     <div class="col-lg-4 col-md-5 col-sm-12">
+     <div class="col-lg-4 col-md-5 col-sm-12" style="max-height: 660px; overflow-y: scroll;">
       <ng-container *ngIf="cs.chatList && isRecent">
         <ng-container *ngFor="let chat of cs.chatList">
           <app-chat-list [list]="chat" (onChatSelected)="loadChat($event)"></app-chat-list>
@@ -81,7 +82,7 @@
             <div class="chat-box-header-bottom">
               <div style="width: 81%;">
                 <span>
-                  Cargo: {{chat.destinatario.cargo ? chat.destinatario.cargo : 'No definido'}}
+                  Cargo: {{chat.destinatario.nombre_cargo ? chat.destinatario.nombre_cargo : 'No definido'}}
                 </span>
                 <span>
                   Correo: {{chat.destinatario.correo_usuario ? chat.destinatario.correo_usuario : 'No definido'}}
@@ -89,7 +90,7 @@
               </div>
               <div style="width: 81%;">
                 <span>
-                  Teléfono: {{ chat.destinatario.telefono ? chat.destinatario.telefono : 'No definido' }}
+                  Teléfono: {{ chat.destinatario.telefono_usuario ? chat.destinatario.telefono_usuario : 'No definido' }}
                 </span>
               </div>
               <button>Vaciar Chat <i class="fas fa-trash-alt"></i></button>

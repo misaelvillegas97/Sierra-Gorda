@@ -183,6 +183,10 @@ $nombre-color2: #5a6770;
     display: -ms-flexbox;
     display: flex;
     &-seleccion {
+      display:flex;
+      display:-ms-flex;
+      align-items: center;
+      justify-content: center;
       select {
         // border: none;
         // padding: 20px 200px 20px 35px;
@@ -196,22 +200,37 @@ $nombre-color2: #5a6770;
         border: none;
         color: $text-color;
         box-shadow: 0 0 13px rgba(0, 0, 0, 0.20) !important;
+        width:440px;
+        margin-bottom:20px;
+
         &:focus{
           outline:none;
+        }
+        &:after{
+          font-size:13pt;
+          margin-right: 20px;
         }
       }
 
       &-botonbox {
         display: flex;
         display: -ms-flexbox;
+        justify-content: flex-end;
         &-boton {
           background: $blueSG;
           color: #fff;
           font-weight: 600;
-          padding: 8px 20px;
+          width:130px;
+          height: 45px;
           border-radius: 25px;
-          font-size: 8pt;
-          margin-left: 2em;
+          font-size: 10pt;
+          margin-left: 1em;
+          margin-right:1em;
+          text-align-last: center;
+          line-height: 45px;
+        }
+        i{
+          margin-left:5px;
         }
       }
     }
@@ -235,7 +254,7 @@ $nombre-color2: #5a6770;
     &-nombre {
       color: $blueSG;
       font-size: 35pt;
-      text-align: center;
+      // text-align: center;
       margin-left: 22px;
       font-weight: 800;
       line-height: 1.2;

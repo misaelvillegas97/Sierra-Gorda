@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ReconozcoService } from 'src/app/providers/reconozco.service';
 
 @Component({
   selector: 'app-tereconozco',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TereconozcoComponent implements OnInit {
 
-  constructor() { }
+  constructor(public rs: ReconozcoService) {
+    this.rs.getAllReconocimientos();
+  }
 
   ngOnInit() {
   }

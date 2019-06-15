@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PersaModalComponent } from 'src/app/modals/persa-modal/persa-modal.component';
 import { MDBModalRef, MDBModalService } from 'angular-bootstrap-md';
+import { PersaService } from 'src/app/providers/persa.service';
 
 @Component({
   selector: 'app-all-products',
@@ -14,8 +15,9 @@ export class AllProductsComponent implements OnInit {
   modalRef: MDBModalRef;
   modalOptions = {};
 
-  constructor( private modalService: MDBModalService ) {
+  constructor( private modalService: MDBModalService, public ps: PersaService ) {
     this.loading = true;
+    this.ps.getAllProduct(1000);
   }
 
   ngOnInit() {
@@ -36,7 +38,7 @@ export class AllProductsComponent implements OnInit {
     let data = {};
 
     data = {
-      article: articulo
+      idProducto: articulo
     };
 
     this.modalOptions = {

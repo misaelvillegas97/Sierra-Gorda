@@ -1,9 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
+import { registerLocaleData } from '@angular/common';
+import localeCL from '@angular/common/locales/es-CL';
 import { HttpClientModule } from '@angular/common/http';
 import { Ng2Rut } from 'ng2-rut';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+registerLocaleData(localeCL, 'es-CL');
 
 // External Imports
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
@@ -97,6 +101,15 @@ import { CumpleaniosComponent } from './views/sections/personas/cumpleanios/cump
 import { CampaniaComponent } from './views/seguridad/campania/campania.component';
 import { ChatViewComponent } from './views/chat-view/chat-view.component';
 import { ChatListComponent } from './views/chat-view/chat-list/chat-list.component';
+import { BrandingComponent } from './views/branding/branding.component';
+import { EquipoEjecutivoComponent } from './views/sections/nuestra-empresa/equipo-ejecutivo/equipo-ejecutivo.component';
+import { DesafioAusteridadComponent } from './views/desafio-austeridad/desafio-austeridad.component';
+import { InfoComponent } from './views/desafio-austeridad/info/info.component';
+import { RevistaComponent } from './views/sections/personas/revista/revista.component';
+import { FormularioDAComponent } from './views/desafio-austeridad/formulario-d-a/formulario-d-a.component';
+import { TodosReconocidosComponent } from './views/tereconozco/todos-reconocidos/todos-reconocidos.component';
+import { ReconocimientoModalComponent } from './modals/reconocimiento-modal/reconocimiento-modal.component';
+import { ReconocerComponent } from './views/tereconozco/reconocer/reconocer.component';
 
 
 @NgModule({
@@ -170,7 +183,16 @@ import { ChatListComponent } from './views/chat-view/chat-list/chat-list.compone
     CumpleaniosComponent,
     CampaniaComponent,
     ChatViewComponent,
-    ChatListComponent
+    ChatListComponent,
+    BrandingComponent,
+    EquipoEjecutivoComponent,
+    DesafioAusteridadComponent,
+    InfoComponent,
+    RevistaComponent,
+    FormularioDAComponent,
+    TodosReconocidosComponent,
+    ReconocimientoModalComponent,
+    ReconocerComponent
   ],
   imports: [
     BrowserModule,
@@ -196,8 +218,8 @@ import { ChatListComponent } from './views/chat-view/chat-list/chat-list.compone
     MatSnackBarModule
 
   ],
-  providers: [],
-  entryComponents: [LoginModalComponent, PollModalComponent, PersaModalComponent, EditInfoModalComponent, IncidenteDetalleModalComponent],
+  providers: [{ provide: LOCALE_ID, useValue: 'es-CL' }],
+  entryComponents: [LoginModalComponent, PollModalComponent, PersaModalComponent, EditInfoModalComponent, IncidenteDetalleModalComponent, ReconocimientoModalComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewEncapsulation, AfterViewInit } from '@angular/core';
 import { NoticiasService } from 'src/app/providers/noticias.service';
-import { ActivatedRoute } from '@angular/router';
-import { NoticiaDetalle, Comentario } from 'src/app/interface/noticia';
+import { ActivatedRoute, Router } from '@angular/router';
+import { NoticiaDetalle, Comentario, Noticia } from 'src/app/interface/noticia';
 import { AppComponent } from 'src/app/app.component';
 import { LoginService } from 'src/app/providers/login.service';
 
@@ -21,7 +21,7 @@ export class VerNoticiaComponent implements OnInit, AfterViewInit {
   // Comentario
   comentario: string;
 
-  constructor( public ns: NoticiasService, private route: ActivatedRoute, private ls: LoginService ) {
+  constructor( public ns: NoticiasService, private route: ActivatedRoute, private ls: LoginService, private router: Router ) {
     this.comentario = '';
 
     this.sub = this.route.params.subscribe( params => {
@@ -29,12 +29,17 @@ export class VerNoticiaComponent implements OnInit, AfterViewInit {
       this.ns.getNoticiaById(_id)
       .then(
         (res: NoticiaDetalle) => {
-          console.log(res);
+          // console.log(res);
+
+          if (!this.ns.listaNoticias) {
+            this.ns.getNoticias(undefined, undefined, 1);
+          }
+
           this.noticia = res;
           this.ns.getLike(this.noticia.id_noticia)
             .then(
-              res => {
-                this.megusta = res;
+              resp => {
+                this.megusta = resp;
               }
             );
         }
@@ -65,6 +70,36 @@ export class VerNoticiaComponent implements OnInit, AfterViewInit {
     this.megusta = true;
     this.noticia.cantidad_megusta++;
     this.ns.sendLike(this.noticia.id_noticia);
+  }
+
+  siguienteNoticia(): void {
+    let noticia: Noticia;
+    if ( this.ns.listaNoticias.find(noticiax => noticiax.id === this.noticia.id_noticia )) {
+      noticia = this.ns.listaNoticias.find(noticiax => noticiax.id === this.noticia.id_noticia);
+      const index = this.ns.listaNoticias.indexOf(noticia);
+
+      if (this.ns.listaNoticias[index + 1]) {
+        // this.router.navigate(['/noticia', { id: this.ns.listaNoticias[index + 1].id}]);
+        this.router.navigateByUrl('/noticia/' + this.ns.listaNoticias[index + 1].id);
+      } else {
+        this.router.navigateByUrl('/noticia/' + this.ns.listaNoticias[0].id);
+      }
+    }
+  }
+
+  anteriorNoticia(): void {
+    let noticia: Noticia;
+    if ( this.ns.listaNoticias.find(noticiax => noticiax.id === this.noticia.id_noticia )) {
+      noticia = this.ns.listaNoticias.find(noticiax => noticiax.id === this.noticia.id_noticia);
+      const index = this.ns.listaNoticias.indexOf(noticia);
+
+      if (this.ns.listaNoticias[index - 1]) {
+        // this.router.navigate(['/noticia', { id: this.ns.listaNoticias[index - 1].id}]);
+        this.router.navigateByUrl('/noticia/' + this.ns.listaNoticias[index - 1].id);
+      } else {
+        this.router.navigateByUrl('/noticia/' + this.ns.listaNoticias[this.ns.listaNoticias.length - 1].id);
+      }
+    }
   }
 
   ngOnInit() {}

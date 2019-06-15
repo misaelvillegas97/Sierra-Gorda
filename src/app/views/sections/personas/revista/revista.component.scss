@@ -1,0 +1,93 @@
+$orange: #ff5900;
+$orange-70: rgba(255, 89, 0, 0.863);
+$orange-50: rgba(255, 89, 0, 0.502);
+
+$blueSG: #3fbac5;
+$yellow: #FFAB00;
+$yellow-light: #FFDC67;
+$blueSG-strong: #31a0aa;
+$blueSG-70: rgba(62, 186, 197, 0.702);
+$blueSG-40: rgba(62, 186, 197, 0.4);
+$blueSG-20: rgba(63, 186, 197, 0.2);
+
+$text-color: #5c5c5c;
+
+
+.revista {
+  &-title {
+    user-select: none;
+    color: $blueSG;
+    font-weight: 800;
+    font-size: 4rem;
+  }
+  &-filter {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    &-content {
+      padding: 3px 10px;
+      background-color: $blueSG;
+      border-radius: 25px;
+      color: white;
+      font-size: 10pt;
+      font-weight: 500;
+
+      label {
+        margin: 0;
+        i {
+          margin-left: 5px;
+          margin-right: 5px;
+        }
+      }
+
+      select {
+        width: 70px;
+        margin: 0px 0px 0px 5px;
+        background-color: $blueSG-strong;
+        border: none;
+        border-radius: 25px;
+        color: white;
+        font-weight: 500;
+        padding-left: 15px;
+      }
+    }
+  }
+
+  &-item {
+    width: 155px;
+    height: 155px;
+    margin-bottom: 30px;
+    border-radius: 5px;
+    background-color: $yellow;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    transition: 0.3s;
+
+    span.month {
+      font-size: 30pt;
+      font-weight: 800;
+      color: white;
+    }
+
+    span.special {
+      color: white;
+      font-weight: 600;
+      font-size: 14pt;
+      text-align: center;
+    }
+
+    span.year {
+      font-size: 12pt;
+      font-weight: 400;
+      color: white;
+    }
+
+    &:hover {
+      box-shadow: none !important;
+    }
+  }
+}

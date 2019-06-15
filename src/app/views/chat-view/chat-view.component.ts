@@ -82,6 +82,14 @@ export class ChatViewComponent implements OnInit, OnDestroy {
     this.chat = undefined;
   }
 
+  buscarChat(_text: string) {
+    if (_text.trim().length === 0) {
+      this.cs.getAllChats();
+      return;
+    }
+    this.cs.buscar(_text);
+  }
+
   loadChat($chat: Chat) {
     if ($chat === this.chat) {
       this.chat = undefined;

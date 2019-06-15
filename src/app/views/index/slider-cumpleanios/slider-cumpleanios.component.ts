@@ -12,7 +12,7 @@ export class SliderCumpleaniosComponent implements OnInit {
   @ViewChild('carousel') carousel: CarouselComponent;
 
   constructor(public bs: CumpleañosService) {
-    this.bs.getAllBirth();
+    this.bs.getAllBirth(4);
   }
 
   ngOnInit() {

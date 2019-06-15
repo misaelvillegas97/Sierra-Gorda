@@ -1,5 +1,5 @@
 <!-- <div class="product-container"> -->
-  <form #fe="ngForm">
+  <form #fe="ngForm" (ngSubmit)="editProducto(fe.value)">
     <div class="persa-options-add" id="insert-div">
       <h6>Agregar Prublicación</h6>
       <p>Selecciona la categoría de tu artículo</p>
@@ -9,19 +9,20 @@
             <div class="persa-options-add-categories-circle">
               <input
                 type="radio"
-                name="edit-product-category"
+                name="edit_product_category"
                 #default="ngModel"
-                ngModel
+                [(ngModel)]="editProduct.editProductCategory"
                 value="0"
-                id="edit-product-category-muebles"
+                id="edit_product_category-muebles"
                 checked
                 selected
+                required
               />
               <label
-                for="edit-product-category-muebles"
+                for="edit_product_category-muebles"
                 [ngClass]="{
                   'persa-options-add-categories-active':
-                    fe.value['edit-product-category'] === '0'
+                    fe.value['edit_product_category'] === '0'
                 }"
                 class=""
               >
@@ -34,17 +35,18 @@
             <div class="persa-options-add-categories-circle">
               <input
                 type="radio"
-                name="edit-product-category"
+                name="edit_product_category"
                 #default="ngModel"
-                ngModel
+                [(ngModel)]="editProduct.editProductCategory"
                 value="1"
-                id="edit-product-category-tecno"
+                id="edit_product_category-tecno"
+                required
               />
               <label
-                for="edit-product-category-tecno"
+                for="edit_product_category-tecno"
                 [ngClass]="{
                   'persa-options-add-categories-active':
-                    fe.value['edit-product-category'] === '1'
+                    fe.value['edit_product_category'] === '1'
                 }"
                 class="persa-options-add-categories"
                 ><i class="fas fa-mobile-alt"></i
@@ -56,17 +58,18 @@
             <div class="persa-options-add-categories-circle">
               <input
                 type="radio"
-                name="edit-product-category"
+                name="edit_product_category"
                 #default="ngModel"
-                ngModel
+                [(ngModel)]="editProduct.editProductCategory"
                 value="2"
-                id="edit-product-category-vestuario"
+                id="edit_product_category-vestuario"
+                required
               />
               <label
-                for="edit-product-category-vestuario"
+                for="edit_product_category-vestuario"
                 [ngClass]="{
                   'persa-options-add-categories-active':
-                    fe.value['edit-product-category'] === '2'
+                    fe.value['edit_product_category'] === '2'
                 }"
                 class=""
                 ><i class="fas fa-tshirt"></i
@@ -78,17 +81,18 @@
             <div class="persa-options-add-categories-circle">
               <input
                 type="radio"
-                name="edit-product-category"
+                name="edit_product_category"
                 #default="ngModel"
-                ngModel
+                [(ngModel)]="editProduct.editProductCategory"
                 value="3"
-                id="edit-product-category-musica"
+                id="edit_product_category-musica"
+                required
               />
               <label
-                for="edit-product-category-musica"
+                for="edit_product_category-musica"
                 [ngClass]="{
                   'persa-options-add-categories-active':
-                    fe.value['edit-product-category'] === '3'
+                    fe.value['edit_product_category'] === '3'
                 }"
                 class=""
                 ><i class="fas fa-headphones-alt"></i
@@ -100,17 +104,18 @@
             <div class="persa-options-add-categories-circle">
               <input
                 type="radio"
-                name="edit-product-category"
+                name="edit_product_category"
                 #default="ngModel"
-                ngModel
+                [(ngModel)]="editProduct.editProductCategory"
                 value="4"
-                id="edit-product-category-deporte"
+                id="edit_product_category-deporte"
+                required
               />
               <label
-                for="edit-product-category-deporte"
+                for="edit_product_category-deporte"
                 [ngClass]="{
                   'persa-options-add-categories-active':
-                    fe.value['edit-product-category'] === '4'
+                    fe.value['edit_product_category'] === '4'
                 }"
                 class=""
                 ><i class="fas fa-bicycle"></i
@@ -122,17 +127,18 @@
             <div class="persa-options-add-categories-circle">
               <input
                 type="radio"
-                name="edit-product-category"
+                name="edit_product_category"
                 #default="ngModel"
-                ngModel
+                [(ngModel)]="editProduct.editProductCategory"
                 value="5"
-                id="edit-product-category-otros"
+                id="edit_product_category-otros"
+                required
               />
               <label
-                for="edit-product-category-otros"
+                for="edit_product_category-otros"
                 [ngClass]="{
                   'persa-options-add-categories-active':
-                    fe.value['edit-product-category'] === '5'
+                    fe.value['edit_product_category'] === '5'
                 }"
                 class=""
                 ><i class="fas fa-boxes"></i
@@ -150,7 +156,8 @@
           id="edit_name"
           maxlength="60"
           #edit_name="ngModel"
-          ngModel
+          [(ngModel)]="editProduct.name"
+          required
         />
         <small class="float-right">
           {{
@@ -167,7 +174,8 @@
           rows="5"
           maxlength="200"
           #edit_desc="ngModel"
-          ngModel
+          [(ngModel)]="editProduct.desc"
+          required
         >
         </textarea>
         <small class="float-right">
@@ -184,7 +192,8 @@
           name="edit_quantity"
           id="edit_quantity"
           #edit_quantity="ngModel"
-          ngModel
+          [(ngModel)]="editProduct.quantity"
+          required
         />
       </div>
       <div class="persa-options-add-input-quant mb-4">
@@ -198,7 +207,8 @@
             id="edit_price"
             maxlength="60"
             #edit_price="ngModel"
-            ngModel
+            [(ngModel)]="editProduct.price"
+            required
           />
         </div>
       </div>
@@ -241,7 +251,7 @@
       </div>
       <div class="row mt-3 justify-content-between">
         <button type="submit" class="persa-options-add-button cancel" routerLink="../../">Cancelar</button>
-        <button type="submit" class="persa-options-add-button">Guardar</button>
+        <button type="submit" [disabled]="fe.invalid" class="persa-options-add-button">Guardar</button>
       </div>
     </div>
   </form>
@@ -251,9 +261,6 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <!-- <button type="button" class="close pull-right" aria-label="Close" (click)="editModal.hide()">
-            <span aria-hidden="true">×</span>
-          </button> -->
           <h4 class="modal-title w-100" id="myModalLabel">Recortar Imagen ({{selectedInput}}/4)</h4>
         </div>
         <div class="modal-body">
@@ -261,11 +268,9 @@
           </div>
           <div class="preview-img">
             <img [src]="myImage | safeHtml" alt="" *ngIf="myImage">
-            <!-- <img [src]="upload_5.value" alt="" *ngIf="myImage"> -->
           </div>
         </div>
         <div class="modal-footer">
-          <!-- <button type="button" mdbBtn color="secondary" class="waves-light" aria-label="Close" (click)="basicModal.hide()" mdbWavesEffect>Close</button> -->
           <button type="button" mdbBtn color="primary" (click)="seeResults()" class="relative waves-light" mdbWavesEffect>Editar</button>
         </div>
       </div>

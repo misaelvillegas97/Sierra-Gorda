@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-lg-6 col-md-6 col-sm-12">
       <!-- Agregar Publicación -->
-      <form #f="ngForm">
+      <form #f="ngForm" (ngSubmit)="publicar(f.value)">
         <div class="persa-options-add" id="insert-div">
           <h6>Agregar Prublicación</h6>
           <p>Selecciona la categoría de tu artículo</p>
@@ -12,19 +12,20 @@
                 <div class="persa-options-add-categories-circle">
                   <input
                     type="radio"
-                    name="new-product-category"
+                    name="new_product_category"
                     #default="ngModel"
                     ngModel
-                    value="0"
-                    id="new-product-category-muebles"
+                    value="1"
+                    id="new_product_category-muebles"
                     checked
                     selected
+                    required
                   />
                   <label
-                    for="new-product-category-muebles"
+                    for="new_product_category-muebles"
                     [ngClass]="{
                       'persa-options-add-categories-active':
-                        f.value['new-product-category'] === '0'
+                        f.value['new_product_category'] === '1'
                     }"
                     class=""
                   >
@@ -37,17 +38,18 @@
                 <div class="persa-options-add-categories-circle">
                   <input
                     type="radio"
-                    name="new-product-category"
+                    name="new_product_category"
                     #default="ngModel"
                     ngModel
-                    value="1"
-                    id="new-product-category-tecno"
+                    value="2"
+                    id="new_product_category-tecno"
+                    required
                   />
                   <label
-                    for="new-product-category-tecno"
+                    for="new_product_category-tecno"
                     [ngClass]="{
                       'persa-options-add-categories-active':
-                        f.value['new-product-category'] === '1'
+                        f.value['new_product_category'] === '2'
                     }"
                     class="persa-options-add-categories"
                     ><i class="fas fa-mobile-alt"></i
@@ -59,17 +61,18 @@
                 <div class="persa-options-add-categories-circle">
                   <input
                     type="radio"
-                    name="new-product-category"
+                    name="new_product_category"
                     #default="ngModel"
                     ngModel
-                    value="2"
-                    id="new-product-category-vestuario"
+                    value="3"
+                    id="new_product_category-vestuario"
+                    required
                   />
                   <label
-                    for="new-product-category-vestuario"
+                    for="new_product_category-vestuario"
                     [ngClass]="{
                       'persa-options-add-categories-active':
-                        f.value['new-product-category'] === '2'
+                        f.value['new_product_category'] === '3'
                     }"
                     class=""
                     ><i class="fas fa-tshirt"></i
@@ -81,17 +84,18 @@
                 <div class="persa-options-add-categories-circle">
                   <input
                     type="radio"
-                    name="new-product-category"
+                    name="new_product_category"
                     #default="ngModel"
                     ngModel
-                    value="3"
-                    id="new-product-category-musica"
+                    value="4"
+                    id="new_product_category-musica"
+                    required
                   />
                   <label
-                    for="new-product-category-musica"
+                    for="new_product_category-musica"
                     [ngClass]="{
                       'persa-options-add-categories-active':
-                        f.value['new-product-category'] === '3'
+                        f.value['new_product_category'] === '4'
                     }"
                     class=""
                     ><i class="fas fa-headphones-alt"></i
@@ -103,17 +107,18 @@
                 <div class="persa-options-add-categories-circle">
                   <input
                     type="radio"
-                    name="new-product-category"
+                    name="new_product_category"
                     #default="ngModel"
                     ngModel
-                    value="4"
-                    id="new-product-category-deporte"
+                    value="5"
+                    id="new_product_category-deporte"
+                    required
                   />
                   <label
-                    for="new-product-category-deporte"
+                    for="new_product_category-deporte"
                     [ngClass]="{
                       'persa-options-add-categories-active':
-                        f.value['new-product-category'] === '4'
+                        f.value['new_product_category'] === '5'
                     }"
                     class=""
                     ><i class="fas fa-bicycle"></i
@@ -125,17 +130,18 @@
                 <div class="persa-options-add-categories-circle">
                   <input
                     type="radio"
-                    name="new-product-category"
+                    name="new_product_category"
                     #default="ngModel"
                     ngModel
-                    value="5"
-                    id="new-product-category-otros"
+                    value="6"
+                    id="new_product_category-otros"
+                    required
                   />
                   <label
-                    for="new-product-category-otros"
+                    for="new_product_category-otros"
                     [ngClass]="{
                       'persa-options-add-categories-active':
-                        f.value['new-product-category'] === '5'
+                        f.value['new_product_category'] === '6'
                     }"
                     class=""
                     ><i class="fas fa-boxes"></i
@@ -154,6 +160,7 @@
               maxlength="60"
               #txt_name="ngModel"
               ngModel
+              required
             />
             <small class="float-right">
               {{
@@ -171,6 +178,7 @@
               maxlength="200"
               #txt_desc="ngModel"
               ngModel
+              required
             >
             </textarea>
             <small class="float-right">
@@ -188,6 +196,7 @@
               id="txt_quantity"
               #txt_quantity="ngModel"
               ngModel
+              required
             />
           </div>
           <div class="persa-options-add-input-quant mb-4">
@@ -202,6 +211,7 @@
                 maxlength="60"
                 #txt_price="ngModel"
                 ngModel
+                required
               />
             </div>
           </div>
@@ -215,7 +225,7 @@
                 Subir Foto
               </label>
               <input type="hidden" hidden id="upload_1_b64" name="upload_1_b64" #upload_1_b64="ngModel" [(ngModel)]="newProduct.upload_1_b64"/>
-              <input type="file" hidden id="upload_1" name="upload_1" (change)="cropImage(1, $event)" #upload_1="ngModel" [(ngModel)]="newProduct.upload_1" />
+              <input type="file" hidden id="upload_1" name="upload_1" (change)="cropImage(1, $event)" #upload_1="ngModel" [(ngModel)]="newProduct.upload_1" required />
 
               <label for="upload_2">
                   <img [src]="newProduct.upload_2_b64" *ngIf="newProduct.upload_2_b64" alt="" style="max-width: 66px !important; border-radius: 5px;" class="img-fluid">
@@ -223,7 +233,7 @@
                 Subir Foto
               </label>
               <input type="hidden" hidden id="upload_2_b64" name="upload_2_b64" #upload_2_b64="ngModel" [(ngModel)]="newProduct.upload_2_b64"/>
-              <input type="file" hidden id="upload_2" name="upload_2" (change)="cropImage(2, $event)" #upload_2="ngModel" [(ngModel)]="newProduct.upload_2" />
+              <input type="file" hidden id="upload_2" name="upload_2" (change)="cropImage(2, $event)" #upload_2="ngModel" [(ngModel)]="newProduct.upload_2" required/>
 
               <label for="upload_3">
                   <img [src]="newProduct.upload_3_b64" *ngIf="newProduct.upload_3_b64" alt="" style="max-width: 66px !important; border-radius: 5px;" class="img-fluid">
@@ -231,7 +241,7 @@
                 Subir Foto
               </label>
               <input type="hidden" hidden id="upload_3_b64" name="upload_3_b64" #upload_3_b64="ngModel" [(ngModel)]="newProduct.upload_3_b64"/>
-              <input type="file" hidden id="upload_3" name="upload_3" (change)="cropImage(3, $event)" #upload_3="ngModel" [(ngModel)]="newProduct.upload_3" />
+              <input type="file" hidden id="upload_3" name="upload_3" (change)="cropImage(3, $event)" #upload_3="ngModel" [(ngModel)]="newProduct.upload_3" required/>
 
               <label for="upload_4" class="last">
                   <img [src]="newProduct.upload_4_b64" *ngIf="newProduct.upload_4_b64" alt="" style="max-width: 66px !important; border-radius: 5px;" class="img-fluid">
@@ -239,11 +249,11 @@
                 Subir Foto
               </label>
               <input type="hidden" hidden id="upload_4_b64" name="upload_4_b64" #upload_4_b64="ngModel" [(ngModel)]="newProduct.upload_4_b64"/>
-              <input type="file" hidden id="upload_4" name="upload_4" (change)="cropImage(4, $event)" #upload_4="ngModel" [(ngModel)]="newProduct.upload_4" />
+              <input type="file" hidden id="upload_4" name="upload_4" (change)="cropImage(4, $event)" #upload_4="ngModel" [(ngModel)]="newProduct.upload_4" required/>
             </div>
           </div>
           <div class="row mt-3 justify-content-end">
-            <button type="submit" class="persa-options-add-button">Publicar Artículo</button>
+            <button type="submit" [disabled]="f.invalid" class="persa-options-add-button">Publicar Artículo</button>
           </div>
         </div>
       </form>
@@ -280,3 +290,7 @@
     </div>
   </div>
 </div>
+
+<pre>
+  {{ f.value | json }}
+</pre>

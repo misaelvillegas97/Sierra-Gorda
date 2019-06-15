@@ -7,70 +7,55 @@
   </div>
 
   <div class="m-0 scroll-setting">
-    <!-- TODO: Implementar *ngFor para listar productos -->
-    <div class="product-card" id="idPrueba1">
-      <div class="product-card-title">
-        <h6>Nombre de referencia</h6>
-        <span><i class="fas fa-chevron-circle-right ml-2 product-card-title-open" aria-hidden="true" (click)="growDiv('idPrueba1')" name="go-click"></i></span>
-      </div>
-      <div class="product-card-content" id="idPrueba1_content">
 
-        <!-- TODO: Implementar pipe Date para formatear fecha -->
-        <h6 class="product-date-title">Fecha de publicación</h6>
-        <span class="product-date">20 de Marzo 2019</span>
-
-        <hr>
-        <!-- Si es que no posee ventas -->
-        <ng-container>
-          <div class="product-response d-flex justify-content-between">
-              <a class="product-response-edit">Eliminar Publicación <i class="fas fa-trash ml-2"></i></a>
-              <a class="product-response-edit">Editar Publicación <i class="fas fa-edit ml-2"></i></a>
+    <ng-container *ngIf="ps.listUserProduct">
+      <ng-container *ngFor="let producto of ps.listUserProduct">
+        <div class="product-card" id="product_{{ producto.id }}">
+          <div class="product-card-title">
+            <h6>{{producto.nombre}}</h6>
+            <span><i class="fas fa-exclamation-circle product-card-title-advice" *ngIf="producto.pedidos"></i><i class="fas fa-chevron-circle-right ml-2 product-card-title-open" aria-hidden="true" name="go-click" (click)="growDiv('product_' + producto.id)"></i></span>
           </div>
-        </ng-container>
+          <div class="product-card-content" id="product_{{ producto.id }}_content">
 
-      </div>
-    </div>
+            <h6 class="product-date-title">Fecha de publicación</h6>
+            <span class="product-date">{{ producto.fecha | date:'fullDate' }}</span>
 
-    <!-- TODO: Implementar *ngFor para listar productos -->
-    <div class="product-card" id="idPrueba2">
-      <div class="product-card-title">
-        <h6>Nombre de referencia</h6>
-        <span><i class="fas fa-exclamation-circle product-card-title-advice"></i><i class="fas fa-chevron-circle-right ml-2 product-card-title-open" aria-hidden="true" name="go-click" (click)="growDiv('idPrueba2')"></i></span>
-      </div>
-      <div class="product-card-content" id="idPrueba2_content">
 
-        <!-- TODO: Implementar pipe Date para formatear fecha -->
-        <h6 class="product-date-title">Fecha de publicación</h6>
-        <span class="product-date">20 de Marzo 2019</span>
+            <ng-container *ngIf="producto.pedidos">
+              <h6 class="product-interest-title">Lista de interesados</h6>
+              <ng-container *ngFor="let pedido of producto.pedidos">
+                <div class="product-interest-container">
+                  <div class="product-interest-data">
+                    <span>{{ pedido.primer_nombre + ' ' + pedido.apellido_paterno + ' ' + ( pedido.apellido_materno ? pedido.apellido_materno : '' )  }}</span> <br>
+                    <span>Teléfono: {{ pedido.telefono }}</span> <br>
+                    <span>Correo: {{ pedido.email }}</span> <br>
+                    <span>Cantidad: {{pedido.cantidad_comprado}}</span>
+                  </div>
+                </div>
 
-        <h6 class="product-interest-title">Lista de interesados</h6>
-        <!-- TODO: Implementar *ngIf para validar si existe algún interesado -->
-        <ng-container>
-            <!-- TODO: Implementar *ngFor para lista de interesados -->
-          <div class="product-interest-container">
-            <div class="product-interest-data">
-              <span>Juan Gallegillos Muñoz</span> <br>
-              <span>Teléfono: +56943213456</span> <br>
-              <span>Correo: correo@mail.com</span>
-            </div>
+                <div class="product-response">
+                  <h6>¿Vendiste este artículo?</h6>
+                  <button class="product-response-button no" (click)="vender(producto, pedido, 3)">No</button><button class="product-response-button si" (click)="vender(producto, pedido, 2)">Si</button>
+                </div>
+              </ng-container> <!-- For de pedidos -->
+            </ng-container> <!-- Validación si es que existen pedidos -->
+
+            <ng-container *ngIf="!producto.pedidos">
+              <h6 class="product-interest-title" style="font-style: italic; font-size: 11pt; text-align: center;">Sin interesados</h6>
+            </ng-container>
+
+
+            <hr>
+            <ng-container>
+              <div class="product-response d-flex justify-content-between">
+                  <a class="product-response-edit">Eliminar Publicación<i class="fas fa-trash ml-2"></i></a>
+                  <a class="product-response-edit" routerLink="./edit/{{ producto.id }}">Editar Publicación <i class="fas fa-edit ml-2"></i></a>
+              </div>
+            </ng-container>
           </div>
-
-          <div class="product-response">
-            <h6>¿Vendiste este artículo?</h6>
-            <button class="product-response-button no">No</button><button class="product-response-button si">Si</button>
-          </div>
-        </ng-container>
-
-        <hr>
-        <!-- Si es que no posee ventas -->
-        <ng-container>
-          <div class="product-response d-flex justify-content-between">
-              <a class="product-response-edit">Eliminar Publicación <i class="fas fa-trash ml-2"></i></a>
-              <a class="product-response-edit" routerLink="./edit/3">Editar Publicación <i class="fas fa-edit ml-2"></i></a>
-          </div>
-        </ng-container>
-      </div>
-    </div>
+        </div>
+      </ng-container> <!-- For Productos del Usuario-->
+    </ng-container> <!-- Validación si es que existen productos del usuario -->
   </div>
 
 

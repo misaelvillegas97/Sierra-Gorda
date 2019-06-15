@@ -6,7 +6,7 @@
       <span class="chat-card-info-data-name">
         {{ list.destinatario.primer_nombre_usuario + ' ' + list.destinatario.apellido_pat_usuario }}
       </span>
-      <div class="chat-card-info-data-ultimo-mensaje">
+      <div class="chat-card-info-data-ultimo-mensaje" *ngIf="list.ultimomensaje">
         {{ user === list.ultimomensaje.id_remitente ? 'Tu: ' + decodeMessage(list.ultimomensaje.mensaje) : decodeMessage(list.ultimomensaje.mensaje) }}
       </div>
     </div>

@@ -14,84 +14,14 @@ $orangestar: #ed5624;
 $redestar: #de1e26;
 
 $text-color: #5c5c5c;
-$pink-text: #FE9F6E;
+$pink-text: #fe9f6e;
 
 .reconozco {
-  &-header {
-    background-image: url('https://c3devapp.cl/sg/assets/img/reconozco/bg-header.png');
-    width: 100%;
-    height: 295px;
-    margin: 0;
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    justify-content: space-between;
-
-    &-estar {
-      display: flex;
-      align-items: center;
-      img {
-        width: 211px;
-        height: 297px;
-        margin-top: -35px;
-      }
-
-      h1 {
-        color: white;
-        font-weight: 500;
-        font-size: 14.4pt;
-        line-height: 26pt;
-
-        span {
-          font-size: 47pt;
-          font-weight: 700;
-        }
-      }
-    }
-
-    &-logo {
-      display: flex;
-      align-items: center;
-    }
-
-    &-acciones {
-      display: flex;
-      position: absolute;
-      right: 20%;
-      top: 280px;
-
-      & > div img {
-        position: absolute;
-        width: 70px;
-        margin-top: -20px;
-        margin-left: -20px;
-      }
-
-      & > div > div {
-        color: white;
-        font-weight: 600;
-        font-size: 12pt;
-
-        background-color: $blueSG;
-
-        padding: 3px 15px 3px 25px;
-        margin: 0px 35px;
-        border-radius: 0px 25px 25px 0px;
-      }
-    }
-  }
-
-  &-background {
-    background-image: url('https://c3devapp.cl/sg/assets/img/reconozco/bg-body.jpg');
-    background-attachment: fixed;
-    background-size: cover;
-    background-position: center;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: -1;
+  &-title {
+    color: $blueSG;
+    font-weight: 800;
+    font-size: 4rem;
+    user-select: none;
   }
 
   &-body {
@@ -99,18 +29,24 @@ $pink-text: #FE9F6E;
   }
 
   &-card {
+    margin-bottom: 35px;
 
     &.liked {
-      background-image: linear-gradient(120deg, rgba(255, 123, 56, 1),rgba(255, 120, 59, 1), rgba(255,86,69,1));
+      background-image: linear-gradient(
+        120deg,
+        rgba(255, 123, 56, 1),
+        rgba(255, 120, 59, 1),
+        rgba(255, 86, 69, 1)
+      );
     }
 
     border-radius: 25px;
     width: 100%;
 
     background-color: white;
-    -webkit-box-shadow: 2px 2px 14px 2px rgba(241,90,36,0.3);
-    -moz-box-shadow: 2px 2px 14px 2px rgba(241,90,36,0.3);
-    box-shadow: 2px 2px 14px 2px rgba(241,90,36,0.3);
+    -webkit-box-shadow: 2px 2px 14px 2px rgba(241, 90, 36, 0.3);
+    -moz-box-shadow: 2px 2px 14px 2px rgba(241, 90, 36, 0.3);
+    box-shadow: 2px 2px 14px 2px rgba(241, 90, 36, 0.3);
 
     &-header {
       display: flex;
@@ -126,7 +62,6 @@ $pink-text: #FE9F6E;
         font-weight: 600;
         margin-left: 10px;
       }
-
     }
 
     &-body {
@@ -171,6 +106,297 @@ $pink-text: #FE9F6E;
 
       &.liked-footer {
         background-color: rgba(254, 236, 226, 0.15) !important;
+      }
+    }
+  }
+}
+
+.reconocer {
+  display: flex;
+  display: -ms-flexbox;
+  &-left {
+    width: 50%;
+    display: flex;
+    display: -ms-flexbox;
+    justify-content: center;
+    &-container {
+      &-item {
+        select,
+        input {
+          border-radius: 15px;
+          width: 300px;
+          padding: 7px 0px;
+          padding-left: 10px;
+          text-align: left;
+          border: none;
+          box-shadow: 0 0 0.3rem $orange-70 !important;
+          margin-bottom: 15px;
+
+          &:focus {
+            outline: none;
+          }
+        }
+      }
+    }
+  }
+  &-right {
+    width: 25%;
+    &-container {
+      &-item {
+        position: relative;
+        display: flex;
+        display: -ms-flexbox;
+        align-items: center;
+        border-radius: 10px;
+        &-left {
+          img {
+            width: 75px;
+          }
+        }
+        &-right {
+          color: $text-color;
+          &-nombre {
+            font-weight: 800;
+          }
+          &-cargo {
+          }
+        }
+        i {
+          position: absolute;
+          top: 15px;
+          right: 15px;
+          color: $blueSG;
+          font-size: 11pt;
+        }
+      }
+    }
+  }
+}
+
+.selected {
+  box-shadow: 0 0 0.3rem $orange-70 !important;
+}
+
+
+.reconocido {
+  &-header {
+    background-color: rgba(255, 89, 0, 0.75);
+    box-shadow: 0 0 0.3rem rgba(255, 89, 0, 0.863) !important;
+    border-radius: 20px;
+    padding: 8px 15px;
+    margin-bottom: 20px;
+
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: flex-start;
+
+    &-img{
+      img {
+        width: 150px;
+        height: 150px;
+        margin-right: 20px;
+        border-radius: 50%;
+      }
+    }
+
+
+    &-info {
+      display: -ms-flexbox;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding-top: 10px;
+      width: 42%;
+
+      &-name {
+        h6 {
+          font-size: 20pt;
+          font-weight: 700;
+          color: white;
+        }
+      }
+
+      &-desc {
+        display: flex;
+        flex-direction: column;
+        span {
+          color: white;
+          font-weight: 500;
+          font-size: 12pt;
+        }
+      }
+
+    }
+    &-extra {
+      display: flex;
+      flex-direction: column;
+      padding-top: 10px;
+      span {
+        color: white;
+        font-weight: 500;
+        font-size: 12pt;
+      }
+      h6 {
+        font-size: 20pt;
+        font-weight: 700;
+        color: white;
+      }
+    }
+  }
+
+  &-body {
+    select, input, textarea {
+      width: 90%;
+      margin-bottom: 15px;
+      border-radius: 50px;
+      background-color: white;
+      border: none;
+      padding-left: 15px;
+      font-weight: 500;
+      padding: 10px 15px;
+      box-shadow: 0 0 0.3rem rgba(255, 89, 0, 0.863) !important;
+
+      transition: 0.3s;
+      &:focus {
+        outline: none;
+      }
+    }
+
+    textarea {
+      border-radius: 10px;
+      width: 100%;
+      resize: none;
+    }
+
+    select:focus {
+      border-radius: 20px 20px 0px 0px;
+    }
+  }
+
+  &-crop {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    label {
+      width: 60px;
+      height: 60px;
+      background: #ff5900;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 18pt;
+      box-shadow: 0 0 0.3rem rgba(255, 89, 0, 0.863) !important;
+
+      cursor: pointer;
+
+      i {
+        margin-top: -5px
+      }
+    }
+
+    &-preview {
+      width: 220px;
+      height: 220px;
+      border-radius: 10px;
+      border: 1px dashed #5c5c5c;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
+
+.resumen {
+  background-color: rgb(0, 93, 185);
+  padding-top: 15px;
+  box-shadow: 0 0 0.3rem rgba(0, 93, 185, 0.863) !important;
+  border-radius: 15px;
+  &-header {
+    background-color: rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 0.3rem rgba(0, 93, 185, 0.863) !important;
+    border-radius: 20px;
+    padding: 8px 15px;
+    margin-bottom: 20px;
+
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: flex-start;
+
+    &-img{
+      img {
+        width: 150px;
+        height: 150px;
+        margin-right: 20px;
+        border-radius: 50%;
+      }
+    }
+
+
+    &-info {
+      display: -ms-flexbox;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding-top: 10px;
+      width: 42%;
+
+      &-name {
+        h6 {
+          font-size: 20pt;
+          font-weight: 700;
+          color: white;
+        }
+      }
+
+      &-desc {
+        display: flex;
+        flex-direction: column;
+        span {
+          color: white;
+          font-weight: 500;
+          font-size: 12pt;
+        }
+      }
+
+    }
+    &-extra {
+      display: flex;
+      flex-direction: column;
+      padding-top: 10px;
+      span {
+        color: white;
+        font-weight: 500;
+        font-size: 12pt;
+      }
+      h6 {
+        font-size: 20pt;
+        font-weight: 700;
+        color: white;
+      }
+    }
+  }
+
+  &-body {
+    .resumen-card {
+      background-color: rgba(0, 0, 0, 0.2);
+      height: 300px;
+      overflow: hidden;
+      position: relative;
+      border-radius: 20px;
+      color: white;
+      padding: 10px;
+
+      h6 {
+        font-weight: 600;
+        font-size: 18pt;
+      }
+
+      p {
+        font-weight: 400;
+        font-size: 11pt;
       }
     }
   }

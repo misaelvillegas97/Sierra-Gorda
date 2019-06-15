@@ -1,0 +1,207 @@
+<div class="reconozco container">
+  <div class="d-flex align-items-center animated fadeIn faster">
+    <i
+      class="fas fa-chevron-circle-left"
+      routerLink="../"
+      style="
+        font-size: 25px;
+        margin-right: 10px;
+        line-height: 12pt;
+        color: rgb(0, 190, 212);
+        cursor: pointer;
+        margin-left: -35px
+    "
+    ></i>
+    <h1 class="reconozco-title">
+      Reconocer
+    </h1>
+  </div>
+</div>
+
+<div class="reconocer">
+  <div class="reconocer-left">
+    <!-- Sección Left-->
+    <div class="reconocer-left-container">
+      <div class="reconocer-left-container-item">
+        <select
+          #select_modo="ngModel"
+          [(ngModel)]="selectedModalidad"
+          class="shadow"
+          name=""
+          id=""
+        >
+          <option selected value="0">Modalidad Entrega</option>
+          <option value="1">Individual</option>
+          <option value="2">Grupal</option>
+        </select>
+      </div>
+      <div class="reconocer-left-container-item">
+        <select
+          #select_tipo="ngModel"
+          [(ngModel)]="selectedType"
+          class="shadow"
+          name=""
+          id=""
+        >
+          <option selected value="0">Equipo</option>
+          <option value="2">Mantenedores • Operadores</option>
+          <option value="1">Staff</option>
+        </select>
+      </div>
+      <div class="reconocer-left-container-item">
+        <select class="shadow" name="" id="" *ngIf="rs.listValores">
+          <option selected>Valor Estar</option>
+          <ng-container *ngFor="let valor of rs.listValores">
+            <option *ngIf="validateShown(valor)" value="{{ valor.id }}">{{
+              valor.nombre
+            }}</option>
+          </ng-container>
+        </select>
+      </div>
+      <div class="reconocer-left-container-item">
+        <input type="text" placeholder="Ingresar nombre" />
+      </div>
+    </div>
+  </div>
+  <div class="reconocer-right">
+    <div class="reconocer-right-container">
+      <div class="reconocer-right-container-item selected">
+        <span><i class="fas fa-times-circle"></i></span>
+        <div class="reconocer-right-container-item-left">
+          <img
+            src="https://c3devapp.cl/sg/assets/img/reconozco/cara.png"
+            alt=""
+          />
+        </div>
+        <div class="reconocer-right-container-item-right">
+          <div class="reconocer-right-container-item-right-nombre">
+            Carlos Alberto Vega Tapia
+          </div>
+          <div class="reconocer-right-container-item-right-cargo">
+            Planificador de Relaves
+          </div>
+        </div>
+      </div>
+      <div class="reconocer-right-container-item">
+        <div class="reconocer-right-container-item-left">
+          <img
+            src="https://c3devapp.cl/sg/assets/img/reconozco/cara.png"
+            alt=""
+          />
+        </div>
+        <div class="reconocer-right-container-item-right">
+          <div>
+            nombre
+          </div>
+          <div>
+            cargo
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="reconocido container">
+  <div class="reconocido-header">
+    <div class="reconocido-header-img">
+      <img src="https://c3devapp.cl/sg/assets/img/reconozco/cara.png" alt="">
+    </div>
+    <div class="reconocido-header-info">
+      <div class="reconocido-header-info-name">
+        <h6>Liliana Andrea Vasconselos Zuñiga</h6>
+      </div>
+      <div class="reconocido-header-info-desc">
+        <span>Analista Financiero</span>
+        <span>Contabilidad Y Tesorería</span>
+      </div>
+    </div>
+    <div class="reconocido-header-extra">
+      <span>Reconocimiento al Valor ESTAR</span>
+      <h6>Enfoque en los Resultados</h6>
+    </div>
+  </div>
+
+  <div class="reconocido-body">
+    <div class="row">
+      <div class="col-7 p-0">
+        <select name="" id="">
+          <option selected>Conducta</option>
+        </select>
+        <input type="text" placeholder="Ingresar Jefe" />
+      </div>
+      <div class="col-5 p-0">
+        <textarea name="" id="" rows="10" placeholder="Argumento..."></textarea>
+      </div>
+    </div>
+  </div>
+  <hr class="mt-4 mb-4 style-two">
+  <div class="reconocido-crop">
+    <input type="file" hidden name="reconozcoFileInput" (change)="openCrop($event)" id="reconozcoFileInput">
+    <label for="reconozcoFileInput"><i class="fas fa-upload"></i></label>
+
+    <div class="reconocido-crop-preview">
+      <img [src]="myImage" *ngIf="myImage" alt="">
+      <p *ngIf="!myimage" style="color: #777777; font-size: 11pt; font-style: italic; margin-bottom: 0;">Vista Previa</p>
+    </div>
+  </div>
+</div>
+<br><br>
+<div class="resumen container">
+  <div class="resumen-header">
+    <div class="resumen-header-img">
+      <img src="http://c3soporte00200.cl/estar/assets/img/p_enforque_Resultados.png" alt="">
+    </div>
+    <div class="resumen-header-info">
+      <div class="resumen-header-info-name">
+        <h6>Liliana Andrea Vasconselos Zuñiga</h6>
+      </div>
+      <div class="resumen-header-info-desc">
+        <span>Analista Financiero</span>
+        <span>Contabilidad Y Tesorería</span>
+      </div>
+    </div>
+    <div class="resumen-header-extra">
+      <span>Reconocimiento al Valor ESTAR</span>
+      <h6>Enfoque en los Resultados</h6>
+    </div>
+  </div>
+
+  <div class="resumen-body">
+    <div class="row">
+      <div class="col-6">
+        <div class="resumen-card">
+          <h6>CONDUCTA</h6>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates laudantium accusamus libero ipsa odit. Eius, veniam. Fugit distinctio est optio doloribus perspiciatis enim soluta possimus omnis, veritatis, laborum in illo?</p>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="resumen-card">
+          <h6>ARGUMENTO</h6>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, nisi! Pariatur provident necessitatibus, labore adipisci voluptatum nobis quas ipsam dolorem accusantium nam illum dolore quaerat ratione debitis deleniti dicta! Cumque?</p>
+        </div>
+      </div>
+  </div>
+</div>
+
+
+<br><br><br>
+<div mdbModal #basicModal="mdbModal" class="modal fade"  tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true" [config]="{ignoreBackdropClick: true, keyboard: false}">
+  <div class="modal-dialog" style="max-width: 530px;" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div id="croppie">
+        </div>
+        <div class="preview-img">
+          <img [src]="myImage | safeHtml" alt="" *ngIf="myImage">
+          <!-- <img [src]="upload_1.value" alt="" *ngIf="myImage"> -->
+        </div>
+      </div>
+      <div class="modal-footer" style="border-top: none;">
+        <!-- <button type="button" mdbBtn color="secondary" class="waves-light" aria-label="Close" (click)="basicModal.hide()" mdbWavesEffect>Close</button> -->
+        <button type="button" mdbBtn color="primary" (click)="seeResults()" class="relative waves-light" mdbWavesEffect>Finalizar edición</button>
+      </div>
+    </div>
+  </div>
+</div>

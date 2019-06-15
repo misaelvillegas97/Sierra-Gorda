@@ -1,0 +1,23 @@
+<!-- TODO: Implementar *ngFor para listar productos -->
+<div class="product-card" id="idPrueba1">
+  <div class="product-card-title">
+    <h6>Nombre de referencia</h6>
+    <span><i class="fas fa-chevron-circle-right ml-2 product-card-title-open" aria-hidden="true" (click)="growDiv('idPrueba1')" name="go-click"></i></span>
+  </div>
+  <div class="product-card-content" id="idPrueba1_content">
+
+    <!-- TODO: Implementar pipe Date para formatear fecha -->
+    <h6 class="product-date-title">Fecha de publicación</h6>
+    <span class="product-date">20 de Marzo 2019</span>
+
+    <hr>
+    <!-- Si es que no posee ventas -->
+    <ng-container>
+      <div class="product-response d-flex justify-content-between">
+          <a class="product-response-edit">Eliminar Publicación <i class="fas fa-trash ml-2"></i></a>
+          <a class="product-response-edit">Editar Publicación <i class="fas fa-edit ml-2"></i></a>
+      </div>
+    </ng-container>
+
+  </div>
+</div>

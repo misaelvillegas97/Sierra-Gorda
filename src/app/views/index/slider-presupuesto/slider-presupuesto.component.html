@@ -3,7 +3,7 @@
 <!-- masterslider -->
 <div class="master-slider ms-skin-default" id="masterslider2">
   <!-- SEGURIDAD TRIFR -->
-  <div class="ms-slide white">
+  <span class="ms-slide white">
     <img
       src="assets/masterslider/style/blank.gif"
       data-src="https://c3devapp.cl/sg/assets/img/Resultados.png"
@@ -18,24 +18,25 @@
         />
         <h4 class="pl-3 m-0">
           RESULTADOS<br />
-          <small class="small-month">Febrero</small>
+          <small class="small-month">{{meses[is.listaresultado[7].fecha_diario_indice.getMonth()]}}</small>
+
         </h4>
       </div>
     </div>
-    <div class="ms-info">
+    <span class="ms-info">
       <div class="dot">
         <i
           class="fas fa-circle status-dot"
           aria-hidden="true"
-          style="color: #7FBB5A"
+          [ngClass]="getResultColor(is.listaresultado[0])"
         ></i>
       </div>
-      <div class="left-side-content">
+      <span class="left-side-content">
         <h1 class="title-left-side">
           Seguridad <br />
           <span>TRIFR</span>
         </h1>
-      </div>
+      </span>
       <div class="center-icon">
         <img
           src="https://c3devapp.cl/sg/assets/img/Resultados/1.png"
@@ -44,13 +45,13 @@
         />
       </div>
       <div class="right-side-content-1">
-        <div class="month pb-4 mb-4"><span>Febrero</span> = 0.61</div>
+        <div class="month pb-4 mb-4"><span>{{meses[is.listaresultado[7].fecha_diario_indice.getMonth()]}}</span> = 0.61</div>
         <div class="values">
           <div class="d-flex justify-content-center">
             <div class="acumulado">
               <div class="title">Acumulado TRIFR</div>
-              <div class="text-center result-box">
-                0,38
+              <div class="text-center result-box-real" [ngClass]="getResultClass(is.listaresultado[0])">
+                {{is.listaresultado[7].real_resultado}}
               </div>
             </div>
             <div class="v-s ml-4 mr-4">
@@ -58,18 +59,15 @@
             </div>
             <div class="acumulado">
               <div class="title">Target</div>
-              <div
-                class="text-center result-box "
-                style="background-color: #33b5e5 "
-              >
-                0,50
+              <div class="text-center result-box-presupuesto ">
+                {{is.listaresultado[7].presupuesto_resultado}}
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
+    </span>
+  </span>
 
   <!-- KPI MEDIO AMBIENTE -->
   <div class="ms-slide white">
@@ -88,7 +86,7 @@
         />
         <h4 class="pl-3 m-0">
           RESULTADOS<br />
-          <small class="small-month">Febrero</small>
+          <small class="small-month">{{meses[is.listaresultado[1].fecha_diario_indice.getMonth()]}}</small>
         </h4>
       </div>
     </div>
@@ -112,16 +110,16 @@
         <div class="values">
           <div class="d-flex justify-content-center">
             <div class="acumulado">
-              <div class="text-center light-blue darken-3 result-box">
-                52
+              <div class="text-center  result-box-real " [ngClass]="getResultClass(is.listaresultado[0])">
+                {{ is.listaresultado[0].real_resultado}}
               </div>
             </div>
             <div class="v-s ml-4 mr-4">
               V/S
             </div>
             <div class="acumulado">
-              <div class="text-center red result-box">
-                50
+              <div class="text-center result-box-presupuesto" >
+                {{ is.listaresultado[0].presupuesto_resultado}}
               </div>
             </div>
           </div>
@@ -130,16 +128,16 @@
         <div class="values">
           <div class="d-flex justify-content-center">
             <div class="acumulado">
-              <div class="text-center light-blue darken-3 result-box">
-                96
+              <div class="text-center result-box-real medio-ambiente-rojo" [ngClass]="getResultClass(is.listaresultado[0])">
+                {{ is.listaresultado[0].real_resultado}}
               </div>
             </div>
             <div class="v-s ml-4 mr-4">
               V/S
             </div>
             <div class="acumulado">
-              <div class="text-center result-box">
-                150
+              <div class="text-center result-box-presupuesto">
+                {{ is.listaresultado[0].presupuesto_resultado}}
               </div>
             </div>
           </div>
@@ -169,7 +167,7 @@
         />
         <h4 class="pl-3 m-0">
           RESULTADOS<br />
-          <small class="small-month">Febrero</small>
+          <small class="small-month">{{meses[is.listaresultado[2].fecha_diario_indice.getMonth()]}}</small>
         </h4>
       </div>
     </div>
@@ -178,7 +176,7 @@
         <i
           class="fas fa-circle status-dot"
           aria-hidden="true"
-          style="color: #FF4514"
+          [ngClass]="getResultColor(is.listaresultado[2])"
         ></i>
       </div>
       <div class="left-side-content">
@@ -198,14 +196,14 @@
         />
       </div>
       <div class="right-side-content-3">
-        <div class="percent">
-          -3.6%
+        <div class="percent" [ngClass]="getResultColor(is.listaresultado[2])">
+          {{is.listaresultado[2].promedio_actual}}%
         </div>
         <div class="values">
           <div class="d-flex justify-content-center">
             <div class="acumulado">
-              <div class="text-center light-blue darken-3 result-box">
-                96
+              <div class="text-center result-box-real">
+                {{is.listaresultado[2].real_resultado}}
               </div>
             </div>
             <div class="v-s ml-4 mr-4">
@@ -213,10 +211,10 @@
             </div>
             <div class="acumulado">
               <div
-                class="text-center result-box"
-                style="background-color: #7ACCD4;"
+                class="text-center result-box-presupuesto"
+
               >
-                150
+                {{is.listaresultado[2].presupuesto_resultado}}
               </div>
             </div>
           </div>
@@ -242,17 +240,13 @@
         />
         <h4 class="pl-3 m-0">
           RESULTADOS<br />
-          <small class="small-month">Febrero</small>
+          <small class="small-month">{{meses[is.listaresultado[3].fecha_diario_indice.getMonth()]}}</small>
         </h4>
       </div>
     </div>
     <div class="ms-info">
       <div class="dot">
-        <i
-          class="fas fa-circle status-dot"
-          aria-hidden="true"
-          style="color: #FF4514"
-        ></i>
+        <i class="fas fa-circle status-dot" aria-hidden="true" [ngClass]="getResultColor(is.listaresultado[3])"></i>
       </div>
       <div class="left-side-content">
         <h1 class="title-left-side">
@@ -271,14 +265,14 @@
         />
       </div>
       <div class="right-side-content-3">
-        <div class="percent">
-          -4.0%
+        <div class="percent" [ngClass]="getResultColor(is.listaresultado[3])">
+          {{is.listaresultado[3].promedio_actual}}%
         </div>
         <div class="values">
           <div class="d-flex justify-content-center">
             <div class="acumulado">
-              <div class="text-center light-blue darken-3 result-box">
-                39,816
+              <div class="text-center result-box-real">
+                {{is.listaresultado[3].real_resultado}}
               </div>
             </div>
             <div class="v-s ml-4 mr-4">
@@ -286,10 +280,10 @@
             </div>
             <div class="acumulado">
               <div
-                class="text-center result-box"
-                style="background-color: #7ACCD4;"
+                class="text-center result-box-presupuesto"
+
               >
-                41,491
+                {{is.listaresultado[3].presupuesto_resultado}}
               </div>
             </div>
           </div>
@@ -315,7 +309,7 @@
         />
         <h4 class="pl-3 m-0">
           RESULTADOS<br />
-          <small class="small-month">Febrero</small>
+          <small class="small-month">{{meses[is.listaresultado[4].fecha_diario_indice.getMonth()]}}</small>
         </h4>
       </div>
     </div>
@@ -324,7 +318,7 @@
         <i
           class="fas fa-circle status-dot"
           aria-hidden="true"
-          style="color: #FF4514"
+          [ngClass]="getResultColor(is.listaresultado[0])"
         ></i>
       </div>
       <div class="left-side-content">
@@ -344,14 +338,14 @@
         />
       </div>
       <div class="right-side-content-3">
-        <div class="percent">
-          -4.0%
+        <div class="percent" [ngClass]="getResultColor(is.listaresultado[4])">
+           {{is.listaresultado[4].promedio_actual}}%
         </div>
         <div class="values">
           <div class="d-flex justify-content-center">
             <div class="acumulado">
-              <div class="text-center light-blue darken-3 result-box">
-                39,816
+              <div class="text-center result-box-real">
+                {{is.listaresultado[4].real_resultado}}
               </div>
             </div>
             <div class="v-s ml-4 mr-4">
@@ -359,10 +353,8 @@
             </div>
             <div class="acumulado">
               <div
-                class="text-center result-box"
-                style="background-color: #7ACCD4;"
-              >
-                41,491
+                class="text-center result-box-presupuesto">
+                {{is.listaresultado[4].presupuesto_resultado}}
               </div>
             </div>
           </div>
@@ -388,7 +380,7 @@
         />
         <h4 class="pl-3 m-0">
           RESULTADOS<br />
-          <small class="small-month">Febrero</small>
+          <small class="small-month">{{meses[is.listaresultado[5].fecha_diario_indice.getMonth()]}}</small>
         </h4>
       </div>
     </div>
@@ -397,7 +389,7 @@
         <i
           class="fas fa-circle status-dot"
           aria-hidden="true"
-          style="color: #FF4514"
+          [ngClass]="getResultColor(is.listaresultado[5])"
         ></i>
       </div>
       <div class="left-side-content">
@@ -417,14 +409,14 @@
         />
       </div>
       <div class="right-side-content-3">
-        <div class="percent">
-          -4.0%
+        <div class="percent" [ngClass]="getResultColor(is.listaresultado[5])">
+          {{is.listaresultado[5].promedio_actual}}%
         </div>
         <div class="values">
           <div class="d-flex justify-content-center">
             <div class="acumulado">
-              <div class="text-center light-blue darken-3 result-box">
-                39,816
+              <div class="text-center result-box-real">
+                {{is.listaresultado[5].real_resultado}}
               </div>
             </div>
             <div class="v-s ml-4 mr-4">
@@ -432,10 +424,8 @@
             </div>
             <div class="acumulado">
               <div
-                class="text-center result-box"
-                style="background-color: #7ACCD4;"
-              >
-                41,491
+                class="text-center result-box-presupuesto">
+                {{is.listaresultado[5].presupuesto_resultado}}
               </div>
             </div>
           </div>
@@ -461,7 +451,7 @@
         />
         <h4 class="pl-3 m-0">
           RESULTADOS<br />
-          <small class="small-month">Febrero</small>
+          <small class="small-month">{{meses[is.listaresultado[6].fecha_diario_indice.getMonth()]}}</small>
         </h4>
       </div>
     </div>
@@ -470,7 +460,7 @@
         <i
           class="fas fa-circle status-dot"
           aria-hidden="true"
-          style="color: #FF4514"
+          [ngClass]="getResultColor(is.listaresultado[6])"
         ></i>
       </div>
       <div class="left-side-content">
@@ -490,14 +480,14 @@
         />
       </div>
       <div class="right-side-content-3">
-        <div class="percent">
-          -4.0%
+        <div class="percent" [ngClass]="getResultColor(is.listaresultado[6])">
+          {{is.listaresultado[6].promedio_actual}}%
         </div>
         <div class="values">
           <div class="d-flex justify-content-center">
             <div class="acumulado">
-              <div class="text-center light-blue darken-3 result-box">
-                39,816
+              <div class="text-center result-box-real">
+                {{is.listaresultado[6].real_resultado}}
               </div>
             </div>
             <div class="v-s ml-4 mr-4">
@@ -505,10 +495,10 @@
             </div>
             <div class="acumulado">
               <div
-                class="text-center result-box"
-                style="background-color: #7ACCD4;"
+                class="text-center result-box-presupuesto"
+
               >
-                41,491
+                {{is.listaresultado[6].presupuesto_resultado}}
               </div>
             </div>
           </div>

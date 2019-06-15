@@ -1,0 +1,68 @@
+.header {
+  padding: 15px 25px;
+  &-userinfo{
+    display: flex;
+    justify-content: flex-start;
+    &-img {
+      width: 140px;
+      height: 140px;
+      margin-right: 20px;
+    }
+
+    &-desc {
+      h6 {
+        font-weight: 700;
+        font-size: 17pt;
+        color: white;
+      }
+
+      p {
+        margin-bottom: 0px;
+      }
+    }
+    font-weight: 700;
+    font-size: 12pt;
+  }
+
+
+  p {
+    font-weight: 500;
+    font-size: 11pt;
+    margin-bottom: 0;
+  }
+
+  h6 {
+    font-size: 21pt;
+    font-weight: 700;
+  }
+}
+
+.descripcion {
+  background-color: rgba(0, 0, 0, 0.05);
+  padding: 10px 25px;
+  &-item {
+    h6 {
+      font-weight: 600;
+      font-size: 14pt;
+    }
+
+    p {
+      font-size: 10pt;
+      font-weight: 400;
+    }
+  }
+}
+
+.footer {
+  padding-bottom: 18px;
+  padding-top: 18px;
+  text-align: center;
+  background: white;
+  color: #ff5900;
+  border-radius: 0 0 10px 10px;
+  p {
+    font-weight: 700;
+    font-size: 14pt;
+    margin-bottom: 0;
+  }
+}
