@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Reconocimiento, Valor } from '../interface/reconozco';
+import { Reconocimiento, Valor, Gerencia } from '../interface/reconozco';
+import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 const URL_SG = 'https://c3wsapi.cl/sg';
 
@@ -11,8 +13,9 @@ export class ReconozcoService {
 
   listReconocimientos: Reconocimiento[];
   listValores: Valor[];
+  listGerencias: Gerencia[];
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router, private snackbar: MatSnackBar) { }
 
   getAllReconocimientos(_type?: number) {
     this.listReconocimientos = undefined;
@@ -50,6 +53,17 @@ export class ReconozcoService {
       );
   }
 
+  getAllGerencias() {
+    const URL_REQUEST = `${URL_SG}/empresa/gerencias`;
+
+    this.http.get(URL_REQUEST).toPromise()
+      .then(
+        (res) => {
+          this.listGerencias = res['gerencias'];
+        }
+      );
+  }
+
   async setLike(_idReconocimiento: number) {
     const URL_REQUEST = `${URL_SG}/reconozco/darmegusta/`;
     const DATA = {
@@ -64,5 +78,23 @@ export class ReconozcoService {
         }
       );
 
+  }
+
+  sendReconocimiento(_reconocimiento: any) {
+    const URL_REQUEST = `${URL_SG}/reconozco/reconocer/`;
+    this.http.post(URL_REQUEST, _reconocimiento).toPromise()
+      .then(
+        res => {
+          console.log(res);
+          this.snackbar.open('Se ha realizado correctamente el reconocimiento', null, {
+            duration: 3000,
+            verticalPosition: 'bottom',
+            horizontalPosition: 'right',
+            panelClass: ['snackbar-login'],
+            announcementMessage: 'Mensaje de bienvenida'
+          });
+          this.router.navigateByUrl('/te-reconozco');
+        }
+      );
   }
 }

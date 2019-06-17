@@ -41,3 +41,8 @@ export interface Comportamiento {
   id_valor_comportamiento: number;
   nombre_comportamiento: string;
 }
+
+export interface Gerencia {
+  id: number;
+  nombre_gerencia: string;
+}

@@ -18,17 +18,46 @@
   </div>
 </div>
 
-<div class="reconocer">
+<div class="reconozco-secciones-container container animated fadeInLeft">
+  <ng-container *ngFor="let button of buttons; let i = index">
+    <button
+      class="reconozco-secciones-button"
+      [ngClass]="[
+        button.completed ? 'reconozco-secciones-button-completed' : '',
+        button.actual ? 'reconozco-secciones-button-actual' : ''
+      ]"
+      (click)="setRespuesta(button, i)"
+      [disabled]="
+        i === 0
+          ? button.completed
+            ? true
+            : validateNext(i)
+          : !buttons[i - 1].actual
+          ? true
+          : button.completed
+          ? true
+          : validateNext(i)
+      "
+    >
+      {{ button.number }}
+    </button>
+  </ng-container>
+</div>
+
+<br /><br />
+
+<div class="reconocer" [hidden]="!buttons[0].actual">
   <div class="reconocer-left">
     <!-- Sección Left-->
     <div class="reconocer-left-container">
       <div class="reconocer-left-container-item">
         <select
-          #select_modo="ngModel"
-          [(ngModel)]="selectedModalidad"
           class="shadow"
           name=""
           id=""
+          (change)="modalidadChange()"
+          #select_modalidad="ngModel"
+          [(ngModel)]="respuestas.modalidad"
         >
           <option selected value="0">Modalidad Entrega</option>
           <option value="1">Individual</option>
@@ -38,7 +67,7 @@
       <div class="reconocer-left-container-item">
         <select
           #select_tipo="ngModel"
-          [(ngModel)]="selectedType"
+          [(ngModel)]="respuestas.equipo"
           class="shadow"
           name=""
           id=""
@@ -49,8 +78,8 @@
         </select>
       </div>
       <div class="reconocer-left-container-item">
-        <select class="shadow" name="" id="" *ngIf="rs.listValores">
-          <option selected>Valor Estar</option>
+        <select class="shadow" name="" id="" *ngIf="rs.listValores" #select_valores="ngModel" [(ngModel)]="respuestas.valor_estar">
+          <option value="0" selected>Valor Estar</option>
           <ng-container *ngFor="let valor of rs.listValores">
             <option *ngIf="validateShown(valor)" value="{{ valor.id }}">{{
               valor.nombre
@@ -59,63 +88,97 @@
         </select>
       </div>
       <div class="reconocer-left-container-item">
-        <input type="text" placeholder="Ingresar nombre" />
+        <select class="shadow" name="" id="" *ngIf="rs.listGerencias && select_modalidad.value === '2'" #select_gerencias="ngModel" [(ngModel)]="respuestas.nombre_grupo">
+          <option value="0" selected>Gerencias</option>
+          <ng-container *ngFor="let gerencia of rs.listGerencias">
+            <option [value]="gerencia.id">{{ gerencia.nombre_gerencia }}</option>
+          </ng-container>
+        </select>
+        <!-- <input type="text" *ngIf="this.respuestas.modalidad === '2'" #nombre_grupo="ngModel" [(ngModel)]="respuesta.nombre_grupo" placeholder="Nombre de grupo"/> -->
       </div>
+      <div class="reconocer-left-container-item">
+        <input type="text" #user="ngModel" [(ngModel)]="userSearchBox" (keyup)="onUserSearch(user.value)" placeholder="Ingresar nombre"/>
+      </div>
+      <ng-container *ngIf="listaUsuariosSeleccionados">
+        <span class="text-muted">Puede continuar a Reconocimiento</span>
+      </ng-container>
+
     </div>
   </div>
   <div class="reconocer-right">
+
     <div class="reconocer-right-container">
-      <div class="reconocer-right-container-item selected">
-        <span><i class="fas fa-times-circle"></i></span>
-        <div class="reconocer-right-container-item-left">
-          <img
-            src="https://c3devapp.cl/sg/assets/img/reconozco/cara.png"
-            alt=""
-          />
-        </div>
-        <div class="reconocer-right-container-item-right">
-          <div class="reconocer-right-container-item-right-nombre">
-            Carlos Alberto Vega Tapia
+      <ng-container *ngIf="listaUsuariosSeleccionados">
+        <ng-container *ngFor="let usuario of listaUsuariosSeleccionados">
+          <div class="reconocer-right-container-item mb-2 selected cursor">
+            <span><i class="fas fa-times-circle"></i></span>
+            <div class="reconocer-right-container-item-left">
+              <img
+                src="https://c3devapp.cl/sg/assets/img/reconozco/cara.png"
+                alt=""
+              />
+            </div>
+            <div class="reconocer-right-container-item-right">
+              <div class="reconocer-right-container-item-right-nombre">
+                {{ usuario.primer_nombre_usuario + ' ' + (usuario.segundo_nombre_usuario? usuario.segundo_nombre_usuario : '') + ' ' + usuario.apellido_pat_usuario + ' ' + (usuario.apellido_mat_usuario ? usuario.apellido_mat_usuario: '') }}
+              </div>
+              <div class="reconocer-right-container-item-right-cargo">
+                {{ usuario.nombre_cargo ? usuario.nombre_cargo : 'Sin cargo' }}
+              </div>
+            </div>
           </div>
-          <div class="reconocer-right-container-item-right-cargo">
-            Planificador de Relaves
+        </ng-container>
+      </ng-container>
+    </div>
+
+    <div class="reconocer-right-container">
+
+      <ng-container *ngIf="listaUsuariosBusqueda">
+        <ng-container *ngFor="let usuario of listaUsuariosBusqueda">
+          <div class="reconocer-right-container-item" (click)="selectUsuario(usuario)">
+            <div class="reconocer-right-container-item-left">
+              <img
+                src="https://c3devapp.cl/sg/assets/img/reconozco/cara.png"
+                alt=""
+              />
+            </div>
+            <div class="reconocer-right-container-item-right">
+              <div class="reconocer-right-container-item-right-nombre">
+                {{ usuario.primer_nombre_usuario + ' ' + (usuario.segundo_nombre_usuario? usuario.segundo_nombre_usuario : '') + ' ' + usuario.apellido_pat_usuario + ' ' + (usuario.apellido_mat_usuario ? usuario.apellido_mat_usuario: '') }}
+              </div>
+              <div class="reconocer-right-container-item-right-cargo">
+                {{ usuario.nombre_cargo ? usuario.nombre_cargo : 'Sin cargo' }}
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-      <div class="reconocer-right-container-item">
-        <div class="reconocer-right-container-item-left">
-          <img
-            src="https://c3devapp.cl/sg/assets/img/reconozco/cara.png"
-            alt=""
-          />
-        </div>
-        <div class="reconocer-right-container-item-right">
-          <div>
-            nombre
-          </div>
-          <div>
-            cargo
-          </div>
-        </div>
-      </div>
+        </ng-container>
+      </ng-container>
     </div>
   </div>
 </div>
 
-
-<div class="reconocido container">
+<div class="reconocido container" [hidden]="!buttons[1].actual">
   <div class="reconocido-header">
     <div class="reconocido-header-img">
-      <img src="https://c3devapp.cl/sg/assets/img/reconozco/cara.png" alt="">
+      <img src="https://c3devapp.cl/sg/assets/img/reconozco/cara.png" alt="" />
     </div>
     <div class="reconocido-header-info">
-      <div class="reconocido-header-info-name">
-        <h6>Liliana Andrea Vasconselos Zuñiga</h6>
-      </div>
-      <div class="reconocido-header-info-desc">
-        <span>Analista Financiero</span>
-        <span>Contabilidad Y Tesorería</span>
-      </div>
+      <ng-container *ngIf="listaUsuariosSeleccionados">
+        <ng-container *ngIf="listaUsuariosSeleccionados.length === 1">
+          <ng-container *ngFor="let usuario of listaUsuariosSeleccionados">
+            <div class="reconocido-header-info-name">
+              <h6>{{ usuario.primer_nombre_usuario + ' ' + (usuario.segundo_nombre_usuario? usuario.segundo_nombre_usuario : '') + ' ' + usuario.apellido_pat_usuario + ' ' + (usuario.apellido_mat_usuario ? usuario.apellido_mat_usuario: '') }}</h6>
+            </div>
+            <div class="reconocido-header-info-desc">
+              <span>{{ usuario.nombre_cargo ? usuario.nombre_cargo : 'Sin cargo' }}</span>
+              <span>{{ usuario.nombre_lugar_trabajo ? usuario.nombre_lugar_trabajo : 'Sin lugar de trabajo' }}</span>
+            </div>
+          </ng-container>
+
+        </ng-container>
+
+      </ng-container>
+
     </div>
     <div class="reconocido-header-extra">
       <span>Reconocimiento al Valor ESTAR</span>
@@ -126,40 +189,119 @@
   <div class="reconocido-body">
     <div class="row">
       <div class="col-7 p-0">
-        <select name="" id="">
-          <option selected>Conducta</option>
+        <select name="" id="" #conducta_select="ngModel" [(ngModel)]="respuestas.conducta">
+          <option value="0" selected>Conducta</option>
+          <ng-container *ngIf="returnValorConducta()">
+            <ng-container *ngFor="let conducta of returnValorConducta().comportamientos; let i=index">
+              <!-- <option [value]="conducta.id_valor_comportamiento">{{ conducta.nombre_comportamiento  }}</option> -->
+              <option [value]="i+1">{{ conducta.nombre_comportamiento  }}</option>
+            </ng-container>
+          </ng-container>
         </select>
-        <input type="text" placeholder="Ingresar Jefe" />
+        <!-- <input type="text" placeholder="Ingresar Jefe" /> -->
+        <input type="text" #boss="ngModel" [(ngModel)]="bossSearchBox" (keyup)="onBossSearch(boss.value)" placeholder="Ingrese Jefe"/>
+        <!-- #bossSearchBox="ngModel" [(ngModel)]="bossSearchBox" (keyup)="onBossSearch(user.value)" -->
+        <div class="search-container">
+          <div class="reconocer-right-container">
+            <ng-container *ngIf="listaJefesSeleccionados">
+              <div class="reconocer-right-container-item mb-2 selected cursor">
+                <span><i class="fas fa-times-circle"></i></span>
+                <div class="reconocer-right-container-item-left">
+                  <img
+                    src="https://c3devapp.cl/sg/assets/img/reconozco/cara.png"
+                    alt=""
+                  />
+                </div>
+                <div class="reconocer-right-container-item-right">
+                  <div class="reconocer-right-container-item-right-nombre">
+                    {{ listaJefesSeleccionados.primer_nombre_usuario + ' ' + (listaJefesSeleccionados.segundo_nombre_usuario? listaJefesSeleccionados.segundo_nombre_usuario : '') + ' ' + listaJefesSeleccionados.apellido_pat_usuario + ' ' + (listaJefesSeleccionados.apellido_mat_usuario ? listaJefesSeleccionados.apellido_mat_usuario: '') }}
+                  </div>
+                  <div class="reconocer-right-container-item-right-cargo">
+                    {{ listaJefesSeleccionados.nombre_cargo ? listaJefesSeleccionados.nombre_cargo : 'Sin cargo' }}
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+          </div>
+          <div class="reconocer-right-container">
+            <ng-container *ngIf="listaJefesBusqueda">
+              <ng-container *ngFor="let usuario of listaJefesBusqueda">
+                <div class="reconocer-right-container-item" (click)="selectJefe(usuario)">
+                  <div class="reconocer-right-container-item-left">
+                    <img
+                      src="https://c3devapp.cl/sg/assets/img/reconozco/cara.png"
+                      alt=""
+                    />
+                  </div>
+                  <div class="reconocer-right-container-item-right">
+                    <div class="reconocer-right-container-item-right-nombre">
+                      {{ usuario.primer_nombre_usuario + ' ' + (usuario.segundo_nombre_usuario? usuario.segundo_nombre_usuario : '') + ' ' + usuario.apellido_pat_usuario + ' ' + (usuario.apellido_mat_usuario ? usuario.apellido_mat_usuario: '') }}
+                    </div>
+                    <div class="reconocer-right-container-item-right-cargo">
+                      {{ usuario.nombre_cargo ? usuario.nombre_cargo : 'Sin cargo' }}
+                    </div>
+                  </div>
+                </div>
+              </ng-container>
+            </ng-container>
+          </div>
+        </div>
       </div>
       <div class="col-5 p-0">
-        <textarea name="" id="" rows="10" placeholder="Argumento..."></textarea>
+        <textarea #text_argumento="ngModel" [(ngModel)]="respuestas.argumento" name="" id="" rows="10" placeholder="Argumento..."></textarea>
       </div>
     </div>
   </div>
-  <hr class="mt-4 mb-4 style-two">
+  <hr class="mt-4 mb-4 style-two" />
   <div class="reconocido-crop">
-    <input type="file" hidden name="reconozcoFileInput" (change)="openCrop($event)" id="reconozcoFileInput">
+    <input
+      type="file"
+      hidden
+      name="reconozcoFileInput"
+      (change)="openCrop($event)"
+      id="reconozcoFileInput"
+    />
     <label for="reconozcoFileInput"><i class="fas fa-upload"></i></label>
 
     <div class="reconocido-crop-preview">
-      <img [src]="myImage" *ngIf="myImage" alt="">
-      <p *ngIf="!myImage" style="color: #777777; font-size: 11pt; font-style: italic; margin-bottom: 0;">Vista Previa</p>
+      <img [src]="myImage" style="border: 5px solid transparent; border-radius: 10px;" class="img-fluid" *ngIf="myImage" alt="" />
+      <p
+        *ngIf="!myImage"
+        style="color: #777777; font-size: 11pt; font-style: italic; margin-bottom: 0;"
+      >
+        Vista Previa
+      </p>
     </div>
   </div>
 </div>
-<br><br>
-<div class="resumen container">
+<br />
+<div class="resumen container" *ngIf="buttons[2].actual">
   <div class="resumen-header">
     <div class="resumen-header-img">
-      <img src="http://c3soporte00200.cl/estar/assets/img/p_enforque_Resultados.png" alt="">
+      <img
+        *ngIf="myImage"
+        [src]="myImage"
+        alt=""
+      />
+      <img
+        *ngIf="!myImage"
+        src="http://c3soporte00200.cl/estar/assets/img/p_enforque_Resultados.png"
+        alt=""
+      />
     </div>
-    <div class="resumen-header-info">
-      <div class="resumen-header-info-name">
-        <h6>Liliana Andrea Vasconselos Zuñiga</h6>
+    <div class="resumen-header-info" *ngIf="respuestas.modalidad === '1'">
+      <div class="resumen-header-info-name" *ngIf="listaUsuariosSeleccionados">
+        <h6>{{ listaUsuariosSeleccionados[0].primer_nombre_usuario + ' ' + (listaUsuariosSeleccionados[0].segundo_nombre_usuario? listaUsuariosSeleccionados[0].segundo_nombre_usuario : '') + ' ' + listaUsuariosSeleccionados[0].apellido_pat_usuario + ' ' + (listaUsuariosSeleccionados[0].apellido_mat_usuario ? listaUsuariosSeleccionados[0].apellido_mat_usuario: '') }}</h6>
       </div>
       <div class="resumen-header-info-desc">
         <span>Analista Financiero</span>
         <span>Contabilidad Y Tesorería</span>
+      </div>
+    </div>
+    <div class="resumen-header-info" *ngIf="respuestas.modalidad === '2'">
+      <div class="resumen-header-info-name" *ngFor="let usuario of listaUsuariosSeleccionados">
+        <h6>{{respuestas.nombre_grupo ? respuestas.nombre_grupo : 'Sin nombre de grupo'}}:</h6>
+        <h6>• {{ usuario.primer_nombre_usuario + ' ' + (usuario.segundo_nombre_usuario? usuario.segundo_nombre_usuario : '') + ' ' + usuario.apellido_pat_usuario + ' ' + (usuario.apellido_mat_usuario ? usuario.apellido_mat_usuario: '') }}</h6>
       </div>
     </div>
     <div class="resumen-header-extra">
@@ -173,34 +315,56 @@
       <div class="col-6">
         <div class="resumen-card">
           <h6>CONDUCTA</h6>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates laudantium accusamus libero ipsa odit. Eius, veniam. Fugit distinctio est optio doloribus perspiciatis enim soluta possimus omnis, veritatis, laborum in illo?</p>
+          <p>
+            {{ getConducta() }}
+          </p>
         </div>
       </div>
       <div class="col-6">
         <div class="resumen-card">
           <h6>ARGUMENTO</h6>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, nisi! Pariatur provident necessitatibus, labore adipisci voluptatum nobis quas ipsam dolorem accusantium nam illum dolore quaerat ratione debitis deleniti dicta! Cumque?</p>
+          <p> {{ respuestas.argumento }} </p>
         </div>
       </div>
+    </div>
+    <div class="resumen-body-send">
+      <button (click)="sendReconocimiento()">
+        Enviar Reconocimiento
+      </button>
+    </div>
   </div>
 </div>
-
-
-<br><br><br>
-<div mdbModal #basicModal="mdbModal" class="modal fade"  tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true" [config]="{ignoreBackdropClick: true, keyboard: false}">
+<div
+  mdbModal
+  #basicModal="mdbModal"
+  class="modal fade"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="myBasicModalLabel"
+  aria-hidden="true"
+  [config]="{ ignoreBackdropClick: true, keyboard: false }"
+>
   <div class="modal-dialog" style="max-width: 530px;" role="document">
     <div class="modal-content">
       <div class="modal-body">
-        <div id="croppie">
-        </div>
+        <div id="croppie"></div>
         <div class="preview-img">
-          <img [src]="myImage | safeHtml" alt="" *ngIf="myImage">
+          <img [src]="myImage | safeHtml" alt="" *ngIf="myImage" />
           <!-- <img [src]="upload_1.value" alt="" *ngIf="myImage"> -->
         </div>
       </div>
       <div class="modal-footer" style="border-top: none;">
         <!-- <button type="button" mdbBtn color="secondary" class="waves-light" aria-label="Close" (click)="basicModal.hide()" mdbWavesEffect>Close</button> -->
-        <button type="button" mdbBtn color="primary" (click)="seeResults()" class="relative waves-light" mdbWavesEffect>Finalizar edición</button>
+        <button
+          type="button"
+          mdbBtn
+          color="primary"
+          (click)="seeResults()"
+          class="relative waves-light"
+          mdbWavesEffect
+        >
+          Finalizar edición
+        </button>
       </div>
     </div>
   </div>

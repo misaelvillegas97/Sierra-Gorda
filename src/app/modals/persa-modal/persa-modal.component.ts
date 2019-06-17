@@ -40,12 +40,12 @@ export class PersaModalComponent implements OnInit, OnDestroy {
       res => {
         if (res) {
           _cantidad = 0;
-          this.snackbar.open('Se ha realizado correctamente el pedido', null, {
+          this.snackbar.open('Ha ocurrido un error.', null, {
             duration: 3000,
             verticalPosition: 'bottom',
             horizontalPosition: 'right',
             panelClass: ['snackbar-login'],
-            announcementMessage: 'Mensaje de bienvenida'
+            announcementMessage: 'ERROR'
           });
         }
       }
