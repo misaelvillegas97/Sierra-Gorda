@@ -77,10 +77,33 @@ export class ProfileService {
       nombre,
       filtro_c: filtroCargo !== '0' ? filtroCargo : null,
       filtro_l: filtroLugar !== '0' ? filtroLugar : null,
-      filtro_g: filtroGerencia !== '0' ? filtroGerencia : null
+      filtro_g: filtroGerencia !== '0' ? filtroGerencia : null,
+      param_u: 1
     };
 
     await this.http.post(URL + 'usuario/buscar/', DATA, httpOptions)
+      .toPromise()
+      .then(
+        (res: RespuestaBuscar) => {
+          if (res.err === 404) {
+            return [];
+          }
+          respuesta = res.usuarios;
+          return respuesta;
+        }
+      ).catch(
+        err => {
+          respuesta = [];
+          return respuesta;
+        }
+      );
+    return respuesta;
+  }
+
+  async searchBoss(nombre: string) {
+    let respuesta: UsuarioBuscar[] = [];
+
+    await this.http.get(URL + 'reconozco/buscajefelim/' + nombre, httpOptions)
       .toPromise()
       .then(
         (res: RespuestaBuscar) => {
