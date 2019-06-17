@@ -280,8 +280,8 @@ export class ReconocerComponent implements OnInit, OnDestroy {
       reconocedor: this.ls.userLogged.id_usuario,
       reconocido: idUsuarios.join(),
       comentario: this.respuestas.argumento,
-      valor_reconocimiento: this.respuestas.valor_estar,
-      jefe: this.listaJefesSeleccionados.id_usuario,
+      valor_comportamiento: this.respuestas.valor_estar,
+      jefe: this.listaJefesSeleccionados.id_usuario.toString(),
       nombre_grupo: this.respuestas.nombre_grupo ? parseInt(this.respuestas.nombre_grupo, 0) : null,
       url_img: this.myImage ? this.myImage.substr(22) : null,
       tipo_r: parseInt(this.respuestas.modalidad, 0)
