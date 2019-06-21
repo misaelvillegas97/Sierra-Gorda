@@ -218,7 +218,7 @@ $nombre-color2: #5a6770;
         justify-content: flex-end;
         &-boton {
           background: $blueSG;
-          color: #fff;
+          color: #fff !important;
           font-weight: 600;
           width:130px;
           height: 45px;

@@ -20,7 +20,7 @@ export interface Video {
   titulo: string;
   url_video: string;
   url_img: string;
-  descripcion: string;
-  id_categoria: number;
-  fecha_creacion: Date;
+  descripcion?: string;
+  id_categoria?: number;
+  fecha_creacion?: Date;
 }

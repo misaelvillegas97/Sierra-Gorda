@@ -53,6 +53,9 @@ import { RevistaComponent } from './views/sections/personas/revista/revista.comp
 import { FormularioDAComponent } from './views/desafio-austeridad/formulario-d-a/formulario-d-a.component';
 import { TodosReconocidosComponent } from './views/tereconozco/todos-reconocidos/todos-reconocidos.component';
 import { ReconocerComponent } from './views/tereconozco/reconocer/reconocer.component';
+import { ReconocidosComponent } from './views/tereconozco/reconocidos/reconocidos.component';
+import { ComunicacionesComponent } from './views/menus/comunicaciones/comunicaciones.component';
+import { FormulariosSgComponent } from './views/menus/formularios-sg/formularios-sg.component';
 
 const routes: Routes = [
   {
@@ -302,6 +305,14 @@ const routes: Routes = [
     ]
   },
   {
+    path: 'comunicaciones',
+    component: ComunicacionesComponent
+  },
+  {
+    path: 'formularios-sg',
+    component: FormulariosSgComponent
+  },
+  {
     path: 'galeria',
     component: GaleriaComponent,
     children: [
@@ -361,6 +372,10 @@ const routes: Routes = [
       {
         path: 'reconocer',
         component: ReconocerComponent
+      },
+      {
+        path: 'mis-reconocimientos',
+        component: ReconocidosComponent
       }
     ]
   },

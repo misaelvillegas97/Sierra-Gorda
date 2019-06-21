@@ -12,13 +12,19 @@ const URL_SG = 'https://c3wsapi.cl/sg';
 export class ReconozcoService {
 
   listReconocimientos: Reconocimiento[];
+  listReconocimientosRecibidos: Reconocimiento[];
+  listReconocimientosEnviados: Reconocimiento[];
+
+
   listValores: Valor[];
   listGerencias: Gerencia[];
 
   constructor(private http: HttpClient, private router: Router, private snackbar: MatSnackBar) { }
 
   getAllReconocimientos(_type?: number) {
-    this.listReconocimientos = undefined;
+    // this.listReconocimientos = undefined;
+    // this.listReconocimientosRecibidos = undefined;
+    // this.listReconocimientosEnviados = undefined;
     if (!_type) { _type = 0; }
     const URL_REQUEST = `${URL_SG}/reconozco/getreconocimientos_sinlim/${_type}/${atob(localStorage.getItem('sg-userID'))}`;
 
@@ -31,13 +37,11 @@ export class ReconozcoService {
     this.http.get(URL_REQUEST).toPromise()
       .then(
         (res: Resp) => {
-          res.reconocimientos.forEach(reconocimiento => {
-            if (reconocimiento.fecha) {
-              reconocimiento.fecha = new  Date(reconocimiento.fecha);
-            }
-          });
+          res.reconocimientos.forEach(reconocimiento => { if (reconocimiento.fecha) { reconocimiento.fecha = new  Date(reconocimiento.fecha); } });
 
-          this.listReconocimientos = res.reconocimientos;
+          if (_type === 0) { this.listReconocimientos = res.reconocimientos; } // Todos
+          if (_type === 1) { this.listReconocimientosRecibidos = res.reconocimientos; } // Recibidos
+          if (_type === 2) { this.listReconocimientosEnviados = res.reconocimientos; } // Enviados
         }
       );
   }

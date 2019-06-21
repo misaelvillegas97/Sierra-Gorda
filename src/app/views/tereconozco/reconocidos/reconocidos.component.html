@@ -1,0 +1,200 @@
+<div class="reconocimiento container">
+  <div class="d-flex align-items-center animated fadeIn faster">
+    <i
+      class="fas fa-chevron-circle-left"
+      routerLink="../"
+      style="
+        font-size: 25px;
+        margin-right: 10px;
+        line-height: 12pt;
+        color: rgb(0, 190, 212);
+        cursor: pointer;
+        padding-left: 15px
+    "
+    ></i>
+    <h1 class="reconozco-title">
+      Mis Reconocimientos
+    </h1>
+  </div>
+  <br>
+  <ng-container *ngTemplateOutlet="isEnviados ? enviados : recibidos"></ng-container>
+
+  <ng-template #enviados>
+    <div class="reconocimiento-header" *ngIf="ls.userLogged">
+      <div class="reconocimiento-header-img">
+        <img
+          *ngIf="ls.userLogged.img_perfil_usuario"
+          [src]="ls.userLogged.img_perfil_usuario"
+          style="padding: 10px;"
+          alt=""
+        />
+        <img
+          *ngIf="!ls.userLogged.img_perfil_usuario"
+          src="https://c3soporte00400.cl/sg/assets/img/reconozco/cara.png"
+          alt=""
+        />
+      </div>
+      <div class="reconocimiento-header-info">
+        <div class="reconocimiento-header-info-name">
+          <h6>{{ ls.userLogged.primer_nombre_usuario + ' ' + (ls.userLogged.segundo_nombre_usuario? ls.userLogged.segundo_nombre_usuario : '') + ' ' + ls.userLogged.apellido_pat_usuario + ' ' + (ls.userLogged.apellido_mat_usuario ? ls.userLogged.apellido_mat_usuario: '') }}</h6>
+        </div>
+        <div class="reconocimiento-header-info-desc">
+          <span>{{ ls.userLogged.nombre_cargo }}</span>
+          <span>{{ ls.userLogged.nombre_gerencia }}</span>
+        </div>
+      </div>
+
+      <div class="reconocimiento-header-extra">
+        <div class="count">
+          <img class="shadow" src="https://c3soporte00400.cl/sg/assets/img/reconozco/reco_totales.png">
+          <span *ngIf="rs.listReconocimientosEnviados">{{ rs.listReconocimientosEnviados.length }}</span>
+        </div>
+        <span class="title">Reconocimientos<br/>Enviados</span>
+      </div>
+
+      <div class="reconocimiento-header-addon">
+        <div class="reconocimiento-header-addon-item" [ngClass]="{'active': isEnviados}">
+          <img src="https://c3soporte00400.cl/sg/assets/img/reconozco/Reconocimiento_2.png" alt="" (click)="changeView(1)">
+          <div class="bg-blue" (click)="changeView(1)">
+            <span>Enviados</span>
+          </div>
+        </div>
+        <div class="reconocimiento-header-addon-item" [ngClass]="{'active': isRecibidos}">
+          <img src="https://c3soporte00400.cl/sg/assets/img/reconozco/Reconocimiento_icnono.png" alt="" (click)="changeView(2)">
+          <div class="bg-blue" (click)="changeView(2)">
+            <span>Recibidos</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <ng-container *ngIf="rs.listReconocimientosEnviados">
+        <ng-container *ngFor="let reconocimiento of rs.listReconocimientosEnviados">
+          <div class="col-lg-4 col-md-6 col-sm-12">
+            <div class="reconozco-card animated fadeInUp" [ngClass]="{'liked': reconocimiento.megusta}">
+              <div class="reconozco-card-header cursor" (click)="openModal(reconocimiento)">
+                <ng-container *ngIf="reconocimiento.nombre_gerencia">
+                  <img *ngIf="reconocimiento.img_grupo" [src]="reconocimiento.img_grupo" style="border-radius: 50%; padding: 7px;" alt="">
+                  <img *ngIf="!reconocimiento.img_grupo" src="https://c3soporte00400.cl/sg/assets/img/reconozco/cara.png" alt="">
+                </ng-container>
+
+                <ng-container *ngIf="!reconocimiento.nombre_gerencia">
+                  <img *ngIf="reconocimiento.reconocido[0].img_perfil_usuario" [src]="reconocimiento.reconocido[0].img_perfil_usuario" style="border-radius: 50%; padding: 7px;" alt="">
+                  <img *ngIf="!reconocimiento.reconocido[0].img_perfil_usuario" src="https://c3soporte00400.cl/sg/assets/img/reconozco/cara.png" alt="">
+                </ng-container>
+
+
+                <h6 [ngStyle]="{'color': reconocimiento.megusta ? 'white' : '#5c5c5c'}">
+                  {{ reconocimiento.nombre_gerencia ? reconocimiento.nombre_gerencia[0].nombre_gerencia : (reconocimiento.reconocido[0].primer_nombre_usuario) }} <br>
+                  {{ !reconocimiento.nombre_gerencia ? (reconocimiento.reconocido[0].apellido_pat_usuario + ' ' + reconocimiento.reconocido[0].apellido_mat_usuario) : '' }} <br>
+                </h6>
+              </div>
+              <div class="reconozco-card-body cursor" (click)="openModal(reconocimiento)">
+                <p [ngStyle]="{'color': reconocimiento.megusta ? 'white' : '#5c5c5c'}">Ha sido <img src="https://c3soporte00400.cl/sg/assets/img/reconozco/medalla.png" alt=""> por <strong>{{reconocimiento.nombre_valor}}</strong></p>
+                <div>
+                  <span [ngStyle]="{'color': reconocimiento.megusta ? 'white' : '#5c5c5c'}">{{reconocimiento.cantidad_likes}} <i class="fas fa-thumbs-up" [ngStyle]="{'color': reconocimiento.megusta ? 'white' : 'rgb(0, 190, 212)'}"></i></span>
+                  <span [ngStyle]="{'color': reconocimiento.megusta ? 'white' : '#5c5c5c'}">{{reconocimiento.fecha ? (reconocimiento.fecha | date:'fullDate') : 'Fecha no definida'}}</span>
+                </div>
+              </div>
+              <div (click)="setLike(reconocimiento)" *ngIf="!reconocimiento.megusta" class="cursor reconozco-card-actions">
+                <span (click)="setLike(reconocimiento)">Dar ¡Me Gusta! <i class="far fa-thumbs-up"></i></span>
+              </div>
+              <div *ngIf="reconocimiento.megusta" class="reconozco-card-actions cursor liked-footer">
+                <span class="text-white">¡Te Gusta! <i class="far fa-thumbs-up"></i></span>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+      </ng-container>
+    </div>
+  </ng-template>
+  <ng-template #recibidos>
+    <div class="reconocimiento-header" *ngIf="ls.userLogged">
+      <div class="reconocimiento-header-img">
+        <img
+          *ngIf="ls.userLogged.img_perfil_usuario"
+          [src]="ls.userLogged.img_perfil_usuario"
+          style="padding: 10px;"
+          alt=""
+        />
+        <img
+          *ngIf="!ls.userLogged.img_perfil_usuario"
+          src="https://c3soporte00400.cl/sg/assets/img/reconozco/cara.png"
+          alt=""
+        />
+      </div>
+      <div class="reconocimiento-header-info">
+        <div class="reconocimiento-header-info-name">
+          <h6>{{ ls.userLogged.primer_nombre_usuario + ' ' + (ls.userLogged.segundo_nombre_usuario? ls.userLogged.segundo_nombre_usuario : '') + ' ' + ls.userLogged.apellido_pat_usuario + ' ' + (ls.userLogged.apellido_mat_usuario ? ls.userLogged.apellido_mat_usuario: '') }}</h6>
+        </div>
+        <div class="reconocimiento-header-info-desc">
+          <span>{{ ls.userLogged.nombre_cargo }}</span>
+          <span>{{ ls.userLogged.nombre_gerencia }}</span>
+        </div>
+      </div>
+
+      <div class="reconocimiento-header-extra">
+        <div class="count">
+          <img class="shadow" src="https://c3soporte00400.cl/sg/assets/img/reconozco/reco_totales.png">
+          <span *ngIf="rs.listReconocimientosRecibidos">{{ rs.listReconocimientosRecibidos.length }}</span>
+        </div>
+        <span class="title">Reconocimientos<br/>Recibidos</span>
+      </div>
+
+      <div class="reconocimiento-header-addon">
+        <div class="reconocimiento-header-addon-item" [ngClass]="{'active': isEnviados}">
+          <img src="https://c3soporte00400.cl/sg/assets/img/reconozco/Reconocimiento_2.png" alt="" (click)="changeView(1)">
+          <div class="bg-blue" (click)="changeView(1)">
+            <span>Enviados</span>
+          </div>
+        </div>
+        <div class="reconocimiento-header-addon-item" [ngClass]="{'active': isRecibidos}">
+          <img src="https://c3soporte00400.cl/sg/assets/img/reconozco/Reconocimiento_icnono.png" alt="" (click)="changeView(2)">
+          <div class="bg-blue" (click)="changeView(2)">
+            <span>Recibidos</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <ng-container *ngIf="rs.listReconocimientosRecibidos">
+        <ng-container *ngFor="let reconocimiento of rs.listReconocimientosRecibidos">
+          <div class="col-lg-4 col-md-6 col-sm-12">
+            <div class="reconozco-card animated fadeInUp" [ngClass]="{'liked': reconocimiento.megusta}">
+              <div class="reconozco-card-header cursor" (click)="openModal(reconocimiento)">
+                <ng-container *ngIf="reconocimiento.nombre_gerencia">
+                  <img *ngIf="reconocimiento.img_grupo" [src]="reconocimiento.img_grupo" style="border-radius: 50%; padding: 7px;" alt="">
+                  <img *ngIf="!reconocimiento.img_grupo" src="https://c3soporte00400.cl/sg/assets/img/reconozco/cara.png" alt="">
+                </ng-container>
+
+                <ng-container *ngIf="!reconocimiento.nombre_gerencia">
+                  <img *ngIf="reconocimiento.reconocido[0].img_perfil_usuario" [src]="reconocimiento.reconocido[0].img_perfil_usuario" style="border-radius: 50%; padding: 7px;" alt="">
+                  <img *ngIf="!reconocimiento.reconocido[0].img_perfil_usuario" src="https://c3soporte00400.cl/sg/assets/img/reconozco/cara.png" alt="">
+                </ng-container>
+
+
+                <h6 [ngStyle]="{'color': reconocimiento.megusta ? 'white' : '#5c5c5c'}">
+                  {{ reconocimiento.nombre_gerencia ? reconocimiento.nombre_gerencia[0].nombre_gerencia : (reconocimiento.reconocido[0].primer_nombre_usuario) }} <br>
+                  {{ !reconocimiento.nombre_gerencia ? (reconocimiento.reconocido[0].apellido_pat_usuario + ' ' + reconocimiento.reconocido[0].apellido_mat_usuario) : '' }} <br>
+                </h6>
+              </div>
+              <div class="reconozco-card-body cursor" (click)="openModal(reconocimiento)">
+                <p [ngStyle]="{'color': reconocimiento.megusta ? 'white' : '#5c5c5c'}">Ha sido <img src="https://c3soporte00400.cl/sg/assets/img/reconozco/medalla.png" alt=""> por <strong>{{reconocimiento.nombre_valor}}</strong></p>
+                <div>
+                  <span [ngStyle]="{'color': reconocimiento.megusta ? 'white' : '#5c5c5c'}">{{reconocimiento.cantidad_likes}} <i class="fas fa-thumbs-up" [ngStyle]="{'color': reconocimiento.megusta ? 'white' : 'rgb(0, 190, 212)'}"></i></span>
+                  <span [ngStyle]="{'color': reconocimiento.megusta ? 'white' : '#5c5c5c'}">{{reconocimiento.fecha ? (reconocimiento.fecha | date:'fullDate') : 'Fecha no definida'}}</span>
+                </div>
+              </div>
+              <div (click)="setLike(reconocimiento)" *ngIf="!reconocimiento.megusta" class="cursor reconozco-card-actions">
+                <span (click)="setLike(reconocimiento)">Dar ¡Me Gusta! <i class="far fa-thumbs-up"></i></span>
+              </div>
+              <div *ngIf="reconocimiento.megusta" class="reconozco-card-actions cursor liked-footer">
+                <span class="text-white">¡Te Gusta! <i class="far fa-thumbs-up"></i></span>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+      </ng-container>
+    </div>
+  </ng-template>
+</div>

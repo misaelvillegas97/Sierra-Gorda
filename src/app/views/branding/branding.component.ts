@@ -8,12 +8,19 @@ import { BrandingService } from 'src/app/providers/branding.service';
 })
 export class BrandingComponent implements OnInit {
 
+  selected: number;
+
   constructor( public fs: BrandingService ) {
+    this.selected = -1;
     this.fs.getAllBranding();
     this.fs.getAllCategories();
   }
 
   ngOnInit() {
+  }
+
+  selectCategoria(_i: number) {
+    this.selected = _i;
   }
 
 }

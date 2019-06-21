@@ -194,11 +194,6 @@ small {
   // box-shadow: .1em 0.2rem .5rem rgba(0, 0, 0, 0.15) !important;
 }
 
-// #masterslider2 .ms-container .ms-inner-controls-cont .ms-view .ms-slide{
-//   // border-radius: 12px !important;
-//   box-shadow: .1em 0.2rem .5rem rgba(0, 0, 0, 0.15) !important;
-// }
-
 #masterslider2 .ms-container .ms-inner-controls-cont .ms-view .ms-slide-bgcont{
   border-radius: 12px !important;
   box-shadow: .1em 0.2rem .5rem rgba(0, 0, 0, 0.15) !important;
@@ -207,7 +202,7 @@ small {
 #masterslider .ms-container .ms-inner-controls-cont .ms-view {
   border-radius: 12px !important;
   padding-top: 5px;
-  padding-bottom: 10px;
+  padding-bottom: 30px;
   // box-shadow: .1em 0.2rem .5rem rgba(0, 0, 0, 0.15) !important;
 }
 
@@ -230,13 +225,13 @@ small {
 
 #persaSlider {
   .ms-skin-default .ms-nav-next {
-    background: url("https://c3devapp.cl/sg/assets/img/f1_der.png") !important;
+    background: url("https://c3soporte00400.cl/sg/assets/img/f1_der.png") !important;
     background-repeat: no-repeat !important;
     z-index: 7;
   }
 
   .ms-skin-default .ms-nav-prev {
-    background: url("https://c3devapp.cl/sg/assets/img/f1_izq.png") !important;
+    background: url("https://c3soporte00400.cl/sg/assets/img/f1_izq.png") !important;
     background-repeat: no-repeat !important;
     z-index: 7;
   }
@@ -245,14 +240,14 @@ small {
     .ms-skin-default .ms-nav-next {
       right: -90px !important;
       left: auto;
-      background: url("https://c3devapp.cl/sg/assets/img/f1_der.png") !important;
+      background: url("https://c3soporte00400.cl/sg/assets/img/f1_der.png") !important;
       background-repeat: no-repeat !important;
     }
 
     .ms-skin-default .ms-nav-prev {
       left: -90px !important;
       right: auto;
-      background: url("https://c3devapp.cl/sg/assets/img/f1_izq.png") !important;
+      background: url("https://c3soporte00400.cl/sg/assets/img/f1_izq.png") !important;
       background-repeat: no-repeat !important;
     }
   }

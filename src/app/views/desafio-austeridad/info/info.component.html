@@ -22,7 +22,7 @@
       </div>
     </div>
     <div class="col-lg-4 d-flex align-items-center justify-content-center">
-      <img src="https://c3devapp.cl/sg/assets/img/desafio-austeridad/Casco.png" alt="" style="width: 200px">
+      <img src="https://c3soporte00400.cl/sg/assets/img/desafio-austeridad/Casco.png" alt="" style="width: 200px">
     </div>
   </div>
 
@@ -40,8 +40,8 @@
               <div class="col-lg-6 col-md-6 col-sm-12">
                 <div class="mesa-item">
                   <div class="mesa-item-img">
-                    <img src="" *ngIf="encargado.img_perfil_usuario" alt="">
-                    <img src="https://c3devapp.cl/sg/assets/img/reconozco/cara.png" *ngIf="!encargado.img_perfil_usuario" alt="">
+                    <img [src]="encargado.img_perfil_usuario" *ngIf="encargado.img_perfil_usuario" alt="">
+                    <img src="https://c3soporte00400.cl/sg/assets/img/reconozco/cara.png" *ngIf="!encargado.img_perfil_usuario" alt="">
                   </div>
                   <div class="mesa-item-data">
                     <span class="mesa-item-data-name">

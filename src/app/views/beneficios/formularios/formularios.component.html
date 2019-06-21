@@ -16,7 +16,8 @@
   <div class="formulario-container row">
     <div class="formulario-container-seleccion col-lg-8 col-md-6 col-sm-12">
       <div>
-        <select class="" name="" id="" #selectForm *ngIf="bs.listaBeneficiosCat" (change)="selectLink = selectForm.value">
+        <select class="" name="" id="" #selectForm *ngIf="bs.listaBeneficiosCat" (change)="changeValue(selectForm.value)">
+          <!-- <option value="-1" selected>Seleccione</option> -->
           <option [value]="link.url_formulario" *ngFor="let link of bs.listaBeneficiosCat">{{ link.titulo_beneficio }} </option>
           <!-- <option value="">Antecedentes Personales</option>
                 <option value="">Anticipo de Sueldo</option>
@@ -34,7 +35,7 @@
             Descargar
             <i class="fas fa-chevron-circle-down"></i>
           </a>
-          <div class="formulario-container-seleccion-botonbox-boton">
+          <div class="formulario-container-seleccion-botonbox-boton cursor" (click)="bs.sendFormularioToEmail(selectLink)">
             Enviar
             <i class="fas fa-chevron-circle-right"></i>
           </div>
@@ -42,7 +43,7 @@
       </div>
     </div>
     <div class="formulario-container-img col-lg-4 col-md-6 col-sm-12">
-      <img src="https://c3devapp.cl/sg/assets/img/Beneficios/Formulario_Lista.png" alt="">
+      <img src="https://c3soporte00400.cl/sg/assets/img/Beneficios/Formulario_Lista.png" alt="">
     </div>
   </div>
 </div>

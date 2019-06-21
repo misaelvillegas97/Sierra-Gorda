@@ -18,6 +18,21 @@ export class VerNoticiaComponent implements OnInit, AfterViewInit {
   private sub: any;
   megusta: boolean;
 
+  months = [
+    'Ene',
+    'Feb',
+    'Mar',
+    'Abr',
+    'May',
+    'Jun',
+    'Jul',
+    'Ago',
+    'Sep',
+    'Oct',
+    'Nob',
+    'Dic',
+  ];
+
   // Comentario
   comentario: string;
 

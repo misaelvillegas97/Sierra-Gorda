@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Categoria, Beneficio, ResponseCategoria, ResponseBeneficios, BeneficioDetalle } from '../interface/beneficios';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 const URL = 'https://c3wsapi.cl/sg/';
 
@@ -11,7 +12,7 @@ export class BeneficiosService {
   listaCategorias: Categoria[];
   listaBeneficiosCat: Beneficio[];
 
-  constructor( private http: HttpClient ) { }
+  constructor( private http: HttpClient, private snackbar: MatSnackBar ) { }
 
   getAllCategorias() {
     this.http.get( URL + 'beneficios/allcategorias' )
@@ -48,5 +49,29 @@ export class BeneficiosService {
     return beneficio;
   }
 
+  sendFormularioToEmail(_url: string) {
+    const URL_REQUEST = `${URL}beneficios/agregarbenestado/`;
+
+    const DATA = {
+      id_usuario: parseInt(atob(localStorage.getItem('sg-userID')), 0),
+      url: _url
+    };
+
+    this.http.post(URL_REQUEST, DATA).toPromise()
+      .then(
+        res => {
+          if (res['err']) {
+            return;
+          }
+
+          this.snackbar.open('Se ha enviado la solicitud para enviar documento al correo', null, {
+            duration: 5000,
+            verticalPosition: 'bottom',
+            horizontalPosition: 'right',
+            panelClass: ['snackbar-login']
+          });
+        }
+      );
+  }
 
 }

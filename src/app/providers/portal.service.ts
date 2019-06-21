@@ -14,6 +14,8 @@ export class PortalService {
   videosList: Video[] = undefined;
   moreSeenList: Video[] = undefined;
 
+  videoResultado: Video = undefined;
+
   private emitChangeSource = new Subject<Video>();
   actualVideo$ = this.emitChangeSource.asObservable();
 
@@ -71,15 +73,31 @@ export class PortalService {
   }
 
   loadDefaultVideo() {
-    const video = {
-      id: 0,
-      titulo: 'MISIÓN / VISIÓN DE SIERRA GORDA SCM',
-      url_video: 'http://c3soporte00200.cl/sg/noticias/uploads/videos/SIERRA_GORDA_CLIMA_TEASER.mp4',
-      url_img: 'http://c3soporte00200.cl/sg/noticias/uploads/videos/SIERRA_GORDA_CLIMA_TEASER.jpg',
-      descripcion: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos reprehenderit officia earum similique repellendus quis animi numquam tenetur.',
-      id_categoria: 0,
-      fecha_creacion: new Date()
-    };
-    this.emitChangeSource.next(video);
+    const URL_REQUEST = `${URL_SG}portalvideos/destacado/${1}/`;
+    // const video = {
+    //   id: 0,
+    //   titulo: 'MISIÓN / VISIÓN DE SIERRA GORDA SCM',
+    //   url_video: 'http://c3soporte00200.cl/sg/noticias/uploads/videos/SIERRA_GORDA_CLIMA_TEASER.mp4',
+    //   url_img: 'http://c3soporte00200.cl/sg/noticias/uploads/videos/SIERRA_GORDA_CLIMA_TEASER.jpg',
+    //   descripcion: '',
+    //   id_categoria: 0,
+    //   fecha_creacion: new Date()
+    // };
+    this.http.get(URL_REQUEST).toPromise()
+      .then(
+        res => {
+          this.emitChangeSource.next(res['portal'][0]);
+        }
+      );
+  }
+
+  getResultVideo() {
+    const URL_REQUEST = `${URL_SG}portalvideos/resultado/`;
+    this.http.get(URL_REQUEST).toPromise()
+      .then(
+        res => {
+          this.videoResultado = res['portal'];
+        }
+      );
   }
 }

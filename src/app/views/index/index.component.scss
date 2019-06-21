@@ -227,6 +227,8 @@ button.left-side {
   border-radius: 0px 80px 80px 0px;
   border: none;
   z-index: auto;
+  background-color: transparent;
+  padding: 0 !important;
 }
 
 .green-button {
@@ -248,6 +250,8 @@ button.right-side {
   border-radius: 80px 0px 0px 80px;
   border: none;
   z-index: auto;
+  background-color: transparent;
+  padding: 0 !important;
 }
 
 button.right-side-2 {
@@ -257,6 +261,8 @@ button.right-side-2 {
   border-radius: 80px 0px 0px 80px;
   border: none;
   z-index: auto;
+  background-color: transparent;
+  padding: 0 !important;
 }
 
 .gray-button {
@@ -326,7 +332,7 @@ button.right-side-2 {
 
   // Details
   background-color: white;
-  background-image: url(https://c3devapp.cl/sg/assets/img/navbar-home/13.png);
+  background-image: url(https://c3soporte00400.cl/sg/assets/img/navbar-home/13.png);
 
   border-radius: 10px 10px 10px 10px;
 }

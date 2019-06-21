@@ -9,7 +9,7 @@
         line-height: 12pt;
         color: rgb(0, 190, 212);
         cursor: pointer;
-        margin-left: -35px
+        padding-left: 15px
     "
     ></i>
     <h1 class="reconozco-title">
@@ -114,7 +114,7 @@
             <span><i class="fas fa-times-circle"></i></span>
             <div class="reconocer-right-container-item-left">
               <img
-                src="https://c3devapp.cl/sg/assets/img/reconozco/cara.png"
+                src="https://c3soporte00400.cl/sg/assets/img/reconozco/cara.png"
                 alt=""
               />
             </div>
@@ -138,7 +138,7 @@
           <div class="reconocer-right-container-item" (click)="selectUsuario(usuario)">
             <div class="reconocer-right-container-item-left">
               <img
-                src="https://c3devapp.cl/sg/assets/img/reconozco/cara.png"
+                src="https://c3soporte00400.cl/sg/assets/img/reconozco/cara.png"
                 alt=""
               />
             </div>
@@ -159,9 +159,6 @@
 
 <div class="reconocido container" [hidden]="!buttons[1].actual">
   <div class="reconocido-header">
-    <div class="reconocido-header-img">
-      <img src="https://c3devapp.cl/sg/assets/img/reconozco/cara.png" alt="" />
-    </div>
     <div class="reconocido-header-info">
       <ng-container *ngIf="listaUsuariosSeleccionados">
         <ng-container *ngIf="listaUsuariosSeleccionados.length === 1">
@@ -183,6 +180,26 @@
     <div class="reconocido-header-extra">
       <span>Reconocimiento al Valor ESTAR</span>
       <h6>Enfoque en los Resultados</h6>
+    </div>
+    <div class="reconocido-header-img" *ngIf="this.respuestas.modalidad === '1' && this.listaUsuariosSeleccionados">
+      <img *ngIf="this.listaUsuariosSeleccionados[0].img_perfil_usuario" [src]="this.listaUsuariosSeleccionados[0].img_perfil_usuario" alt="" />
+      <img *ngIf="!this.listaUsuariosSeleccionados[0].img_perfil_usuario" src="https://c3soporte00400.cl/sg/assets/img/reconozco/cara.png" alt="" />
+    </div>
+    <div class="reconocido-header-img" *ngIf="this.respuestas.modalidad === '2'">
+      <img *ngIf="myImageGroup" [src]="myImageGroup" alt="" />
+      <div *ngIf="!myImageGroup" class="reconocido-header-img-text">
+        Haz clic aquí<br/>para cargar<br/>una foto
+      </div>
+      <input
+        type="file"
+        hidden
+        name="grupoFile"
+        (change)="openCrop($event, 1)"
+        id="grupoFile"
+        />
+      <label *ngIf="!myImageGroup" for="grupoFile" class="reconocido-header-img-hover">
+        <i class="fas fa-images"></i>
+      </label>
     </div>
   </div>
 
@@ -208,7 +225,7 @@
                 <span><i class="fas fa-times-circle"></i></span>
                 <div class="reconocer-right-container-item-left">
                   <img
-                    src="https://c3devapp.cl/sg/assets/img/reconozco/cara.png"
+                    src="https://c3soporte00400.cl/sg/assets/img/reconozco/cara.png"
                     alt=""
                   />
                 </div>
@@ -229,7 +246,7 @@
                 <div class="reconocer-right-container-item" (click)="selectJefe(usuario)">
                   <div class="reconocer-right-container-item-left">
                     <img
-                      src="https://c3devapp.cl/sg/assets/img/reconozco/cara.png"
+                      src="https://c3soporte00400.cl/sg/assets/img/reconozco/cara.png"
                       alt=""
                     />
                   </div>
@@ -258,7 +275,7 @@
       type="file"
       hidden
       name="reconozcoFileInput"
-      (change)="openCrop($event)"
+      (change)="openCrop($event, 2)"
       id="reconozcoFileInput"
     />
     <label for="reconozcoFileInput"><i class="fas fa-upload"></i></label>
@@ -277,14 +294,26 @@
 <br />
 <div class="resumen container" *ngIf="buttons[2].actual">
   <div class="resumen-header">
-    <div class="resumen-header-img">
+    <div class="resumen-header-img" *ngIf="respuestas.modalidad === '1'">
       <img
-        *ngIf="myImage"
-        [src]="myImage"
+        *ngIf="listaUsuariosSeleccionados[0].img_perfil_usuario"
+        [src]="listaUsuariosSeleccionados[0].img_perfil_usuario"
         alt=""
       />
       <img
-        *ngIf="!myImage"
+        *ngIf="!listaUsuariosSeleccionados[0].img_perfil_usuario"
+        src="http://c3soporte00200.cl/estar/assets/img/p_enforque_Resultados.png"
+        alt=""
+      />
+    </div>
+    <div class="resumen-header-img" *ngIf="respuestas.modalidad === '2'">
+      <img
+        *ngIf="myImageGroup"
+        [src]="myImageGroup"
+        alt=""
+      />
+      <img
+        *ngIf="!myImageGroup"
         src="http://c3soporte00200.cl/estar/assets/img/p_enforque_Resultados.png"
         alt=""
       />
@@ -300,7 +329,7 @@
     </div>
     <div class="resumen-header-info" *ngIf="respuestas.modalidad === '2'">
       <div class="resumen-header-info-name" *ngFor="let usuario of listaUsuariosSeleccionados">
-        <h6>{{respuestas.nombre_grupo ? respuestas.nombre_grupo : 'Sin nombre de grupo'}}:</h6>
+        <h6>{{respuestas.nombre_grupo ? getNombreGerencia(respuestas.nombre_grupo) : 'Sin nombre de grupo'}}:</h6>
         <h6>• {{ usuario.primer_nombre_usuario + ' ' + (usuario.segundo_nombre_usuario? usuario.segundo_nombre_usuario : '') + ' ' + usuario.apellido_pat_usuario + ' ' + (usuario.apellido_mat_usuario ? usuario.apellido_mat_usuario: '') }}</h6>
       </div>
     </div>
@@ -326,6 +355,9 @@
           <p> {{ respuestas.argumento }} </p>
         </div>
       </div>
+    </div>
+    <div class="d-flex justify-content-center mt-4 mb-4">
+      <img *ngIf="myImage" [src]="myImage" alt="">
     </div>
     <div class="resumen-body-send">
       <button (click)="sendReconocimiento()">

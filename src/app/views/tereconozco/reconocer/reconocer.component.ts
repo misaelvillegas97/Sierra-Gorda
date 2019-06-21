@@ -17,9 +17,9 @@ declare var Croppie: any;
 export class ReconocerComponent implements OnInit, OnDestroy {
   @ViewChild('basicModal') demoBasic: ModalDirective;
 
-  selectedModalidad = '0';
-  selectedType = '0';
+  selectedType: number;
   myImage: string = undefined;
+  myImageGroup: string = undefined;
   croppie: any;
   uploadCrop: any;
 
@@ -88,8 +88,9 @@ export class ReconocerComponent implements OnInit, OnDestroy {
     this.listaUsuariosBusqueda = undefined;
   }
 
-  openCrop($event: any) {
+  openCrop($event: any, _i: number) {
     const input = $event.srcElement;
+    this.selectedType = _i;
     let _ = this;
     this.myImage = null;
 
@@ -126,7 +127,7 @@ export class ReconocerComponent implements OnInit, OnDestroy {
       );
   }
 
-   getConducta() {
+  getConducta() {
     return this.rs.listValores.find( valor => valor.id === parseInt(this.respuestas.valor_estar, 0) ).comportamientos[parseInt(this.respuestas.conducta, 0) - 1].nombre_comportamiento;
   }
 
@@ -152,7 +153,13 @@ export class ReconocerComponent implements OnInit, OnDestroy {
 
   seeResults() {
     this.uploadCrop.result('base64', 'viewport', 'png').then( (blob) => {
-      this.myImage = blob;
+      if (this.selectedType === 1) {
+        this.myImageGroup = blob;
+      }
+
+      if (this.selectedType === 2) {
+        this.myImage = blob;
+      }
     });
 
     this.demoBasic.hide();
@@ -172,6 +179,12 @@ export class ReconocerComponent implements OnInit, OnDestroy {
       this.buttons[_i - 1].actual = false;
     }
     this.buttons[_i].actual = true;
+  }
+
+  getNombreGerencia(_text:string): string {
+    let nombre = parseInt(_text, 0);
+
+    return this.rs.listGerencias.find(gerencias=>gerencias.id === nombre).nombre_gerencia;
   }
 
   validateNext(_i: number) {
@@ -237,7 +250,7 @@ export class ReconocerComponent implements OnInit, OnDestroy {
     }
 
     if (this.respuestas.modalidad === '0' ) {
-      this.snackbar.open('Por favor, seleccione una modalidad.', null, {
+      this.snackbar.open('Selecciona una modalidad.', null, {
         duration: 3000,
         verticalPosition: 'bottom',
         horizontalPosition: 'right',
@@ -284,6 +297,9 @@ export class ReconocerComponent implements OnInit, OnDestroy {
       jefe: this.listaJefesSeleccionados.id_usuario.toString(),
       nombre_grupo: this.respuestas.nombre_grupo ? parseInt(this.respuestas.nombre_grupo, 0) : null,
       url_img: this.myImage ? this.myImage.substr(22) : null,
+      formato: 'png',
+      img_grupo: this.myImageGroup ? this.myImageGroup.substr(22) : null,
+      formato2: 'png',
       tipo_r: parseInt(this.respuestas.modalidad, 0)
     };
 

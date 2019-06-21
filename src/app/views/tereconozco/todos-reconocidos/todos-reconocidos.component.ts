@@ -13,7 +13,10 @@ export class TodosReconocidosComponent implements OnInit {
   modalRef: MDBModalRef;
   modalOptions = {};
 
-  constructor(public rs: ReconozcoService, private modalService: MDBModalService) { }
+  constructor(public rs: ReconozcoService, private modalService: MDBModalService) {
+    this.rs.getAllReconocimientos(2);
+    this.rs.getAllReconocimientos(3);
+  }
 
   ngOnInit() {
   }

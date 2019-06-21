@@ -138,7 +138,7 @@
           <!-- TODO: En caso que hay chat pero no contiene mensajes -->
           <ng-container *ngIf="cs.messagesList && cs.messagesList.length === 0">
               <div class="center-message">
-                  <img src="https://c3devapp.cl/sg/assets/img/chat/Icono_Enviar_Mensaje.png" alt="">
+                  <img src="https://c3soporte00400.cl/sg/assets/img/chat/Icono_Enviar_Mensaje.png" alt="">
                   <p>Envíe un mensaje para comenzar una conversación</p>
               </div>
           </ng-container>
@@ -153,7 +153,7 @@
           <!-- TODO: No hay chat seleccionado -->
           <ng-container *ngIf="!chat">
             <div class="center-message">
-                <img src="https://c3devapp.cl/sg/assets/img/chat/Icono_Enviar_Mensaje.png" alt="">
+                <img src="https://c3soporte00400.cl/sg/assets/img/chat/Icono_Enviar_Mensaje.png" alt="">
                 <p>Seleccione una conversación para comenzar</p>
             </div>
           </ng-container>
@@ -162,7 +162,7 @@
         <form #f="ngForm" (ngSubmit)="sendMessage(f)">
           <div class="chat-box-footer shadow">
             <input [disabled]="!chat" type="text" #txt_message="ngModel" name="txt_message" [(ngModel)]="mensaje">
-            <img src="https://c3devapp.cl/sg/assets/img/navbar-home/14.png" alt="" style="margin-left: 5px; width: 5.7%; margin-top: -2px; cursor: pointer;" (click)="toggle_emoji = !toggle_emoji">
+            <img src="https://c3soporte00400.cl/sg/assets/img/navbar-home/14.png" alt="" style="margin-left: 5px; width: 5.7%; margin-top: -2px; cursor: pointer;" (click)="toggle_emoji = !toggle_emoji">
             <emoji-mart
               *ngIf="toggle_emoji"
               [style]="{ position: 'absolute', bottom: '40px', right: '15px' }"
@@ -173,7 +173,7 @@
               [i18n]="I18n"
               [isNative]="true"
             ></emoji-mart>
-            <button type="submit" [disabled]="3 >= mensaje.length" style="border: none; background: none; border-radius: 50%; width: 7.3%;"><img src="https://c3devapp.cl/sg/assets/img/navbar-home/15.png" alt="" style="width: 100%; margin-top: -2px; cursor: pointer;"></button>
+            <button type="submit" [disabled]="3 >= mensaje.length" style="border: none; background: none; border-radius: 50%; width: 7.3%;"><img src="https://c3soporte00400.cl/sg/assets/img/navbar-home/15.png" alt="" style="width: 100%; margin-top: -2px; cursor: pointer;"></button>
           </div>
         </form>
       </div>

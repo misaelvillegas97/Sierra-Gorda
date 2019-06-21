@@ -110,6 +110,10 @@ import { FormularioDAComponent } from './views/desafio-austeridad/formulario-d-a
 import { TodosReconocidosComponent } from './views/tereconozco/todos-reconocidos/todos-reconocidos.component';
 import { ReconocimientoModalComponent } from './modals/reconocimiento-modal/reconocimiento-modal.component';
 import { ReconocerComponent } from './views/tereconozco/reconocer/reconocer.component';
+import { ReconocidosComponent } from './views/tereconozco/reconocidos/reconocidos.component';
+import { ComunicacionesComponent } from './views/menus/comunicaciones/comunicaciones.component';
+import { FormulariosSgComponent } from './views/menus/formularios-sg/formularios-sg.component';
+import { VideoComponent } from './modals/video/video.component';
 
 
 @NgModule({
@@ -192,7 +196,11 @@ import { ReconocerComponent } from './views/tereconozco/reconocer/reconocer.comp
     FormularioDAComponent,
     TodosReconocidosComponent,
     ReconocimientoModalComponent,
-    ReconocerComponent
+    ReconocerComponent,
+    ReconocidosComponent,
+    ComunicacionesComponent,
+    FormulariosSgComponent,
+    VideoComponent
   ],
   imports: [
     BrowserModule,
@@ -219,7 +227,7 @@ import { ReconocerComponent } from './views/tereconozco/reconocer/reconocer.comp
 
   ],
   providers: [{ provide: LOCALE_ID, useValue: 'es-CL' }],
-  entryComponents: [LoginModalComponent, PollModalComponent, PersaModalComponent, EditInfoModalComponent, IncidenteDetalleModalComponent, ReconocimientoModalComponent],
+  entryComponents: [VideoComponent, LoginModalComponent, PollModalComponent, PersaModalComponent, EditInfoModalComponent, IncidenteDetalleModalComponent, ReconocimientoModalComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

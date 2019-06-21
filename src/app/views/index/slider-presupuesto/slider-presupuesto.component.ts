@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { IndexService } from 'src/app/providers/index.service';
 import { ResultadoItem } from 'src/app/interface';
+import { VideoComponent } from '../../../modals/video/video.component';
+import { MDBModalService, MDBModalRef } from 'angular-bootstrap-md';
+import { PortalService } from 'src/app/providers/portal.service';
 
 declare var MasterSlider: any;
 
@@ -24,12 +27,17 @@ export class SliderPresupuestoComponent implements OnInit {
     'NOVIEMBRE',
     'DICIEMBRE'
   ];
-  constructor(public is: IndexService) {
+
+  modalRef: MDBModalRef;
+  modalOptions = {};
+
+  constructor( private modalService: MDBModalService, public is: IndexService, private ps: PortalService ) {
     // this.is.getAllResultados();
   }
 
   ngOnInit() {
     this.createSlayer();
+    this.ps.getResultVideo();
   }
 
   createSlayer() {
@@ -60,7 +68,7 @@ export class SliderPresupuestoComponent implements OnInit {
   }
 
   getResultClass(_result: ResultadoItem): string {
-    if (_result.real_resultado >= _result.presupuesto_resultado) {
+    if (_result.real_resultado <= _result.presupuesto_resultado) {
       return 'resultado-positivo';
     } else {
       return 'resultado-negativo';
@@ -73,5 +81,26 @@ export class SliderPresupuestoComponent implements OnInit {
     } else {
       return 'color-negativo';
     }
+  }
+
+  openVideoModal() {
+    let data = {};
+
+    data = {
+      video: this.ps.videoResultado
+    };
+
+    this.modalOptions = {
+      backdrop: true,
+      keyboard: true,
+      focus: true,
+      show: false,
+      ignoreBackdropClick: false,
+      class: 'persaModal-container modal-dialog-centered animated fadeInDown faster',
+      containerClass: '',
+      animated: true,
+      data
+    };
+    this.modalRef = this.modalService.show(VideoComponent, this.modalOptions);
   }
 }

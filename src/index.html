@@ -20,29 +20,29 @@
         font-family: "Montserrat", sans-serif;
       }
       .ms-skin-default .ms-nav-next {
-        background: url("https://c3devapp.cl/sg/assets/img/f1_der.png") !important;
+        background: url("https://c3soporte00400.cl/sg/assets/img/f1_der.png") !important;
         background-repeat: no-repeat !important;
         z-index: 7;
       }
 
       .ms-skin-default .ms-nav-prev {
-        background: url("https://c3devapp.cl/sg/assets/img/f1_izq.png") !important;
+        background: url("https://c3soporte00400.cl/sg/assets/img/f1_izq.png") !important;
         background-repeat: no-repeat !important;
         z-index: 7;
       }
 
       @media only screen and (min-width: 1024px) {
         .ms-skin-default .ms-nav-next {
-          right: -90px !important;
+          right: -55px !important;
           left: auto;
-          background: url("https://c3devapp.cl/sg/assets/img/f1_der.png") !important;
+          background: url("https://c3soporte00400.cl/sg/assets/img/f1_der.png") !important;
           background-repeat: no-repeat !important;
         }
 
         .ms-skin-default .ms-nav-prev {
-          left: -90px !important;
+          left: -50px !important;
           right: auto;
-          background: url("https://c3devapp.cl/sg/assets/img/f1_izq.png") !important;
+          background: url("https://c3soporte00400.cl/sg/assets/img/f1_izq.png") !important;
           background-repeat: no-repeat !important;
         }
       }
@@ -146,8 +146,8 @@
 
       .ms-bullets {
         position: absolute;
-        bottom: -35px !important;
-        right: 45%;
+        bottom: -10px !important;
+        right: 30%;
         /* margin-left: 48px !important; */
       }
       .ms-bullet {
@@ -205,6 +205,82 @@
       type="text/javascript"
       src="assets/jsCalendar/source/jsCalendar.js"
     ></script>
+    <script type="text/javascript">
+      /*
+        jsCalendar bug patch: dates select bug
+        for versions 1.4.3 & 1.4.4
+      */
+      (function(){
+        if (jsCalendar.version !== 'v1.4.4' && jsCalendar.version !== 'v1.4.3') {
+            throw new Error('jsCalendar patch: Wrong jsCalendar version.');
+        }
+        // Get visible dates
+        jsCalendar.prototype._getVisibleDates = function(date) {
+            var tools = (jsCalendar.version === 'v1.4.4') ? jsCalendar.tools : {parseDate : this._parseDate};
+            // For date
+            if (typeof date === 'undefined') {
+                // Get saved date
+                date = this._date;
+            }
+            else {
+                date = tools.parseDate(date);
+            }
+
+            // Visible days array
+            var dates = [];
+            // Get first day of the month
+            var first = new Date(date.getTime());
+            first.setDate(1);
+            first.setHours(0, 0, 0, 0);
+
+            // Count days of previous month to show
+            var previous = first.getDay() - (this._options.firstDayOfTheWeek - 1);
+            if (previous < 0) {
+                previous += 7;
+            }
+            // Set day to month's first
+            var day = new Date(first.getTime());
+            // Previous month's days
+            while (previous > 0) {
+                // Calculate previous day
+                day.setDate(day.getDate() - 1);
+                day.setHours(0, 0, 0, 0);
+                // Add page on frond of the list
+                dates.unshift(new Date(day.getTime()));
+                // Previous
+                previous --;
+            }
+
+            // Set day to month's first
+            day = new Date(first.getTime());
+            // This month's days
+            do {
+                // Add page on back of the list
+                dates.push(new Date(day.getTime()));
+                // Calculate next day
+                day.setDate(day.getDate() + 1);
+                day.setHours(0, 0, 0, 0);
+                // Repeat until next month
+            } while (day.getDate() !== 1);
+
+            // Next month's days
+            var next = 42 - dates.length;
+            // Add days left
+            while (next > 0) {
+                // Add page on back of the list
+                dates.push(new Date(day.getTime()));
+                // Calculate next day
+                day.setDate(day.getDate() + 1);
+                day.setHours(0, 0, 0, 0);
+                // Next
+                next --;
+            }
+
+            // Return days
+            return dates;
+        };
+      })();
+    </script>
     <script
       type="text/javascript"
       src="assets/jsCalendar/source/jsCalendar.lang.es.js"

@@ -1,0 +1,29 @@
+<app-navbar-ext></app-navbar-ext><br />
+<div style="height: 50px"></div>
+<app-links></app-links>
+<br />
+<div class="container">
+  <div class="comunicaciones">
+    <div class="comunicaciones-titulo">
+      <h1>Comunicaciones</h1>
+    </div>
+    <div class="comunicaciones-container">
+      <div>
+        <div class="comunicaciones-container-button shadow" [routerLink]="['/noticias']">
+          Noticias
+        </div>
+      </div>
+      <div>
+        <div class="comunicaciones-container-button shadow" [routerLink]="['/personas/revista']">
+          Revista
+        </div>
+      </div>
+      <div>
+        <div class="comunicaciones-container-button shadow" [routerLink]="['/personas/portal']">
+          Portal de<br/>Videos
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer-s></app-footer-s>

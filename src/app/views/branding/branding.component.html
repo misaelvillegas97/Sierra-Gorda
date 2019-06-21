@@ -18,11 +18,11 @@
   <div class="branding-categoria">
     <div class="branding-categoria-container">
       <ng-container *ngIf="fs.listCategorias">
-        <div class="branding-categoria-item" (click)="fs.getAllBranding()">
+        <div class="branding-categoria-item" (click)="fs.getAllBranding(); selectCategoria(-1)" [ngClass]="{'active': selected === -1}">
           Todas
         </div>
-        <ng-container *ngFor="let categoria of fs.listCategorias">
-          <div class="branding-categoria-item" (click)="fs.getBrandingByCategory(categoria)">
+        <ng-container *ngFor="let categoria of fs.listCategorias; let i = index">
+          <div class="branding-categoria-item" (click)="fs.getBrandingByCategory(categoria); selectCategoria(i)" [ngClass]="{'active': selected === i}">
             {{ categoria.categoria }}
           </div>
         </ng-container>

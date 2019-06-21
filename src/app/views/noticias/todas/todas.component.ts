@@ -9,6 +9,20 @@ import { AppComponent } from 'src/app/app.component';
 })
 export class TodasComponent implements OnInit {
 
+  months = [
+    'Ene',
+    'Feb',
+    'Mar',
+    'Abr',
+    'May',
+    'Jun',
+    'Jul',
+    'Ago',
+    'Sep',
+    'Oct',
+    'Nob',
+    'Dic',
+  ];
   constructor( public ns: NoticiasService ) {
     this.ns.getNoticias(16, 1, 1);
   }

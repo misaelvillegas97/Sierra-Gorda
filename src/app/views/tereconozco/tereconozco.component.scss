@@ -3,6 +3,7 @@ $orange-70: rgba(255, 89, 0, 0.863);
 $orange-50: rgba(255, 89, 0, 0.502);
 
 $blueSG: rgb(0, 190, 212);
+$blueSG-80: rgba(0, 190, 212, 0.8);
 $blueSG-70: rgba(0, 190, 212, 0.702);
 $blueSG-40: rgba(0, 190, 212, 0.4);
 $blueSG-20: rgba(0, 190, 212, 0.2);
@@ -22,6 +23,7 @@ $pink-text: #fe9f6e;
     font-weight: 800;
     font-size: 4rem;
     user-select: none;
+    padding-left: 15px;
   }
 
   &-body {
@@ -32,12 +34,16 @@ $pink-text: #fe9f6e;
     margin-bottom: 35px;
 
     &.liked {
-      background-image: linear-gradient(
-        120deg,
-        rgba(255, 123, 56, 1),
-        rgba(255, 120, 59, 1),
-        rgba(255, 86, 69, 1)
-      );
+      // background-image: linear-gradient(
+      //   120deg,
+      //   rgba(255, 123, 56, 1),
+      //   rgba(255, 120, 59, 1),
+      //   rgba(255, 86, 69, 1)
+      // );
+      background: none;
+      background-image: url(https://c3soporte00400.cl/sg/assets/img/reconozco/bg-home.png);
+      background-position: center;
+      background-size: cover;
     }
 
     border-radius: 25px;
@@ -124,10 +130,12 @@ $pink-text: #fe9f6e;
       border: none;
       text-align: center;
       margin-right: 15px;
+      width: 175px;
 
       color: rgba(255, 255, 255, 0.5);
-      font-weight: 800;
-      font-size: 18pt;
+
+      font-weight: 600;
+      font-size: 14pt;
 
       transition: 0.3s;
 
@@ -236,11 +244,58 @@ $pink-text: #fe9f6e;
     justify-content: flex-start;
 
     &-img{
+      position: relative;
+      // margin-right: 20px;
+      margin-left: 50px;
+      // width: 150px;
+      // height: 150px;
+
       img {
         width: 150px;
         height: 150px;
-        margin-right: 20px;
         border-radius: 50%;
+      }
+
+      &-text {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        // border: 2px solid white;
+        background-color: rgba(255, 255, 255, 0.25);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        font-weight: 500;
+        text-align: center;
+      }
+
+      &-hover {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin-bottom: 0;
+        background-color: white;
+        border-radius: 50%;
+        opacity: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        cursor: pointer;
+
+        transition: 0.3s;
+
+        i {
+          font-size: 30pt;
+          color: #FF8340;
+        }
+
+        &:hover {
+          opacity: 1;
+        }
       }
     }
 
@@ -252,6 +307,8 @@ $pink-text: #fe9f6e;
       align-items: flex-start;
       padding-top: 10px;
       width: 42%;
+      margin-left: 10px;
+
 
       &-name {
         h6 {
@@ -273,6 +330,7 @@ $pink-text: #fe9f6e;
 
     }
     &-extra {
+      margin-left: 30px;
       display: flex;
       flex-direction: column;
       padding-top: 10px;
@@ -466,6 +524,159 @@ $pink-text: #fe9f6e;
         font-weight: 600;
         font-size: 14pt;
         padding: 3px 15px;
+      }
+    }
+  }
+}
+
+.reconocimiento {
+  &-title {
+    color: $blueSG;
+    font-weight: 800;
+    font-size: 4rem;
+    user-select: none;
+    padding-left: 15px;
+  }
+  &-header {
+    position: relative;
+    background-image: url(https://c3soporte00400.cl/sg/assets/img/reconozco/bg-home.png);
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0 0 0.3rem rgba(255, 89, 0, 0.863) !important;
+    border-radius: 20px;
+    padding: 8px 15px;
+    margin: 0 15px;
+    margin-bottom: 65px;
+
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: flex-start;
+
+    &-img{
+      img {
+        width: 150px;
+        height: 150px;
+        margin-right: 20px;
+        border-radius: 50%;
+      }
+    }
+
+
+    &-info {
+      display: -ms-flexbox;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding-top: 10px;
+      width: 42%;
+
+      &-name {
+        h6 {
+          font-size: 20pt;
+          font-weight: 700;
+          color: white;
+        }
+      }
+
+      &-desc {
+        display: flex;
+        flex-direction: column;
+        span {
+          color: white;
+          font-weight: 500;
+          font-size: 12pt;
+        }
+      }
+
+    }
+    &-extra {
+      position: absolute;
+      right: 40px;
+      top: 25px;
+      text-align: right;
+      line-height: 12pt;
+
+      display: flex;
+      align-items: center;
+      flex-direction: row-reverse;
+
+      div.count {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding-bottom: 5px;
+
+        img {
+          width: 80px;
+          height: 80px;
+          border-radius: 50%;
+        }
+
+        span {
+          text-align: center;
+          position: absolute;
+          top: 33px;
+          // left: 0;
+          right: 30;
+          font-size: 24pt;
+          font-weight: 900;
+          color: white;
+        }
+      }
+      span.title {
+        color: white;
+        font-weight: 600;
+        font-size: 10pt;
+        margin-right: 20px;
+      }
+    }
+
+    &-addon {
+      position: absolute;
+      bottom: -18px;
+      right: 0;
+
+      display: flex;
+
+      &-item {
+        position: relative;
+        margin-right: 60px;
+        img {
+          width: 60px;
+          height: 60px;
+          border-radius: 50%;
+          box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+
+          position: absolute;
+          top: -11px;
+          left: -38px;
+        }
+        div {
+          border-radius: 0px 50px 50px 0px;
+          box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+          color: white;
+          font-weight: 500;
+          font-size: 11pt;
+          padding: 8px 25px 8px 30px;
+
+          // transition: 0.3s;
+          span {
+            opacity: 0.5;
+
+            // transition: 0.3s;
+          }
+        }
+
+        &.active {
+          div {
+            border: 3px solid #ffab00;
+            padding: 5px 22px 5px 27px;
+            span {
+              opacity: 1 !important;
+            }
+          }
+        }
       }
     }
   }

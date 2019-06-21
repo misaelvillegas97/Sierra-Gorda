@@ -28,6 +28,23 @@ export class IndexComponent implements OnInit, AfterViewInit {
   filtermain: string;
   title_hovered = false;
 
+  fecha_actual = new Date();
+
+  months = [
+    'Ene',
+    'Feb',
+    'Mar',
+    'Abr',
+    'May',
+    'Jun',
+    'Jul',
+    'Ago',
+    'Sep',
+    'Oct',
+    'Nob',
+    'Dic',
+  ];
+
   // Estado de usuario
   logged = true;
 
@@ -369,7 +386,7 @@ export class IndexComponent implements OnInit, AfterViewInit {
     switch (tipo) {
       // 1 Entrada
       case 1:
-        $(`#icon-${id}`).attr('src', `https://c3devapp.cl/sg/assets/img/gif/entrada/${id}.gif`);
+        $(`#icon-${id}`).attr('src', `https://c3soporte00400.cl/sg/assets/img/gif/entrada/${id}.gif`);
         $(`#icon-${id}`).removeClass('shadow');
         $(`#icon-${id}`).css('padding', '0px');
         $(`#icon-${id}`).css('padding-top', '0px');
@@ -377,7 +394,7 @@ export class IndexComponent implements OnInit, AfterViewInit {
 
       // 2 Salida
       case 2:
-        $(`#icon-${id}`).attr('src', `https://c3devapp.cl/sg/assets/img/gif/salida/${id}-salida.gif`);
+        $(`#icon-${id}`).attr('src', `https://c3soporte00400.cl/sg/assets/img/gif/salida/${id}-salida.gif`);
         break;
     }
   }

@@ -29,7 +29,8 @@ export class NoticiasService {
 
     _index = (_index - 1) * _limit;
 
-    this.http.get(URL_SG + `noticias/getallnoticias/${_index}/${_limit}/${_tipo}`)
+    // this.http.get(URL_SG + `noticias/getallnoticias/${_index}/${_limit}/${_tipo}`)
+    this.http.get(URL_SG + `noticias/getallnoticias/${_index}/${1000}/${_tipo}`)
       .toPromise()
       .then(
         (res: ResponseNews) => {

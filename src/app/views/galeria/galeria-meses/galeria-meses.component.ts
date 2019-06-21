@@ -37,6 +37,7 @@ export class GaleriaMesesComponent implements OnInit {
   getGalleryByYear(_year: any) {
     _year = parseInt(_year, 0);
     this.gs.getGalleryByYear(_year);
+    this.thisYear = parseInt(_year, 0);
   }
 
   getYearList() {
@@ -45,5 +46,9 @@ export class GaleriaMesesComponent implements OnInit {
     for (let i = 2018; i <= new Date().getFullYear(); i++) {
       this.yearList.push(i);
     }
+  }
+
+  console() {
+    console.log(this.thisYear);
   }
 }

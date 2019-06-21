@@ -12,17 +12,17 @@
       <!-- Despliega lista de noticias -->
       <ng-container *ngFor="let noticia of ns.listaNoticias; let i=index">
         <div class="col-lg-3 col-md-4 col-sm-12">
-          <div class="noticias-card shadow">
+          <div class="noticias-card shadow mt-4">
             <div class="noticias-card-flag" [ngClass]="{'destacada': noticia.id_tipo_noticia_fk === 2}">
               <div class="noticias-card-flag-img p-0">
-                <img src="https://c3devapp.cl/sg/assets/img/Noticias/2.png" *ngIf="noticia.id_tipo_noticia_fk === 1" alt="">
-                <img src="https://c3devapp.cl/sg/assets/img/Noticias/2.png" *ngIf="noticia.id_tipo_noticia_fk === 2" alt="">
-                <img src="https://c3devapp.cl/sg/assets/img/Noticias/4.png" *ngIf="noticia.id_tipo_noticia_fk === 3" alt="">
+                <img src="https://c3soporte00400.cl/sg/assets/img/Noticias/2.png" *ngIf="noticia.id_tipo_noticia_fk === 1" alt="">
+                <img src="https://c3soporte00400.cl/sg/assets/img/Noticias/2.png" *ngIf="noticia.id_tipo_noticia_fk === 2" alt="">
+                <img src="https://c3soporte00400.cl/sg/assets/img/Noticias/4.png" *ngIf="noticia.id_tipo_noticia_fk === 3" alt="">
               </div>
 
               <div class="noticias-card-flag-fecha">
-                <span class="day">15</span> <br>
-                <span class="month">NOV</span>
+                <span class="day"> {{  noticia.fecha.getDate() }} </span> <br>
+                <span class="month"> {{ months[noticia.fecha.getMonth()] | uppercase }} </span>
               </div>
             </div>
 

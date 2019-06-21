@@ -34,8 +34,8 @@
     <p>{{reconocimiento.comentario ? reconocimiento.comentario : 'Sin argumentos'}}</p>
   </div>
 </div>
-<div class="container">
-  <img [src]="reconocimiento.url_img" *ngIf="reconocimiento.url_img" alt="">
+<div class="container mt-4 mb-4">
+  <img [src]="reconocimiento.url_img" class="img-fluid" *ngIf="reconocimiento.url_img" style="border-radius: 5px;" alt="">
 </div>
 
 <div class="footer cursor">

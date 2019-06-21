@@ -16,7 +16,7 @@
             <div class="noticia-sections-buttons">
               <!-- Todas -->
               <div class="volver-noticias" routerLink="/noticias/todas">
-                <img src="https://c3devapp.cl/sg/assets/img/Noticias/cuadritos_noticias.png" alt="a">
+                <img src="https://c3soporte00400.cl/sg/assets/img/Noticias/cuadritos_noticias.png" alt="a">
               </div>
               <p>Volver<br/>a noticias</p>
             </div>
@@ -56,14 +56,14 @@
               <div class="noticia-content-img" [style.backgroundImage]="'url('+ noticia.imagen.imagen_cuerpo_1 +')'" style="background-size: cover; background-position: center;">
                 <div class="noticia-content-flag" [ngClass]="{'reportero-minero': noticia.id_tipo_noticia_fk === 3}">
                     <div class="noticia-content-flag-img p-0">
-                      <img src="https://c3devapp.cl/sg/assets/img/Noticias/2.png" *ngIf="noticia.id_tipo_noticia_fk === 1" alt="">
-                      <img src="https://c3devapp.cl/sg/assets/img/Noticias/2.png" *ngIf="noticia.id_tipo_noticia_fk === 2" alt="">
-                      <img src="https://c3devapp.cl/sg/assets/img/Noticias/4.png" *ngIf="noticia.id_tipo_noticia_fk === 3" alt="">
+                      <img src="https://c3soporte00400.cl/sg/assets/img/Noticias/2.png" *ngIf="noticia.id_tipo_noticia_fk === 1" alt="">
+                      <img src="https://c3soporte00400.cl/sg/assets/img/Noticias/2.png" *ngIf="noticia.id_tipo_noticia_fk === 2" alt="">
+                      <img src="https://c3soporte00400.cl/sg/assets/img/Noticias/4.png" *ngIf="noticia.id_tipo_noticia_fk === 3" alt="">
                     </div>
 
                     <div class="noticia-content-flag-fecha">
-                      <span class="day">15</span> <br>
-                      <span class="month">NOV</span>
+                      <span class="day"> {{  noticia.fecha.getDate() }} </span> <br>
+                      <span class="month"> {{ months[noticia.fecha.getMonth()] | uppercase }} </span>
                     </div>
                   </div>
               </div>

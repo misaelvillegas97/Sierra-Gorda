@@ -41,11 +41,17 @@ export class SliderComponent implements OnInit, AfterViewInit {
   constructor(public gs: GalleryService) {}
 
   ngOnInit() {
-    this.gs.getBanner().finally(() => {
+    if(this.gs.galleryList.length === 0) {
+      this.gs.getBanner().finally(() => {
+        setTimeout(() => {
+          this.createSlayer();
+        }, 0);
+      });
+    } else {
       setTimeout(() => {
         this.createSlayer();
       }, 0);
-    });
+    }
   }
 
   ngAfterViewInit() {}
@@ -55,6 +61,12 @@ export class SliderComponent implements OnInit, AfterViewInit {
 
     slider.control('arrows', {
       autohide: false
+    });
+    slider.control('bullets', {
+      autohide: false,
+      dir: 'H',
+      align: 'bottom',
+      margin: 10
     });
 
     slider.setup('masterslider', {
@@ -76,11 +88,6 @@ export class SliderComponent implements OnInit, AfterViewInit {
         }
       }
     });
-    slider.control('bullets', {
-      autohide: false,
-      dir: 'H',
-      align: 'bottom',
-      margin: 10
-    });
+
   }
 }

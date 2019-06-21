@@ -42,26 +42,29 @@ export interface UsuarioBuscar {
 }
 
 export interface Usuario {
-  apellido_mat_usuario?: string;
+  id_usuario: number;
+  rut_usuario: string;
+  dv_usuario: string;
+  primer_nombre_usuario: string;
+  segundo_nombre_usuario?: string;
+  tercer_nombre_usuario?: string;
   apellido_pat_usuario: string;
+  apellido_mat_usuario?: string;
   cantidad_recon?: string;
   correo_usuario?: string;
-  dv_usuario: string;
   fecha_creacion_usuario: string;
   fecha_nacimiento_usuario: string;
   id_estado_usuario_fk: number;
+  nivel: number;
+  nivel_nom: string;
   id_priv?: number;
-  id_usuario: number;
   img_perfil_usuario?: string;
   nombre_cargo?: string;
   nombre_gerencia?: string;
   nombre_lugar_trabajo?: string;
   nombre_superintendencia?: string;
-  primer_nombre_usuario: string;
-  rut_usuario: string;
-  segundo_nombre_usuario?: string;
+  nombre_vice?: string;
   telefono_usuario?: string;
-  tercer_nombre_usuario?: string;
   token?: string;
 }
 

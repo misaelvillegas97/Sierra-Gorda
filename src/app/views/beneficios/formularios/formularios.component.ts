@@ -25,4 +25,9 @@ export class FormulariosComponent implements OnInit {
     variable.url_formulario;
   }
 
+  changeValue(_url: string) {
+    console.log(_url);
+    this.selectLink = _url;
+  }
+
 }

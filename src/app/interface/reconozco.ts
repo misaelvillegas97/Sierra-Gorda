@@ -6,6 +6,7 @@ export interface Reconocimiento {
   fecha: Date;
   id: number;
   id_reconocedor: number;
+  img_grupo: string;
   megusta: boolean;
   nombre_comportamiento: string;
   nombre_valor: string;

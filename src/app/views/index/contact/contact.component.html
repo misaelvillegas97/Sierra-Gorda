@@ -9,7 +9,7 @@
   <div class="search-container">
     <div class="pt-1"><span class="no-select">Buscar</span></div>
     <div class="pb-2">
-      <img src="https://c3devapp.cl/sg/assets/img/navbar-home/5.png" alt="" style="width: 30px; height: 30px; margin-top: -2px; cursor: pointer" (click)="toggleOptions()">
+      <img src="https://c3soporte00400.cl/sg/assets/img/navbar-home/5.png" alt="" style="width: 30px; height: 30px; margin-top: -2px; cursor: pointer" (click)="toggleOptions()">
     </div>
   </div>
   <div class="inner">
@@ -76,7 +76,9 @@
     <div *ngIf="findedUsers.length !== 0" style="margin: 0; padding: 0;">
       <div *ngFor="let usuario of findedUsers" class="user-contact-container">
         <div class="picture">
-          <img _ngcontent-c5="" class="img-fluid" src="https://c3devapp.cl/sg/assets/img/img-01.png">
+          <!-- <img _ngcontent-c5="" class="img-fluid" src="https://c3soporte00400.cl/sg/assets/img/img-01.png"> -->
+          <img _ngcontent-c5="" style="width: 80px;" *ngIf="usuario.img_perfil_usuario" [src]="usuario.img_perfil_usuario">
+          <img _ngcontent-c5="" style="width: 80px;" *ngIf="!usuario.img_perfil_usuario" src="https://c3soporte00400.cl/sg/assets/img/reconozco/cara.png">
         </div>
         <div class="content">
           <h6>

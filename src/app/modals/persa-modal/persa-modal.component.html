@@ -56,12 +56,8 @@
     <div class="user-info">
       <div class="row">
         <div class="col-lg-2 col-md-2 col-sm-2">
-          <img
-            src="https://c3devapp.cl/sg/assets/img/img-02.png"
-            class="img-fluid"
-            style="border-radius: 100px; width: 88px; height: 88px;"
-            alt=""
-          />
+          <img _ngcontent-c5="" class="img-fluid" style="border-radius: 100px; width: 88px; height: 88px;"*ngIf="ps.selectedItem.contacto.img_perfil_usuario" [src]="ps.selectedItem.contacto.img_perfil_usuario">
+          <img _ngcontent-c5="" class="img-fluid" style="border-radius: 100px; width: 88px; height: 88px;" *ngIf="!ps.selectedItem.contacto.img_perfil_usuario" src="https://c3soporte00400.cl/sg/assets/img/reconozco/cara.png">
         </div>
         <div class="col-10 p-0">
           <div class="row m-0 p-0">

@@ -22,8 +22,8 @@
           <!-- <img src="" alt="" *ngIf="mes.galeria_mes !== 0"> -->
           <!-- <span *ngIf="mes.galeria_mes !== 0" [routerLink]="['./', thisYear, (i + 1)]">{{ monthShortM[i] }} - {{ mes.galeria_mes }}</span>
           <span *ngIf="mes.galeria_mes === 0">{{ monthShortM[i] }} - {{ mes.galeria_mes }}</span> -->
-          <img src="https://c3devapp.cl/sg/assets/img/meses/{{monthShortM[i]}}-disabled.png" class="img-fluid" alt="" *ngIf="mes.galeria_mes === 0">
-          <img src="https://c3devapp.cl/sg/assets/img/meses/{{monthShortM[i]}}.png" [routerLink]="['./', thisYear, (i + 1)]" class="img-fluid cursor" alt="" *ngIf="mes.galeria_mes !== 0">
+          <img src="https://c3soporte00400.cl/sg/assets/img/meses/{{monthShortM[i]}}-disabled.png" class="img-fluid" alt="" *ngIf="mes.galeria_mes === 0">
+          <img src="https://c3soporte00400.cl/sg/assets/img/meses/{{monthShortM[i]}}.png" (click)="console()" [routerLink]="['./', thisYear, (i + 1)]" class="img-fluid cursor" alt="" *ngIf="mes.galeria_mes !== 0">
         </div>
       </ng-container>
 

@@ -46,6 +46,10 @@ $text-color: #5c5c5c;
       &:hover {
         background-color: $blueSG-70;
       }
+
+      &.active {
+        background-color: $blueSG-70;
+      }
     }
   }
 

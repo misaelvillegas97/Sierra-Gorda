@@ -1,0 +1,50 @@
+$orange: #ff5900;
+$orange-70: rgba(255, 89, 0, 0.863);
+$orange-50: rgba(255, 89, 0, 0.502);
+
+$blueSG: #3fbac5;
+$blueSG-70: rgba(62, 186, 197, 0.702);
+$blueSG-40: rgba(62, 186, 197, 0.4);
+$blueSG-20: rgba(63, 186, 197, 0.2);
+
+$darkblue: #214083;
+$green: #7fbb5a;
+$yellow: #fcd902;
+$orangestar: #ed5624;
+$redestar: #de1e26;
+
+$text-color: #5c5c5c;
+$nombre-color: #80808e;
+$nombre-color2: #5a6770;
+
+.comunicaciones {
+  &-titulo {
+    h1 {
+      color: $orange;
+      font-weight: 800;
+      font-size: 35pt;
+      user-select: none;
+    }
+  }
+  &-container {
+    margin-top: 40px;
+    display: flex;
+    display: -ms-flexbox;
+    justify-content: space-around;
+    &-button {
+      height: 150px;
+      width: 150px;
+      justify-content: center;
+      display: flex;
+      display: -ms-flexbox;
+      align-items: center;
+      background: white;
+      border-radius: 120px;
+      color: #ff5900;
+      font-size: 14pt;
+      font-weight: 600;
+      text-align: center;
+      cursor: pointer;
+    }
+  }
+}
