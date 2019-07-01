@@ -1,0 +1,41 @@
+$orange: #ff5900;
+$orange-70: rgba(255, 89, 0, 0.863);
+$orange-50: rgba(255, 89, 0, 0.502);
+
+$blueSG: #3fbac5;
+$yellow: #FFAB00;
+$yellow-light: #FFDC67;
+$blueSG-strong: #31a0aa;
+$blueSG-70: rgba(62, 186, 197, 0.702);
+$blueSG-40: rgba(62, 186, 197, 0.4);
+$blueSG-20: rgba(63, 186, 197, 0.2);
+$green: #7fbb5a;
+$green-window: #78ce47;
+$dark-green-window: #00AE41;
+$lightBlue: #00A9B7;
+
+$text-color: #5c5c5c;
+
+.desafio {
+  &-title {
+    user-select: none;
+    color: $blueSG;
+    font-weight: 800;
+    font-size: 4rem;
+  }
+
+  &-info {
+
+    &-subtitle {
+      color: $blueSG;
+      font-weight: 700;
+      font-size: 20pt;
+    }
+
+    &-text {
+      font-family: Calibri;
+      font-weight: 500;
+      color: #5c5c5c;
+    }
+  }
+}

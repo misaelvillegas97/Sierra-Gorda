@@ -165,9 +165,25 @@ export class ReconocerComponent implements OnInit, OnDestroy {
     this.demoBasic.hide();
   }
 
+  // validateShown(_valor: Valor) {
+  //   if (parseInt(this.respuestas.equipo, 0) === _valor.estado_gru && parseInt(this.respuestas.modalidad, 0) === _valor.estado_staff) {
+  //     return true;
+  //   }
+
+  //   return false;
+  // }
+
   validateShown(_valor: Valor) {
-    if (parseInt(this.respuestas.equipo, 0) === _valor.estado_gru && parseInt(this.respuestas.modalidad, 0) === _valor.estado_staff) {
-      return true;
+    if (parseInt(this.respuestas.modalidad, 0) !== 0) {
+      if ( parseInt(this.respuestas.modalidad, 0) === 1 && (_valor.estado_gru === 1 || _valor.estado_gru === 2) ) {
+        return true;
+      } else {
+        if ( parseInt(this.respuestas.modalidad, 0) === 2 && parseInt(this.respuestas.equipo, 0) === _valor.estado_gru && parseInt(this.respuestas.equipo, 0) === _valor.estado_staff ) {
+          return true;
+        } else {
+          return false;
+        }
+      }
     }
 
     return false;

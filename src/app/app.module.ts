@@ -114,6 +114,8 @@ import { ReconocidosComponent } from './views/tereconozco/reconocidos/reconocido
 import { ComunicacionesComponent } from './views/menus/comunicaciones/comunicaciones.component';
 import { FormulariosSgComponent } from './views/menus/formularios-sg/formularios-sg.component';
 import { VideoComponent } from './modals/video/video.component';
+import { ClimaLaboralComponent } from './views/clima-laboral/clima-laboral.component';
+import { GestionDesempenioComponent } from './views/gestion-desempenio/gestion-desempenio.component';
 
 
 @NgModule({
@@ -200,7 +202,9 @@ import { VideoComponent } from './modals/video/video.component';
     ReconocidosComponent,
     ComunicacionesComponent,
     FormulariosSgComponent,
-    VideoComponent
+    VideoComponent,
+    ClimaLaboralComponent,
+    GestionDesempenioComponent
   ],
   imports: [
     BrowserModule,

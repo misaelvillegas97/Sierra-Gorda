@@ -56,6 +56,8 @@ import { ReconocerComponent } from './views/tereconozco/reconocer/reconocer.comp
 import { ReconocidosComponent } from './views/tereconozco/reconocidos/reconocidos.component';
 import { ComunicacionesComponent } from './views/menus/comunicaciones/comunicaciones.component';
 import { FormulariosSgComponent } from './views/menus/formularios-sg/formularios-sg.component';
+import { GestionDesempenioComponent } from './views/gestion-desempenio/gestion-desempenio.component';
+import { ClimaLaboralComponent } from './views/clima-laboral/clima-laboral.component';
 
 const routes: Routes = [
   {
@@ -396,6 +398,14 @@ const routes: Routes = [
         component: FormularioDAComponent
       }
     ]
+  },
+  {
+    path: 'gestion-desempenio',
+    component: GestionDesempenioComponent
+  },
+  {
+    path: 'clima-laboral',
+    component: ClimaLaboralComponent
   }
   // {
   //   path: 'chats',

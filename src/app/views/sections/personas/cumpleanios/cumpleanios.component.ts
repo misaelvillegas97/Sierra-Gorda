@@ -37,7 +37,7 @@ export class CumpleaniosComponent implements OnInit {
     'Agosto',
     'Septiembre',
     'Octubre',
-    'Nobiembre',
+    'Noviembre',
     'Diciembre',
   ];
 

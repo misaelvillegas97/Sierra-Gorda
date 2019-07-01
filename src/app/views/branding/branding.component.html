@@ -10,7 +10,8 @@
         Branding y Formatos
       </h1>
       <p class="branding-subtitle">
-        Si necesitas algún documento, puedes buscarlo y descargarlo aquí.
+        Si necesitas algún documento, puedes buscarlo y descargarlo aquí.<br/>
+        <small style="color: #3fbac5; font-weight: 500;">* Si necesitas gestionar una pieza gráfica con un proveedor, los documentos que les deberás enviar son los que se encuentran en formato PDF.</small>
       </p>
     </div>
   </div>
@@ -55,17 +56,23 @@
           <div class="branding-data-content-item" [style.borderRadius]="i === 0 && i === (fs.listBrandings.length - 1) ? '20px' : i === 0? '20px 20px 0px 0px' : i === (fs.listBrandings.length - 1) ? '0px 0px 20px 20px': ''" [style.backgroundColor]="i % 2 === 0 ? 'rgba(62, 186, 197, 0.4)' : 'rgba(62, 186, 197, 0.2)'">
             <div class="row">
               <div class="col branding-data-content-item-column text-center" style="max-width: 64px;">
-                <i class="fas fa-file-powerpoint" style="color: orange" *ngIf="el.tipo === 4"></i>
-                <i class="fas fa-file-excel" style="color: green" *ngIf="el.tipo === 3"></i>
                 <i class="fas fa-file-pdf" style="color: red" *ngIf="el.tipo === 1"></i>
-                <i class="fas fa-file-image" style="color: yellow" *ngIf="el.tipo === 5"></i>
                 <i class="fas fa-file-word" style="color: royalblue" *ngIf="el.tipo === 2"></i>
+                <i class="fas fa-file-excel" style="color: green" *ngIf="el.tipo === 3"></i>
+                <i class="fas fa-file-powerpoint" style="color: #ff5900" *ngIf="el.tipo === 4"></i>
+                <i class="fas fa-file-image" style="color: #FFC500" *ngIf="el.tipo === 5 || el.tipo === 6"></i>
+                <i class="fas fa-file-archive" style="color: gray" *ngIf="el.tipo === 7"></i>
               </div>
               <div class="col branding-data-content-item-column">
                 {{ el.nombre }}
               </div>
               <div class="col branding-data-content-item-column text-center" style="max-width: 300px;">
-                {{ el.categoria }}
+                {{ el.tipo === 1  ? 'PDF' : '' }}
+                {{ el.tipo === 2 ? 'WORD' : '' }}
+                {{ el.tipo === 3 ? 'EXCEL' : '' }}
+                {{ el.tipo === 4 ? 'POWERPOINT' : '' }}
+                {{ (el.tipo === 5 || el.tipo === 6) ? 'IMAGEN' : '' }}
+                {{ el.tipo === 7 ? 'ARCHIVO COMPRIMIDO' : '' }}
               </div>
               <div class="col branding-data-content-item-column" style="max-width: 200px; padding-left: 45px;">
                 <a [href]="el.url" download target="_blank"><i class="fas fa-arrow-alt-circle-down"></i></a>
@@ -79,3 +86,4 @@
   </div>
 
 </div>
+<app-footer-s></app-footer-s>

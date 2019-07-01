@@ -1,3 +1,30 @@
+$darkblue: #214083;
+$green: #109147;
+$yellow: #FCD902;
+$orangestar: #ED5624;
+$redestar: #DE1E26;
+
+
+.bg-estar-red {
+  background-color: $redestar;
+}
+
+.bg-estar-orange {
+  background-color: $orangestar;
+}
+
+.bg-estar-blue {
+  background-color: $darkblue;
+}
+
+.bg-estar-yellow {
+  background-color: $yellow;
+}
+
+.bg-estar-green {
+  background-color: $green;
+}
+
 h1 {
   font-weight: 800;
   color: #5a5a5a;
@@ -45,5 +72,36 @@ h6.title {
   line-height: 23pt;
   strong {
     font-weight: 500 !important;
+  }
+}
+
+.valor {
+  &-item {
+    margin-top: 45px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 160px;
+
+    text-align: center;
+
+    &-logo {
+      width: 160px;
+      height: 160px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      border-radius: 50%;
+      // margin-bottom: 5px;
+    }
+
+    &-name {
+      font-weight: 400;
+      color: #5c6b6b;
+      font-size: 14pt;
+      margin-top: 15px;
+    }
   }
 }

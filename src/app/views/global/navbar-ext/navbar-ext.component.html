@@ -21,12 +21,23 @@
     <div class="ml-auto ">
       <div (mouseover)="onNameHover(true)" (mouseleave)="onNameHover(false)" *ngIf="ls.isLoggedIn()">
         <span class="user-grettings" (mouseover)="onNameHover(true)">¡Hola! <span class="bold" (mouseover)="onNameHover(true)">{{this.ls.userLogged?.primer_nombre_usuario}}</span></span>
-        <img
-          (mouseover)="onNameHover(true)"
-          src="https://centrik.in/wp-content/uploads/2017/02/user-image-.png"
-          alt=""
-          class="img-thumbnail rounded-circle user-pic"
-        />
+
+        <ng-container *ngIf="ls.userLogged">
+          <img
+            (mouseover)="onNameHover(true)"
+            src="https://c3soporte00400.cl/sg/assets/img/reconozco/cara.png"
+            alt=""
+            *ngIf="!ls.userLogged.img_perfil_usuario"
+            class="img-thumbnail rounded-circle user-pic"
+          />
+          <img
+            (mouseover)="onNameHover(true)"
+            [src]="ls.userLogged.img_perfil_usuario"
+            alt=""
+            *ngIf="ls.userLogged.img_perfil_usuario"
+            class="img-thumbnail rounded-circle user-pic"
+          />
+        </ng-container>
         <div id="user-hover-menu" class="shadow"  *ngIf="ls.isLoggedIn()">
             <div class="header">
               <p> {{ this.ls.userLogged?.primer_nombre_usuario }} {{ this.ls.userLogged?.apellido_pat_usuario }} {{ this.ls.userLogged?.apellido_mat_usuario != null? this.ls.userLogged?.apellido_mat_usuario : '' }} </p>
@@ -58,7 +69,7 @@
       <div (click)="openModal(0)" *ngIf="!ls.isLoggedIn()">
           <span class="user-grettings">Iniciar Sesión</span>
           <img
-            src="https://centrik.in/wp-content/uploads/2017/02/user-image-.png"
+            src="https://c3soporte00400.cl/sg/assets/img/reconozco/cara.png"
             alt=""
             class="img-thumbnail rounded-circle user-pic"
           />
