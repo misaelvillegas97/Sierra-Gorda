@@ -3,16 +3,16 @@ $orange-70: rgba(255, 89, 0, 0.863);
 $orange-50: rgba(255, 89, 0, 0.502);
 
 $blueSG: #3fbac5;
-$yellow: #FFAB00;
-$yellow-light: #FFDC67;
+$yellow: #ffab00;
+$yellow-light: #ffdc67;
 $blueSG-strong: #31a0aa;
 $blueSG-70: rgba(62, 186, 197, 0.702);
 $blueSG-40: rgba(62, 186, 197, 0.4);
 $blueSG-20: rgba(63, 186, 197, 0.2);
 $green: #7fbb5a;
 $green-window: #78ce47;
-$dark-green-window: #00AE41;
-$lightBlue: #00A9B7;
+$dark-green-window: #00ae41;
+$lightBlue: #00a9b7;
 
 $text-color: #5c5c5c;
 
@@ -57,7 +57,7 @@ $text-color: #5c5c5c;
     margin: 0 !important;
   }
 
-  div > span{
+  div > span {
     background-color: $blueSG-20;
     border-radius: 10px 0px 0px 10px;
     border: none;
@@ -120,7 +120,7 @@ $text-color: #5c5c5c;
   }
 
   &-card {
-    background-color: #6ABE4A;
+    background-color: #6abe4a;
     min-height: 65px;
     padding: 5px;
     margin-bottom: 15px;
@@ -159,7 +159,7 @@ $text-color: #5c5c5c;
     }
 
     i {
-      color: #FFC600;
+      color: #ffc600;
       margin-right: 5px;
     }
   }
@@ -178,10 +178,11 @@ $text-color: #5c5c5c;
       overflow: hidden;
       transition: 0.5s;
 
-      &-fav{
-        font-size:20pt;
-        margin-right:20px;
-        color:$orange;
+      &-fav {
+        font-size: 20pt;
+        margin-right: 20px;
+        color: $orange;
+        cursor: pointer;
       }
 
       &-top {
@@ -267,8 +268,8 @@ $text-color: #5c5c5c;
         float: right;
         text-align: right;
         background-color: white;
-        -webkit-box-shadow: 2px -2px 5px 2px #A4D690;
-        box-shadow: 2px -2px 5px 2px #A4D690;
+        -webkit-box-shadow: 2px -2px 5px 2px #a4d690;
+        box-shadow: 2px -2px 5px 2px #a4d690;
         width: 60%;
         padding: 20px 15px;
         margin: 15px 30px;
@@ -307,8 +308,6 @@ $text-color: #5c5c5c;
   }
 }
 
-
-
 // Roller
 .lds-roller {
   display: inline-block;
@@ -321,7 +320,7 @@ $text-color: #5c5c5c;
   transform-origin: 32px 32px;
 }
 .lds-roller div:after {
-  content: " ";
+  content: ' ';
   display: block;
   position: absolute;
   width: 6px;
