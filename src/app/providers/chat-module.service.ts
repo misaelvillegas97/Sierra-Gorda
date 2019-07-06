@@ -157,9 +157,40 @@ export class ChatModuleService {
     this.http.get( URL + 'chat/getlistachatfind/' + _text).toPromise()
       .then(
         res => {
-          // console.log(res)
+          console.log(res)
           this.chatList = res['chats'];
+          this.chatList = this.chatList.filter(
+            chat => chat.id !== parseInt(localStorage.getItem('sg-userID'), 0)
+          );
         }
       );
+  }
+
+  async setFavourite(_id: number, _state: number) {
+    let response: boolean;
+    const DATA = {
+      id_usuario: parseInt(atob(localStorage.getItem('sg-userID')), 0),
+      id_usuario_favorito: _id,
+      favorito: _state
+    };
+
+    await this.http.post(URL + 'chat/agregarfavorito', DATA).toPromise()
+      .then(
+        (res: {err: number; message: string; favorito: boolean}) => {
+          if (!res.err) {
+            response = res.favorito['result'];
+          }
+        }
+      );
+
+    return response;
+  }
+  archivarChat(_chat: number) {
+    this.http
+      .get(URL + 'chat/cerrarchatusuario/' + _chat+'/'+ parseInt(localStorage.getItem('sg-userID'),0)).toPromise()
+      .then(res => {
+        console.log(res)
+
+      });
   }
 }

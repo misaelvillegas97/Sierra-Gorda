@@ -1,7 +1,8 @@
 <div class="row m-0 p-0"> <!-- Header -->
-  <div class="col-6">
-    <h1 class="galeria-title animated fadeIn faster">
-      Galería
+  <div class="col-6 d-flex align-items-center galeria-title" >
+    <i class="fas fa-chevron-circle-left" [routerLink]="['/comunicaciones/revistas']"></i>
+    <h1 class=" animated fadeIn faster">
+      {{ album.nombre }}
     </h1>
   </div>
   <div class="col-6 galeria-actions">

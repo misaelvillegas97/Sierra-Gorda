@@ -10,7 +10,7 @@
         alt="lorem ipsum dolor sit"
         />
         <div class="ms-layer ms-caption" style=" left:30px;">
-          <div style="position: absolute; top: 0; bottom: 0px; left: -50; right: 0; cursor: pointer; width: 790px; height: 440px; background-color: transparent !important;" [routerLink]="['/noticia', news.id_noticia]" routerLinkActive="router-link-active"></div>
+          <div style="position: absolute; top: 0; bottom: 0px; left: -50; right: 0; cursor: pointer; width: 790px; height: 440px; background-color: transparent !important;" [routerLink]="['/noticia', news.id_noticia]" (click)="ga.onNewsClick(news.titulo_noticia)" routerLinkActive="router-link-active"></div>
           <p>
             <span>
               {{ news.fecha_creacion_noticia.getDate() }}

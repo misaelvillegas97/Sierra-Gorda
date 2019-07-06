@@ -9,6 +9,9 @@
     <div (click)="VPModal03.show()" class="equipo-ejecutivo-container-box shadow-sm color-box3"><span>VP Finanzas</span><img src="https://c3soporte00400.cl/sg/assets/img/equipoejecutivo/ee_box03.png" alt=""></div>
     <div (click)="VPModal04.show()" class="equipo-ejecutivo-container-box shadow-sm color-box4"><span>VP Asuntos Legales, Corporativos y Sustentabilidad</span><img src="https://c3soporte00400.cl/sg/assets/img/equipoejecutivo/ee_box04.png" alt=""></div>
   </div>
+  <div class="equipo-ejecutivo-container">
+    <div (click)="VPModal06.show()" class="equipo-ejecutivo-container-box shadow-sm color-box1"><span>VP Servicios Corporativos</span><img src="https://c3soporte00400.cl/sg/assets/img/equipoejecutivo/ee_box01.png" alt=""></div>
+  </div>
 </div>
 
 <div mdbModal #VPModal01="mdbModal" class="modal fade" tabindex="-1" role="dialog"
@@ -41,8 +44,8 @@
 </div>
 
 <div mdbModal #VPModal02="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="equipo-ejecutivo-modal-container">
+  <div class="modal-dialog" style="max-width: 950px !important" role="document">
+    <div class="equipo-ejecutivo-modal-container" style="width: 950px;">
       <div class="equipo-ejecutivo-modal-container-header">
         <div class="equipo-ejecutivo-modal-container-header-titulo">
           Beata Choragwicka-Majstrowicz
@@ -53,16 +56,14 @@
         <i (click)="VPModal02.hide()" class="fas fa-times-circle"></i>
       </div>
       <div class="equipo-ejecutivo-modal-container-body">
-        <div class="equipo-ejecutivo-modal-container-body-texto">
-          Beata Choragwicka-Majstrowicz es <b>Doctora en Psicología del Trabajo</b> y Master en Gestión de
-          RRHH, con más de <b>9 años de experiencia</b> en diversas áreas de Recursos Humanos, tanto en
-          organizaciones públicas como privadas, micro y macro empresas de distintos sectores, en países
-          como Polonia y España. Ocupó el cargo de HR <b>Business Partner</b> durante 5 años en KGHM, en la
-          mina subterránea Rudna de Polonia. Actualmente es responsable de la <b>implementación de
-          soluciones y estrategia de RRHH</b> en Minera Sierra Gorda SCM.
+        <div class="equipo-ejecutivo-modal-container-body-texto" style="max-width: 80% !important">
+          Beata Choragwicka-Majstrowicz es <b>Doctora en Psicología del Trabajo</b> por la Universidad Santiago de Compostela España (USC), Magister en Desarrollo Organizacional (USC, España) y Diplomada en Relaciones Laborales por la Escuela de Negocios Mineros de la Universidad Católica del Norte (Chile). Posee más de <b>10 años de experiencia en diversas áreas de Recursos Humanos</b>, tanto en organizaciones públicas como privadas, micro y macro empresas de distintos sectores, en países como Polonia y España. Entre otros fue responsable de gestión de proyectos de RRHH de la faena minera de cobre subterránea "Rudna", perteneciente a KGHM Polska Miedź. Por su trabajo consiguió muchas distinciones en su país natal. Actualmente, desde el año 2017 es <b>responsable de la implementación de soluciones y estrategias de RRHH</b> en Minera Sierra Gorda SCM.
+          <br><br>
+          <b>Beata Choragwicka-Majstrowicz</b><br/>
+          <b>Vicepresidente de Recursos Humanos</b>
         </div>
       </div>
-      <img src="https://c3soporte00400.cl/sg/assets/img/equipoejecutivo/beata.png" alt="">
+      <img src="https://c3soporte00400.cl/sg/assets/img/equipoejecutivo/beata.png" style="width: 28%;" alt="">
     </div>
   </div>
 </div>
@@ -144,6 +145,31 @@
         </div>
       </div>
       <img src="https://c3soporte00400.cl/sg/assets/img/equipoejecutivo/eric.png" alt="">
+    </div>
+  </div>
+</div>
+
+<div mdbModal #VPModal06="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="equipo-ejecutivo-modal-container">
+      <div class="equipo-ejecutivo-modal-container-header">
+        <div class="equipo-ejecutivo-modal-container-header-titulo">
+          Hiroki Kako
+        </div>
+        <div class="equipo-ejecutivo-modal-container-header-subtitulo color-sub5">
+          Vicepresidente de Servicios Corporativos
+        </div>
+        <i (click)="VPModal06.hide()" class="fas fa-times-circle"></i>
+      </div>
+      <div class="equipo-ejecutivo-modal-container-body">
+        <div class="equipo-ejecutivo-modal-container-body-texto">
+          Hiroki es Bachiller en Comercio de la Universidad Doshisha de Japón y posee estudios en el Instituto de Español El Sol de Lima, Perú. Se ha desempeñado en Departamento de Negocios de Plomo y Zinc en Sumitomo Corporation en Japón, y en Minera San Cristobal de Bolivia, ocupó los cargos de Coordinador Corporativo en la Gerencia de Supply Chain y como Superintendente Senior Especialista para Coordinación con la Institución Internacional.
+          <br><br>
+          Hiroki Kako<br/>
+          Vicepresidente de Servicios Corporativos
+        </div>
+      </div>
+      <img src="" alt="">
     </div>
   </div>
 </div>

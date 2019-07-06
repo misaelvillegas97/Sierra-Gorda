@@ -4,6 +4,7 @@ import { ResultadoItem } from 'src/app/interface';
 import { VideoComponent } from '../../../modals/video/video.component';
 import { MDBModalService, MDBModalRef } from 'angular-bootstrap-md';
 import { PortalService } from 'src/app/providers/portal.service';
+import { GoogleAnalyticsService } from 'src/app/providers/google-analytics.service';
 
 declare var MasterSlider: any;
 
@@ -31,7 +32,7 @@ export class SliderPresupuestoComponent implements OnInit {
   modalRef: MDBModalRef;
   modalOptions = {};
 
-  constructor( private modalService: MDBModalService, public is: IndexService, private ps: PortalService ) {
+  constructor( private modalService: MDBModalService, public is: IndexService, private ps: PortalService, private ga: GoogleAnalyticsService ) {
     // this.is.getAllResultados();
   }
 
@@ -84,6 +85,7 @@ export class SliderPresupuestoComponent implements OnInit {
   }
 
   openVideoModal() {
+    this.ga.onResultadosVideo();
     let data = {};
 
     data = {

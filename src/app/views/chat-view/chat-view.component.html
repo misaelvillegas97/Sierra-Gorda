@@ -64,8 +64,8 @@
           <div class="chat-box-header shadow" [ngClass]="{'expanded': displayInfo}">
             <div class="chat-box-header-top">
               <div class="chat-box-header-info">
-                <img [src]="chat.destinatario.img_perfil_usuario" class="pr-2 pl-2" *ngIf="chat.destinatario.img_perfil_usuario" alt="user-image">
-                <i class="fas fa-user-circle pl-2 pr-2" style="color: #BDE1AE; font-size: 50px" *ngIf="!chat.destinatario.img_perfil_usuario"></i>
+                <img [src]="chat.destinatario.img_perfil_usuario" class="mr-2 ml-2" style="border-radius: 50%; width: 50px; height: 50px;" *ngIf="chat.destinatario.img_perfil_usuario" alt="user-image">
+                <i class="fas fa-user-circle ml-2 mr-2" style="color: #BDE1AE; font-size: 50px" *ngIf="!chat.destinatario.img_perfil_usuario"></i>
                 <div class="chat-box-header-info-desc">
                   <span class="chat-box-header-info-desc-name">
                     {{ chat.destinatario.primer_nombre_usuario + ' ' + chat.destinatario.apellido_pat_usuario }}
@@ -76,6 +76,7 @@
                 </div>
               </div>
               <div class="chat-box-header-action">
+                <i class="fas fa-star chat-box-header-action-fav"></i>
                 <i class="fas fa-info-circle cursor mr-2" (click)="displayInfo = !displayInfo" style="color: #3fbac5; font-size: 22pt; margin-top: 10px;"></i>
               </div>
             </div>
@@ -93,7 +94,7 @@
                   Teléfono: {{ chat.destinatario.telefono_usuario ? chat.destinatario.telefono_usuario : 'No definido' }}
                 </span>
               </div>
-              <button>Vaciar Chat <i class="fas fa-trash-alt"></i></button>
+              <button (click)="archivarchat()">Archivar Chat <i class="fas fa-trash-alt"></i></button>
             </div>
           </div>
         </ng-container>
@@ -129,7 +130,7 @@
           <!-- Si es que hay chat y mensajes en el -->
           <ng-container *ngIf="cs.messagesList && cs.messagesList.length > 0">
             <ng-container *ngFor="let message of cs.messagesList">
-              <div class="chat-box-body-item" [ngClass]="{'autor': message.id_remitente === userid}">
+              <div class="chat-box-body-item" [ngClass]="{'autor': message.id_remitente !== userid}">
                 {{ decodeMessage(message.texto) }}
               </div>
             </ng-container>

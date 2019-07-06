@@ -12,6 +12,12 @@ export interface RespuestaStatus {
   usuario: Usuario;
 }
 
+export interface RespuestaStatus2 {
+  err: number;
+  message: string;
+  usuario: Receiver;
+}
+
 export interface RespuestaBuscar {
   err: number;
   message: string;
@@ -202,7 +208,7 @@ export interface Receiver {
     apellido_pat_usuario?: string;
     apellido_mat_usuario?: string;
     img_perfil_usuario?: string;
-    gerencia?: string;
+    nombre_gerencia?: string;
     correo_usuario?: string;
     fecha_nacimiento: string;
 }

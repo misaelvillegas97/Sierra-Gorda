@@ -24,16 +24,17 @@ export class BeneficiosService {
       );
   }
 
-  getAllBeneficiosPorCategorias(_id: number) {
+  async getAllBeneficiosPorCategorias(_id: number) {
     this.listaBeneficiosCat = undefined;
     console.log(this.listaBeneficiosCat);
-    this.http.get( URL + 'beneficios/beneficioscategoria/' + _id )
+    await this.http.get( URL + 'beneficios/beneficioscategoria/' + _id )
       .toPromise()
       .then(
         (res: ResponseBeneficios) => {
           this.listaBeneficiosCat = res.beneficios;
         }
       );
+    return true;
   }
 
   async getBeneficioPorId(_id: number) {

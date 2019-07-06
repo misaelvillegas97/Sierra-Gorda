@@ -2,17 +2,18 @@ import { Component, OnInit } from '@angular/core';
 import { RevistaService } from 'src/app/providers/revista.service';
 
 @Component({
-  selector: 'app-revista',
-  templateUrl: './revista.component.html',
-  styleUrls: ['./revista.component.scss']
+  selector: 'app-revista-catabela',
+  templateUrl: './revista-catabela.component.html',
+  styleUrls: ['./revista-catabela.component.scss']
 })
-export class RevistaComponent implements OnInit {
+export class RevistaCatabelaComponent implements OnInit {
+
   yearList = [];
   thisYear = new Date().getFullYear();
 
   constructor( public rs: RevistaService) {
     this.getYearList();
-    this.rs.getAllRevistas(undefined, 1);
+    this.rs.getAllRevistas(undefined, 2);
   }
 
   ngOnInit() {
@@ -20,7 +21,7 @@ export class RevistaComponent implements OnInit {
 
   getRevistaByYear(_year: any) {
     _year = parseInt(_year, 0);
-    this.rs.getAllRevistas(_year, 1);
+    this.rs.getAllRevistas(_year, 2);
   }
 
   getYearList() {
@@ -30,5 +31,4 @@ export class RevistaComponent implements OnInit {
       this.yearList.push(i);
     }
   }
-
 }

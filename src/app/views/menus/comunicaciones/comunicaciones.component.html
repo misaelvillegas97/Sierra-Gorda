@@ -4,35 +4,7 @@
 <br />
 <div class="container">
   <div class="comunicaciones">
-    <div class="comunicaciones-titulo">
-      <h1>Comunicaciones</h1>
-    </div>
-    <div class="comunicaciones-container">
-      <div>
-        <div class="comunicaciones-container-button" [routerLink]="['/noticias']">
-          <img src="https://c3soporte00400.cl/sg/assets/img/comunicaciones/noticias.png" style="width: 210px;" alt="">
-        </div>
-        <div class="comunicaciones-container-nombre">
-          Noticias
-        </div>
-      </div>
-      <div>
-        <div class="comunicaciones-container-button" [routerLink]="['/personas/revista']">
-          <img src="https://c3soporte00400.cl/sg/assets/img/comunicaciones/revista.png" style="width: 190px;" alt="">
-        </div>
-        <div class="comunicaciones-container-nombre">
-          Revista
-        </div>
-      </div>
-      <div>
-        <div class="comunicaciones-container-button" [routerLink]="['/personas/portal']">
-          <img src="https://c3soporte00400.cl/sg/assets/img/comunicaciones/portal_de_videos.png" style="width: 210px;" alt="">
-        </div>
-        <div class="comunicaciones-container-nombre">
-          Portal de<br/>Videos
-        </div>
-      </div>
-    </div>
+    <router-outlet></router-outlet>
   </div>
 
 </div>

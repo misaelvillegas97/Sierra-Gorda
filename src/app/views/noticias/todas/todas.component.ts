@@ -9,6 +9,8 @@ import { AppComponent } from 'src/app/app.component';
 })
 export class TodasComponent implements OnInit {
 
+  total: number;
+  actualPage: number;
   months = [
     'Ene',
     'Feb',
@@ -24,7 +26,25 @@ export class TodasComponent implements OnInit {
     'Dic',
   ];
   constructor( public ns: NoticiasService ) {
-    this.ns.getNoticias(16, 1, 1);
+    this.total = 0;
+    this.loadData();
+  }
+
+  loadData() {
+    this.ns.getCount(1).then(
+      (contador: number) => {
+        this.total = contador;
+      }
+    );
+    this.getPage(1);
+  }
+
+  getPage($page?: number) {
+    window.scrollTo(0, 0);
+    if ( !$page ) { $page = 1; }
+    this.actualPage = $page;
+
+    this.ns.getNoticias(16, $page, 1);
   }
 
   ngOnInit() {

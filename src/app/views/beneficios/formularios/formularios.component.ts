@@ -8,10 +8,14 @@ import { BeneficiosService } from 'src/app/providers/beneficios.service';
 })
 export class FormulariosComponent implements OnInit {
 
-  selectLink: string = '';
+  selectLink: string= '';
 
   constructor(public bs: BeneficiosService) {
-    this.bs.getAllBeneficiosPorCategorias(3);
+    this.bs.getAllBeneficiosPorCategorias(3).then(
+      res => {
+        this.selectLink = this.bs.listaBeneficiosCat[0].url_formulario;
+      }
+    );
   }
 
   ngOnInit() {

@@ -10,8 +10,9 @@ export class RevistaService {
 
   constructor(private http: HttpClient) { }
 
-  getAllRevistas(_year?: number) {
+  getAllRevistas(_year?: number, _type?: number) {
     if (!_year) { _year = new Date().getFullYear(); }
+    if (!_type) { _type = 1; }
 
     this.listRevistas = undefined;
 
@@ -21,7 +22,7 @@ export class RevistaService {
       revistas: Revista[];
     }
 
-    this.http.get( 'https://c3wsapi.cl/sg/revista/getAllRevistasByYear/' + _year )
+    this.http.get( 'https://c3wsapi.cl/sg/revista/getAllRevistasByYear/' + _year + '/' + _type )
       .toPromise()
       .then(
         (res: Resp) => {

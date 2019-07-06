@@ -14,6 +14,9 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { PickerModule } from '@ctrl/ngx-emoji-mart';
 import * as $ from 'jquery';
 import * as Coppie from 'croppie';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { GtagModule } from 'angular-gtag';
 
 // Angular Material Imports
 import { CdkStepperModule } from '@angular/cdk/stepper';
@@ -26,9 +29,6 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatInputModule } from '@angular/material/input';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-
-// Modules Router
-import { OperacionesModule } from './views/sections/nuestra-empresa/gerencia-superintendencias/operaciones/operaciones.module';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -116,6 +116,10 @@ import { FormulariosSgComponent } from './views/menus/formularios-sg/formularios
 import { VideoComponent } from './modals/video/video.component';
 import { ClimaLaboralComponent } from './views/clima-laboral/clima-laboral.component';
 import { GestionDesempenioComponent } from './views/gestion-desempenio/gestion-desempenio.component';
+import { ProcesoProductivoComponent } from './views/sections/nuestra-empresa/proceso-productivo/proceso-productivo.component';
+import { RevistasComponent } from './views/menus/comunicaciones/revistas/revistas.component';
+import { ComunicacionesPrincipalComponent } from './views/menus/comunicaciones/comunicaciones-principal/comunicaciones-principal.component';
+import { RevistaCatabelaComponent } from './views/sections/personas/revista-catabela/revista-catabela.component';
 
 
 @NgModule({
@@ -204,7 +208,11 @@ import { GestionDesempenioComponent } from './views/gestion-desempenio/gestion-d
     FormulariosSgComponent,
     VideoComponent,
     ClimaLaboralComponent,
-    GestionDesempenioComponent
+    GestionDesempenioComponent,
+    ProcesoProductivoComponent,
+    RevistasComponent,
+    ComunicacionesPrincipalComponent,
+    RevistaCatabelaComponent
   ],
   imports: [
     BrowserModule,
@@ -216,6 +224,9 @@ import { GestionDesempenioComponent } from './views/gestion-desempenio/gestion-d
     MDBBootstrapModule.forRoot(),
     BrowserAnimationsModule,
     FormsModule,
+    InfiniteScrollModule,
+    GtagModule.forRoot({ trackingId: 'UA-143329686-2', trackPageviews: false }),
+    NgxPaginationModule,
     ReactiveFormsModule,
     // Material Module Imports
     CdkStepperModule,
@@ -227,7 +238,8 @@ import { GestionDesempenioComponent } from './views/gestion-desempenio/gestion-d
     MatInputModule,
     MatFormFieldModule,
     MatSelectModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+
 
   ],
   providers: [{ provide: LOCALE_ID, useValue: 'es-CL' }],

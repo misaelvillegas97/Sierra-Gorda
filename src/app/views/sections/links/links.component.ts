@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GoogleAnalyticsService } from 'src/app/providers/google-analytics.service';
 
 declare let $: any;
 
@@ -8,17 +9,8 @@ declare let $: any;
   styleUrls: ['./links.component.scss']
 })
 export class LinksComponent implements OnInit {
-  // Variables
-  // personas: boolean;
-  // compania: boolean;
-  // herramientas: boolean;
-  // aplicaciones: boolean;
 
-  constructor() {
-    // this.personas = false;
-    // this.compania = false;
-    // this.herramientas = false;
-    // this.aplicaciones = false;
+  constructor(public ga: GoogleAnalyticsService) {
   }
 
   ngOnInit() {

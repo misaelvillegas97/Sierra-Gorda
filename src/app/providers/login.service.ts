@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { RespuestaStatus, RespuestaLogin, Usuario } from '../interface/interface';
+import { RespuestaStatus, RespuestaLogin, Usuario, Receiver, RespuestaStatus2 } from '../interface/interface';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 
 const httpOptions = {
   headers: new HttpHeaders({
-    'Content-Type':  'application/json'
+    'Content-Type': 'application/json'
   })
 };
 
@@ -31,18 +31,18 @@ export class LoginService {
   async login(rut: number, dv: number, pass: string) {
     let respuesta;
     const data = {
-        rut,
-        dv,
-        pass
+      rut,
+      dv,
+      pass
     };
     await this.http.post('https://c3wsapi.cl/sg/usuario/login', data, httpOptions)
       .toPromise()
-      .then( (res: RespuestaLogin) => {
+      .then((res: RespuestaLogin) => {
         if (res.err) {
           respuesta = res.err;
-          switch ( res.err ) {
+          switch (res.err) {
             case 404:
-              this.snackbar.open('Rut o contraseña incorrectos' , null, {
+              this.snackbar.open('Rut o contraseña incorrectos', null, {
                 duration: 3000,
                 verticalPosition: 'bottom',
                 horizontalPosition: 'right',
@@ -78,11 +78,11 @@ export class LoginService {
         switch (this.route.url) {
           case '/':
             // location.reload();
-            this.route.navigateByUrl('/refresh', {skipLocationChange: true}).then(
+            this.route.navigateByUrl('/refresh', { skipLocationChange: true }).then(
               () => {
                 this.route.navigateByUrl('/');
               }
-              );
+            );
             break;
         }
         return respuesta;
@@ -91,7 +91,7 @@ export class LoginService {
         err => {
           switch (err.status) {
             case 0:
-              this.snackbar.open('Sin conexión con el servidor' , null, {
+              this.snackbar.open('Sin conexión con el servidor', null, {
                 duration: 3000,
                 verticalPosition: 'bottom',
                 horizontalPosition: 'right',
@@ -100,7 +100,7 @@ export class LoginService {
               });
               break;
             case 404:
-              this.snackbar.open('Página no encontrada' , null, {
+              this.snackbar.open('Página no encontrada', null, {
                 duration: 3000,
                 verticalPosition: 'bottom',
                 horizontalPosition: 'right',
@@ -109,7 +109,7 @@ export class LoginService {
               });
               break;
             case 500:
-              this.snackbar.open('Error en el webservice' , null, {
+              this.snackbar.open('Error en el webservice', null, {
                 duration: 3000,
                 verticalPosition: 'bottom',
                 horizontalPosition: 'right',
@@ -136,22 +136,51 @@ export class LoginService {
           }
           // console.log(this.userLogged);
         })
-        .catch(
-          err => {
-            switch (err.status) {
-              case 0:
-                // alert('0 - Error trying to connect WebService <<http://c3wsapi.cl>> | Obtener usuario');
-                break;
-              case 404:
-                // alert('404 - Page doesn\'t exist <<http://c3wsapi.cl>> | Obtener usuario');
-                break;
-              case 500:
-                // alert('500 - Error on code <<http://c3wsapi.cl>> | Obtener usuario');
-                break;
-            }
-            return [];
+      .catch(
+        err => {
+          switch (err.status) {
+            case 0:
+              // alert('0 - Error trying to connect WebService <<http://c3wsapi.cl>> | Obtener usuario');
+              break;
+            case 404:
+              // alert('404 - Page doesn\'t exist <<http://c3wsapi.cl>> | Obtener usuario');
+              break;
+            case 500:
+              // alert('500 - Error on code <<http://c3wsapi.cl>> | Obtener usuario');
+              break;
           }
-        );
+          return [];
+        }
+      );
+  }
+
+  async getUserById(id: number) {
+    let resp: Receiver;
+    await this.http.get('https://c3wsapi.cl/sg/usuario/getusuarioconid/' + id)
+      .toPromise()
+      .then(
+        (res: RespuestaStatus2) => {
+          resp = res.usuario;
+          // console.log(this.userLogged);
+        })
+      .catch(
+        err => {
+          switch (err.status) {
+            case 0:
+              // alert('0 - Error trying to connect WebService <<http://c3wsapi.cl>> | Obtener usuario');
+              break;
+            case 404:
+              // alert('404 - Page doesn\'t exist <<http://c3wsapi.cl>> | Obtener usuario');
+              break;
+            case 500:
+              // alert('500 - Error on code <<http://c3wsapi.cl>> | Obtener usuario');
+              break;
+          }
+          return [];
+        }
+      );
+
+    return resp;
   }
 
   logout() {
@@ -164,7 +193,7 @@ export class LoginService {
 
   isLoggedIn(): boolean {
     if (localStorage.getItem('sg-user') && localStorage.getItem('sg-position') &&
-        localStorage.getItem('sg-userName') && localStorage.getItem('sg-userID')) {
+      localStorage.getItem('sg-userName') && localStorage.getItem('sg-userID')) {
       return true;
     } else {
       return false;

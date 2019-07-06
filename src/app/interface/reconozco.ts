@@ -15,6 +15,8 @@ export interface Reconocimiento {
   reconocido: UsuarioBuscar[];
   url_img: string;
   valor_comportamiento: number;
+  tipo_rec: number;
+  id_valor: number;
 }
 
 export interface UsuarioReconocimiento {

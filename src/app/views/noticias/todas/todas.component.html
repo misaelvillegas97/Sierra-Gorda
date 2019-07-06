@@ -1,6 +1,5 @@
-<div class="row">
-
-  <ng-container *ngIf="ns.listaNoticias">
+<ng-container *ngIf="ns.listaNoticias">
+  <div class="row">
 
     <!-- En caso que no encuentre resultados -->
     <ng-container *ngIf="ns.listaNoticias.length === 0">
@@ -10,7 +9,7 @@
     <!-- En caso de existir noticias -->
     <ng-container *ngIf="ns.listaNoticias.length !== 0">
       <!-- Despliega lista de noticias -->
-      <ng-container *ngFor="let noticia of ns.listaNoticias; let i=index">
+      <ng-container *ngFor="let noticia of ns.listaNoticias | paginate: { id: 'server', itemsPerPage: 16, currentPage: actualPage, totalItems: total, directionLinks: false }; let i=index">
         <div class="col-lg-3 col-md-4 col-sm-12">
           <div class="noticias-card shadow mt-4">
             <div class="noticias-card-flag" [ngClass]="{'destacada': noticia.id_tipo_noticia_fk === 2}">
@@ -53,5 +52,10 @@
       </ng-container>
     </ng-container>
 
-  </ng-container>
-</div>
+  </div>
+  <br/>
+  <div class="has-text-centered">
+    <div class="style-two mb-4 mt-4"></div>
+    <pagination-controls (pageChange)="getPage($event)" id="server"></pagination-controls>
+  </div>
+</ng-container>

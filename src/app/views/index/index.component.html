@@ -207,6 +207,7 @@
             <div class="text-right pt-2 mr-4">
               <a
                 routerLink="/personas/cumpleanios"
+                (click)="ga.onCumpleaniosClick()"
                 class="text-cumpleaños"
                 style="text-decoration: underline #00A9B7 !important; color: #00A9B7"
                 >Ir a Cumpleaños
@@ -416,7 +417,7 @@
   *ngIf="logged"
 >
   <div class="contact-window shadow" (click)="clickedInside($event)">
-    <app-contact (onQuit)="toggle_contact($event)"></app-contact>
+    <app-contact *ngIf="contact" (onQuit)="toggle_contact($event)"></app-contact>
   </div>
 </div>
 

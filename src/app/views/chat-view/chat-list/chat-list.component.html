@@ -1,13 +1,13 @@
 <div class="chat-card cursor" (click)="loadChat()">
   <div class="chat-card-info">
-    <img [src]="list.destinatario.img_perfil_usuario" class="pr-2 pl-2" *ngIf="list.destinatario.img_perfil_usuario" alt="user-image">
-    <i class="fas fa-user-circle pl-2 pr-2" style="color: #BDE1AE; font-size: 50px" *ngIf="!list.destinatario.img_perfil_usuario"></i>
+  <img [src]="list.destinatario.img_perfil_usuario" class="mr-2 ml-2" style="border-radius: 50%; width: 50px; height: 50px;" *ngIf="list.destinatario.img_perfil_usuario" alt="user-image">
+    <i class="fas fa-user-circle ml-2 mr-2" style="color: #BDE1AE; font-size: 50px" *ngIf="!list.destinatario.img_perfil_usuario"></i>
     <div class="chat-card-info-data">
       <span class="chat-card-info-data-name">
         {{ list.destinatario.primer_nombre_usuario + ' ' + list.destinatario.apellido_pat_usuario }}
       </span>
       <div class="chat-card-info-data-ultimo-mensaje" *ngIf="list.ultimomensaje">
-        {{ user === list.ultimomensaje.id_remitente ? 'Tu: ' + decodeMessage(list.ultimomensaje.mensaje) : decodeMessage(list.ultimomensaje.mensaje) }}
+        {{ list.ultimomensaje.id_remitente ? (user === list.ultimomensaje.id_remitente ? 'Tu: ' + decodeMessage(list.ultimomensaje.mensaje) : decodeMessage(list.ultimomensaje.mensaje)) : '' }}
       </div>
     </div>
   </div>

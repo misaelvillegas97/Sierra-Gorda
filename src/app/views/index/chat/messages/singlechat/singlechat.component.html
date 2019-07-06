@@ -1,7 +1,9 @@
 <div class="chat-header border-bottom shadow-sm d-flex pt-2 pb-2 align-items-center">
   <div class="user-img pl-3 pr-1">
     <!-- <i class="fas fa-user"></i> -->
-    <img class="img-fluid" src="https://c3soporte00400.cl/sg/assets/img/img-02.png" />
+    <!-- <img class="img-fluid" src="https://c3soporte00400.cl/sg/assets/img/img-02.png" /> -->
+    <img _ngcontent-c5="" style="width: 40px; height: 40px; border-radius: 50%;" *ngIf="data.destinatario.img_perfil_usuario" [src]="data.destinatario.img_perfil_usuario">
+    <img _ngcontent-c5="" style="width: 40px; height: 40px;" *ngIf="!data.destinatario.img_perfil_usuario" src="https://c3soporte00400.cl/sg/assets/img/reconozco/cara.png">
   </div>
   <!-- <div class="user-info pl-2">ID usuario: {{ data }}</div> -->
   <div class="user-info pl-2">
@@ -15,12 +17,13 @@
     </p>
   </div>
   <div class="user-star">
-    <i class="fas fa-star" *ngIf="data.favorito"></i>
-    <i class="far fa-star" *ngIf="!data.favorito"></i>
+    <i class="fas fa-star" (click)="setFavorito()" *ngIf="data.favorito"></i>
+    <i class="far fa-star" (click)="setFavorito()" *ngIf="!data.favorito"></i>
   </div>
   <div class="actions">
       <a
-      routerLink="/"
+      [routerLink]="['/chat']"
+      [queryParams]="{usr: data.destinatario.id_usuario}"
       class="text-cumpleaños"
       style="text-decoration: underline #00A9B7 !important; color: #00A9B7"
       >Abrir en el Chat
@@ -36,16 +39,16 @@
     <li style="width:100%" class="pb-3" *ngFor="let mensaje of messagesList">
       <div
         class="macro"
-        [ngClass]=" isSender(mensaje.id_remitente) ? 'msj' : 'msj-rta'"
+        [ngClass]=" !isSender(mensaje.id_remitente) ? 'msj' : 'msj-rta'"
         [ngStyle]="
-          {'color': isSender(mensaje.id_remitente) ? 'white' : '#616161'}
+          {'color': !isSender(mensaje.id_remitente) ? 'white' : '#616161'}
         ">
         <div class="text text-l">
           <p>{{ decode(mensaje.texto) }}</p>
           <p>
             <small
               [ngStyle]="
-                {'color': isSender(mensaje.id_remitente) ? 'white' : '#616161'}
+                {'color': !isSender(mensaje.id_remitente) ? 'white' : '#616161'}
               "
               style="font-style: italic"
               >

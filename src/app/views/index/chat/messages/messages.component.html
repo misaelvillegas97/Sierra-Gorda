@@ -16,13 +16,25 @@
 </div>
 <br />
 
-<ng-container *ngIf="cs.chatList">
+<ng-container *ngIf="cs.chatList && isRecent">
   <div class="container-fluid chat-container">
     <app-card
       *ngFor="let chat of cs.chatList"
       [chat]="chat"
       (click)="chatSelect(chat)"
     ></app-card>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="cs.chatList && isFavorites">
+  <div class="container-fluid chat-container">
+    <ng-container *ngFor="let chat of cs.chatList">
+      <app-card
+        [chat]="chat"
+        *ngIf="chat.favorito"
+        (click)="chatSelect(chat)"
+      ></app-card>
+    </ng-container>
   </div>
 </ng-container>
 

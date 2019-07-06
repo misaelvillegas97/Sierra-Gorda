@@ -58,6 +58,10 @@ import { ComunicacionesComponent } from './views/menus/comunicaciones/comunicaci
 import { FormulariosSgComponent } from './views/menus/formularios-sg/formularios-sg.component';
 import { GestionDesempenioComponent } from './views/gestion-desempenio/gestion-desempenio.component';
 import { ClimaLaboralComponent } from './views/clima-laboral/clima-laboral.component';
+import { ProcesoProductivoComponent } from './views/sections/nuestra-empresa/proceso-productivo/proceso-productivo.component';
+import { RevistasComponent } from './views/menus/comunicaciones/revistas/revistas.component';
+import { ComunicacionesPrincipalComponent } from './views/menus/comunicaciones/comunicaciones-principal/comunicaciones-principal.component';
+import { RevistaCatabelaComponent } from './views/sections/personas/revista-catabela/revista-catabela.component';
 
 const routes: Routes = [
   {
@@ -145,6 +149,10 @@ const routes: Routes = [
       {
         path: 'equipo-ejecutivo',
         component: EquipoEjecutivoComponent
+      },
+      {
+        path: 'proceso-productivo',
+        component: ProcesoProductivoComponent
       }
     ]
   },
@@ -166,8 +174,12 @@ const routes: Routes = [
         component: CumpleaniosComponent
       },
       {
-        path: 'revista',
+        path: 'revista-sgnews',
         component: RevistaComponent
+      },
+      {
+        path: 'revista-catabela',
+        component: RevistaCatabelaComponent
       },
       {
         path: 'portal',
@@ -308,7 +320,17 @@ const routes: Routes = [
   },
   {
     path: 'comunicaciones',
-    component: ComunicacionesComponent
+    component: ComunicacionesComponent,
+    children: [
+      {
+        path: '',
+        component: ComunicacionesPrincipalComponent
+      },
+      {
+        path: 'revistas',
+        component: RevistasComponent
+      }
+    ]
   },
   {
     path: 'formularios-sg',
@@ -414,7 +436,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {onSameUrlNavigation: 'reload'})],
+  imports: [RouterModule.forRoot(routes, {onSameUrlNavigation: 'reload', scrollPositionRestoration: 'enabled'})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

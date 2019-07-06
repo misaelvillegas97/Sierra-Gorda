@@ -7,6 +7,8 @@ import { PollModalComponent } from 'src/app/modals/poll-modal/poll-modal.compone
 import { SinglechatComponent } from './chat/messages/singlechat/singlechat.component';
 import { ChatService } from 'src/app/providers/chat.service';
 import { IndexService } from 'src/app/providers/index.service';
+import { GoogleAnalyticsService } from 'src/app/providers/google-analytics.service';
+import { ContactComponent } from './contact/contact.component';
 
 declare let $: any;
 
@@ -27,6 +29,8 @@ export class IndexComponent implements OnInit, AfterViewInit {
   uv_actual: any;
   filtermain: string;
   title_hovered = false;
+
+  contact: boolean = false;
 
   fecha_actual = new Date();
 
@@ -53,7 +57,7 @@ export class IndexComponent implements OnInit, AfterViewInit {
   userID: number = undefined;
   chat: Chat = undefined;
 
-  constructor(public ls: LoginService, private modalService: MDBModalService, private cs: ChatService, public is: IndexService) {
+  constructor(public ls: LoginService, private modalService: MDBModalService, private cs: ChatService, public is: IndexService, public ga: GoogleAnalyticsService) {
     this.is.getAllResultados();
   }
 
@@ -66,32 +70,32 @@ export class IndexComponent implements OnInit, AfterViewInit {
 
 
   //#region UV filter module
-  uvLevel(uvI: number){
+  uvLevel(uvI: number) {
     let level = '';
-    if(uvI < 3){
+    if (uvI < 3) {
       level = 'Bajo';
     }
-    if(uvI > 2 && uvI < 6){
+    if (uvI > 2 && uvI < 6) {
       level = 'Moderado';
     }
-    if(uvI >5 && uvI < 8){
+    if (uvI > 5 && uvI < 8) {
       level = 'Alto';
     }
-    if(uvI > 7 && uvI < 11) {
+    if (uvI > 7 && uvI < 11) {
       level = 'Muy Alto';
     }
-    if(uvI > 10) {
+    if (uvI > 10) {
       level = 'Extremo';
     }
     return level;
   }
 
-  roundUVIndex(uvI: number){
+  roundUVIndex(uvI: number) {
     let uvRounded = 0;
     uvRounded = Math.round(uvI);
     return uvRounded;
   }
-  getDayofWeek(unixtime: number){
+  getDayofWeek(unixtime: number) {
     const today = new Date().getDay();
     const days = ['Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'];
     const day = new Date(unixtime * 1000).getDay();
@@ -141,6 +145,7 @@ export class IndexComponent implements OnInit, AfterViewInit {
 
   //#region Chat
   toggle_chat(state: boolean) {
+    this.ga.onChatClickWindow();
     if (state) {
       document.getElementById('chat-container').style.display = 'block';
       document.getElementById('html').classList.add('noscroll');
@@ -176,7 +181,7 @@ export class IndexComponent implements OnInit, AfterViewInit {
       this.chatSelected = false;
       setTimeout(() => {
         this.chatSelected = true;
-        this.userID = data.destinatario.id_usuario ;
+        this.userID = data.destinatario.id_usuario;
         this.chat = data;
         document.getElementById(`user-${this.userID}`).classList.add('active');
       }, 0);
@@ -193,6 +198,7 @@ export class IndexComponent implements OnInit, AfterViewInit {
 
   //#region Encuestas
   toggle_poll(state: boolean) {
+    this.ga.onEncuestaClickWindows();
     if (state) {
       document.getElementById('poll-container').style.display = 'block';
       document.getElementById('html').classList.add('noscroll');
@@ -245,9 +251,12 @@ export class IndexComponent implements OnInit, AfterViewInit {
   //#region Contactos
   toggle_contact(state: boolean) {
     if (state) {
+      this.ga.onContactosClick();
+      this.contact = true;
       document.getElementById('contact-container').style.display = 'block';
       document.getElementById('html').classList.add('noscroll');
     } else {
+      this.contact = false;
       document.getElementById('contact-container').classList.remove('fadeInRightBig');
       document.getElementById('contact-container').classList.add('fadeOutRightBig');
       document.getElementById('html').classList.remove('noscroll');
@@ -406,7 +415,7 @@ export class IndexComponent implements OnInit, AfterViewInit {
     $event.stopPropagation();  // <- esto detendrá la propagación
   }
 
-  openModal( opt: number ) {
+  openModal(opt: number) {
     let data = {};
     switch (opt) {
       case 0:

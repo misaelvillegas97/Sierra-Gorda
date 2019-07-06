@@ -30,6 +30,11 @@ export interface Noticia {
   titulo_noticia: string;
 }
 
+export interface NoticiaID {
+  id_noticia: number;
+  tipo: number;
+}
+
 export interface NoticiaDetalle {
   id_noticia: number;
   titulo_noticia: string;

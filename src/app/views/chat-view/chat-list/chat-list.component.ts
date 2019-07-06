@@ -24,7 +24,8 @@ export class ChatListComponent implements OnInit {
   }
 
   decodeMessage(_text: string): string {
-    return atob(atob(atob(_text)));
+    const decodified = decodeURIComponent(escape(atob(decodeURIComponent(escape(atob(decodeURIComponent(escape(atob(_text)))))))));
+    return decodified;
   }
 
 }

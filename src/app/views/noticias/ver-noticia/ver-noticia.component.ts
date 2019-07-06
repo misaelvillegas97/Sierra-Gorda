@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewEncapsulation, AfterViewInit } from '@angular/core';
 import { NoticiasService } from 'src/app/providers/noticias.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { NoticiaDetalle, Comentario, Noticia } from 'src/app/interface/noticia';
+import { NoticiaDetalle, Comentario, Noticia, NoticiaID } from 'src/app/interface/noticia';
 import { AppComponent } from 'src/app/app.component';
 import { LoginService } from 'src/app/providers/login.service';
 
@@ -38,6 +38,7 @@ export class VerNoticiaComponent implements OnInit, AfterViewInit {
 
   constructor( public ns: NoticiasService, private route: ActivatedRoute, private ls: LoginService, private router: Router ) {
     this.comentario = '';
+    this.megusta = false;
 
     this.sub = this.route.params.subscribe( params => {
       const _id = parseInt(params.id, 0);
@@ -46,21 +47,25 @@ export class VerNoticiaComponent implements OnInit, AfterViewInit {
         (res: NoticiaDetalle) => {
           // console.log(res);
 
-          if (!this.ns.listaNoticias) {
-            this.ns.getNoticias(undefined, undefined, 1);
+          // if (!this.ns.listaNoticias) {
+          //   this.ns.getNoticias(undefined, undefined, 1);
+          // }
+
+          if (!this.ns.listaNoticiasID) {
+            this.ns.getIdList();
           }
 
           this.noticia = res;
-          this.ns.getLike(this.noticia.id_noticia)
+          if (this.ls.isLoggedIn) {
+            this.ns.getLike(this.noticia.id_noticia)
             .then(
               resp => {
                 this.megusta = resp;
               }
             );
+          }
         }
       );
-
-
     });
   }
 
@@ -88,31 +93,38 @@ export class VerNoticiaComponent implements OnInit, AfterViewInit {
   }
 
   siguienteNoticia(): void {
-    let noticia: Noticia;
-    if ( this.ns.listaNoticias.find(noticiax => noticiax.id === this.noticia.id_noticia )) {
-      noticia = this.ns.listaNoticias.find(noticiax => noticiax.id === this.noticia.id_noticia);
-      const index = this.ns.listaNoticias.indexOf(noticia);
+    let noticia: NoticiaID;
+    // Valida que la noticia está dentro de las noticias existentes.
+    if (this.ns.listaNoticiasID) {
+      if ( this.ns.listaNoticiasID.find(noticiax => noticiax.id_noticia === this.noticia.id_noticia )) {
+        noticia = this.ns.listaNoticiasID.find(noticiax => noticiax.id_noticia === this.noticia.id_noticia);
+        const index = this.ns.listaNoticiasID.indexOf(noticia);
+        console.log(index);
 
-      if (this.ns.listaNoticias[index + 1]) {
-        // this.router.navigate(['/noticia', { id: this.ns.listaNoticias[index + 1].id}]);
-        this.router.navigateByUrl('/noticia/' + this.ns.listaNoticias[index + 1].id);
-      } else {
-        this.router.navigateByUrl('/noticia/' + this.ns.listaNoticias[0].id);
+        if (this.ns.listaNoticiasID[index + 1]) {
+          // this.router.navigate(['/noticia', { id: this.ns.listaNoticias[index + 1].id}]);
+          this.router.navigateByUrl('/noticia/' + this.ns.listaNoticiasID[index + 1].id_noticia);
+        } else {
+          this.router.navigateByUrl('/noticia/' + this.ns.listaNoticiasID[0].id_noticia);
+        }
       }
     }
   }
 
   anteriorNoticia(): void {
-    let noticia: Noticia;
-    if ( this.ns.listaNoticias.find(noticiax => noticiax.id === this.noticia.id_noticia )) {
-      noticia = this.ns.listaNoticias.find(noticiax => noticiax.id === this.noticia.id_noticia);
-      const index = this.ns.listaNoticias.indexOf(noticia);
+    let noticia: NoticiaID;
 
-      if (this.ns.listaNoticias[index - 1]) {
-        // this.router.navigate(['/noticia', { id: this.ns.listaNoticias[index - 1].id}]);
-        this.router.navigateByUrl('/noticia/' + this.ns.listaNoticias[index - 1].id);
-      } else {
-        this.router.navigateByUrl('/noticia/' + this.ns.listaNoticias[this.ns.listaNoticias.length - 1].id);
+    if (this.ns.listaNoticiasID) {
+      if ( this.ns.listaNoticiasID.find(noticiax => noticiax.id_noticia === this.noticia.id_noticia )) {
+        noticia = this.ns.listaNoticiasID.find(noticiax => noticiax.id_noticia === this.noticia.id_noticia);
+        const index = this.ns.listaNoticiasID.indexOf(noticia);
+
+        if (this.ns.listaNoticiasID[index - 1]) {
+          // this.router.navigate(['/noticia', { id: this.ns.listaNoticias[index - 1].id}]);
+          this.router.navigateByUrl('/noticia/' + this.ns.listaNoticiasID[index - 1].id_noticia);
+        } else {
+          this.router.navigateByUrl('/noticia/' + this.ns.listaNoticiasID[this.ns.listaNoticiasID.length - 1].id_noticia);
+        }
       }
     }
   }

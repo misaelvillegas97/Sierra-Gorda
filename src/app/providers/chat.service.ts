@@ -149,4 +149,24 @@ export class ChatService {
     }
 
   }
+
+  async setFavourite(_id: number, _state: number) {
+    let response: boolean;
+    const DATA = {
+      id_usuario: parseInt(atob(localStorage.getItem('sg-userID')), 0),
+      id_usuario_favorito: _id,
+      favorito: _state
+    };
+    await this.http.post(URL + 'chat/agregarfavorito', DATA).toPromise()
+      .then(
+        (res: {err: number; message: string; favorito: boolean}) => {
+          if (!res.err) {
+            // La iliana me dijo que era solo favorito jaja
+            response = res.favorito['result'];
+          }
+        }
+      );
+
+    return response;
+  }
 }

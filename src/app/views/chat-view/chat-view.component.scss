@@ -176,8 +176,13 @@ $text-color: #5c5c5c;
       padding: 10px 15px;
       border-radius: 10px;
       overflow: hidden;
-
       transition: 0.5s;
+
+      &-fav{
+        font-size:20pt;
+        margin-right:20px;
+        color:$orange;
+      }
 
       &-top {
         width: 100%;

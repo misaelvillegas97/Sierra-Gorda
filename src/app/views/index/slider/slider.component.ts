@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, AfterViewInit } from '@angular/core';
 import { GalleryService } from 'src/app/providers/gallery.service';
+import { GoogleAnalyticsService } from 'src/app/providers/google-analytics.service';
 
 declare var MasterSlider: any;
 @Component({
@@ -38,7 +39,7 @@ export class SliderComponent implements OnInit, AfterViewInit {
   ];
   @Input() code: number;
 
-  constructor(public gs: GalleryService) {}
+  constructor(public gs: GalleryService, public ga: GoogleAnalyticsService) {}
 
   ngOnInit() {
     if(this.gs.galleryList.length === 0) {

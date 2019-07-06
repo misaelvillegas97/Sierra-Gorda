@@ -4,8 +4,8 @@
       Te Reconozco por ESTAR
     </h1>
     <div class="animated fadeInRight">
-      <img routerLink="/te-reconozco/mis-reconocimientos" src="https://c3soporte00400.cl/sg/assets/img/reconozco/Reconocimiento_1.png" matTooltip="Reconocidos" matTooltipClass="bg-blue" alt="" style="width: 70px;" class="mr-2 cursor">
-      <img routerLink="/te-reconozco/reconocer" src="https://c3soporte00400.cl/sg/assets/img/reconozco/Reconocimiento_2.png" matTooltip="Reconocer" matTooltipClass="bg-blue" class="cursor" alt="" style="width: 70px;">
+      <img (click)="validateRedirect(0)" src="https://c3soporte00400.cl/sg/assets/img/reconozco/Reconocimiento_1.png" matTooltip="Reconocidos" matTooltipClass="bg-blue" alt="" style="width: 70px;" class="mr-2 cursor">
+      <img (click)="validateRedirect(1)" src="https://c3soporte00400.cl/sg/assets/img/reconozco/Reconocimiento_2.png" matTooltip="Reconocer" matTooltipClass="bg-blue" class="cursor" alt="" style="width: 70px;">
     </div>
   </div>
   <p style="font-family: Calibri; font-weight: 500; color: #5c5c5c; padding-left: 15px">
@@ -16,7 +16,7 @@
 
 <div class="reconozco-body">
   <div class="container">
-    <div class="row">
+    <div class="row" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50" (scrolled)="onScroll()">
       <ng-container *ngIf="rs.listReconocimientos">
         <ng-container *ngFor="let reconocimiento of rs.listReconocimientos">
           <div class="col-lg-4 col-md-6 col-sm-12">
@@ -34,7 +34,7 @@
 
 
                 <h6 [ngStyle]="{'color': reconocimiento.megusta ? 'white' : '#5c5c5c'}">
-                  {{ reconocimiento.nombre_gerencia ? reconocimiento.nombre_gerencia[0].nombre_grupo : (reconocimiento.reconocido[0].primer_nombre_usuario) }} <br>
+                  {{ reconocimiento.nombre_gerencia ? reconocimiento.nombre_gerencia[0].nombre_gerencia : (reconocimiento.reconocido[0].primer_nombre_usuario) }} <br>
                   {{ !reconocimiento.nombre_gerencia ? (reconocimiento.reconocido[0].apellido_pat_usuario + ' ' + reconocimiento.reconocido[0].apellido_mat_usuario) : '' }} <br>
                 </h6>
               </div>
@@ -46,7 +46,7 @@
                 </div>
               </div>
               <div (click)="setLike(reconocimiento)" *ngIf="!reconocimiento.megusta" class="cursor reconozco-card-actions">
-                <span (click)="setLike(reconocimiento)">Dar ¡Me Gusta! <i class="far fa-thumbs-up"></i></span>
+                <span>Dar ¡Me Gusta! <i class="far fa-thumbs-up"></i></span>
               </div>
               <div *ngIf="reconocimiento.megusta" class="reconozco-card-actions cursor liked-footer">
                 <span class="text-white">¡Te Gusta! <i class="far fa-thumbs-up"></i></span>

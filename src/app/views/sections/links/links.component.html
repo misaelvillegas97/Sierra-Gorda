@@ -19,50 +19,50 @@
       <div id="compania-options" class="container-open-link-1">
         <div class="triangle-up"></div>
         <ul>
-          <li routerLink="/nuestra-empresa/ubicacion" style="cursor: pointer;">
+          <li routerLink="/nuestra-empresa/ubicacion" (click)="ga.onSectionClick_GA('Ubicación')" style="cursor: pointer;">
             <span>Ubicación</span><i class="fas fa-chevron-right"></i>
           </li>
-          <li routerLink="/nuestra-empresa/quienes-somos" style="cursor: pointer;">
+          <li routerLink="/nuestra-empresa/quienes-somos" (click)="ga.onSectionClick_GA('Quienes Somos')" style="cursor: pointer;">
             <span>Quienes Somos</span><i class="fas fa-chevron-right"></i>
           </li>
-          <li routerLink="/personas/cultura" style="cursor: pointer;">
+          <li routerLink="/personas/cultura" (click)="ga.onSectionClick_GA('Cultura')" style="cursor: pointer;">
             <span>Cultura</span><i class="fas fa-chevron-right"></i>
           </li>
-          <li routerLink="/nuestra-empresa/historia" style="cursor: pointer;">
+          <li routerLink="/nuestra-empresa/historia" (click)="ga.onSectionClick_GA('Historia')" style="cursor: pointer;">
             <span>Historia</span><i class="fas fa-chevron-right"></i>
           </li>
-          <li routerLink="/nuestra-empresa/propiedad" style="cursor: pointer;">
+          <li routerLink="/nuestra-empresa/propiedad" (click)="ga.onSectionClick_GA('Propiedad')" style="cursor: pointer;">
             <span>Propiedad</span><i class="fas fa-chevron-right"></i>
           </li>
-          <li routerLink="/nuestra-empresa/equipo-ejecutivo" style="cursor: pointer;">
+          <li routerLink="/nuestra-empresa/equipo-ejecutivo" (click)="ga.onSectionClick_GA('Equipo Ejecutivo')" style="cursor: pointer;">
             <span>Equipo Ejecutivo</span><i class="fas fa-chevron-right"></i>
           </li>
-          <li routerLink="/nuestra-empresa/gerencia" style="cursor: pointer;">
+          <li routerLink="/nuestra-empresa/gerencia" (click)="ga.onSectionClick_GA('Gerencia y Superintendencias')" style="cursor: pointer;">
             <span>Gerencia / Superintendencias</span
             ><i class="fas fa-chevron-right"></i>
           </li>
-          <li routerLink="/nuestra-empresa/proceso-productivo" style="cursor: pointer;">
+          <li routerLink="/nuestra-empresa/proceso-productivo" (click)="ga.onSectionClick_GA('Proceso Productivo')" style="cursor: pointer;">
             <span>Proceso Productivo</span><i class="fas fa-chevron-right"></i>
           </li>
-          <a href="http://cjcsgweb01:8008/PoliticasProcedimientosSGSCM/default.aspx" target="_blank">
+          <a href="http://cjcsgweb01:8008/PoliticasProcedimientosSGSCM/default.aspx" (click)="ga.onSectionClick_GA('Políticas (Link Externo)')" target="_blank">
             <li style="cursor: pointer;">
               <span>Políticas</span><i class="fas fa-chevron-right"></i>
             </li>
           </a>
-          <li routerLink="/personas/comunidades" style="cursor: pointer;">
+          <li routerLink="/personas/comunidades" (click)="ga.onSectionClick_GA('Comunidades')" style="cursor: pointer;">
             <span>Comunidades</span><i class="fas fa-chevron-right"></i>
           </li>
-          <a href="https://kghm.com/" target="_blank">
+          <a href="https://kghm.com/" (click)="ga.onSectionClick_GA('KGHM (Link Externo)')" target="_blank">
             <li style="cursor: pointer;">
               <span>KGHM</span><i class="fas fa-chevron-right"></i>
             </li>
           </a>
-          <a href="http://www.smm.co.jp/E/" target="_blank">
+          <a href="http://www.smm.co.jp/E/" (click)="ga.onSectionClick_GA('Sumitomo Metal Minning (Link Externo)')" target="_blank">
             <li style="cursor: pointer;">
               <span>Sumitomo Metal Minning</span><i class="fas fa-chevron-right"></i>
             </li>
           </a>
-          <a href="http://www.sumitomocorp.co.jp/english/" target="_blank">
+          <a href="http://www.sumitomocorp.co.jp/english/" (click)="ga.onSectionClick_GA('Sumitomo Corp (Link Externo)')" target="_blank">
             <li style="cursor: pointer;">
               <span>Sumitomo Corp</span><i class="fas fa-chevron-right"></i>
             </li>
@@ -87,29 +87,29 @@
       <div id="personas-options" class="container-open-link-2">
         <div class="triangle-up"></div>
         <ul>
-          <li routerLink="/beneficios" style="cursor: pointer;">
+          <li routerLink="/beneficios" (click)="ga.onSectionClick_GA('Beneficios')" style="cursor: pointer;">
             <span>Beneficios</span><i class="fas fa-chevron-right"></i>
           </li>
-          <a href="https://www.payroll.cl/webpay/loginap.aspx" target="_blank">
+          <!-- <a href="https://www.payroll.cl/webpay/loginap.aspx" target="_blank">
             <li style="cursor: pointer;">
               <span>Autoconsulta PAYROLL</span><i class="fas fa-chevron-right"></i>
             </li>
-          </a>
-          <a href="https://secure.ethicspoint.com/domain/media/es/gui/46370/index.html" target="_blank">
+          </a> -->
+          <a href="https://secure.ethicspoint.com/domain/media/es/gui/46370/index.html" (click)="ga.onSectionClick_GA('Canal de denuncias (Link Externo)')" target="_blank">
             <li style="cursor: pointer;">
               <span>Canal de Denuncias </span><i class="fas fa-chevron-right"></i>
             </li>
           </a>
-          <li routerLink="/personas/cumpleanios" style="cursor: pointer;">
+          <li routerLink="/personas/cumpleanios" (click)="ga.onSectionClick_GA('Cumpleaños')" style="cursor: pointer;">
             <span>Cumpleaños</span><i class="fas fa-chevron-right"></i>
           </li>
-          <li routerLink="/personas/persasg" style="cursor: pointer;">
+          <li routerLink="/personas/persasg" (click)="ga.onSectionClick_GA('Persa SG')" style="cursor: pointer;">
             <span>Persa SG</span><i class="fas fa-chevron-right"></i>
           </li>
-          <li routerLink="/chat" style="cursor: pointer;" class="shadow-sm">
+          <li routerLink="/chat" style="cursor: pointer;" (click)="ga.onSectionClick_GA('Chat')" class="shadow-sm">
             <span>Chat</span><i class="fas fa-chevron-right"></i>
           </li>
-          <a href="https://sgscm.laborum.cl/" target="_blank">
+          <a href="https://sgscm.laborum.cl/" (click)="ga.onSectionClick_GA('Trabaja con Nosotros (Link Externo)')" target="_blank">
             <li style="cursor: pointer;">
               <span>Trabaja con Nosotros</span><i class="fas fa-chevron-right"></i>
             </li>
@@ -142,12 +142,12 @@
       <div id="aplicaciones-options" class="container-open-link-3">
         <div class="triangle-up"></div>
         <ul>
-          <a href="https://jde/" target="_blank">
+          <a href="https://jde/" (click)="ga.onSectionClick_GA('JD Edwards (Link Externo)')" target="_blank">
             <li style="cursor: pointer;">
             <span>JD Edwards  </span><i class="fas fa-chevron-right"></i>
             </li>
           </a>
-          <a href="http://sgscm.sourcing.ariba.com/" target="_blank">
+          <a href="http://sgscm.sourcing.ariba.com/" (click)="ga.onSectionClick_GA('SG SCM Sourcing Ariba (Link Externo)')" target="_blank">
             <li style="cursor: pointer;">
               <span>SG SCM Sourcing Ariba</span><i class="fas fa-chevron-right"></i>
             </li>
@@ -167,10 +167,10 @@
               <span>Pagina KGHM Internet</span><i class="fas fa-chevron-right"></i>
             </li>
           </a> -->
-          <li routerLink="/formularios-sg" style="cursor: pointer;" class="shadow-sm">
+          <li routerLink="/formularios-sg" (click)="ga.onSectionClick_GA('Formularios')" style="cursor: pointer;" class="shadow-sm">
             <span>Formularios</span><i class="fas fa-chevron-right"></i>
           </li>
-          <a href="http://sigasgscm.modafor.cl:443/mcasg/publico/p.jsp#Again-No-back-button" target="_blank">
+          <a href="http://sigasgscm.modafor.cl:443/mcasg/publico/p.jsp#Again-No-back-button" (click)="ga.onSectionClick_GA('Monitoreo en línea (Link Externo)')" target="_blank">
             <li style="cursor: pointer;">
               <span>Monitoreo en Línea</span><i class="fas fa-chevron-right"></i>
             </li>
@@ -181,7 +181,7 @@
             </li>
           </a> -->
 
-          <li routerLink="/branding-formatos" style="cursor: pointer;" class="shadow-sm">
+          <li routerLink="/branding-formatos" (click)="ga.onSectionClick_GA('Branding y Formatos')" style="cursor: pointer;" class="shadow-sm">
             <span>Branding y Formatos</span><i class="fas fa-chevron-right"></i>
           </li>
         </ul>
@@ -206,18 +206,18 @@
       <div id="herramientas-options" class="container-open-link-4">
         <div class="triangle-up"></div>
         <ul>
-          <li routerLink="/te-reconozco" style="cursor: pointer;" class="shadow-sm">
+          <li routerLink="/te-reconozco" (click)="ga.onSectionClick_GA('Te Reconozco por ESTAR')" style="cursor: pointer;" class="shadow-sm">
             <span>Te Reconozco Por Estar</span><i class="fas fa-chevron-right"></i>
           </li>
-          <a routerLink="/gestion-desempenio">
+          <a routerLink="/gestion-desempenio" (click)="ga.onSectionClick_GA('Gestión de Desempeño')">
             <li style="cursor: pointer;">
               <span>Gestión de Desempeño</span><i class="fas fa-chevron-right"></i>
             </li>
           </a>
-          <li routerLink="/desafio-austeridad" style="cursor: pointer;" class="shadow-sm">
+          <li routerLink="/desafio-austeridad" style="cursor: pointer;" (click)="ga.onSectionClick_GA('VCP Desafío Austeridad')" class="shadow-sm">
             <span>VCP Desafío Austeridad</span><i class="fas fa-chevron-right"></i>
           </li>
-          <a routerLink="/clima-laboral">
+          <a routerLink="/clima-laboral" (click)="ga.onSectionClick_GA('Clima Laboral')">
             <li style="cursor: pointer;">
               <span>Clima Laboral</span><i class="fas fa-chevron-right"></i>
             </li>

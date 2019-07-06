@@ -108,8 +108,8 @@ export class ReconocerComponent implements OnInit, OnDestroy {
   }
 
   onUserSearch( _text: string ) {
-    // console.log(_text);
-    this.us.search(_text)
+    if (this.respuestas.modalidad !== '0' && this.respuestas.equipo !== '0') {
+      this.rs.searchUsers(_text, this.ls.userLogged.nivel, parseInt(this.respuestas.modalidad, 0))
       .then(
         (resultados: UsuarioBuscar[]) => {
           this.listaUsuariosBusqueda = resultados;
@@ -125,6 +125,15 @@ export class ReconocerComponent implements OnInit, OnDestroy {
           });
         }
       );
+    } else {
+      this.snackbar.open('Completa todos los campos antes de buscar', null, {
+        duration: 3000,
+        verticalPosition: 'bottom',
+        horizontalPosition: 'right',
+        panelClass: ['snackbar-login'],
+        announcementMessage: 'Mensaje de bienvenida'
+      });
+    }
   }
 
   getConducta() {

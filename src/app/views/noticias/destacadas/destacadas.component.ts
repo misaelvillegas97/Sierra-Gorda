@@ -9,6 +9,8 @@ import { NoticiasService } from 'src/app/providers/noticias.service';
 })
 export class DestacadasComponent implements OnInit {
 
+  total: number;
+  actualPage: number;
   months = [
     'Ene',
     'Feb',
@@ -25,7 +27,25 @@ export class DestacadasComponent implements OnInit {
   ];
 
   constructor( public ns: NoticiasService ) {
-    this.ns.getNoticias(16, 1, 2);
+    this.total = 0;
+    this.loadData();
+  }
+
+  loadData() {
+    this.ns.getCount(2).then(
+      (contador: number) => {
+        this.total = contador;
+      }
+    );
+    this.getPage(1);
+  }
+
+  getPage($page?: number) {
+    window.scrollTo(0, 0);
+    if ( !$page ) { $page = 1; }
+    this.actualPage = $page;
+
+    this.ns.getNoticias(16, $page, 2);
   }
 
   ngOnInit() {

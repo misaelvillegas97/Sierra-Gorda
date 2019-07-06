@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Activity } from 'src/app/interface/interface';
 import { ActivityService } from 'src/app/providers/activity.service';
 import { LoginService } from 'src/app/providers/login.service';
+import { GoogleAnalyticsService } from 'src/app/providers/google-analytics.service';
 
 declare var $: any;
 declare var jsCalendar: any;
@@ -43,7 +44,7 @@ export class ActivitiesComponent implements OnInit {
     'Diciembre',
   ];
 
-  constructor(private as: ActivityService, public ls: LoginService) {
+  constructor(private as: ActivityService, public ls: LoginService, public ga: GoogleAnalyticsService) {
     this.dayselected = new Date().getDate();
     this.daynameselected = dayname[new Date().getDay()];
     this.jsCalendarSettings();

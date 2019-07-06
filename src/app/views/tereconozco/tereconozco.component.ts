@@ -9,7 +9,7 @@ import { ReconozcoService } from 'src/app/providers/reconozco.service';
 export class TereconozcoComponent implements OnInit {
 
   constructor(public rs: ReconozcoService) {
-    this.rs.getAllReconocimientos();
+    // this.rs.getAllReconocimientos();
   }
 
   ngOnInit() {

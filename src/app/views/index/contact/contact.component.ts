@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ElementRef, ViewChild, OnDestroy } from '@angular/core';
 import { ProfileService } from '../../../providers/profile.service';
 import { UsuarioBuscar } from 'src/app/interface/interface';
 
@@ -8,7 +8,7 @@ declare var $: any;
   templateUrl: './contact.component.html',
   styleUrls: ['./contact.component.scss']
 })
-export class ContactComponent implements OnInit {
+export class ContactComponent implements OnInit, OnDestroy {
   errorMessage = '';
   errorMessageDisplayed = false;
 
@@ -39,6 +39,10 @@ export class ContactComponent implements OnInit {
   constructor( public ps: ProfileService ) { }
 
   ngOnInit() {
+  }
+
+  ngOnDestroy(): void {
+    this.deleteSearchMessages();
   }
 
   toggleOptions() {
@@ -74,6 +78,8 @@ export class ContactComponent implements OnInit {
   deleteSearchMessages() {
     this.noUsersDisplayed = false;
     this.errorMessageDisplayed = false;
+
+    this.findedUsers = [];
   }
 
 }

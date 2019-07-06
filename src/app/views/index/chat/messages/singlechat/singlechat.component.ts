@@ -87,6 +87,22 @@ export class SinglechatComponent implements OnInit, OnDestroy {
     );
   }
 
+  setFavorito() {
+    if (this.data.favorito) {
+      this.cs.setFavourite(this.data.destinatario.id_usuario, 0).then(
+        res => {
+          this.data.favorito = true;
+        }
+      );
+    } else {
+      this.cs.setFavourite(this.data.destinatario.id_usuario, 1).then(
+        res => {
+          this.data.favorito = false;
+        }
+      );
+    }
+  }
+
   ngOnDestroy() {
     clearInterval(this.interval);
   }
@@ -100,7 +116,7 @@ export class SinglechatComponent implements OnInit, OnDestroy {
     let objM: Messages = {
       id: null,
       fecha: new Date(),
-      texto: btoa(btoa(btoa(this.mensaje))),
+      texto: this.encode(this.mensaje),
       visto: 0,
       id_remitente: this.ls.userLogged.id_usuario,
       id_destinatario: this.data.destinatario.id_usuario
@@ -139,8 +155,14 @@ export class SinglechatComponent implements OnInit, OnDestroy {
     return false;
   }
 
-  decode(_text: string) {
-    return atob(atob(atob(_text)));
+  decode(_text: string): string {
+    const decodified = decodeURIComponent(escape(atob(decodeURIComponent(escape(atob(decodeURIComponent(escape(atob(_text)))))))));
+    return decodified;
+  }
+
+  encode(_text: string): string {
+    const codified = btoa(unescape(encodeURIComponent(btoa(unescape(encodeURIComponent(btoa(unescape(encodeURIComponent(_text)))))))));
+    return codified;
   }
 
   calculardiferencia(_fecha: Date): string {

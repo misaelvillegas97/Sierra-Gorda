@@ -77,7 +77,7 @@
       <div *ngFor="let usuario of findedUsers" class="user-contact-container">
         <div class="picture">
           <!-- <img _ngcontent-c5="" class="img-fluid" src="https://c3soporte00400.cl/sg/assets/img/img-01.png"> -->
-          <img _ngcontent-c5="" style="width: 80px;" *ngIf="usuario.img_perfil_usuario" [src]="usuario.img_perfil_usuario">
+          <img _ngcontent-c5="" style="width: 80px; height: 80px; border-radius: 50%;" *ngIf="usuario.img_perfil_usuario" [src]="usuario.img_perfil_usuario">
           <img _ngcontent-c5="" style="width: 80px;" *ngIf="!usuario.img_perfil_usuario" src="https://c3soporte00400.cl/sg/assets/img/reconozco/cara.png">
         </div>
         <div class="content">
@@ -93,7 +93,7 @@
               <span class="info-general-usuario ml-4"><i class="fas fa-map-marker-alt"></i>{{ usuario.nombre_lugar_trabajo | titlecase }}</span>
             </div>
             <span class="info-general-usuario"><i class="fas fa-envelope"></i>{{ usuario.correo_usuario }}</span> <br>
-            <a class="info-general-usuario-mensaje">Enviar Mensaje <i class="fas fa-chevron-circle-right ml-2"></i></a>
+            <a class="info-general-usuario-mensaje" [routerLink]="['/chat']" [queryParams]="{usr: usuario.id_usuario}">Enviar Mensaje <i class="fas fa-chevron-circle-right ml-2"></i></a>
           </div>
         </div>
       </div>

@@ -14,10 +14,18 @@ $text-color: #5c5c5c;
 
 .galeria {
   &-title {
-    user-select: none;
     color: $blueSG;
-    font-weight: 800;
-    font-size: 4rem;
+    h1{
+      user-select: none;
+      font-weight: 800;
+      font-size: 4rem;
+    }
+
+    i{
+      font-size:20pt;
+      margin-right:20px;
+      cursor:pointer;
+    }
   }
   &-filter {
     display: flex;
@@ -67,10 +75,10 @@ $text-color: #5c5c5c;
     }
 
     &-item {
-      width: 95px;
-      max-width: 95px;
-      height: 95px;
-      max-height: 95px;
+      width: 120px;
+      max-width: 120px;
+      height: 120px;
+      max-height: 120px;
       // background-color: $yellow;
       border-radius: 5px;
       margin: 0px 10px;
@@ -78,7 +86,7 @@ $text-color: #5c5c5c;
       display: -ms-flexbox;
       display: flex;
       align-items: flex-end;
-
+      cursor:pointer;
       background: linear-gradient(to top right, $yellow 0%, $yellow 80%, $yellow-light 80%, $yellow-light 100%);
       background-color: $yellow;
 

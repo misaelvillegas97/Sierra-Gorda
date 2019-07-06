@@ -17,32 +17,20 @@ $text-color: #5c5c5c;
 $nombre-color: #80808e;
 $nombre-color2: #5a6770;
 
-.comunicaciones {
+.proceso {
   &-titulo {
-    color: $blueSG;
-    display: flex;
-    display: -ms-flexbox;
-    -ms-flex-align: center;
-    align-items: center;
-
-    &-volver{
-      font-size: 20pt;
-      margin-right:20px;
-       cursor: pointer;
-    }
     h1 {
-    font-weight: 800;
-    font-size: 35pt;
-    user-select: none;
+      color: $blueSG;
+      font-weight: 800;
+      font-size: 35pt;
+      user-select: none;
     }
   }
   &-container {
     margin-top: 60px;
     display: flex;
     display: -ms-flexbox;
-    // justify-content: space-around;
-    justify-content: space-evenly;
-
+    justify-content: space-around;
     &-button {
       height: 150px;
       width: 150px;

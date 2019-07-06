@@ -27,7 +27,7 @@
             <a
               href="javascript:void(0)"
               class="text-actividad"
-              (click)="basicModal.show()"
+              (click)="basicModal.show(); ga.onActividadDetalleClick(actividad.titulo_actividad)"
               >Ver detalles
               <i
                 class="fas fa-external-link-alt ml-2"

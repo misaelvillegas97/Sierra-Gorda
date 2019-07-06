@@ -8,7 +8,7 @@
             <img *ngIf="!usuario.img_perfil_usuario" src="https://c3soporte00400.cl/sg/assets/img/reconozco/cara.png" class="img-fluid" style="border-radius: 50%;" alt="">
           </div>
           <div class="col-md-9 col-sm-9 pr-0 pl-2">
-            <h5 class="name-card">{{usuario.primer_nombre_usuario + ' ' + usuario.segundo_nombre_usuario? usuario.segundo_nombre_usuario: ''}}<br>{{ usuario.apellido_pat_usuario + ' ' + usuario.apellido_mat_usuario?usuario.apellido_mat_usuario: '' }}</h5>
+            <h5 class="name-card">{{usuario.primer_nombre_usuario + ' ' + (usuario.segundo_nombre_usuario? usuario.segundo_nombre_usuario: '') }}<br>{{ usuario.apellido_pat_usuario + ' ' + (usuario.apellido_mat_usuario?usuario.apellido_mat_usuario: '') }}</h5>
             <h6 class="desc-card">{{usuario.nombre_cargo? usuario.nombre_cargo: 'Sin cargo definido'}}</h6>
             <h6 class="desc-card">Sierra Gorda</h6>
           </div>
