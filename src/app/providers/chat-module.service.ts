@@ -65,6 +65,8 @@ export class ChatModuleService {
   async getMessagesByChat(_chatID: number) {
     let respuesta = -1;
     if (this.ls.isLoggedIn()) {
+      // comentario de prueba
+
       await this.http.get(URL + 'chat/getlistamensajesinlim/' + _chatID + '/' + atob(localStorage.getItem('sg-userID')))
         .toPromise()
         .then(
