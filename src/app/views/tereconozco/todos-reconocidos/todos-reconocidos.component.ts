@@ -73,7 +73,7 @@ export class TodosReconocidosComponent implements OnInit {
     if (this.ls.isLoggedIn()) {
       this.rs.setLike(_reconocimiento.id).finally(
         () => {
-          this.ga.
+          this.ga.onReconozcoLike();
           _reconocimiento.cantidad_likes ++;
           _reconocimiento.megusta = true;
         }
