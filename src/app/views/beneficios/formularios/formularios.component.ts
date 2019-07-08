@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BeneficiosService } from 'src/app/providers/beneficios.service';
+import { GoogleAnalyticsService } from 'src/app/providers/google-analytics.service';
 
 @Component({
   selector: 'app-formularios',
@@ -8,9 +9,9 @@ import { BeneficiosService } from 'src/app/providers/beneficios.service';
 })
 export class FormulariosComponent implements OnInit {
 
-  selectLink: string= '';
+  selectLink: string;
 
-  constructor(public bs: BeneficiosService) {
+  constructor(public bs: BeneficiosService, public ga: GoogleAnalyticsService) {
     this.bs.getAllBeneficiosPorCategorias(3).then(
       res => {
         this.selectLink = this.bs.listaBeneficiosCat[0].url_formulario;
@@ -21,12 +22,12 @@ export class FormulariosComponent implements OnInit {
   ngOnInit() {
   }
 
-  downloadFile(_id: number) {
-    let variable =  this.bs.listaBeneficiosCat.find(
-      beneficio => beneficio.id_beneficios === _id
+  getFormularioSelected() {
+    const formulario =  this.bs.listaBeneficiosCat.find(
+      beneficio => beneficio.url_formulario === this.selectLink
     );
 
-    variable.url_formulario;
+    return formulario.titulo_beneficio;
   }
 
   changeValue(_url: string) {

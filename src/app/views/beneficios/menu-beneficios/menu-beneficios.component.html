@@ -4,7 +4,7 @@
   </div>
   <div class="beneficios-container">
     <div>
-      <div class="beneficios-container-button shadow" [routerLink]="['./salud']">
+      <div class="beneficios-container-button shadow" [routerLink]="['./salud']" (click)="ga.onBeneficioMenuClick('Salud')">
         <img src="https://c3soporte00400.cl/sg/assets/img/Beneficios/Salud_Menu.png" alt="">
       </div>
       <div class="beneficios-container-nombre">
@@ -12,7 +12,7 @@
       </div>
     </div>
     <div>
-      <div class="beneficios-container-button shadow" [routerLink]="['./convenios']">
+      <div class="beneficios-container-button shadow" [routerLink]="['./convenios']" (click)="ga.onBeneficioMenuClick('Convenios')">
         <img src="https://c3soporte00400.cl/sg/assets/img/Beneficios/Convenios_Menu.png" alt="">
 
       </div>
@@ -21,7 +21,7 @@
       </div>
     </div>
     <div>
-      <div class="beneficios-container-button shadow" [routerLink]="['./formularios-laborales']">
+      <div class="beneficios-container-button shadow" [routerLink]="['./formularios-laborales']" (click)="ga.onBeneficioMenuClick('Formularios')">
         <img src="https://c3soporte00400.cl/sg/assets/img/Beneficios/Formulario_Menu.png" alt="">
       </div>
       <div class="beneficios-container-nombre">

@@ -18,7 +18,7 @@
       <div>
         <select class="" name="" id="" #selectForm *ngIf="bs.listaBeneficiosCat" (change)="changeValue(selectForm.value)">
           <!-- <option value="-1" selected>Seleccione</option> -->
-          <option [value]="link.url_formulario" *ngFor="let link of bs.listaBeneficiosCat">{{ link.titulo_beneficio }} </option>
+          <option [value]="link.url_formulario" *ngFor="let link of bs.listaBeneficiosCat"> {{ link.titulo_beneficio }} </option>
           <!-- <option value="">Antecedentes Personales</option>
                 <option value="">Anticipo de Sueldo</option>
                 <option value="">Actualización Email</option>
@@ -31,11 +31,11 @@
                 <option value="">Formulario de Vacaciones</option> -->
         </select>
         <div class="formulario-container-seleccion-botonbox" *ngIf="bs.listaBeneficiosCat">
-          <a [href]=" selectLink " download target="_blank" class="formulario-container-seleccion-botonbox-boton">
+          <a [href]=" selectLink " download target="_blank" class="formulario-container-seleccion-botonbox-boton" (click)="bs.sendFormularioToEmail(selectLink); ga.onFormularioMenuClick('descargar', getFormularioSelected())">
             Descargar
             <i class="fas fa-chevron-circle-down"></i>
           </a>
-          <div class="formulario-container-seleccion-botonbox-boton cursor" (click)="bs.sendFormularioToEmail(selectLink)">
+          <div class="formulario-container-seleccion-botonbox-boton cursor" (click)="bs.sendFormularioToEmail(selectLink); ga.onFormularioMenuClick('enviar', getFormularioSelected())">
             Enviar
             <i class="fas fa-chevron-circle-right"></i>
           </div>

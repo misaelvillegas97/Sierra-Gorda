@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BrandingService } from 'src/app/providers/branding.service';
+import { GoogleAnalyticsService } from 'src/app/providers/google-analytics.service';
 
 @Component({
   selector: 'app-branding',
@@ -10,7 +11,7 @@ export class BrandingComponent implements OnInit {
 
   selected: number;
 
-  constructor( public fs: BrandingService ) {
+  constructor( public fs: BrandingService, public ga: GoogleAnalyticsService ) {
     this.selected = -1;
     this.fs.getAllBranding();
     this.fs.getAllCategories();

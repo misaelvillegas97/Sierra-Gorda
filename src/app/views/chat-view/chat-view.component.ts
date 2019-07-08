@@ -4,6 +4,7 @@ import { Chat, Messages } from 'src/app/interface/interface';
 import { LoginService } from 'src/app/providers/login.service';
 import { ActivatedRoute } from '@angular/router';
 import { filter } from 'rxjs/operators';
+import { GoogleAnalyticsService } from 'src/app/providers/google-analytics.service';
 
 @Component({
   selector: 'app-chat-view',
@@ -66,7 +67,7 @@ export class ChatViewComponent implements OnInit, OnDestroy {
   // Emoji config
   toggle_emoji: boolean = false;
 
-  constructor( public cs: ChatModuleService, private ls: LoginService, private route: ActivatedRoute) {
+  constructor( public cs: ChatModuleService, private ls: LoginService, private route: ActivatedRoute, private ga: GoogleAnalyticsService) {
     this.isFavorites = false;
     this.isRecent = true;
     this.cs.getAllChats();
@@ -110,7 +111,12 @@ export class ChatViewComponent implements OnInit, OnDestroy {
       this.cs.getAllChats();
       return;
     }
+    this.ga.onChatSearch(_text);
     this.cs.buscar(_text);
+  }
+
+  clearSearch($event: any) {
+    this.cs.getAllChats();
   }
 
   loadChat($chat: Chat) {
@@ -154,6 +160,7 @@ export class ChatViewComponent implements OnInit, OnDestroy {
       .finally(
         () => {
           this.loadMessages();
+          this.ga.onChatSendMessage();
         }
         );
     this.mensaje = '';

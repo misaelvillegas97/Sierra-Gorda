@@ -158,6 +158,8 @@ export class IndexComponent implements OnInit, AfterViewInit {
 
         document.getElementById('chat-container').classList.remove('fadeOutRightBig');
         document.getElementById('chat-container').classList.add('fadeInRightBig');
+
+        this.cs.messagesList = undefined;
       }, 500);
       if (this.userID !== undefined) {
         document.getElementById(`user-${this.userID}`).classList.remove('active');

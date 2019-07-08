@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DesafioService } from 'src/app/providers/desafio.service';
+import { GoogleAnalyticsService } from 'src/app/providers/google-analytics.service';
 
 @Component({
   selector: 'app-info',
@@ -8,7 +9,7 @@ import { DesafioService } from 'src/app/providers/desafio.service';
 })
 export class InfoComponent implements OnInit {
 
-  constructor(public ds: DesafioService) {
+  constructor(public ds: DesafioService, public ga: GoogleAnalyticsService) {
     this.ds.getAllEncargados();
   }
 

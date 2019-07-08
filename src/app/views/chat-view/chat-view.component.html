@@ -27,6 +27,7 @@
           aria-label="buscar"
           aria-describedby="txt_buscar"
           (keyup.enter)="buscarChat(buscar.value)"
+          (keydown.backspace)="clearSearch($event)"
         />
       </div>
     </div>

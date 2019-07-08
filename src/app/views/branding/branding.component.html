@@ -75,7 +75,7 @@
                 {{ el.tipo === 7 ? 'ARCHIVO COMPRIMIDO' : '' }}
               </div>
               <div class="col branding-data-content-item-column" style="max-width: 200px; padding-left: 45px;">
-                <a [href]="el.url" download target="_blank"><i class="fas fa-arrow-alt-circle-down"></i></a>
+                <a [href]="el.url" download target="_blank"><i class="fas fa-arrow-alt-circle-down" (click)="ga.onBrandingDownload(el.nombre)"></i></a>
               </div>
             </div>
           </div>

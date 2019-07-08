@@ -48,7 +48,7 @@ export class AllProductsComponent implements OnInit {
       show: false,
       ignoreBackdropClick: false,
       class: 'persaModal-container modal-dialog-centered animated fadeInDown faster',
-      containerClass: '',
+      containerClass: 'overflow-y-scroll',
       animated: true,
       data
     };

@@ -6,6 +6,7 @@ import { ReconocimientoModalComponent } from 'src/app/modals/reconocimiento-moda
 import { LoginService } from 'src/app/providers/login.service';
 import { LoginModalComponent } from 'src/app/modals/login-modal/login-modal.component';
 import { Router } from '@angular/router';
+import { GoogleAnalyticsService } from 'src/app/providers/google-analytics.service';
 
 @Component({
   selector: 'app-todos-reconocidos',
@@ -18,7 +19,7 @@ export class TodosReconocidosComponent implements OnInit {
 
   page = 1;
 
-  constructor(public rs: ReconozcoService, private modalService: MDBModalService, private ls: LoginService, private router: Router) {
+  constructor(public rs: ReconozcoService, private modalService: MDBModalService, private ls: LoginService, private router: Router, private ga: GoogleAnalyticsService) {
     this.rs.getReconocimientosOnScroll();
 
     // this.rs.getAllReconocimientos();
@@ -72,6 +73,7 @@ export class TodosReconocidosComponent implements OnInit {
     if (this.ls.isLoggedIn()) {
       this.rs.setLike(_reconocimiento.id).finally(
         () => {
+          this.ga.
           _reconocimiento.cantidad_likes ++;
           _reconocimiento.megusta = true;
         }
@@ -83,7 +85,7 @@ export class TodosReconocidosComponent implements OnInit {
 
   openModalLogin() {
     let data = {
-      title: "Inicie Sesión para reconocer"
+      title: 'Inicie Sesión para reconocer'
     };
 
     const modalOptions = {

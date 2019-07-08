@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { NoticiaDetalle, Comentario, Noticia, NoticiaID } from 'src/app/interface/noticia';
 import { AppComponent } from 'src/app/app.component';
 import { LoginService } from 'src/app/providers/login.service';
+import { GoogleAnalyticsService } from 'src/app/providers/google-analytics.service';
 
 @Component({
   selector: 'app-ver-noticia',
@@ -36,7 +37,7 @@ export class VerNoticiaComponent implements OnInit, AfterViewInit {
   // Comentario
   comentario: string;
 
-  constructor( public ns: NoticiasService, private route: ActivatedRoute, private ls: LoginService, private router: Router ) {
+  constructor( public ns: NoticiasService, private route: ActivatedRoute, private ls: LoginService, private router: Router, private ga: GoogleAnalyticsService ) {
     this.comentario = '';
     this.megusta = false;
 
@@ -45,6 +46,7 @@ export class VerNoticiaComponent implements OnInit, AfterViewInit {
       this.ns.getNoticiaById(_id)
       .then(
         (res: NoticiaDetalle) => {
+          this.ga.onNewsOpen(res.titulo_noticia);
           // console.log(res);
 
           // if (!this.ns.listaNoticias) {

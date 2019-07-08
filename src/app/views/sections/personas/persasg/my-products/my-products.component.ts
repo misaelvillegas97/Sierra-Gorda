@@ -1,8 +1,9 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { ModalDirective } from 'angular-bootstrap-md';
 import { LoginService } from 'src/app/providers/login.service';
 import { UploadStructure } from 'src/app/interface/persa';
 import { PersaService } from 'src/app/providers/persa.service';
+import { GoogleAnalyticsService } from 'src/app/providers/google-analytics.service';
 
 declare var Croppie: any;
 declare var $: any;
@@ -12,7 +13,7 @@ declare var $: any;
   templateUrl: './my-products.component.html',
   styleUrls: ['./my-products.component.scss']
 })
-export class MyProductsComponent implements OnInit {
+export class MyProductsComponent implements OnInit, OnDestroy {
   @ViewChild('basicModal') demoBasic: ModalDirective;
   myImage = null;
   croppie: any;
@@ -35,22 +36,28 @@ export class MyProductsComponent implements OnInit {
     upload_4_b64: '',
   };
 
-  constructor(private ls: LoginService, private ps: PersaService) { }
+  sub: any;
+
+  constructor(private ls: LoginService, private ps: PersaService, private ga: GoogleAnalyticsService) { }
 
   ngOnInit() {
     this.croppie = document.getElementById('croppie');
     this.uploadCrop = new Croppie(this.croppie, {
       enableExif: true,
       viewport: {
-          width: 325,
-          height: 208,
-          type: 'square'
+        width: 325,
+        height: 208,
+        type: 'square'
       },
       boundary: {
-          width: 450,
-          height: 300
+        width: 450,
+        height: 300
       }
     });
+  }
+
+  ngOnDestroy() {
+    this.sub.unsubscribe();
   }
 
   cropImage(_idUpload: number, $event: any) {
@@ -61,10 +68,13 @@ export class MyProductsComponent implements OnInit {
 
     if (input.files && input.files[0]) {
       const reader = new FileReader();
+
+      // tslint:disable-next-line: only-arrow-functions
       reader.onload = function(e) {
         _.uploadCrop.bind({
+          // tslint:disable-next-line: no-string-literal
           url: e.target['result']
-        })
+        });
       };
       reader.readAsDataURL(input.files[0]);
 
@@ -73,15 +83,18 @@ export class MyProductsComponent implements OnInit {
   }
 
   seeResults() {
-    this.uploadCrop.result('base64', 'viewport', 'png').then( (blob) => {
+    this.uploadCrop.result('base64', 'viewport', 'png').then((blob) => {
       // this.myImage = blob;
       switch (this.selectedInput) {
-        case 1: this.newProduct.upload_1_b64 = blob;
-                break;
-        case 2: this.newProduct.upload_2_b64 = blob;
-                break;
-        case 3: this.newProduct.upload_3_b64 = blob;
-                break;
+        case 1:
+          this.newProduct.upload_1_b64 = blob;
+          break;
+        case 2:
+          this.newProduct.upload_2_b64 = blob;
+          break;
+        case 3:
+          this.newProduct.upload_3_b64 = blob;
+          break;
         case 4: this.newProduct.upload_4_b64 = blob;
       }
     });
@@ -93,7 +106,7 @@ export class MyProductsComponent implements OnInit {
     return x.length ? x.length : 0;
   }
 
-  publicar( f: Formulario ) {
+  publicar(f: Formulario) {
     console.table(f);
     const ARTICLE: UploadStructure = {
       id_usuario: this.ls.userLogged.id_usuario,
@@ -109,7 +122,9 @@ export class MyProductsComponent implements OnInit {
       formato: 'png'
     };
 
-    this.ps.publicar(ARTICLE).subscribe(
+    this.ga.onPersaPublicar(f.txt_name);
+
+    this.sub = this.ps.publicar(ARTICLE).subscribe(
       (res) => console.log(res),
       (err) => console.log(err)
     );

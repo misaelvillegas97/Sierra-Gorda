@@ -50,6 +50,7 @@ export class MessagesComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     clearInterval(this.interval);
+    this.chatSelect = undefined;
   }
 
   async loadChats() {

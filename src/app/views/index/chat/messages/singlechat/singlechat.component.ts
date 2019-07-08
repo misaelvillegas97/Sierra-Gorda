@@ -113,7 +113,7 @@ export class SinglechatComponent implements OnInit, OnDestroy {
   }
 
   sendMessage(f: { chatInput: string }) {
-    let objM: Messages = {
+    const objM: Messages = {
       id: null,
       fecha: new Date(),
       texto: this.encode(this.mensaje),

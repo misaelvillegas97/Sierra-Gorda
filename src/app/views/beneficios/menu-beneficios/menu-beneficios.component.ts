@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BeneficiosService } from 'src/app/providers/beneficios.service';
+import { GoogleAnalyticsService } from 'src/app/providers/google-analytics.service';
 
 @Component({
   selector: 'app-menu-beneficios',
@@ -8,7 +9,7 @@ import { BeneficiosService } from 'src/app/providers/beneficios.service';
 })
 export class MenuBeneficiosComponent implements OnInit {
 
-  constructor( public bs: BeneficiosService ) { }
+  constructor( public bs: BeneficiosService, public ga: GoogleAnalyticsService ) { }
 
   ngOnInit() {
   }

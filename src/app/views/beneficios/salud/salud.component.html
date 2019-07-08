@@ -11,7 +11,7 @@
       <div class="salud-container">
           <div class="salud-container-left">
             <ng-container *ngFor="let beneficio of bs.listaBeneficiosCat">
-              <div class="salud-container-left-boton shadow" routerLink="{{beneficio.id_beneficios}}">
+              <div class="salud-container-left-boton shadow" routerLink="{{beneficio.id_beneficios}}" (click)="ga.onSaludMenuClick(beneficio.titulo_beneficio)">
                 <div class="salud-container-left-boton-flecha">
                     <i class="fas fa-chevron-circle-right"></i>
                 </div>

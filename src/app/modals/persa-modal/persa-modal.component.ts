@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { PersaService } from 'src/app/providers/persa.service';
 import { ProductDetail } from 'src/app/interface/persa';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { GoogleAnalyticsService } from 'src/app/providers/google-analytics.service';
 
 declare var MasterSlider: any;
 
@@ -14,7 +15,7 @@ export class PersaModalComponent implements OnInit, OnDestroy {
   idProducto: number;
   producto: ProductDetail;
 
-  constructor(public ps: PersaService, private snackbar: MatSnackBar) {
+  constructor(public ps: PersaService, private snackbar: MatSnackBar, private ga: GoogleAnalyticsService) {
   }
 
   ngOnInit() {
@@ -35,10 +36,12 @@ export class PersaModalComponent implements OnInit, OnDestroy {
   }
 
   buy(  _cantidad: number) {
+    this.ga.onPersaCompra(this.producto.nombre);
     this.ps.comprar(this.idProducto, _cantidad)
     .then(
       res => {
-        if (res) {
+        // tslint:disable-next-line: no-string-literal
+        if (res['err']) {
           _cantidad = 0;
           this.snackbar.open('Ha ocurrido un error.', null, {
             duration: 3000,

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GoogleAnalyticsService } from 'src/app/providers/google-analytics.service';
 
 @Component({
   selector: 'app-propiedad',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PropiedadComponent implements OnInit {
 
-  constructor() { }
+  constructor(public ga: GoogleAnalyticsService) { }
 
   ngOnInit() {
   }
