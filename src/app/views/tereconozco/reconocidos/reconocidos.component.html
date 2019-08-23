@@ -53,7 +53,7 @@
       </div>
 
       <div class="reconocimiento-header-addon">
-        <div class="reconocimiento-header-addon-item" [ngClass]="{'active': isEnviados}">
+        <div class="reconocimiento-header-addon-item" [ngClass]="{'active': isEnviados}" *ngIf="ls.userLogged.nivel !== 0">
           <img src="https://c3soporte00400.cl/sg/assets/img/reconozco/Reconocimiento_2.png" alt="" (click)="changeView(1)">
           <div class="bg-blue" (click)="changeView(1)">
             <span>Enviados</span>
@@ -96,8 +96,11 @@
                   <span [ngStyle]="{'color': reconocimiento.megusta ? 'white' : '#5c5c5c'}">{{reconocimiento.fecha ? (reconocimiento.fecha | date:'fullDate') : 'Fecha no definida'}}</span>
                 </div>
               </div>
-              <div (click)="setLike(reconocimiento)" *ngIf="!reconocimiento.megusta" class="cursor reconozco-card-actions">
+              <div (click)="setLike(reconocimiento)" *ngIf="!reconocimiento.megusta && !owner(reconocimiento)" class="cursor reconozco-card-actions">
                 <span (click)="setLike(reconocimiento)">Dar ¡Me Gusta! <i class="far fa-thumbs-up"></i></span>
+              </div>
+              <div *ngIf="!reconocimiento.megusta && owner(reconocimiento)" [ngClass]="{'disabled': owner(reconocimiento)}" class="cursor reconozco-card-actions">
+                <span>Dar ¡Me Gusta! <i class="far fa-thumbs-up"></i></span>
               </div>
               <div *ngIf="reconocimiento.megusta" class="reconozco-card-actions cursor liked-footer">
                 <span class="text-white">¡Te Gusta! <i class="far fa-thumbs-up"></i></span>
@@ -142,7 +145,7 @@
       </div>
 
       <div class="reconocimiento-header-addon">
-        <div class="reconocimiento-header-addon-item" [ngClass]="{'active': isEnviados}">
+        <div class="reconocimiento-header-addon-item" [ngClass]="{'active': isEnviados}" *ngIf="ls.userLogged.nivel !== 0">
           <img src="https://c3soporte00400.cl/sg/assets/img/reconozco/Reconocimiento_2.png" alt="" (click)="changeView(1)">
           <div class="bg-blue" (click)="changeView(1)">
             <span>Enviados</span>
@@ -185,8 +188,11 @@
                   <span [ngStyle]="{'color': reconocimiento.megusta ? 'white' : '#5c5c5c'}">{{reconocimiento.fecha ? (reconocimiento.fecha | date:'fullDate') : 'Fecha no definida'}}</span>
                 </div>
               </div>
-              <div (click)="setLike(reconocimiento)" *ngIf="!reconocimiento.megusta" class="cursor reconozco-card-actions">
+              <div (click)="setLike(reconocimiento)" *ngIf="!reconocimiento.megusta && !owner(reconocimiento)" class="cursor reconozco-card-actions">
                 <span (click)="setLike(reconocimiento)">Dar ¡Me Gusta! <i class="far fa-thumbs-up"></i></span>
+              </div>
+              <div *ngIf="!reconocimiento.megusta && owner(reconocimiento)" [ngClass]="{'disabled': owner(reconocimiento)}" class="cursor reconozco-card-actions">
+                <span>Dar ¡Me Gusta! <i class="far fa-thumbs-up"></i></span>
               </div>
               <div *ngIf="reconocimiento.megusta" class="reconozco-card-actions cursor liked-footer">
                 <span class="text-white">¡Te Gusta! <i class="far fa-thumbs-up"></i></span>

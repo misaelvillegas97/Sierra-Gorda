@@ -119,6 +119,7 @@ $pink-text: #fe9f6e;
   &-secciones {
     &-container {
       display: flex;
+      justify-content: space-between;
     }
 
     &-button {
@@ -250,6 +251,8 @@ $pink-text: #fe9f6e;
 
     &-img{
       position: relative;
+      display: flex;
+      align-items: center;
       // margin-right: 20px;
       // margin-left: 50px;
 
@@ -260,8 +263,8 @@ $pink-text: #fe9f6e;
       }
 
       &-text {
-        width: 150px;
-        height: 150px;
+        width: 100px;
+        height: 100px;
         border-radius: 50%;
         // border: 2px solid white;
         background-color: rgba(255, 255, 255, 0.25);
@@ -271,6 +274,7 @@ $pink-text: #fe9f6e;
         color: white;
         font-weight: 500;
         text-align: center;
+        font-size: 9pt;
       }
 
       &-hover {
@@ -308,7 +312,7 @@ $pink-text: #fe9f6e;
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      padding-top: 10px;
+      /* padding-top: 10px; */
       width: 42%;
       margin-left: 10px;
 
@@ -439,6 +443,8 @@ $pink-text: #fe9f6e;
     justify-content: flex-start;
 
     &-img{
+      display: flex;
+      align-items: center;
       img {
         width: 100px;
         height: 100px;
@@ -689,4 +695,29 @@ $pink-text: #fe9f6e;
       }
     }
   }
+}
+
+.disabled {
+  color: gray !important;
+
+  span {
+    color: gray !important;
+  }
+}
+
+.direction-button {
+  border: none;
+  border-radius: 50px;
+  padding: 3px 12px;
+  background: #ff5900;
+  font-size: 14pt;
+  margin-top: 3px;
+  color: white;
+  text-align: center;
+}
+
+.direction-button + label {
+  color: #5b5b5b;
+  font-weight: 500;
+  font-size: 10pt;
 }

@@ -19,29 +19,41 @@
 </div>
 
 <div class="reconozco-secciones-container container animated fadeInLeft">
-  <ng-container *ngFor="let button of buttons; let i = index">
-    <button
-      class="reconozco-secciones-button"
-      [ngClass]="[
-        button.completed ? 'reconozco-secciones-button-completed' : '',
-        button.actual ? 'reconozco-secciones-button-actual' : ''
-      ]"
-      (click)="setRespuesta(button, i)"
-      [disabled]="
-        i === 0
-          ? button.completed
+  <div>
+    <ng-container *ngFor="let button of buttons; let i = index">
+      <button
+        class="reconozco-secciones-button"
+        [ngClass]="[
+          button.completed ? 'reconozco-secciones-button-completed' : '',
+          button.actual ? 'reconozco-secciones-button-actual' : ''
+        ]"
+        (click)="setRespuesta(button, i)"
+        [disabled]="
+          i === 0
+            ? button.completed
+              ? false
+              : validateNext(i)
+            : !buttons[i - 1].actual
+            ? true
+            : button.completed
             ? false
             : validateNext(i)
-          : !buttons[i - 1].actual
-          ? true
-          : button.completed
-          ? false
-          : validateNext(i)
-      "
-    >
-      {{ button.number }}
-    </button>
-  </ng-container>
+        "
+      >
+        {{ button.number }}
+      </button>
+    </ng-container>
+  </div>
+  <div style="display: flex;">
+    <div style="display: flex; flex-direction: column; align-items: center; text-align: center;" class=" mr-4">
+      <button class="direction-button" name="back"><i class="fas fa-angle-left"></i></button>
+      <label for="back">Anterior</label>
+    </div>
+    <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+      <button class="direction-button" name="next"><i class="fas fa-angle-right"></i></button>
+      <label for="next">Siguiente</label>
+    </div>
+  </div>
 </div>
 
 <br /><br />
@@ -121,10 +133,10 @@
             </div>
             <div class="reconocer-right-container-item-right">
               <div class="reconocer-right-container-item-right-nombre">
-                {{ usuario.primer_nombre_usuario + ' ' + (usuario.segundo_nombre_usuario? usuario.segundo_nombre_usuario : '') + ' ' + usuario.apellido_pat_usuario + ' ' + (usuario.apellido_mat_usuario ? usuario.apellido_mat_usuario: '') }}
+                {{ usuario.primer_nombre_usuario + ' ' + usuario.apellido_pat_usuario + ' ' + (usuario.apellido_mat_usuario ? usuario.apellido_mat_usuario: '') | titlecase }}
               </div>
               <div class="reconocer-right-container-item-right-cargo">
-                {{ usuario.nombre_cargo ? usuario.nombre_cargo : 'Sin cargo' }}
+                {{ (usuario.nombre_cargo ? usuario.nombre_cargo : 'Sin cargo') | titlecase }}
               </div>
             </div>
           </div>
@@ -145,10 +157,10 @@
             </div>
             <div class="reconocer-right-container-item-right">
               <div class="reconocer-right-container-item-right-nombre">
-                {{ usuario.primer_nombre_usuario + ' ' + (usuario.segundo_nombre_usuario? usuario.segundo_nombre_usuario : '') + ' ' + usuario.apellido_pat_usuario + ' ' + (usuario.apellido_mat_usuario ? usuario.apellido_mat_usuario: '') }}
+                {{ usuario.primer_nombre_usuario + ' ' + usuario.apellido_pat_usuario + ' ' + (usuario.apellido_mat_usuario ? usuario.apellido_mat_usuario: '') | titlecase }}
               </div>
               <div class="reconocer-right-container-item-right-cargo">
-                {{ usuario.nombre_cargo ? usuario.nombre_cargo : 'Sin cargo' }}
+                {{ (usuario.nombre_cargo ? usuario.nombre_cargo : 'Sin cargo') | titlecase }}
               </div>
             </div>
           </div>
@@ -165,17 +177,24 @@
   <div class="reconocido-header">
     <div class="reconocido-header-info">
       <ng-container *ngIf="listaUsuariosSeleccionados">
-        <ng-container *ngIf="listaUsuariosSeleccionados.length === 1">
+        <ng-container *ngIf="respuestas.modalidad === '1'">
           <ng-container *ngFor="let usuario of listaUsuariosSeleccionados">
             <div class="reconocido-header-info-name">
-              <h6>{{ usuario.primer_nombre_usuario + ' ' + (usuario.segundo_nombre_usuario? usuario.segundo_nombre_usuario : '') + ' ' + usuario.apellido_pat_usuario + ' ' + (usuario.apellido_mat_usuario ? usuario.apellido_mat_usuario: '') }}</h6>
+              <h6>{{ usuario.primer_nombre_usuario + ' ' + usuario.apellido_pat_usuario + ' ' + (usuario.apellido_mat_usuario ? usuario.apellido_mat_usuario: '') | titlecase }}</h6>
             </div>
             <div class="reconocido-header-info-desc">
-              <span>{{ usuario.nombre_cargo ? usuario.nombre_cargo : 'Sin cargo' }}</span>
-              <span>{{ usuario.nombre_lugar_trabajo ? usuario.nombre_lugar_trabajo : 'Sin lugar de trabajo' }}</span>
+              <span>{{ (usuario.nombre_cargo ? usuario.nombre_cargo : 'Sin cargo') | titlecase }}</span>
+              <span>{{ (usuario.nombre_lugar_trabajo ? usuario.nombre_lugar_trabajo : 'Sin lugar de trabajo') | titlecase }}</span>
             </div>
           </ng-container>
-
+        </ng-container>
+        <ng-container *ngIf="respuestas.modalidad === '2'">
+          <div class="resumen-header-info" style="width: 100% !important" *ngIf="respuestas.modalidad === '2'">
+            <div class="resumen-header-info-name">
+              <h6>{{(respuestas.nombre_grupo ? getNombreGerencia(respuestas.nombre_grupo) : 'Sin nombre de grupo')  | titlecase}}:</h6>
+              <h6 *ngFor="let usuario of listaUsuariosSeleccionados" class="group-names">• {{ usuario.primer_nombre_usuario + ' ' + usuario.apellido_pat_usuario + ' ' + (usuario.apellido_mat_usuario ? usuario.apellido_mat_usuario: '') | titlecase}}</h6>
+            </div>
+          </div>
         </ng-container>
 
       </ng-container>
@@ -190,20 +209,22 @@
       <img *ngIf="!this.listaUsuariosSeleccionados[0].img_perfil_usuario" src="https://c3soporte00400.cl/sg/assets/img/reconozco/cara.png" alt="" />
     </div>
     <div class="reconocido-header-img" *ngIf="this.respuestas.modalidad === '2'">
-      <img *ngIf="myImageGroup" [src]="myImageGroup" alt="" />
-      <div *ngIf="!myImageGroup" class="reconocido-header-img-text">
-        Haz clic aquí<br/>para cargar<br/>una foto
+      <div style="width: 100px; height: 100px; position: relative;">
+        <img *ngIf="myImageGroup" [src]="myImageGroup" alt="" />
+        <div *ngIf="!myImageGroup" class="reconocido-header-img-text">
+          Haz clic aquí<br/>para cargar<br/>una foto
+        </div>
+        <input
+          type="file"
+          hidden
+          name="grupoFile"
+          (change)="openCrop($event, 1)"
+          id="grupoFile"
+          />
+        <label for="grupoFile" class="reconocido-header-img-hover">
+          <i class="fas fa-images"></i>
+        </label>
       </div>
-      <input
-        type="file"
-        hidden
-        name="grupoFile"
-        (change)="openCrop($event, 1)"
-        id="grupoFile"
-        />
-      <label *ngIf="!myImageGroup" for="grupoFile" class="reconocido-header-img-hover">
-        <i class="fas fa-images"></i>
-      </label>
     </div>
   </div>
 
@@ -233,10 +254,10 @@
                 </div>
                 <div class="reconocer-right-container-item-right">
                   <div class="reconocer-right-container-item-right-nombre">
-                    {{ listaJefesSeleccionados.primer_nombre_usuario + ' ' + (listaJefesSeleccionados.segundo_nombre_usuario? listaJefesSeleccionados.segundo_nombre_usuario : '') + ' ' + listaJefesSeleccionados.apellido_pat_usuario + ' ' + (listaJefesSeleccionados.apellido_mat_usuario ? listaJefesSeleccionados.apellido_mat_usuario: '') }}
+                    {{ listaJefesSeleccionados.primer_nombre_usuario + ' ' + listaJefesSeleccionados.apellido_pat_usuario + ' ' + (listaJefesSeleccionados.apellido_mat_usuario ? listaJefesSeleccionados.apellido_mat_usuario: '') | titlecase }}
                   </div>
                   <div class="reconocer-right-container-item-right-cargo">
-                    {{ listaJefesSeleccionados.nombre_cargo ? listaJefesSeleccionados.nombre_cargo : 'Sin cargo' }}
+                    {{ (listaJefesSeleccionados.nombre_cargo ? listaJefesSeleccionados.nombre_cargo : 'Sin cargo') | titlecase }}
                   </div>
                 </div>
               </div>
@@ -254,10 +275,10 @@
                   </div>
                   <div class="reconocer-right-container-item-right">
                     <div class="reconocer-right-container-item-right-nombre">
-                      {{ usuario.primer_nombre_usuario + ' ' + (usuario.segundo_nombre_usuario? usuario.segundo_nombre_usuario : '') + ' ' + usuario.apellido_pat_usuario + ' ' + (usuario.apellido_mat_usuario ? usuario.apellido_mat_usuario: '') }}
+                      {{ usuario.primer_nombre_usuario + ' ' + usuario.apellido_pat_usuario + ' ' + (usuario.apellido_mat_usuario ? usuario.apellido_mat_usuario: '') | titlecase }}
                     </div>
                     <div class="reconocer-right-container-item-right-cargo">
-                      {{ usuario.nombre_cargo ? usuario.nombre_cargo : 'Sin cargo' }}
+                      {{ (usuario.nombre_cargo ? usuario.nombre_cargo : 'Sin cargo') | titlecase }}
                     </div>
                   </div>
                 </div>
@@ -322,17 +343,17 @@
     </div>
     <div class="resumen-header-info" *ngIf="respuestas.modalidad === '1'">
       <div class="resumen-header-info-name" *ngIf="listaUsuariosSeleccionados">
-        <h6>{{ listaUsuariosSeleccionados[0].primer_nombre_usuario + ' ' + (listaUsuariosSeleccionados[0].segundo_nombre_usuario? listaUsuariosSeleccionados[0].segundo_nombre_usuario : '') + ' ' + listaUsuariosSeleccionados[0].apellido_pat_usuario + ' ' + (listaUsuariosSeleccionados[0].apellido_mat_usuario ? listaUsuariosSeleccionados[0].apellido_mat_usuario: '') }}</h6>
+        <h6>{{ listaUsuariosSeleccionados[0].primer_nombre_usuario + ' ' + listaUsuariosSeleccionados[0].apellido_pat_usuario + ' ' + (listaUsuariosSeleccionados[0].apellido_mat_usuario ? listaUsuariosSeleccionados[0].apellido_mat_usuario: '') | titlecase}}</h6>
       </div>
       <div class="resumen-header-info-desc">
-        <span> {{listaUsuariosSeleccionados[0].nombre_cargo}} </span>
-        <span> {{listaUsuariosSeleccionados[0].nombre_gerencia}} </span>
+        <span> {{listaUsuariosSeleccionados[0].nombre_cargo | titlecase}} </span>
+        <span> {{listaUsuariosSeleccionados[0].nombre_gerencia | titlecase}} </span>
       </div>
     </div>
     <div class="resumen-header-info" *ngIf="respuestas.modalidad === '2'">
-      <div class="resumen-header-info-name" *ngFor="let usuario of listaUsuariosSeleccionados">
-        <h6>{{respuestas.nombre_grupo ? getNombreGerencia(respuestas.nombre_grupo) : 'Sin nombre de grupo'}}:</h6>
-        <h6>• {{ usuario.primer_nombre_usuario + ' ' + (usuario.segundo_nombre_usuario? usuario.segundo_nombre_usuario : '') + ' ' + usuario.apellido_pat_usuario + ' ' + (usuario.apellido_mat_usuario ? usuario.apellido_mat_usuario: '') }}</h6>
+      <div class="resumen-header-info-name">
+        <h6>{{(respuestas.nombre_grupo ? getNombreGerencia(respuestas.nombre_grupo) : 'Sin nombre de grupo')  | titlecase}}:</h6>
+        <h6 *ngFor="let usuario of listaUsuariosSeleccionados" class="group-names">• {{ usuario.primer_nombre_usuario + ' ' + usuario.apellido_pat_usuario + ' ' + (usuario.apellido_mat_usuario ? usuario.apellido_mat_usuario: '') | titlecase}}</h6>
       </div>
     </div>
     <div class="resumen-header-extra">
@@ -345,7 +366,7 @@
     <div class="row">
       <div class="col-6 pl-0">
         <div class="resumen-card">
-          <h6>CONDUCTA</h6>
+          <h6>Conducta</h6>
           <p>
             {{ getConducta() }}
           </p>
@@ -353,7 +374,7 @@
       </div>
       <div class="col-6 pr-0">
         <div class="resumen-card">
-          <h6>ARGUMENTO</h6>
+          <h6>Argumento</h6>
           <p> {{ respuestas.argumento }} </p>
         </div>
       </div>
@@ -372,6 +393,7 @@
   mdbModal
   #basicModal="mdbModal"
   class="modal fade"
+  style="overflow-y: scroll;"
   tabindex="-1"
   role="dialog"
   aria-labelledby="myBasicModalLabel"

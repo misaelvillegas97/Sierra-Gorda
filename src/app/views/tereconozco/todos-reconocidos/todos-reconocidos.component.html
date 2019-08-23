@@ -5,7 +5,7 @@
     </h1>
     <div class="animated fadeInRight">
       <img (click)="validateRedirect(0)" src="https://c3soporte00400.cl/sg/assets/img/reconozco/Reconocimiento_1.png" matTooltip="Reconocidos" matTooltipClass="bg-blue" alt="" style="width: 70px;" class="mr-2 cursor">
-      <img (click)="validateRedirect(1)" src="https://c3soporte00400.cl/sg/assets/img/reconozco/Reconocimiento_2.png" matTooltip="Reconocer" matTooltipClass="bg-blue" class="cursor" alt="" style="width: 70px;">
+      <img (click)="validateRedirect(1)" *ngIf="ls.userLogged.nivel !== 0" src="https://c3soporte00400.cl/sg/assets/img/reconozco/Reconocimiento_2.png" matTooltip="Reconocer" matTooltipClass="bg-blue" class="cursor" alt="" style="width: 70px;">
     </div>
   </div>
   <p style="font-family: Calibri; font-weight: 500; color: #5c5c5c; padding-left: 15px">
@@ -45,7 +45,10 @@
                   <span [ngStyle]="{'color': reconocimiento.megusta ? 'white' : '#5c5c5c'}">{{reconocimiento.fecha ? (reconocimiento.fecha | date:'fullDate') : 'Fecha no definida'}}</span>
                 </div>
               </div>
-              <div (click)="setLike(reconocimiento)" *ngIf="!reconocimiento.megusta" class="cursor reconozco-card-actions">
+              <div (click)="setLike(reconocimiento)" *ngIf="!reconocimiento.megusta && !owner(reconocimiento)" class="cursor reconozco-card-actions">
+                <span (click)="setLike(reconocimiento)">Dar ¡Me Gusta! <i class="far fa-thumbs-up"></i></span>
+              </div>
+              <div *ngIf="!reconocimiento.megusta && owner(reconocimiento)" [ngClass]="{'disabled': owner(reconocimiento)}" class="cursor reconozco-card-actions">
                 <span>Dar ¡Me Gusta! <i class="far fa-thumbs-up"></i></span>
               </div>
               <div *ngIf="reconocimiento.megusta" class="reconozco-card-actions cursor liked-footer">

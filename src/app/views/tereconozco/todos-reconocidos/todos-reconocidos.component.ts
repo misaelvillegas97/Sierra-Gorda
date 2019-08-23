@@ -19,7 +19,7 @@ export class TodosReconocidosComponent implements OnInit, OnDestroy {
 
   page = 1;
 
-  constructor(public rs: ReconozcoService, private modalService: MDBModalService, private ls: LoginService, private router: Router, private ga: GoogleAnalyticsService) {
+  constructor(public rs: ReconozcoService, private modalService: MDBModalService, public ls: LoginService, private router: Router, private ga: GoogleAnalyticsService) {
     this.rs.getReconocimientosOnScroll();
 
     // this.rs.getAllReconocimientos();
@@ -123,5 +123,17 @@ export class TodosReconocidosComponent implements OnInit, OnDestroy {
     } else {
       this.openModalLogin();
     }
+  }
+
+  owner(reconocimiento: Reconocimiento): boolean {
+    if (reconocimiento.reconocedor.id === this.ls.userLogged.id_usuario) {
+      return true;
+    }
+
+    if (reconocimiento.reconocido.find( user => user.id_usuario === this.ls.userLogged.id_usuario )) {
+      return true;
+    }
+
+    return false;
   }
 }

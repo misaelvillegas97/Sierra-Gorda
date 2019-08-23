@@ -1,18 +1,26 @@
 <div class="header">
   <div class="header-userinfo">
     <div class="header-userinfo-img">
+        <ng-container *ngIf="reconocimiento.nombre_gerencia">
+          <img *ngIf="reconocimiento.img_grupo" [src]="reconocimiento.img_grupo" alt="" />
+          <img *ngIf="!reconocimiento.img_grupo" src="https://c3soporte00400.cl/sg/assets/img/reconozco/cara.png" alt="" />
+        </ng-container>
+        <ng-container *ngIf="!reconocimiento.nombre_gerencia">
+          <img *ngIf="reconocimiento.reconocido[0].img_perfil_usuario" [src]="reconocimiento.reconocido[0].img_perfil_usuario" alt="" />
+          <img *ngIf="!reconocimiento.reconocido[0].img_perfil_usuario" src="https://c3soporte00400.cl/sg/assets/img/reconozco/cara.png" alt="" />
+        </ng-container>
 
     </div>
     <div class="header-userinfo-desc">
       <ng-container *ngIf="reconocimiento.nombre_gerencia">
         <ul>
-          <li *ngFor="let user of reconocimiento.reconocido">{{ user.primer_nombre_usuario + ' ' + user.apellido_pat_usuario + ' ' + user.apellido_mat_usuario }}</li>
+          <li *ngFor="let user of reconocimiento.reconocido">{{ user.primer_nombre_usuario + ' ' + user.apellido_pat_usuario + ' ' + user.apellido_mat_usuario | titlecase }}</li>
         </ul>
       </ng-container>
       <ng-container *ngIf="!reconocimiento.nombre_gerencia">
-        <h6>{{reconocimiento.reconocido[0].primer_nombre_usuario + ' ' + reconocimiento.reconocido[0].apellido_pat_usuario + ' ' + reconocimiento.reconocido[0].apellido_mat_usuario}}</h6>
-        <p>{{reconocimiento.reconocido[0].nombre_cargo ? (reconocimiento.reconocido[0].nombre_cargo | uppercase) : 'Sin cargo'}}</p>
-        <p>{{reconocimiento.reconocido[0].nombre_lugar_trabajo ? (reconocimiento.reconocido[0].nombre_lugar_trabajo | uppercase) : 'Sin lugar de trabajo'}}</p>
+        <h6>{{reconocimiento.reconocido[0].primer_nombre_usuario + ' ' + reconocimiento.reconocido[0].apellido_pat_usuario + ' ' + reconocimiento.reconocido[0].apellido_mat_usuario | titlecase }}</h6>
+        <p>{{(reconocimiento.reconocido[0].nombre_cargo ? (reconocimiento.reconocido[0].nombre_cargo | uppercase) : 'Sin cargo')  | titlecase }}</p>
+        <p>{{(reconocimiento.reconocido[0].nombre_lugar_trabajo ? (reconocimiento.reconocido[0].nombre_lugar_trabajo | uppercase) : 'Sin lugar de trabajo') | titlecase }}</p>
       </ng-container>
 
     </div>
@@ -22,15 +30,15 @@
 </div>
 <div class="descripcion pt-4">
   <div class="descripcion-item">
-    <h6>CONDUCTA</h6>
+    <h6>Conducta</h6>
     <p>{{ reconocimiento.nombre_comportamiento ? reconocimiento.nombre_comportamiento : 'Sin comentario de conducta'}}</p>
   </div>
   <div class="descripcion-item">
-    <h6>OTORGADO POR</h6>
-    <p>{{ (reconocimiento.reconocedor.primer_nombre ? reconocimiento.reconocedor.primer_nombre : '') + ' ' + (reconocimiento.reconocedor.apellido_paterno ? reconocimiento.reconocedor.apellido_paterno : '')}}</p>
+    <h6>Otorgado por</h6>
+    <p>{{ (reconocimiento.reconocedor.primer_nombre ? reconocimiento.reconocedor.primer_nombre : '') + ' ' + (reconocimiento.reconocedor.apellido_paterno ? reconocimiento.reconocedor.apellido_paterno : '') | titlecase}}</p>
   </div>
   <div class="descripcion-item">
-    <h6>ARGUMENTO</h6>
+    <h6>Argumento</h6>
     <p>{{reconocimiento.comentario ? reconocimiento.comentario : 'Sin argumentos'}}</p>
   </div>
 </div>
@@ -39,6 +47,7 @@
 </div>
 
 <div class="footer cursor">
-  <p *ngIf="!reconocimiento.megusta" (click)="setLike()">Dar ¡Me Gusta! <i class="far fa-thumbs-up"></i></p>
+  <p *ngIf="!reconocimiento.megusta && !owner" (click)="setLike()">Dar ¡Me Gusta! <i class="far fa-thumbs-up"></i></p>
+  <p *ngIf="!reconocimiento.megusta && owner" [ngClass]="{'disabled': owner}">Dar ¡Me Gusta! <i class="far fa-thumbs-up"></i></p>
   <p *ngIf="reconocimiento.megusta">¡Te Gusta! <i class="far fa-thumbs-up"></i></p>
 </div>

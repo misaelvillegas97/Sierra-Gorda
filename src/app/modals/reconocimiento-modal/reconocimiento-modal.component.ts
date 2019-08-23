@@ -24,7 +24,6 @@ export class ReconocimientoModalComponent implements OnInit {
     if (this.ls.isLoggedIn()) {
       this.rs.setLike(this.reconocimiento.id).finally(
         () => {
-          console.log('finnaly')
           this.ga.onReconozcoLike();
           this.reconocimiento.cantidad_likes++;
           this.reconocimiento.megusta = true;
@@ -55,4 +54,15 @@ export class ReconocimientoModalComponent implements OnInit {
     this.modalRef = this.modalService.show(LoginModalComponent, modalOptions);
   }
 
+  get owner(): boolean {
+    if (this.reconocimiento.reconocedor.id === this.ls.userLogged.id_usuario) {
+      return true;
+    }
+
+    if (this.reconocimiento.reconocido.find( user => user.id_usuario === this.ls.userLogged.id_usuario )) {
+      return true;
+    }
+
+    return false;
+  }
 }

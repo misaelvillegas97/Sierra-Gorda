@@ -20,12 +20,18 @@ export class ReconocidosComponent implements OnInit {
   constructor(public ls: LoginService, public rs: ReconozcoService, private modalService: MDBModalService) {
     this.rs.getAllReconocimientos(1);
     this.rs.getAllReconocimientos(2);
-
-    this.isEnviados = true;
-    this.isRecibidos = false;
   }
 
   ngOnInit() {
+    if (this.ls.userLogged) {
+      if (this.ls.userLogged.nivel !== 0) {
+        this.isEnviados = true;
+        this.isRecibidos = false;
+      } else {
+        this.isEnviados = false;
+        this.isRecibidos = true;
+      }
+    }
   }
 
   openModal(_reconocimiento: Reconocimiento) {
@@ -71,6 +77,18 @@ export class ReconocidosComponent implements OnInit {
         _reconocimiento.megusta = true;
       }
     );
+  }
+
+  owner(reconocimiento: Reconocimiento): boolean {
+    if (reconocimiento.reconocedor.id === this.ls.userLogged.id_usuario) {
+      return true;
+    }
+
+    if (reconocimiento.reconocido.find( user => user.id_usuario === this.ls.userLogged.id_usuario )) {
+      return true;
+    }
+
+    return false;
   }
 
 }
