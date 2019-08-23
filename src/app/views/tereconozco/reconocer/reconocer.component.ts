@@ -138,7 +138,10 @@ export class ReconocerComponent implements OnInit, OnDestroy {
   }
 
   getConducta() {
-    return this.rs.listValores.find(valor => valor.id === parseInt(this.respuestas.valor_estar, 0)).comportamientos[parseInt(this.respuestas.conducta, 0) - 1].nombre_comportamiento;
+    return this.rs.listValores.find(
+      valor => valor.id === parseInt(this.respuestas.valor_estar, 0)).comportamientos.find(
+        conducta => conducta.id_valor_comportamiento === parseInt(this.respuestas.conducta, 0)
+    ).nombre_comportamiento;
   }
 
   onBossSearch(_text: string) {

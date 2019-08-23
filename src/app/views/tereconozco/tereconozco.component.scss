@@ -440,8 +440,8 @@ $pink-text: #fe9f6e;
 
     &-img{
       img {
-        width: 150px;
-        height: 150px;
+        width: 100px;
+        height: 100px;
         margin-right: 20px;
         border-radius: 50%;
       }
@@ -458,9 +458,14 @@ $pink-text: #fe9f6e;
 
       &-name {
         h6 {
-          font-size: 20pt;
+          font-size: 16pt;
           font-weight: 700;
           color: white;
+        }
+
+        & h6.group-names {
+          font-size: 12pt;
+          font-weight: 500 !important;
         }
       }
 
@@ -470,7 +475,7 @@ $pink-text: #fe9f6e;
         span {
           color: white;
           font-weight: 500;
-          font-size: 12pt;
+          font-size: 10pt;
         }
       }
 
@@ -485,7 +490,7 @@ $pink-text: #fe9f6e;
         font-size: 12pt;
       }
       h6 {
-        font-size: 20pt;
+        font-size: 16pt;
         font-weight: 700;
         color: white;
       }
@@ -504,12 +509,12 @@ $pink-text: #fe9f6e;
 
       h6 {
         font-weight: 600;
-        font-size: 18pt;
+        font-size: 16pt;
       }
 
       p {
         font-weight: 400;
-        font-size: 11pt;
+        font-size: 10pt;
       }
     }
 

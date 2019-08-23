@@ -43,7 +43,7 @@ export class TodosReconocidosComponent implements OnInit, OnDestroy {
   }
 
   openModal(_reconocimiento: Reconocimiento) {
-    console.table(_reconocimiento);
+    // console.table(_reconocimiento);
     let data = {};
     let bgModal = '';
 
@@ -74,7 +74,7 @@ export class TodosReconocidosComponent implements OnInit, OnDestroy {
   }
 
   setLike(_reconocimiento: Reconocimiento) {
-    console.table(_reconocimiento);
+    // console.table(_reconocimiento);
     if (this.ls.isLoggedIn()) {
       this.rs.setLike(_reconocimiento.id).finally(
         () => {
