@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MDBModalRef } from 'angular-bootstrap-md';
 import { LoginService } from 'src/app/providers/login.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-login-modal',
@@ -11,11 +12,14 @@ export class LoginModalComponent implements OnInit {
   title: string;
   loading: boolean;
 
-  constructor( public modalRef: MDBModalRef, private ls: LoginService ) {
+  recovery: boolean;
+
+  constructor( public modalRef: MDBModalRef, private ls: LoginService, private snackbar: MatSnackBar ) {
   }
 
   ngOnInit() {
     this.loading = false;
+    this.recovery = false;
   }
 
 
@@ -64,6 +68,24 @@ export class LoginModalComponent implements OnInit {
         rutPuntos = rutPuntos + '-' + dv;
     }
     return rutPuntos;
+  }
+
+  recoverPass(form: {correo: string}) {
+    this.loading = true;
+    this.ls.passRecovery(form.correo).then(
+      res => {
+        this.snackbar.open('En los próximos minutos recibirás un correo de recuperación.', null, {
+          duration: 3000,
+          verticalPosition: 'bottom',
+          horizontalPosition: 'right',
+          panelClass: ['snackbar-login'],
+          announcementMessage: 'Mensaje de bienvenida'
+        });
+
+        this.recovery = false;
+        this.loading = false;
+      }
+    );
   }
 
 }

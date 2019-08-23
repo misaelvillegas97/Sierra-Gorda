@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Router, NavigationStart, Event, NavigationEnd, NavigationError } from '@angular/router';
-import { filter } from 'rxjs/operators';
 import { Gtag } from 'angular-gtag';
 
 // declare var gtag: any;
@@ -20,11 +19,7 @@ export class AppComponent {
       }
 
       if (event instanceof NavigationEnd) {
-        // Hide loading indicator
-        // gtag('config', 'UA-143329686-2', {
-        //   page_path: event.urlAfterRedirects
-        // });
-        gtag.pageview({
+        this.gtag.pageview({
           page_title: 'Intranet Sierra Gorda',
           page_path: event.urlAfterRedirects,
         });
@@ -34,7 +29,7 @@ export class AppComponent {
         // Hide loading indicator
 
         // Present error to user
-        console.log(event.error);
+        // console.log(event.error);
       }
     });
   }
@@ -52,7 +47,7 @@ export class AppComponent {
 
   subirScroll() {
     setTimeout(() => {
-      console.log('Subiendo Scroll');
+      // console.log('Subiendo Scroll');
       window.scrollTo(0, 0);
     }, 500);
   }

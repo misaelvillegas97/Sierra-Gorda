@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ReconozcoService } from 'src/app/providers/reconozco.service';
 import { Reconocimiento } from 'src/app/interface/reconozco';
 import { MDBModalService, MDBModalRef } from 'angular-bootstrap-md';
@@ -13,7 +13,7 @@ import { GoogleAnalyticsService } from 'src/app/providers/google-analytics.servi
   templateUrl: './todos-reconocidos.component.html',
   styleUrls: ['../tereconozco.component.scss']
 })
-export class TodosReconocidosComponent implements OnInit {
+export class TodosReconocidosComponent implements OnInit, OnDestroy {
   modalRef: MDBModalRef;
   modalOptions = {};
 
@@ -29,6 +29,11 @@ export class TodosReconocidosComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  ngOnDestroy() {
+    this.rs.listReconocimientos = undefined;
+    this.page = 1;
   }
 
   onScroll() {
@@ -108,7 +113,7 @@ export class TodosReconocidosComponent implements OnInit {
         case 0: // ? Mis Reconocimientos
           this.router.navigateByUrl('/te-reconozco/mis-reconocimientos');
           break;
-        case 0: // ? Reconocer
+        case 1: // ? Reconocer
           this.router.navigateByUrl('/te-reconozco/reconocer');
           break;
 

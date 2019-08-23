@@ -84,6 +84,8 @@ export class LoginService {
               }
             );
             break;
+          default:
+            this.route.navigateByUrl('/');
         }
         return respuesta;
       })
@@ -181,6 +183,22 @@ export class LoginService {
       );
 
     return resp;
+  }
+
+  async passRecovery(_mail: string) {
+    const URL_REQUEST = `https://c3wsapi.cl/sg/usuario/recuperarpass/`;
+    const DATA = {
+      email: _mail
+    };
+
+    this.http.post(URL_REQUEST, DATA).toPromise()
+      .then(
+        res => {
+          console.log(res);
+        }
+      );
+
+    return 1;
   }
 
   logout() {

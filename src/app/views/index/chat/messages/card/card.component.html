@@ -1,11 +1,16 @@
 <div class="card-chat d-flex justify-content-between shadow mb-3" style="cursor: pointer; user-select: none" id="user-{{ chat.destinatario.id_usuario }}">
   <!-- Message content -->
-  <div>
-    <div class="user-remitent">
-      {{ chat.destinatario?.primer_nombre_usuario + ' ' + chat.destinatario?.apellido_pat_usuario }}
-    </div>
-    <div class="user-company">
-      Sierra Gorda
+  <div class="d-flex justify-content-between">
+    <img [src]="chat.destinatario.img_perfil_usuario" class="mr-2" style="border-radius: 50%; width: 45px; height: 45px;" *ngIf="chat.destinatario.img_perfil_usuario" alt="user-image">
+    <img src="https://c3soporte00400.cl/sg/assets/img/reconozco/cara.png" class="mr-2" style="border-radius: 50%; width: 45px; height: 45px;" *ngIf="!chat.destinatario.img_perfil_usuario" alt="user-image">
+
+    <div class="d-flex flex-column justify-content-center">
+      <div class="user-remitent">
+          {{ chat.destinatario?.primer_nombre_usuario + ' ' + chat.destinatario?.apellido_pat_usuario }}
+        </div>
+        <div class="user-company">
+          Sierra Gorda
+        </div>
     </div>
   </div>
   <!-- Actions -->
@@ -13,7 +18,9 @@
     <mdb-badge pill="true" class="badge-m" color="color-blue" style="user-select: none" *ngIf="chat.cont_novisto != 0">{{ chat?.cont_novisto > 10? '+10': chat?.cont_novisto }}</mdb-badge>
     <i
       class="fas fa-chevron-circle-right ml-2"
-      style="color: #00A9B7"
+      style=" color: #00A9B7;
+              font-size: 18px;
+              margin-top: 2px"
       aria-hidden="true"
     ></i>
   </div>

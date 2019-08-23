@@ -90,13 +90,14 @@ export class ChatViewComponent implements OnInit, OnDestroy {
           this.chat = $chat;
         }
       );
+      document.getElementById('html').classList.remove('noscroll');
       this.getMessages(userId);
     });
   }
 
   ngOnInit() {
-    this.chat = undefined;
-    this.cs.messagesList = undefined;
+    // this.chat = undefined;
+    // this.cs.messagesList = undefined;
     this.displayInfo = false;
   }
 
@@ -208,13 +209,24 @@ export class ChatViewComponent implements OnInit, OnDestroy {
     this.isRecent = true;
   }
 
-  insertFavorito() {
-    if (this.chat.favorito) {
-      this.cs.setFavourite(this.chat.destinatario.id_usuario, 0).then(res => this.chat.favorito = res);
+  setFavorito(_data: Chat) {
+    if (!this.chat.favorito) {
+      this.cs.setFavourite(this.chat.destinatario.id_usuario, 0).then(
+        res => {
+          _data.favorito = true;
+          this.chat.favorito = true;
+        }
+      );
     } else {
-      this.cs.setFavourite(this.chat.destinatario.id_usuario, 1).then(res => this.chat.favorito = res);
+      this.cs.setFavourite(this.chat.destinatario.id_usuario, 1).then(
+        res => {
+          _data.favorito = false;
+          this.chat.favorito = false;
+        }
+      );
     }
   }
+
   archivarchat(){
     this.cs.archivarChat(this.chat.id);
     this.cs.chatList = this.cs.chatList.filter(chat =>chat.id !== this.chat.id);

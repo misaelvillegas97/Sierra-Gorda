@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter, OnDestroy } from '@angular/core';
 import { ChatService } from 'src/app/providers/chat.service';
 import { Chat } from 'src/app/interface/interface';
+import { GoogleAnalyticsService } from 'src/app/providers/google-analytics.service';
 
 @Component({
   selector: 'app-messages',
@@ -14,6 +15,9 @@ export class MessagesComponent implements OnInit, OnDestroy {
   isRecent: boolean;
   categoryText;
 
+  searching: boolean;
+  buscarText: string;
+
   // tslint:disable-next-line: no-output-on-prefix
   @Output() public onSelectChat = new EventEmitter<Chat>();
   // tslint:disable-next-line: no-output-on-prefix
@@ -22,10 +26,13 @@ export class MessagesComponent implements OnInit, OnDestroy {
   chatList: Chat[];
   chatFavourite: Chat[];
 
-  constructor( public cs: ChatService ) {
+  constructor( public cs: ChatService, private ga: GoogleAnalyticsService ) {
     this.isFavorites = false;
     this.isRecent = true;
     this.categoryText = 'Recientes';
+
+    this.searching = false;
+    this.buscarText = '';
 
     this.loadChats()
         .finally(
@@ -46,11 +53,21 @@ export class MessagesComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    if (this.selectedChat) {
+      // this.onSelectChat.emit(this.selectedChat);
+      this.selectedChat = undefined;
+    }
   }
 
   ngOnDestroy() {
+    if (this.selectedChat) {
+      // this.onSelectChat.emit(this.selectedChat);
+      this.selectedChat = undefined;
+    }
+    this.cs.messagesList = undefined;
+    this.cs.chatList = undefined;
+    this.chatList = undefined;
     clearInterval(this.interval);
-    this.chatSelect = undefined;
   }
 
   async loadChats() {
@@ -65,9 +82,9 @@ export class MessagesComponent implements OnInit, OnDestroy {
       );
   }
 
-  chatSelect(id: Chat) {
-    this.selectedChat = id;
-    this.onSelectChat.emit(id);
+  chatSelect(chat: Chat) {
+    this.selectedChat = chat;
+    this.onSelectChat.emit(chat);
   }
 
   setFavorites() {
@@ -83,10 +100,72 @@ export class MessagesComponent implements OnInit, OnDestroy {
   }
 
   setColor() {
-    if (this.cs.messagesList.length !== 0) {
-      setTimeout(() => {
-        document.getElementById(`user-${this.selectedChat.destinatario.id_usuario}`).classList.add('active');
-      }, 0);
+    if (this.selectedChat) {
+      if (this.cs.messagesList) {
+        if (this.cs.messagesList.length !== 0) {
+          setTimeout(() => {
+            document.getElementById(`user-${this.selectedChat.destinatario.id_usuario}`).classList.add('active');
+          }, 0);
+        }
+      }
     }
+  }
+
+  search() {
+    if (this.selectedChat) {
+      this.onSelectChat.emit(this.selectedChat);
+      this.selectedChat = undefined;
+    }
+    if (this.buscarText.trim().length < 3) {
+
+      this.cs.chatList = undefined;
+      this.searching = false;
+
+      clearInterval(this.interval);
+      this.loadChats();
+
+      this.interval = setInterval(
+        async () => {
+          await this.loadChats()
+          .finally(
+            () => {
+              this.setColor();
+            }
+          );
+        }, 5000
+      );
+      return;
+    }
+    clearInterval(this.interval);
+    // console.log(this.interval);
+
+    this.searching = true;
+    this.cs.chatList = undefined;
+    this.ga.onChatSearch(this.buscarText);
+    this.cs.buscar(this.buscarText);
+  }
+
+  clearSearch(_text?: boolean) {
+    if (this.selectedChat) {
+      this.onSelectChat.emit(this.selectedChat);
+      this.selectedChat = undefined;
+    }
+    if (_text) { this.buscarText = ''; }
+    this.searching = false;
+    this.cs.chatList = undefined;
+    this.cs.messagesList = undefined;
+
+    clearInterval(this.interval);
+    this.loadChats();
+    this.interval = setInterval(
+        async () => {
+          await this.loadChats()
+          .finally(
+            () => {
+              this.setColor();
+            }
+          );
+        }, 5000
+      );
   }
 }

@@ -30,12 +30,12 @@
       [disabled]="
         i === 0
           ? button.completed
-            ? true
+            ? false
             : validateNext(i)
           : !buttons[i - 1].actual
           ? true
           : button.completed
-          ? true
+          ? false
           : validateNext(i)
       "
     >
@@ -46,7 +46,7 @@
 
 <br /><br />
 
-<div class="reconocer" [hidden]="!buttons[0].actual">
+<div class="reconocer container" [hidden]="!buttons[0].actual">
   <div class="reconocer-left">
     <!-- Sección Left-->
     <div class="reconocer-left-container">
@@ -69,6 +69,7 @@
           #select_tipo="ngModel"
           [(ngModel)]="respuestas.equipo"
           class="shadow"
+          (change)="respuestasChange()"
           name=""
           id=""
         >
@@ -78,10 +79,10 @@
         </select>
       </div>
       <div class="reconocer-left-container-item">
-        <select class="shadow" name="" id="" *ngIf="rs.listValores" #select_valores="ngModel" [(ngModel)]="respuestas.valor_estar">
+        <select class="shadow" name="" id="" *ngIf="rs.listValores" #select_valores="ngModel" [(ngModel)]="respuestas.valor_estar" (change)="updateNombreValor($event);">
           <option value="0" selected>Valor Estar</option>
           <ng-container *ngFor="let valor of rs.listValores">
-            <option *ngIf="validateShown(valor)" value="{{ valor.id }}">{{
+            <option value="{{ valor.id }}">{{
               valor.nombre
             }}</option>
           </ng-container>
@@ -99,9 +100,9 @@
       <div class="reconocer-left-container-item">
         <input type="text" #user="ngModel" [(ngModel)]="userSearchBox" (keyup)="onUserSearch(user.value)" placeholder="Ingresar nombre"/>
       </div>
-      <ng-container *ngIf="listaUsuariosSeleccionados">
+      <!-- <ng-container *ngIf="listaUsuariosSeleccionados">
         <span class="text-muted">Puede continuar a Reconocimiento</span>
-      </ng-container>
+      </ng-container> -->
 
     </div>
   </div>
@@ -111,7 +112,7 @@
       <ng-container *ngIf="listaUsuariosSeleccionados">
         <ng-container *ngFor="let usuario of listaUsuariosSeleccionados">
           <div class="reconocer-right-container-item mb-2 selected cursor">
-            <span><i class="fas fa-times-circle"></i></span>
+            <span (click)="deleteSelectedUser(usuario)"><i class="fas fa-times-circle"></i></span>
             <div class="reconocer-right-container-item-left">
               <img
                 src="https://c3soporte00400.cl/sg/assets/img/reconozco/cara.png"
@@ -152,6 +153,9 @@
             </div>
           </div>
         </ng-container>
+        <ng-container *ngIf="listaUsuariosBusqueda.length === 0">
+          <p style="color: #5b5b5b; font-style: italic; font-size: 10pt; text-align: center; padding-top: 3em;">No se han encontrado resultados</p>
+        </ng-container>
       </ng-container>
     </div>
   </div>
@@ -179,7 +183,7 @@
     </div>
     <div class="reconocido-header-extra">
       <span>Reconocimiento al Valor ESTAR</span>
-      <h6>Enfoque en los Resultados</h6>
+      <h6>{{ nombre_valor }}</h6>
     </div>
     <div class="reconocido-header-img" *ngIf="this.respuestas.modalidad === '1' && this.listaUsuariosSeleccionados">
       <img *ngIf="this.listaUsuariosSeleccionados[0].img_perfil_usuario" [src]="this.listaUsuariosSeleccionados[0].img_perfil_usuario" alt="" />
@@ -210,12 +214,10 @@
           <option value="0" selected>Conducta</option>
           <ng-container *ngIf="returnValorConducta()">
             <ng-container *ngFor="let conducta of returnValorConducta().comportamientos; let i=index">
-              <!-- <option [value]="conducta.id_valor_comportamiento">{{ conducta.nombre_comportamiento  }}</option> -->
-              <option [value]="i+1">{{ conducta.nombre_comportamiento  }}</option>
+              <option [value]="conducta.id_valor_comportamiento">{{ conducta.nombre_comportamiento  }}</option>
             </ng-container>
           </ng-container>
         </select>
-        <!-- <input type="text" placeholder="Ingresar Jefe" /> -->
         <input type="text" #boss="ngModel" [(ngModel)]="bossSearchBox" (keyup)="onBossSearch(boss.value)" placeholder="Ingrese Jefe"/>
         <!-- #bossSearchBox="ngModel" [(ngModel)]="bossSearchBox" (keyup)="onBossSearch(user.value)" -->
         <div class="search-container">
@@ -292,7 +294,7 @@
   </div>
 </div>
 <br />
-<div class="resumen container" *ngIf="buttons[2].actual">
+<div class="resumen container {{ valorColorBg() }}" *ngIf="buttons[2].actual">
   <div class="resumen-header">
     <div class="resumen-header-img" *ngIf="respuestas.modalidad === '1'">
       <img
@@ -323,8 +325,8 @@
         <h6>{{ listaUsuariosSeleccionados[0].primer_nombre_usuario + ' ' + (listaUsuariosSeleccionados[0].segundo_nombre_usuario? listaUsuariosSeleccionados[0].segundo_nombre_usuario : '') + ' ' + listaUsuariosSeleccionados[0].apellido_pat_usuario + ' ' + (listaUsuariosSeleccionados[0].apellido_mat_usuario ? listaUsuariosSeleccionados[0].apellido_mat_usuario: '') }}</h6>
       </div>
       <div class="resumen-header-info-desc">
-        <span>Analista Financiero</span>
-        <span>Contabilidad Y Tesorería</span>
+        <span> {{listaUsuariosSeleccionados[0].nombre_cargo}} </span>
+        <span> {{listaUsuariosSeleccionados[0].nombre_gerencia}} </span>
       </div>
     </div>
     <div class="resumen-header-info" *ngIf="respuestas.modalidad === '2'">
@@ -335,13 +337,13 @@
     </div>
     <div class="resumen-header-extra">
       <span>Reconocimiento al Valor ESTAR</span>
-      <h6>Enfoque en los Resultados</h6>
+      <h6>{{ nombre_valor }}</h6>
     </div>
   </div>
 
   <div class="resumen-body">
     <div class="row">
-      <div class="col-6">
+      <div class="col-6 pl-0">
         <div class="resumen-card">
           <h6>CONDUCTA</h6>
           <p>
@@ -349,7 +351,7 @@
           </p>
         </div>
       </div>
-      <div class="col-6">
+      <div class="col-6 pr-0">
         <div class="resumen-card">
           <h6>ARGUMENTO</h6>
           <p> {{ respuestas.argumento }} </p>

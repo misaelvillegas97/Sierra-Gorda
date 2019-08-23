@@ -376,6 +376,7 @@
       <app-messages
         (onSelectChat)="loadSelectedChat($event)"
         (onQuit)="toggle_chat($event)"
+        *ngIf="chat_state"
       ></app-messages>
     </div>
 

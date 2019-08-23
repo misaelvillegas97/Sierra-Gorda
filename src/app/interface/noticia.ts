@@ -43,11 +43,18 @@ export interface NoticiaDetalle {
   cantidad_megusta: number;
   id_tipo_noticia_fk: number;
   id_formato_noticia: number;
-  usuario: {
-      url_img: string;
-  };
+  usuario: Usuario_reportero;
   imagen: Imagenes;
   comentario: Comentario[];
+}
+
+export interface Usuario_reportero {
+  url_img?: string;
+  apellido?: string;
+  car?: string;
+  lugar_trabajo?: string;
+  nombre?: string;
+  sociedad?: string;
 }
 
 export interface Comentario {

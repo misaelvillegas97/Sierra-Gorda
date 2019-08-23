@@ -181,4 +181,18 @@ export class GoogleAnalyticsService {
       event_label: 'Noticias | Me gusta'
     });
   }
+
+  onNewsComment() {
+    this.gtag.event('click', {
+      event_category: 'Noticias',
+      event_label: 'Noticias | Comentario creado'
+    });
+  }
+
+  onVideoPlayed(_nombre: string) {
+    this.gtag.event('play', {
+      event_category: 'Portal de Videos',
+      event_label: 'Portal | Video reproducido: ' + _nombre
+    });
+  }
 }

@@ -32,7 +32,7 @@ export class NoticiasService {
 
     if (_tipo === 1) { this.listaNoticias = undefined; }
     if (_tipo === 2) { this.listaNoticiasDestacadas = undefined; }
-    if (_tipo === 3) { this.listaNoticiasReportero = undefined; }
+    if (_tipo === 4) { this.listaNoticiasReportero = undefined; }
 
     // this.http.get(URL_SG + `noticias/getallnoticias/${_index}/${_limit}/${_tipo}`)
     this.http.get(URL_SG + `noticias/getallnoticias/${_index}/${_limit}/${_tipo}`)
@@ -56,7 +56,7 @@ export class NoticiasService {
               this.listaNoticiasDestacadas = res.noticias;
               break;
 
-            case 3: // Reportero Minero
+            case 4: // Reportero Minero
               res.noticias.forEach(noticia => {
                 noticia.fecha = new Date(noticia.fecha);
               });
@@ -137,7 +137,7 @@ export class NoticiasService {
         );
         break;
 
-      case 3:
+      case 4:
         noticiaSeleccionada = this.listaNoticiasReportero.find(
           noticia => noticia.id === _id
         );
@@ -201,7 +201,7 @@ export class NoticiasService {
         }
         break;
 
-      case 3:
+      case 4:
         if (this.listaNoticiasReportero) {
           response = true;
         }

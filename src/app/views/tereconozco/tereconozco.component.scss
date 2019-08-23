@@ -130,7 +130,7 @@ $pink-text: #fe9f6e;
       border: none;
       text-align: center;
       margin-right: 15px;
-      width: 175px;
+      width: 185px;
 
       color: rgba(255, 255, 255, 0.5);
 
@@ -163,7 +163,7 @@ $pink-text: #fe9f6e;
     width: 50%;
     display: flex;
     display: -ms-flexbox;
-    justify-content: center;
+    justify-content: flex-start;
     &-container {
       &-item {
         select,
@@ -233,7 +233,7 @@ $pink-text: #fe9f6e;
 
 .reconocido {
   &-header {
-    background-color: rgba(255, 89, 0, 0.75);
+    // background-color: rgba(255, 89, 0, 0.75);
     box-shadow: 0 0 0.3rem rgba(255, 89, 0, 0.863) !important;
     border-radius: 20px;
     padding: 8px 15px;
@@ -241,18 +241,21 @@ $pink-text: #fe9f6e;
 
     display: -ms-flexbox;
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-around;
+
+    background: none;
+    background-image: url(https://c3soporte00400.cl/sg/assets/img/reconozco/bg-home.png);
+    background-position: center;
+    background-size: cover;
 
     &-img{
       position: relative;
       // margin-right: 20px;
-      margin-left: 50px;
-      // width: 150px;
-      // height: 150px;
+      // margin-left: 50px;
 
       img {
-        width: 150px;
-        height: 150px;
+        width: 100px;
+        height: 100px;
         border-radius: 50%;
       }
 
@@ -312,7 +315,7 @@ $pink-text: #fe9f6e;
 
       &-name {
         h6 {
-          font-size: 20pt;
+          font-size: 16pt;
           font-weight: 700;
           color: white;
         }
@@ -324,7 +327,7 @@ $pink-text: #fe9f6e;
         span {
           color: white;
           font-weight: 500;
-          font-size: 12pt;
+          font-size: 10pt;
         }
       }
 
@@ -340,7 +343,7 @@ $pink-text: #fe9f6e;
         font-size: 12pt;
       }
       h6 {
-        font-size: 20pt;
+        font-size: 16pt;
         font-weight: 700;
         color: white;
       }
@@ -420,13 +423,13 @@ $pink-text: #fe9f6e;
 }
 
 .resumen {
-  background-color: rgb(0, 93, 185);
+  // background-color: rgb(0, 93, 185);
   padding-top: 15px;
-  box-shadow: 0 0 0.3rem rgba(0, 93, 185, 0.863) !important;
+  box-shadow: 0 0 0.8rem rgba(0,0,0, 0.3) !important;
   border-radius: 15px;
   &-header {
     background-color: rgba(0, 0, 0, 0.2);
-    box-shadow: 0 0 0.3rem rgba(0, 93, 185, 0.863) !important;
+    box-shadow: 0 0 0.8rem rgba(0,0,0, 0.3) !important;
     border-radius: 20px;
     padding: 8px 15px;
     margin-bottom: 20px;
@@ -524,6 +527,7 @@ $pink-text: #fe9f6e;
         font-weight: 600;
         font-size: 14pt;
         padding: 3px 15px;
+        box-shadow: -5px 4px 0.8em rgba(0,0,0,0.3)
       }
     }
   }

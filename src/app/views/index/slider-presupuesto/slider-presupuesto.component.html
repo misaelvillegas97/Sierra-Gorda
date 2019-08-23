@@ -25,13 +25,13 @@
       </div>
     </div>
     <span class="ms-info">
-      <div class="dot">
+      <!-- <div class="dot">
         <i
           class="fas fa-circle status-dot"
           aria-hidden="true"
           [ngClass]="getResultColor(is.listaresultado[7])"
         ></i>
-      </div>
+      </div> -->
       <span class="left-side-content">
         <h1 class="title-left-side">
           Seguridad <br />
@@ -46,12 +46,12 @@
         />
       </div>
       <div class="right-side-content-1">
-        <div class="month pb-4 mb-4"><span>{{meses[is.listaresultado[7].fecha_diario_indice.getMonth()]}}</span> = 0.61</div>
+        <div class="month pb-4 mb-4"><span>{{meses[is.listaresultado[7].fecha_diario_indice.getMonth()]}}</span> = {{is.listaresultado[7].promedio_actual}}</div>
         <div class="values">
           <div class="d-flex justify-content-center">
             <div class="acumulado">
               <div class="title">Acumulado TRIFR</div>
-              <div class="text-center result-box-real" [ngClass]="getResultClass(is.listaresultado[0])">
+              <div class="text-center result-box-real" [ngClass]="getResultClassSeguridad(is.listaresultado[0])">
                 {{is.listaresultado[7].real_resultado}}
               </div>
             </div>
@@ -107,7 +107,7 @@
         />
       </div>
       <div class="right-side-content-2">
-        <div class="title">Promedio Mensual PM10</div>
+        <div class="title">Promedio Anual PM10</div>
         <div class="values">
           <div class="d-flex justify-content-center">
             <div class="acumulado">

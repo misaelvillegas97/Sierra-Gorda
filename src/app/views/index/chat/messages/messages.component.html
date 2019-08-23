@@ -14,9 +14,33 @@
     </div>
   </div>
 </div>
-<br />
+<br>
+  <div class="search-container">
+    <input type="text" name="txt_search" id="txt_search" placeholder="Buscador de contactos" (keyup.enter)="search()" (keyup.backspace)="clearSearch()" #txt_search="ngModel" [(ngModel)]="buscarText">
+    <button><i class="fas fa-search" (click)="search()"></i></button>
+  </div>
+<br>
 
-<ng-container *ngIf="cs.chatList && isRecent">
+<ng-container *ngIf="searching">
+  <h6 style="color: white; font-weight: 600; font-size: 12pt; padding-left: 15px;">Lista de resultados: <small (click)="clearSearch(true)" class="pl-2 cursor" style="color: white; font-size: 12pt; font-weight: 500; float: right; padding-right: 20px;"><i class="fas fa-times"></i></small></h6>
+</ng-container>
+
+<ng-container *ngIf="!cs.chatList">
+  <div class="mt-4 d-flex justify-content-center pt-4">
+      <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="cs.chatList">
+  <ng-container *ngIf="cs.chatList.length === 0 && searching">
+    <div class="d-flex justify-content-center align-items-center">
+      <h6 style="color: white; font-weight: 600; font-size: 10pt; font-style: italic;">No se han encontrado resultados para: {{ buscarText }}.</h6>
+    </div>
+  </ng-container>
+</ng-container>
+
+
+<ng-container *ngIf="cs.chatList && searching">
   <div class="container-fluid chat-container">
     <app-card
       *ngFor="let chat of cs.chatList"
@@ -26,7 +50,17 @@
   </div>
 </ng-container>
 
-<ng-container *ngIf="cs.chatList && isFavorites">
+<ng-container *ngIf="cs.chatList && isRecent && !searching">
+  <div class="container-fluid chat-container">
+    <app-card
+      *ngFor="let chat of cs.chatList"
+      [chat]="chat"
+      (click)="chatSelect(chat)"
+    ></app-card>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="cs.chatList && isFavorites && !searching">
   <div class="container-fluid chat-container">
     <ng-container *ngFor="let chat of cs.chatList">
       <app-card
@@ -46,6 +80,7 @@
             position: absolute;
             bottom: 30px;
             right: 5px;
+            width: 100px;
     "
     alt=""
     width="70px"

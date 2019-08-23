@@ -4,6 +4,7 @@ import { Chat, Messages } from 'src/app/interface/interface';
 import * as moment from 'moment';
 import { NgModel, NgForm } from '@angular/forms';
 import { LoginService } from 'src/app/providers/login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-singlechat',
@@ -64,7 +65,7 @@ export class SinglechatComponent implements OnInit, OnDestroy {
   toggle_emoji: boolean = false;
   interval;
 
-  constructor(public cs: ChatService, private ls: LoginService) { }
+  constructor(public cs: ChatService, private ls: LoginService, private route: Router) { }
 
   ngOnInit() {
     this.cs.messagesList = undefined;
@@ -87,16 +88,18 @@ export class SinglechatComponent implements OnInit, OnDestroy {
     );
   }
 
-  setFavorito() {
-    if (this.data.favorito) {
+  setFavorito(_data: Chat) {
+    if (!this.data.favorito) {
       this.cs.setFavourite(this.data.destinatario.id_usuario, 0).then(
         res => {
+          _data.favorito = true;
           this.data.favorito = true;
         }
       );
     } else {
       this.cs.setFavourite(this.data.destinatario.id_usuario, 1).then(
         res => {
+          _data.favorito = false;
           this.data.favorito = false;
         }
       );
@@ -192,6 +195,18 @@ export class SinglechatComponent implements OnInit, OnDestroy {
     // tslint:disable-next-line: prefer-const
     let element = document.getElementById('messagesDiv');
     element.scrollTop = element.scrollHeight;
+  }
+
+  abrirEnChat() {
+    this.route.navigateByUrl('/refresh', { skipLocationChange: true }).then(
+      () => {
+        this.route.navigateByUrl('/');
+        this.route.navigate(['/chat/'], { queryParams: { usr: this.data.destinatario.id_usuario}});
+      }
+    );
+
+    // [routerLink]="['/chat']"
+    // [queryParams]="{usr: data.destinatario.id_usuario}"
   }
 
 }

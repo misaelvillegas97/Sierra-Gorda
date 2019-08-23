@@ -8,13 +8,12 @@
     <div class="noticia-header mb-2">
       <div class="row mb-4">
         <div class="col-lg-8 col-md-8 col-sm-12 d-flex align-items-center">
-          <span class="noticia-header-subtitle">Descubre todas las novedades que ocurren en Sierra Gorda SCM</span>
+          <!-- <span class="noticia-header-subtitle">Descubre todas las novedades que ocurren en Sierra Gorda SCM</span> -->
         </div>
         <div class="col-lg-4 col-md-4 col-sm-12 noticia-sections pr-0">
           <div class="noticia-sections-container">
 
             <div class="noticia-sections-buttons">
-              <!-- Todas -->
               <div class="volver-noticias" routerLink="/noticias/todas">
                 <img src="https://c3soporte00400.cl/sg/assets/img/Noticias/cuadritos_noticias.png" alt="a">
               </div>
@@ -22,15 +21,13 @@
             </div>
 
             <div class="noticia-sections-buttons">
-              <!-- Destacadas -->
               <i class="fas fa-chevron-circle-left" (click)="anteriorNoticia()"></i>
               <p>Noticia<br/>Anterior</p>
             </div>
 
             <div class="noticia-sections-buttons" style="margin-right: 0 !important;">
-              <!-- Reportero Minero -->
-              <i class="fas fa-chevron-circle-right" (click)="siguienteNoticia()"></i>
-              <p>Noticia<br/>Siguiente</p>
+                <i class="fas fa-chevron-circle-right" (click)="siguienteNoticia()"></i>
+                <p>Noticia<br/>Siguiente</p>
             </div>
           </div>
         </div>
@@ -38,27 +35,133 @@
     </div>
 
     <ng-container *ngIf="noticia">
-      <div class="noticia-content">
-        <div class="row">
-          <div class="col-6">
-            <h1 class="noticia-content-title">
-              {{ noticia.titulo_noticia }}
-            </h1>
+        <ng-container *ngIf="noticia.id_formato_noticia === 1"> <!-- * Formato Noticia Normal -->
+          <div class="noticia-content">
+            <div class="row">
+              <div class="col-6">
+                <h1 class="noticia-content-title">
+                  {{ noticia.titulo_noticia }}
+                </h1>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6 col-md-6 col-sm-12 pr-4 pt-4">
+                <p [innerHTML]="noticia.texto_noticia" class="noticia-content-text"></p>
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-12 pt-4">
+                <ng-container *ngIf="noticia.imagen.imagen_cuerpo_1">
+                  <!-- 550 * 240 -->
+                  <div class="noticia-content-img" [style.backgroundImage]="'url('+ noticia.imagen.imagen_cuerpo_1 +')'" style="background-size: cover; background-position: center;">
+                    <div class="noticia-content-flag" [ngClass]="{'reportero-minero': noticia.id_tipo_noticia_fk === 4}">
+                        <div class="noticia-content-flag-img p-0">
+                          <img src="https://c3soporte00400.cl/sg/assets/img/Noticias/2.png" *ngIf="noticia.id_tipo_noticia_fk === 1" alt="">
+                          <img src="https://c3soporte00400.cl/sg/assets/img/Noticias/2.png" *ngIf="noticia.id_tipo_noticia_fk === 2" alt="">
+                          <img src="https://c3soporte00400.cl/sg/assets/img/Noticias/4.png" *ngIf="noticia.id_tipo_noticia_fk === 4  " alt="">
+                        </div>
+
+                        <div class="noticia-content-flag-fecha">
+                          <span class="day"> {{  noticia.fecha.getDate() }} </span> <br>
+                          <span class="month"> {{ months[noticia.fecha.getMonth()] | uppercase }} </span>
+                        </div>
+                      </div>
+                  </div>
+                </ng-container>
+              </div>
+            </div>
+            <div class="noticia-content-img-extra text-center">
+                <ng-container *ngIf="noticia.imagen.imagen_cuerpo_full">
+                  <img [src]="noticia.imagen.imagen_cuerpo_full" *ngIf="noticia.imagen.imagen_cuerpo_full !== ''" class="img-fluid" style="border-radius: 15px;" alt="">
+                </ng-container>
+              </div>
+            <!-- Botón me gusta -->
+            <div class="w-100 mt-4 d-flex justify-content-center">
+              <button class="like shadow" *ngIf="!megusta" (click)="sendLike()">Dar ¡Me Gusta! <i class="fas fa-thumbs-up text-white"></i></button>
+              <button class="like shadow" *ngIf="megusta">¡Te Gusta! <i class="fas fa-thumbs-up text-white"></i></button>
+            </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-6 col-md-6 col-sm-12 pr-4 pt-4">
-            <p [innerHTML]="noticia.texto_noticia" class="noticia-content-text"></p>
+        </ng-container>
+        <ng-container *ngIf="noticia.id_formato_noticia === 2"> <!-- * Formato Noticia Reportero Minero -->
+          <div class="noticia-content">
+            <div class="row">
+              <div class="col-6">
+                <h1 class="noticia-content-title">
+                  {{ noticia.titulo_noticia }}
+                </h1>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6 col-md-6 col-sm-12 pr-4 pt-4">
+                <p [innerHTML]="noticia.texto_noticia" class="noticia-content-text"></p>
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-12 pt-4">
+                <ng-container *ngIf="noticia.imagen.imagen_cuerpo_1">
+                  <!-- 550 * 240 -->
+                  <div class="noticia-content-img" [style.backgroundImage]="'url('+ noticia.imagen.imagen_cuerpo_1 +')'" style="background-size: cover; background-position: center;">
+                    <div class="noticia-content-flag" [ngClass]="{'reportero-minero': noticia.id_tipo_noticia_fk === 4}">
+                        <div class="noticia-content-flag-img p-0">
+                          <img src="https://c3soporte00400.cl/sg/assets/img/Noticias/2.png" *ngIf="noticia.id_tipo_noticia_fk === 1" alt="">
+                          <img src="https://c3soporte00400.cl/sg/assets/img/Noticias/2.png" *ngIf="noticia.id_tipo_noticia_fk === 2" alt="">
+                          <img src="https://c3soporte00400.cl/sg/assets/img/Noticias/4.png" *ngIf="noticia.id_tipo_noticia_fk === 4" alt="">
+                        </div>
+
+                        <div class="noticia-content-flag-fecha">
+                          <span class="day"> {{  noticia.fecha.getDate() }} </span> <br>
+                          <span class="month"> {{ months[noticia.fecha.getMonth()] | uppercase }} </span>
+                        </div>
+                      </div>
+                  </div>
+                </ng-container>
+                <ng-container *ngIf="noticia.imagen.imagen_cuerpo_2">
+                  <!-- 550 * 240 -->
+                  <div class="noticia-content-img" [style.backgroundImage]="'url('+ noticia.imagen.imagen_cuerpo_2 +')'" style="background-size: cover; background-position: center;">
+                  </div>
+                </ng-container>
+                <ng-container *ngIf="noticia.imagen.imagen_cuerpo_3">
+                  <!-- 550 * 240 -->
+                  <div class="noticia-content-img" [style.backgroundImage]="'url('+ noticia.imagen.imagen_cuerpo_3 +')'" style="background-size: cover; background-position: center;">
+                  </div>
+                </ng-container>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6 col-md-6 col-sm-12 offset-lg-6 offset-md-6 offset-sm-0 pl-0 pr-0">
+                <div class="noticia-content-reportero">
+                  <img [src]="noticia.usuario.url_img" alt="">
+                  <div>
+                    <h6>{{ noticia.usuario.nombre + ' ' + noticia.usuario.apellido }}</h6>
+                    <span>{{ noticia.usuario.sociedad }}</span>
+                    <span>{{ noticia.usuario.car }}</span>
+                    <span>{{ noticia.usuario.lugar_trabajo }}</span>
+                  </div>
+                </div>
+              </div>
+              </div>
+            <!-- Botón me gusta -->
+            <div class="w-100 mt-4 d-flex justify-content-center">
+              <button class="like shadow" *ngIf="!megusta" (click)="sendLike()">Dar ¡Me Gusta! <i class="fas fa-thumbs-up text-white"></i></button>
+              <button class="like shadow" *ngIf="megusta">¡Te Gusta! <i class="fas fa-thumbs-up text-white"></i></button>
+            </div>
           </div>
-          <div class="col-lg-6 col-md-6 col-sm-12 pt-4">
-            <ng-container *ngIf="noticia.imagen.imagen_cuerpo_1">
-              <!-- 550 * 240 -->
-              <div class="noticia-content-img" [style.backgroundImage]="'url('+ noticia.imagen.imagen_cuerpo_1 +')'" style="background-size: cover; background-position: center;">
-                <div class="noticia-content-flag" [ngClass]="{'reportero-minero': noticia.id_tipo_noticia_fk === 3}">
+        </ng-container>
+      <ng-container *ngIf="noticia.id_formato_noticia === 3"> <!-- * Formato Noticia Imagen Full Page -->
+        <div class="noticia-content">
+          <div class="row">
+            <div class="col-12">
+              <h1 class="noticia-content-title">
+                {{ noticia.titulo_noticia }}
+              </h1>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 pt-4">
+              <ng-container *ngIf="noticia.imagen.imagen_cuerpo_full">
+                <div class="noticia-content-imgfull">
+                  <img [src]="noticia.imagen.imagen_cuerpo_full" alt="">
+                  <div class="noticia-content-flag" [ngClass]="{'reportero-minero': noticia.id_tipo_noticia_fk === 4}">
                     <div class="noticia-content-flag-img p-0">
                       <img src="https://c3soporte00400.cl/sg/assets/img/Noticias/2.png" *ngIf="noticia.id_tipo_noticia_fk === 1" alt="">
                       <img src="https://c3soporte00400.cl/sg/assets/img/Noticias/2.png" *ngIf="noticia.id_tipo_noticia_fk === 2" alt="">
-                      <img src="https://c3soporte00400.cl/sg/assets/img/Noticias/4.png" *ngIf="noticia.id_tipo_noticia_fk === 3" alt="">
+                      <img src="https://c3soporte00400.cl/sg/assets/img/Noticias/4.png" *ngIf="noticia.id_tipo_noticia_fk === 4" alt="">
                     </div>
 
                     <div class="noticia-content-flag-fecha">
@@ -66,16 +169,77 @@
                       <span class="month"> {{ months[noticia.fecha.getMonth()] | uppercase }} </span>
                     </div>
                   </div>
-              </div>
-            </ng-container>
+                </div>
+              </ng-container>
+            </div>
+          </div>
+          <div class="noticia-content-img-extra text-center">
+              <ng-container *ngIf="noticia.imagen.imagen_cuerpo_full">
+                <img [src]="noticia.imagen.imagen_cuerpo_full" *ngIf="noticia.imagen.imagen_cuerpo_full !== ''" class="img-fluid" style="border-radius: 15px;" alt="">
+              </ng-container>
+            </div>
+          <!-- Botón me gusta -->
+          <div class="w-100 mt-4 d-flex justify-content-center">
+            <button class="like shadow" *ngIf="!megusta" (click)="sendLike()">Dar ¡Me Gusta! <i class="fas fa-thumbs-up text-white"></i></button>
+            <button class="like shadow" *ngIf="megusta">¡Te Gusta! <i class="fas fa-thumbs-up text-white"></i></button>
           </div>
         </div>
-        <!-- Botón me gusta -->
-        <div class="w-100 mt-4 d-flex justify-content-center">
-          <button class="like shadow" *ngIf="!megusta" (click)="sendLike()">Dar ¡Me Gusta! <i class="fas fa-thumbs-up text-white"></i></button>
-          <button class="like shadow" *ngIf="megusta">¡Te Gusta! <i class="fas fa-thumbs-up text-white"></i></button>
+      </ng-container>
+      <ng-container *ngIf="noticia.id_formato_noticia === 4"> <!-- * Formato Noticia Multiples Imágenes -->
+        <div class="noticia-content">
+          <div class="row">
+            <div class="col-6">
+              <h1 class="noticia-content-title">
+                {{ noticia.titulo_noticia }}
+              </h1>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-12 pr-4 pt-4">
+              <p [innerHTML]="noticia.texto_noticia" class="noticia-content-text"></p>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 pt-4">
+              <ng-container *ngIf="noticia.imagen.imagen_cuerpo_1">
+                <!-- 550 * 240 -->
+                <div class="noticia-content-img" [style.backgroundImage]="'url('+ noticia.imagen.imagen_cuerpo_1 +')'" style="background-size: cover; background-position: center;">
+                  <div class="noticia-content-flag" [ngClass]="{'reportero-minero': noticia.id_tipo_noticia_fk === 4}">
+                      <div class="noticia-content-flag-img p-0">
+                        <img src="https://c3soporte00400.cl/sg/assets/img/Noticias/2.png" *ngIf="noticia.id_tipo_noticia_fk === 1" alt="">
+                        <img src="https://c3soporte00400.cl/sg/assets/img/Noticias/2.png" *ngIf="noticia.id_tipo_noticia_fk === 2" alt="">
+                        <img src="https://c3soporte00400.cl/sg/assets/img/Noticias/4.png" *ngIf="noticia.id_tipo_noticia_fk === 4" alt="">
+                      </div>
+
+                      <div class="noticia-content-flag-fecha">
+                        <span class="day"> {{  noticia.fecha.getDate() }} </span> <br>
+                        <span class="month"> {{ months[noticia.fecha.getMonth()] | uppercase }} </span>
+                      </div>
+                    </div>
+                </div>
+              </ng-container>
+              <ng-container *ngIf="noticia.imagen.imagen_cuerpo_2">
+                <!-- 550 * 240 -->
+                <div class="noticia-content-img" [style.backgroundImage]="'url('+ noticia.imagen.imagen_cuerpo_2 +')'" style="background-size: cover; background-position: center;">
+                </div>
+              </ng-container>
+              <ng-container *ngIf="noticia.imagen.imagen_cuerpo_3">
+                <!-- 550 * 240 -->
+                <div class="noticia-content-img" [style.backgroundImage]="'url('+ noticia.imagen.imagen_cuerpo_3 +')'" style="background-size: cover; background-position: center;">
+                </div>
+              </ng-container>
+            </div>
+          </div>
+          <div class="noticia-content-img-extra text-center">
+              <ng-container *ngIf="noticia.imagen.imagen_cuerpo_full">
+                <img [src]="noticia.imagen.imagen_cuerpo_full" *ngIf="noticia.imagen.imagen_cuerpo_full !== ''" class="img-fluid" style="border-radius: 15px;" alt="">
+              </ng-container>
+            </div>
+          <!-- Botón me gusta -->
+          <div class="w-100 mt-4 d-flex justify-content-center">
+            <button class="like shadow" *ngIf="!megusta" (click)="sendLike()">Dar ¡Me Gusta! <i class="fas fa-thumbs-up text-white"></i></button>
+            <button class="like shadow" *ngIf="megusta">¡Te Gusta! <i class="fas fa-thumbs-up text-white"></i></button>
+          </div>
         </div>
-      </div>
+      </ng-container>
       <div class="noticia-addon">
         <!-- comentarios -->
         <br>

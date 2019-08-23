@@ -85,6 +85,7 @@ export class VerNoticiaComponent implements OnInit, AfterViewInit {
     };
     this.comentario = '';
     this.noticia.comentario.push(COMMENT);
+    this.ga.onNewsComment();
     this.ns.sendComment(COMMENT, this.noticia.id_noticia);
   }
 
@@ -92,6 +93,7 @@ export class VerNoticiaComponent implements OnInit, AfterViewInit {
     this.megusta = true;
     this.noticia.cantidad_megusta++;
     this.ns.sendLike(this.noticia.id_noticia);
+    this.ga.onNewsLike();
   }
 
   siguienteNoticia(): void {

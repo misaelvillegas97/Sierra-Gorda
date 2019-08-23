@@ -41,13 +41,13 @@ export class ChatService {
         err => {
           switch (err.status) {
             case 0:
-              //alert('0 - Error trying to connect WebService <<http://c3wsapi.cl>> | Obtener chats');
+              // alert('0 - Error trying to connect WebService <<http://c3wsapi.cl>> | Obtener chats');
               break;
             case 404:
-              //alert('404 - Page doesn\'t exist <<http://c3wsapi.cl>> | Obtener chats');
+              // alert('404 - Page doesn\'t exist <<http://c3wsapi.cl>> | Obtener chats');
               break;
             case 500:
-              //alert('500 - Error on code <<http://c3wsapi.cl>> | Obtener chats');
+              // alert('500 - Error on code <<http://c3wsapi.cl>> | Obtener chats');
               break;
           }
           respuesta = -1;
@@ -96,13 +96,13 @@ export class ChatService {
         err => {
           switch (err.status) {
             case 0:
-              //alert('0 - Error trying to connect WebService <<http://c3wsapi.cl>> | Obtener mensajes');
+              // alert('0 - Error trying to connect WebService <<http://c3wsapi.cl>> | Obtener mensajes');
               break;
             case 404:
-              //alert('404 - Page doesn\'t exist <<http://c3wsapi.cl>> | Obtener mensajes');
+              // alert('404 - Page doesn\'t exist <<http://c3wsapi.cl>> | Obtener mensajes');
               break;
             case 500:
-              //alert('500 - Error on code <<http://c3wsapi.cl>> | Obtener mensajes');
+              // alert('500 - Error on code <<http://c3wsapi.cl>> | Obtener mensajes');
               break;
           }
           respuesta = 0;
@@ -115,7 +115,7 @@ export class ChatService {
   }
 
   async postMessageChat( _idRecivier: number, text: string ) {
-    let respuesta = -1;
+    // let respuesta = -1;
 
     const data = {
       id_remitente: atob(localStorage.getItem('sg-userID')),
@@ -154,19 +154,36 @@ export class ChatService {
     let response: boolean;
     const DATA = {
       id_usuario: parseInt(atob(localStorage.getItem('sg-userID')), 0),
-      id_usuario_favorito: _id,
-      favorito: _state
+      id_usuario_favorito: _id
     };
     await this.http.post(URL + 'chat/agregarfavorito', DATA).toPromise()
       .then(
         (res: {err: number; message: string; favorito: boolean}) => {
           if (!res.err) {
-            // La iliana me dijo que era solo favorito jaja
+            // tslint:disable-next-line: no-string-literal
             response = res.favorito['result'];
           }
         }
       );
 
     return response;
+  }
+
+  buscar(_text: string) {
+    this.http.get(URL + 'chat/getlistachatfind/' + _text).toPromise()
+      .then(
+        res => {
+          // tslint:disable-next-line: no-string-literal
+          this.chatList = res['chats'];
+          this.chatList = this.chatList.filter(
+            chat => chat.id !== parseInt(atob(localStorage.getItem('sg-userID')), 0)
+          );
+          this.chatList.forEach(
+            chat => {
+              chat.cont_novisto = 0;
+            }
+          );
+        }
+      );
   }
 }

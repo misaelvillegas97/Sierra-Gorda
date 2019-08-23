@@ -100,13 +100,18 @@
               <span>Canal de Denuncias </span><i class="fas fa-chevron-right"></i>
             </li>
           </a>
+          <a href="https://expert.adpsoluciones.com/Expert/inicio/ini/Login.aspx" (click)="ga.onSectionClick_GA('Monitoreo en línea (Link Externo)')" target="_blank">
+            <li style="cursor: pointer;">
+              <span>Autoconsulta Expert</span><i class="fas fa-chevron-right"></i>
+            </li>
+          </a>
           <li routerLink="/personas/cumpleanios" (click)="ga.onSectionClick_GA('Cumpleaños')" style="cursor: pointer;">
             <span>Cumpleaños</span><i class="fas fa-chevron-right"></i>
           </li>
           <li routerLink="/personas/persasg" (click)="ga.onSectionClick_GA('Persa SG')" style="cursor: pointer;">
             <span>Persa SG</span><i class="fas fa-chevron-right"></i>
           </li>
-          <li routerLink="/chat" style="cursor: pointer;" (click)="ga.onSectionClick_GA('Chat')" class="shadow-sm">
+          <li style="cursor: pointer;" (click)="ga.onSectionClick_GA('Chat'); validateLogin('chat')" class="shadow-sm">
             <span>Chat</span><i class="fas fa-chevron-right"></i>
           </li>
           <a href="https://sgscm.laborum.cl/" (click)="ga.onSectionClick_GA('Trabaja con Nosotros (Link Externo)')" target="_blank">
@@ -149,14 +154,14 @@
           </a>
           <a href="http://sgscm.sourcing.ariba.com/" (click)="ga.onSectionClick_GA('SG SCM Sourcing Ariba (Link Externo)')" target="_blank">
             <li style="cursor: pointer;">
-              <span>SG SCM Sourcing Ariba</span><i class="fas fa-chevron-right"></i>
+              <span>SIGN</span><i class="fas fa-chevron-right"></i>
             </li>
           </a>
-          <!-- <a href="http://sgscm.antirion.cl/" target="_blank">
+          <a href="http://sgscm.antirion.cl/" target="_blank">
             <li style="cursor: pointer;">
               <span>Gestión de Riesgo en Línea</span><i class="fas fa-chevron-right"></i>
             </li>
-          </a> -->
+          </a>
           <!-- <a href="http://www.smm.co.jp/E/" target="_blank">
             <li style="cursor: pointer;">
               <span>Página Sumitomo Internet</span><i class="fas fa-chevron-right"></i>

@@ -60,24 +60,13 @@ export class NavbarExtComponent implements OnInit {
   }
 
   openModal( opt: number ) {
-    let data = {}
+    let data = {};
     switch (opt) {
       case 0:
         data = {
           title: 'Inicia sesión'
         };
         break;
-
-      case 1: // Encuestas
-        data = {
-          title: 'Inicia sesión para acceder a las encuestas'
-        };
-        break;
-
-      case 2: // chat
-        data = {
-          title: 'Inicia sesión para acceder al chat'
-        };
     }
 
     this.modalOptions = {

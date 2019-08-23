@@ -225,7 +225,7 @@ import { RevistaCatabelaComponent } from './views/sections/personas/revista-cata
     BrowserAnimationsModule,
     FormsModule,
     InfiniteScrollModule,
-    GtagModule.forRoot({ trackingId: 'UA-143329686-1', trackPageviews: false }),
+    GtagModule.forRoot({ trackingId: 'UA-143329686-2', trackPageviews: false }),
     NgxPaginationModule,
     ReactiveFormsModule,
     // Material Module Imports

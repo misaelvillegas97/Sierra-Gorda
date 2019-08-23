@@ -32,7 +32,7 @@ export class ReporteroMineroComponent implements OnInit {
   }
 
   loadData() {
-    this.ns.getCount(3).then(
+    this.ns.getCount(4).then(
       (contador: number) => {
         this.total = contador;
       }
@@ -45,7 +45,7 @@ export class ReporteroMineroComponent implements OnInit {
     if ( !$page ) { $page = 1; }
     this.actualPage = $page;
 
-    this.ns.getNoticias(16, $page, 3);
+    this.ns.getNoticias(16, $page, 4);
   }
 
   ngOnInit() {

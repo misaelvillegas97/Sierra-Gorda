@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ResponseCategories, ResponseVideos, Category, Video } from '../interface/portal';
 import { Subject } from 'rxjs';
+import { GoogleAnalyticsService } from './google-analytics.service';
 
 const URL_SG = 'https://c3wsapi.cl/sg/';
 
@@ -19,7 +20,7 @@ export class PortalService {
   private emitChangeSource = new Subject<Video>();
   actualVideo$ = this.emitChangeSource.asObservable();
 
-  constructor( private http: HttpClient) {
+  constructor( private http: HttpClient, private ga: GoogleAnalyticsService) {
     // this.getCategorias();
   }
 
@@ -69,6 +70,7 @@ export class PortalService {
   }
 
   emitChange(_video: Video) {
+    this.ga.onVideoPlayed(_video.titulo);
     this.emitChangeSource.next(_video);
   }
 
@@ -86,7 +88,7 @@ export class PortalService {
     this.http.get(URL_REQUEST).toPromise()
       .then(
         res => {
-          this.emitChangeSource.next(res['portal'][0]);
+          this.emitChange(res['portal'][0]);
         }
       );
   }
@@ -96,7 +98,9 @@ export class PortalService {
     this.http.get(URL_REQUEST).toPromise()
       .then(
         res => {
-          this.videoResultado = res['portal'];
+          if (res['portal'] !== 'sin portal') {
+            this.videoResultado = res['portal'];
+          }
         }
       );
   }

@@ -21,11 +21,12 @@ class="animated fadeIn faster"
   <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
 </div>
 
-<div class="modal-header">
+<ng-container *ngIf="!recovery">
+  <div class="modal-header">
   <h4 class="modal-title w-100" id="myModalLabel">{{ title }}</h4>
 </div>
 <form (ngSubmit)="login(f.value)" #f="ngForm" novalidate="novalidate">
-  <div class="modal-body d-flex justify-content-center">
+  <div class="modal-body d-flex justify-content-center pb-0">
     <div class="content-form w-100">
       <div class="input-group mt-3 w-100">
         <span for="txt_correo" class="input-label w-100"
@@ -75,6 +76,14 @@ class="animated fadeIn faster"
           </span>
         </div>
       </div>
+      <span (click)="recovery = true" style="
+        margin-top: 20px;
+        font-size: 10pt;
+        color: #5c5c5c;
+        font-weight: 600;
+        cursor: pointer;">
+        ¿Has olvidado tu contraseña?
+      </span>
     </div>
   </div>
   <div class="modal-footer d-flex justify-content-center">
@@ -88,3 +97,57 @@ class="animated fadeIn faster"
     </button>
   </div>
 </form>
+</ng-container>
+<ng-container *ngIf="recovery">
+    <div class="modal-header">
+      <h4 class="modal-title w-100" id="myModalLabel">Recuperar Contraseña</h4>
+    </div>
+    <form (ngSubmit)="recoverPass(r.value)" #r="ngForm" novalidate="novalidate">
+      <div class="modal-body d-flex justify-content-center pb-0">
+        <div class="content-form w-100">
+          <div class="input-group mt-3 w-100">
+            <span for="txt_correo" class="input-label w-100"
+              ><i class="fas fa-user-alt"></i> Ingresa tu correo:</span
+            >
+            <input
+              type="text"
+              class="form-control"
+              #correo="ngModel"
+              minlength="5"
+              name="correo"
+              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+              placeholder="tucorreo@email.cl"
+              ngModel
+            />
+            <div class="input-group-append" style="cursor: help;">
+              <!-- Falta poner cursor: ? -->
+              <span *ngIf="correo.invalid" class="input-group-text">
+                <i class="fa fa-times-circle" style="color:var(--danger)"></i>
+              </span>
+              <span *ngIf="correo.valid" class="input-group-text">
+                <i class="fa fa-check-circle" style="color:var(--success)"></i>
+              </span>
+            </div>
+          </div>
+          <span (click)="recovery = false" style="
+            margin-top: 20px;
+            font-size: 10pt;
+            color: #5c5c5c;
+            font-weight: 600;
+            cursor: pointer;">
+            Inicia sesión aquí
+          </span>
+        </div>
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+        <button
+          type="submit"
+          #recover
+          class="btn btn-block btn-iniciar"
+          [disabled]="r.invalid"
+        >
+          Recuperar correo
+        </button>
+      </div>
+    </form>
+  </ng-container>

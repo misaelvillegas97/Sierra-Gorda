@@ -42,7 +42,9 @@ export class ReconozcoService {
               reconocimiento.fecha = new Date(reconocimiento.fecha);
               if (_type === 0) { // Todos
                 if (!this.listReconocimientos) { this.listReconocimientos = []; }
-                this.listReconocimientos.push(reconocimiento);
+                if (!this.listReconocimientos.find(reco => reco.id === reconocimiento.id)) {
+                  this.listReconocimientos.push(reconocimiento);
+                }
               }
               // if (_type === 1) { // Recibidos
               //   if (!this.listReconocimientosRecibidos) { this.listReconocimientosRecibidos = []; }
@@ -93,6 +95,20 @@ export class ReconozcoService {
       );
   }
 
+  getValoresOnChange(_modalidad: number, _equipo: number) {
+    this.listValores = undefined;
+
+    const URL_REQUEST = `${URL_SG}/reconozco/getvaloreslimtest/${_modalidad}/${_equipo}`;
+
+    this.http.get(URL_REQUEST).toPromise()
+      .then(
+        (res) => {
+          console.log(res);
+          this.listValores = res['valores'];
+        }
+      );
+  }
+
   getAllGerencias() {
     const URL_REQUEST = `${URL_SG}/empresa/gerencias`;
 
@@ -125,7 +141,7 @@ export class ReconozcoService {
     this.http.post(URL_REQUEST, _reconocimiento).toPromise()
       .then(
         res => {
-          console.log(res);
+          // console.log(res);
           this.snackbar.open('Se ha realizado correctamente el reconocimiento', null, {
             duration: 3000,
             verticalPosition: 'bottom',

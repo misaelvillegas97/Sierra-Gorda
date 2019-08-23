@@ -22,6 +22,7 @@ export class ReconocerComponent implements OnInit, OnDestroy {
   myImageGroup: string = undefined;
   croppie: any;
   uploadCrop: any;
+  nombre_valor: string;
 
   // UserTextBox
   userSearchBox = '';
@@ -64,7 +65,7 @@ export class ReconocerComponent implements OnInit, OnDestroy {
   listaJefesSeleccionados: UsuarioBuscar;
 
   constructor(public rs: ReconozcoService, private us: ProfileService, private snackbar: MatSnackBar, private ls: LoginService) {
-    this.rs.getAllValores();
+    // this.rs.getAllValores();
     this.rs.getAllGerencias();
   }
 
@@ -73,13 +74,13 @@ export class ReconocerComponent implements OnInit, OnDestroy {
     this.uploadCrop = new Croppie(this.croppie, {
       enableExif: true,
       viewport: {
-          width: 500,
-          height: 500,
-          type: 'square'
+        width: 500,
+        height: 500,
+        type: 'square'
       },
       boundary: {
-          width: 500,
-          height: 500
+        width: 500,
+        height: 500
       }
     });
   }
@@ -107,24 +108,24 @@ export class ReconocerComponent implements OnInit, OnDestroy {
     this.demoBasic.show();
   }
 
-  onUserSearch( _text: string ) {
+  onUserSearch(_text: string) {
     if (this.respuestas.modalidad !== '0' && this.respuestas.equipo !== '0') {
-      this.rs.searchUsers(_text, this.ls.userLogged.nivel, parseInt(this.respuestas.modalidad, 0))
-      .then(
-        (resultados: UsuarioBuscar[]) => {
-          this.listaUsuariosBusqueda = resultados;
-        }
-      ).catch(
-        (err) => {
-          this.snackbar.open('Error buscando usuarios', null, {
-            duration: 3000,
-            verticalPosition: 'bottom',
-            horizontalPosition: 'right',
-            panelClass: ['snackbar-login'],
-            announcementMessage: 'Mensaje de bienvenida'
-          });
-        }
-      );
+      this.rs.searchUsers(_text, this.ls.userLogged.nivel, parseInt(this.respuestas.equipo, 0))
+        .then(
+          (resultados: UsuarioBuscar[]) => {
+            this.listaUsuariosBusqueda = resultados;
+          }
+        ).catch(
+          (err) => {
+            this.snackbar.open('Error buscando usuarios', null, {
+              duration: 3000,
+              verticalPosition: 'bottom',
+              horizontalPosition: 'right',
+              panelClass: ['snackbar-login'],
+              announcementMessage: 'Mensaje de bienvenida'
+            });
+          }
+        );
     } else {
       this.snackbar.open('Completa todos los campos antes de buscar', null, {
         duration: 3000,
@@ -137,10 +138,10 @@ export class ReconocerComponent implements OnInit, OnDestroy {
   }
 
   getConducta() {
-    return this.rs.listValores.find( valor => valor.id === parseInt(this.respuestas.valor_estar, 0) ).comportamientos[parseInt(this.respuestas.conducta, 0) - 1].nombre_comportamiento;
+    return this.rs.listValores.find(valor => valor.id === parseInt(this.respuestas.valor_estar, 0)).comportamientos[parseInt(this.respuestas.conducta, 0) - 1].nombre_comportamiento;
   }
 
-  onBossSearch( _text: string ) {
+  onBossSearch(_text: string) {
     // console.log(_text);
     this.us.searchBoss(_text)
       .then(
@@ -161,7 +162,7 @@ export class ReconocerComponent implements OnInit, OnDestroy {
   }
 
   seeResults() {
-    this.uploadCrop.result('base64', 'viewport', 'png').then( (blob) => {
+    this.uploadCrop.result('base64', 'viewport', 'png').then((blob) => {
       if (this.selectedType === 1) {
         this.myImageGroup = blob;
       }
@@ -184,10 +185,10 @@ export class ReconocerComponent implements OnInit, OnDestroy {
 
   validateShown(_valor: Valor) {
     if (parseInt(this.respuestas.modalidad, 0) !== 0) {
-      if ( parseInt(this.respuestas.modalidad, 0) === 1 && (_valor.estado_gru === 1 || _valor.estado_gru === 2) ) {
+      if (parseInt(this.respuestas.modalidad, 0) === 1 && (_valor.estado_gru === 1 || _valor.estado_gru === 2)) {
         return true;
       } else {
-        if ( parseInt(this.respuestas.modalidad, 0) === 2 && parseInt(this.respuestas.equipo, 0) === _valor.estado_gru && parseInt(this.respuestas.equipo, 0) === _valor.estado_staff ) {
+        if (parseInt(this.respuestas.modalidad, 0) === 2 && parseInt(this.respuestas.equipo, 0) === _valor.estado_gru && parseInt(this.respuestas.equipo, 0) === _valor.estado_staff) {
           return true;
         } else {
           return false;
@@ -204,12 +205,22 @@ export class ReconocerComponent implements OnInit, OnDestroy {
       this.buttons[_i - 1].actual = false;
     }
     this.buttons[_i].actual = true;
+
+    if (this.buttons[_i + 1]) {
+      this.buttons[_i + 1].completed = false;
+      this.buttons[_i + 1].actual = false;
+    }
+
+    if (this.buttons[_i + 2]) {
+      this.buttons[_i + 2].completed = false;
+      this.buttons[_i + 2].actual = false;
+    }
   }
 
-  getNombreGerencia(_text:string): string {
+  getNombreGerencia(_text: string): string {
     let nombre = parseInt(_text, 0);
 
-    return this.rs.listGerencias.find(gerencias=>gerencias.id === nombre).nombre_gerencia;
+    return this.rs.listGerencias.find(gerencias => gerencias.id === nombre).nombre_gerencia;
   }
 
   validateNext(_i: number) {
@@ -260,21 +271,21 @@ export class ReconocerComponent implements OnInit, OnDestroy {
   }
 
   selectUsuario(_user: UsuarioBuscar) {
-    if (this.respuestas.modalidad === '1' ) {
+    if (this.respuestas.modalidad === '1') {
       this.listaUsuariosSeleccionados = [];
       this.listaUsuariosSeleccionados.push(_user);
     }
 
-    if (this.respuestas.modalidad === '2' ) {
+    if (this.respuestas.modalidad === '2') {
       if (!this.listaUsuariosSeleccionados) {
         this.listaUsuariosSeleccionados = [];
       }
-      if (!this.listaUsuariosSeleccionados.find( user => user === _user)) {
+      if (!this.listaUsuariosSeleccionados.find(user => user === _user)) {
         this.listaUsuariosSeleccionados.push(_user);
       }
     }
 
-    if (this.respuestas.modalidad === '0' ) {
+    if (this.respuestas.modalidad === '0') {
       this.snackbar.open('Selecciona una modalidad.', null, {
         duration: 3000,
         verticalPosition: 'bottom',
@@ -294,7 +305,7 @@ export class ReconocerComponent implements OnInit, OnDestroy {
 
   returnValorConducta(): Valor {
     if (this.respuestas.valor_estar !== '0') {
-      return this.rs.listValores.find( valor => valor.id === parseInt(this.respuestas.valor_estar, 0) );
+      return this.rs.listValores.find(valor => valor.id === parseInt(this.respuestas.valor_estar, 0));
     }
   }
 
@@ -304,10 +315,25 @@ export class ReconocerComponent implements OnInit, OnDestroy {
         this.listaUsuariosSeleccionados = [];
       }
     }
+
+    const id_modalidad = parseInt(this.respuestas.modalidad, 0);
+    const id_equipo = parseInt(this.respuestas.equipo, 0);
+    this.rs.getValoresOnChange(id_modalidad, id_equipo);
+  }
+
+  respuestasChange() {
+    if (this.listaUsuariosSeleccionados) {
+      if (this.listaUsuariosSeleccionados.length !== 0) {
+        this.listaUsuariosSeleccionados = [];
+      }
+    }
+
+    const id_modalidad = parseInt(this.respuestas.modalidad, 0);
+    const id_equipo = parseInt(this.respuestas.equipo, 0);
+    this.rs.getValoresOnChange(id_modalidad, id_equipo);
   }
 
   sendReconocimiento() {
-
     let idUsuarios: string[] = [];
 
     this.listaUsuariosSeleccionados.forEach(usuario => {
@@ -329,6 +355,35 @@ export class ReconocerComponent implements OnInit, OnDestroy {
     };
 
     this.rs.sendReconocimiento(RECONOCIMIENTO);
+  }
+
+  updateNombreValor($e: any) {
+    console.log($e.srcElement.value);
+    const id: number = parseInt($e.srcElement.value, 0);
+
+    if (id !== 0) {
+      const valor = this.rs.listValores.find(
+        val => val.id === id
+      );
+      this.nombre_valor = valor.nombre;
+    }
+  }
+
+  valorColorBg(): string {
+    switch (parseInt(this.respuestas.valor_estar, 0)) {
+      case 1: return 'sg-blue-bg';
+      case 2: return 'sg-green-bg';
+      case 3: return 'sg-yellow-bg';
+      case 4: return 'sg-orange-bg';
+      case 5: return 'sg-red-bg';
+      default: return 'sg-blue-bg';
+    }
+  }
+
+  deleteSelectedUser(_user: UsuarioBuscar) {
+    this.listaUsuariosSeleccionados = this.listaUsuariosSeleccionados.filter(
+      user => user !== _user
+    );
   }
 }
 

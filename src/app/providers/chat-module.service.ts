@@ -162,7 +162,7 @@ export class ChatModuleService {
     this.http.get(URL + 'chat/getlistachatfind/' + _text).toPromise()
       .then(
         res => {
-          console.log(res)
+          // tslint:disable-next-line: no-string-literal
           this.chatList = res['chats'];
           this.chatList = this.chatList.filter(
             chat => chat.id !== parseInt(localStorage.getItem('sg-userID'), 0)
@@ -175,14 +175,14 @@ export class ChatModuleService {
     let response: boolean;
     const DATA = {
       id_usuario: parseInt(atob(localStorage.getItem('sg-userID')), 0),
-      id_usuario_favorito: _id,
-      favorito: _state
+      id_usuario_favorito: _id
     };
 
     await this.http.post(URL + 'chat/agregarfavorito', DATA).toPromise()
       .then(
         (res: { err: number; message: string; favorito: boolean }) => {
           if (!res.err) {
+            // tslint:disable-next-line: no-string-literal
             response = res.favorito['result'];
           }
         }
@@ -190,11 +190,12 @@ export class ChatModuleService {
 
     return response;
   }
+
   archivarChat(_chat: number) {
     this.http
       .get(URL + 'chat/cerrarchatusuario/' + _chat + '/' + parseInt(localStorage.getItem('sg-userID'), 0)).toPromise()
       .then(res => {
-        console.log(res)
+        console.log(res);
 
       });
   }

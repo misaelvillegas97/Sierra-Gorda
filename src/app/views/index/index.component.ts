@@ -8,7 +8,6 @@ import { SinglechatComponent } from './chat/messages/singlechat/singlechat.compo
 import { ChatService } from 'src/app/providers/chat.service';
 import { IndexService } from 'src/app/providers/index.service';
 import { GoogleAnalyticsService } from 'src/app/providers/google-analytics.service';
-import { ContactComponent } from './contact/contact.component';
 
 declare let $: any;
 
@@ -31,6 +30,7 @@ export class IndexComponent implements OnInit, AfterViewInit {
   title_hovered = false;
 
   contact: boolean = false;
+  chat_state: boolean = false;
 
   fecha_actual = new Date();
 
@@ -147,9 +147,11 @@ export class IndexComponent implements OnInit, AfterViewInit {
   toggle_chat(state: boolean) {
     this.ga.onChatClickWindow();
     if (state) {
+      this.chat_state = state;
       document.getElementById('chat-container').style.display = 'block';
       document.getElementById('html').classList.add('noscroll');
     } else {
+      this.chat_state = state;
       document.getElementById('chat-container').classList.remove('fadeInRightBig');
       document.getElementById('chat-container').classList.add('fadeOutRightBig');
       document.getElementById('html').classList.remove('noscroll');
@@ -164,7 +166,7 @@ export class IndexComponent implements OnInit, AfterViewInit {
       if (this.userID !== undefined) {
         document.getElementById(`user-${this.userID}`).classList.remove('active');
       }
-      SinglechatComponent.prototype.ngOnDestroy();
+      // SinglechatComponent.prototype.ngOnDestroy();
       this.chatSelected = false;
       this.userID = undefined;
     }

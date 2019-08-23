@@ -39,6 +39,6 @@
 </div>
 
 <div class="footer cursor">
-  <p *ngIf="!reconocimiento.megusta">Dar ¡Me Gusta! <i class="far fa-thumbs-up"></i></p>
+  <p *ngIf="!reconocimiento.megusta" (click)="setLike()">Dar ¡Me Gusta! <i class="far fa-thumbs-up"></i></p>
   <p *ngIf="reconocimiento.megusta">¡Te Gusta! <i class="far fa-thumbs-up"></i></p>
 </div>

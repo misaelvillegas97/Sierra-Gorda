@@ -69,13 +69,6 @@ export class IndexService {
       .get(url)
       .toPromise()
       .then((returndata: ResponseResultados) => {
-        //  console.table(returndata.resultados);
-        // this.listaresultado = returndata.resultados;
-        // returndata.resultados.forEach(resultado => {
-        //   console.log(resultado);
-        //   resultado.fecha_diario_indice = new Date(resultado.fecha_diario_indice);
-        //   this.listaresultado.push(resultado);
-        // });
 
         // tslint:disable-next-line: prefer-for-of
          for (let i = 0; i < returndata.resultados.length; i++) {

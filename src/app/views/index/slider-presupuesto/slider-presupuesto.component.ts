@@ -84,8 +84,15 @@ export class SliderPresupuestoComponent implements OnInit {
     }
   }
 
+  getResultClassSeguridad(_result: ResultadoItem): string {
+    if (_result.real_resultado >= _result.presupuesto_resultado) {
+      return 'resultado-positivo';
+    } else {
+      return 'resultado-negativo';
+    }
+  }
+
   openVideoModal() {
-    this.ga.onResultadosVideo();
     let data = {};
 
     data = {
@@ -103,6 +110,9 @@ export class SliderPresupuestoComponent implements OnInit {
       animated: true,
       data
     };
-    this.modalRef = this.modalService.show(VideoComponent, this.modalOptions);
+    if (this.ps.videoResultado) {
+      this.ga.onResultadosVideo();
+      this.modalRef = this.modalService.show(VideoComponent, this.modalOptions);
+    }
   }
 }

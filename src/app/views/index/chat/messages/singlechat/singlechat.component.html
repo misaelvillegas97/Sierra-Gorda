@@ -17,8 +17,8 @@
     </p>
   </div>
   <div class="user-star">
-    <i class="fas fa-star" (click)="setFavorito()" *ngIf="data.favorito"></i>
-    <i class="far fa-star" (click)="setFavorito()" *ngIf="!data.favorito"></i>
+    <i class="fas fa-star" (click)="setFavorito(data)" *ngIf="data.favorito"></i>
+    <i class="far fa-star" (click)="setFavorito(data)" *ngIf="!data.favorito"></i>
   </div>
   <div class="actions">
       <a
