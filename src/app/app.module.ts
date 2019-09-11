@@ -120,6 +120,7 @@ import { ProcesoProductivoComponent } from './views/sections/nuestra-empresa/pro
 import { RevistasComponent } from './views/menus/comunicaciones/revistas/revistas.component';
 import { ComunicacionesPrincipalComponent } from './views/menus/comunicaciones/comunicaciones-principal/comunicaciones-principal.component';
 import { RevistaCatabelaComponent } from './views/sections/personas/revista-catabela/revista-catabela.component';
+import { ReporteSustentabilidadComponent } from './views/sections/nuestra-empresa/reporte-sustentabilidad/reporte-sustentabilidad.component';
 
 
 @NgModule({
@@ -212,7 +213,8 @@ import { RevistaCatabelaComponent } from './views/sections/personas/revista-cata
     ProcesoProductivoComponent,
     RevistasComponent,
     ComunicacionesPrincipalComponent,
-    RevistaCatabelaComponent
+    RevistaCatabelaComponent,
+    ReporteSustentabilidadComponent
   ],
   imports: [
     BrowserModule,
@@ -225,7 +227,7 @@ import { RevistaCatabelaComponent } from './views/sections/personas/revista-cata
     BrowserAnimationsModule,
     FormsModule,
     InfiniteScrollModule,
-    GtagModule.forRoot({ trackingId: 'UA-143329686-2', trackPageviews: false }),
+    GtagModule.forRoot({ trackingId: 'UA-143329686-1', trackPageviews: false }),
     NgxPaginationModule,
     ReactiveFormsModule,
     // Material Module Imports

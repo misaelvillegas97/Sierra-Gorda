@@ -207,6 +207,8 @@ export class LoginService {
     localStorage.removeItem('sg-userName');
     localStorage.removeItem('sg-userID');
     this.userLogged = undefined;
+
+    this.route.navigateByUrl('/');
   }
 
   isLoggedIn(): boolean {

@@ -27,7 +27,7 @@
           button.completed ? 'reconozco-secciones-button-completed' : '',
           button.actual ? 'reconozco-secciones-button-actual' : ''
         ]"
-        (click)="setRespuesta(button, i)"
+        (click)="setRespuesta(i)"
         [disabled]="
           i === 0
             ? button.completed
@@ -45,12 +45,12 @@
     </ng-container>
   </div>
   <div style="display: flex;">
-    <div style="display: flex; flex-direction: column; align-items: center; text-align: center;" class=" mr-4">
-      <button class="direction-button" name="back"><i class="fas fa-angle-left"></i></button>
+    <div style="display: flex; flex-direction: column; align-items: center; text-align: center;" class=" mr-4" [ngStyle]="{'visibility': validatePreviousStage() ? 'hidden' : 'visible'}">
+      <button class="direction-button" name="back" (click)="previousStage()" [disabled]="validatePreviousStage()"><i class="fas fa-angle-left"></i></button>
       <label for="back">Anterior</label>
     </div>
-    <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-      <button class="direction-button" name="next"><i class="fas fa-angle-right"></i></button>
+    <div style="display: flex; flex-direction: column; align-items: center; text-align: center;" [ngStyle]="{'visibility': validateNextStage() ? 'hidden' : 'visible'}">
+      <button class="direction-button" name="next" (click)="nextStage()" [disabled]="validateNextStageWA()"><i class="fas fa-angle-right"></i></button>
       <label for="next">Siguiente</label>
     </div>
   </div>
@@ -58,7 +58,7 @@
 
 <br /><br />
 
-<div class="reconocer container" [hidden]="!buttons[0].actual">
+<div class="reconocer container animated fadeIn" [hidden]="!buttons[0].actual">
   <div class="reconocer-left">
     <!-- Sección Left-->
     <div class="reconocer-left-container">
@@ -173,7 +173,7 @@
   </div>
 </div>
 
-<div class="reconocido container" [hidden]="!buttons[1].actual">
+<div class="reconocido container animated fadeIn" [hidden]="!buttons[1].actual">
   <div class="reconocido-header">
     <div class="reconocido-header-info">
       <ng-container *ngIf="listaUsuariosSeleccionados">
@@ -314,8 +314,10 @@
     </div>
   </div>
 </div>
+
 <br />
-<div class="resumen container {{ valorColorBg() }}" *ngIf="buttons[2].actual">
+
+<div class="resumen container {{ valorColorBg() }} animated fadeIn" *ngIf="buttons[2].actual">
   <div class="resumen-header">
     <div class="resumen-header-img" *ngIf="respuestas.modalidad === '1'">
       <img
@@ -389,6 +391,7 @@
     </div>
   </div>
 </div>
+
 <div
   mdbModal
   #basicModal="mdbModal"

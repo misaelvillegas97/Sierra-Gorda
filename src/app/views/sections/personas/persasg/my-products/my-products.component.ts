@@ -57,7 +57,9 @@ export class MyProductsComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.sub.unsubscribe();
+    if (this.sub) {
+      this.sub.unsubscribe();
+    }
   }
 
   cropImage(_idUpload: number, $event: any) {

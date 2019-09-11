@@ -65,7 +65,6 @@ export class ReconocerComponent implements OnInit, OnDestroy {
   listaJefesSeleccionados: UsuarioBuscar;
 
   constructor(public rs: ReconozcoService, private us: ProfileService, private snackbar: MatSnackBar, private ls: LoginService) {
-    // this.rs.getAllValores();
     this.rs.getAllGerencias();
   }
 
@@ -145,7 +144,6 @@ export class ReconocerComponent implements OnInit, OnDestroy {
   }
 
   onBossSearch(_text: string) {
-    // console.log(_text);
     this.us.searchBoss(_text)
       .then(
         (resultados: UsuarioBuscar[]) => {
@@ -202,7 +200,7 @@ export class ReconocerComponent implements OnInit, OnDestroy {
     return false;
   }
 
-  setRespuesta(button: ButtonF, _i: number) {
+  setRespuesta(_i: number) {
     if (this.buttons[_i - 1]) {
       this.buttons[_i - 1].completed = true;
       this.buttons[_i - 1].actual = false;
@@ -221,19 +219,16 @@ export class ReconocerComponent implements OnInit, OnDestroy {
   }
 
   getNombreGerencia(_text: string): string {
-    let nombre = parseInt(_text, 0);
+    const nombre = parseInt(_text, 0);
 
     return this.rs.listGerencias.find(gerencias => gerencias.id === nombre).nombre_gerencia;
   }
 
   validateNext(_i: number) {
-    // console.log(_i);
     switch (_i) {
       case 1:
         if (this.respuestas.valor_estar !== '0' && this.respuestas.modalidad !== '0' && this.respuestas.equipo !== '0') {
-          // console.log('Primera capa');
           if (this.respuestas.modalidad === '1') {
-            // console.log('Segunda capa');
             if (this.listaUsuariosSeleccionados) {
               if (this.listaUsuariosSeleccionados.length !== 1) {
                 return true;
@@ -246,7 +241,7 @@ export class ReconocerComponent implements OnInit, OnDestroy {
           }
           if (this.respuestas.modalidad === '2') {
             if (this.listaUsuariosSeleccionados) {
-              if (this.listaUsuariosSeleccionados.length === 0) {
+              if (this.listaUsuariosSeleccionados.length < 2) {
                 return true;
               } else {
                 if (this.respuestas.nombre_grupo !== '0') {
@@ -314,9 +309,7 @@ export class ReconocerComponent implements OnInit, OnDestroy {
 
   modalidadChange() {
     if (this.listaUsuariosSeleccionados) {
-      if (this.listaUsuariosSeleccionados.length !== 0) {
-        this.listaUsuariosSeleccionados = [];
-      }
+      this.listaUsuariosSeleccionados = undefined;
     }
 
     const id_modalidad = parseInt(this.respuestas.modalidad, 0);
@@ -337,7 +330,7 @@ export class ReconocerComponent implements OnInit, OnDestroy {
   }
 
   sendReconocimiento() {
-    let idUsuarios: string[] = [];
+    const idUsuarios: string[] = [];
 
     this.listaUsuariosSeleccionados.forEach(usuario => {
       idUsuarios.push(usuario.id_usuario + '');
@@ -347,7 +340,7 @@ export class ReconocerComponent implements OnInit, OnDestroy {
       reconocedor: this.ls.userLogged.id_usuario,
       reconocido: idUsuarios.join(),
       comentario: this.respuestas.argumento,
-      valor_comportamiento: this.respuestas.valor_estar,
+      valor_comportamiento: this.respuestas.conducta,
       jefe: this.listaJefesSeleccionados.id_usuario.toString(),
       nombre_grupo: this.respuestas.nombre_grupo ? parseInt(this.respuestas.nombre_grupo, 0) : null,
       url_img: this.myImage ? this.myImage.substr(22) : null,
@@ -361,6 +354,7 @@ export class ReconocerComponent implements OnInit, OnDestroy {
   }
 
   updateNombreValor($e: any) {
+    this.respuestas.conducta = '0';
     console.log($e.srcElement.value);
     const id: number = parseInt($e.srcElement.value, 0);
 
@@ -387,6 +381,53 @@ export class ReconocerComponent implements OnInit, OnDestroy {
     this.listaUsuariosSeleccionados = this.listaUsuariosSeleccionados.filter(
       user => user !== _user
     );
+  }
+
+  nextStage() {
+    this.setRespuesta(this.getStage + 1);
+  }
+
+  validateNextStage(): boolean {
+    if (this.getStage === 2) {
+      return true;
+    }
+
+    return false;
+  }
+
+  validateNextStageWA(): boolean {
+    if (this.getStage === 2) {
+      return true;
+    }
+
+    if ( this.validateNext(this.getStage + 1)) {
+      return true;
+    }
+
+    return false;
+  }
+
+  previousStage() {
+    this.setRespuesta(this.getStage - 1);
+  }
+
+  validatePreviousStage(): boolean {
+    if (this.getStage === 0) {
+      return true;
+    }
+
+    return false;
+  }
+
+  validateStage(): boolean {
+    return this.validateNext(this.getStage + 1);
+  }
+
+  get getStage(): number {
+    const actual = this.buttons.find(boton => boton.actual === true);
+    const index = this.buttons.indexOf(actual);
+
+    return index;
   }
 }
 

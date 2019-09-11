@@ -9,7 +9,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "electron-build": "ng build --prod",
+    "build:prod": "ng build --prod --aot",
     "electron": "electron .",
     "publish": "ng build --prod --aot && firebase deploy"
   },

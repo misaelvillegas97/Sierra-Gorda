@@ -126,12 +126,16 @@ export class TodosReconocidosComponent implements OnInit, OnDestroy {
   }
 
   owner(reconocimiento: Reconocimiento): boolean {
-    if (reconocimiento.reconocedor.id === this.ls.userLogged.id_usuario) {
-      return true;
-    }
+    if (this.ls.isLoggedIn && this.ls.userLogged) {
+      if (reconocimiento.reconocedor.id === this.ls.userLogged.id_usuario) {
+        return true;
+      }
 
-    if (reconocimiento.reconocido.find( user => user.id_usuario === this.ls.userLogged.id_usuario )) {
-      return true;
+      if (reconocimiento.reconocido.find( user => user.id_usuario === this.ls.userLogged.id_usuario )) {
+        return true;
+      }
+
+      return false;
     }
 
     return false;

@@ -62,6 +62,7 @@ import { ProcesoProductivoComponent } from './views/sections/nuestra-empresa/pro
 import { RevistasComponent } from './views/menus/comunicaciones/revistas/revistas.component';
 import { ComunicacionesPrincipalComponent } from './views/menus/comunicaciones/comunicaciones-principal/comunicaciones-principal.component';
 import { RevistaCatabelaComponent } from './views/sections/personas/revista-catabela/revista-catabela.component';
+import { ReporteSustentabilidadComponent } from './views/sections/nuestra-empresa/reporte-sustentabilidad/reporte-sustentabilidad.component';
 
 const routes: Routes = [
   {
@@ -153,6 +154,10 @@ const routes: Routes = [
       {
         path: 'proceso-productivo',
         component: ProcesoProductivoComponent
+      },
+      {
+        path: 'reporte-sustentabilidad',
+        component: ReporteSustentabilidadComponent
       }
     ]
   },

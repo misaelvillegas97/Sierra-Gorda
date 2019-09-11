@@ -38,7 +38,7 @@ export class ReconocidosComponent implements OnInit {
     let data = {};
     let bgModal = '';
 
-    switch (_reconocimiento.valor_comportamiento) {
+    switch (_reconocimiento.id_valor) {
       case 1: bgModal = 'sg-blue'; break;
       case 2: bgModal = 'sg-green'; break;
       case 3: bgModal = 'sg-yellow'; break;

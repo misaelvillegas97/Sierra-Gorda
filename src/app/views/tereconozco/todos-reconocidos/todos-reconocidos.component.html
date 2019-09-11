@@ -1,11 +1,17 @@
 <div class="reconozco container">
   <div class="d-flex justify-content-between">
-    <h1 class="reconozco-title animated fadeInLeft">
+    <h1 class="reconozco-title animated fadeIn">
       Te Reconozco por ESTAR
     </h1>
-    <div class="animated fadeInRight">
+    <div class="animated fadeIn">
       <img (click)="validateRedirect(0)" src="https://c3soporte00400.cl/sg/assets/img/reconozco/Reconocimiento_1.png" matTooltip="Reconocidos" matTooltipClass="bg-blue" alt="" style="width: 70px;" class="mr-2 cursor">
-      <img (click)="validateRedirect(1)" *ngIf="ls.userLogged.nivel !== 0" src="https://c3soporte00400.cl/sg/assets/img/reconozco/Reconocimiento_2.png" matTooltip="Reconocer" matTooltipClass="bg-blue" class="cursor" alt="" style="width: 70px;">
+      <ng-container *ngIf="ls.isLoggedIn && ls.userLogged">
+        <img (click)="validateRedirect(1)" *ngIf="ls.userLogged.nivel !== 0" src="https://c3soporte00400.cl/sg/assets/img/reconozco/Reconocimiento_2.png" matTooltip="Reconocer" matTooltipClass="bg-blue" class="cursor" alt="" style="width: 70px;">
+      </ng-container>
+      <ng-container *ngIf="!ls.isLoggedIn">
+        <img (click)="validateRedirect(1)"src="https://c3soporte00400.cl/sg/assets/img/reconozco/Reconocimiento_2.png" matTooltip="Reconocer" matTooltipClass="bg-blue" class="cursor" alt="" style="width: 70px;">
+      </ng-container>
+
     </div>
   </div>
   <p style="font-family: Calibri; font-weight: 500; color: #5c5c5c; padding-left: 15px">
@@ -46,7 +52,7 @@
                 </div>
               </div>
               <div (click)="setLike(reconocimiento)" *ngIf="!reconocimiento.megusta && !owner(reconocimiento)" class="cursor reconozco-card-actions">
-                <span (click)="setLike(reconocimiento)">Dar ¡Me Gusta! <i class="far fa-thumbs-up"></i></span>
+                <span>Dar ¡Me Gusta! <i class="far fa-thumbs-up"></i></span>
               </div>
               <div *ngIf="!reconocimiento.megusta && owner(reconocimiento)" [ngClass]="{'disabled': owner(reconocimiento)}" class="cursor reconozco-card-actions">
                 <span>Dar ¡Me Gusta! <i class="far fa-thumbs-up"></i></span>

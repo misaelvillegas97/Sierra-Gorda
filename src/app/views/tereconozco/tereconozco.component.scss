@@ -506,7 +506,7 @@ $pink-text: #fe9f6e;
   &-body {
     .resumen-card {
       background-color: rgba(0, 0, 0, 0.2);
-      height: 300px;
+      height: 200px;
       overflow: hidden;
       position: relative;
       border-radius: 20px;
@@ -708,12 +708,24 @@ $pink-text: #fe9f6e;
 .direction-button {
   border: none;
   border-radius: 50px;
-  padding: 3px 12px;
+  /* padding: 3px 12px; */
   background: #ff5900;
   font-size: 14pt;
-  margin-top: 3px;
+  margin-top: 2px;
   color: white;
   text-align: center;
+  width: 35px;
+  height: 35px;
+  opacity: 1;
+  transition: 0.2s ease-in;
+}
+
+.direction-button:disabled {
+  opacity: 0.5;
+}
+
+.direction-button:disabled + label {
+  opacity: 0.5;
 }
 
 .direction-button + label {

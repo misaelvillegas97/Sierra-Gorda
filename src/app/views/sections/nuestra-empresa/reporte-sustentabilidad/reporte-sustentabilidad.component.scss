@@ -1,0 +1,58 @@
+$orange: #ff5900;
+$orange-70: rgba(255, 89, 0, 0.863);
+$orange-50: rgba(255, 89, 0, 0.502);
+
+$blueSG: #3fbac5;
+$blueSG-70: rgba(62, 186, 197, 0.702);
+$blueSG-40: rgba(62, 186, 197, 0.4);
+$blueSG-20: rgba(63, 186, 197, 0.2);
+
+$darkblue: #214083;
+$green: #7fbb5a;
+$yellow: #fcd902;
+$orangestar: #ed5624;
+$redestar: #de1e26;
+
+$text-color: #5c5c5c;
+$nombre-color: #80808e;
+$nombre-color2: #5a6770;
+
+.reporte {
+  &-titulo {
+    color: $blueSG;
+    display: flex;
+    display: -ms-flexbox;
+    -ms-flex-align: center;
+    align-items: center;
+
+    &-volver{
+      font-size: 20pt;
+      margin-right:20px;
+       cursor: pointer;
+    }
+    h1 {
+    font-weight: 800;
+    font-size: 35pt;
+    user-select: none;
+    }
+  }
+  &-container {
+    margin-top: 60px;
+    display: flex;
+    display: -ms-flexbox;
+    justify-content: center;
+    // justify-content: space-evenly;
+
+    &-downloadButton {
+      background-color: $orange;
+      color: white !important;
+      font-weight: 600;
+      font-size: 12pt;
+      text-align: center;
+
+      border-radius: 40px;
+      padding: 10px 25px;
+      margin: 0 30px;
+    }
+  }
+}
